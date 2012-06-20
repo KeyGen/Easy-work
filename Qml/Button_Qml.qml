@@ -16,9 +16,9 @@ Rectangle {
 
     //Цвет кнопки
     gradient: Gradient {
-        GradientStop { position: 0.0; color: "#45161c" }
+        GradientStop { position: 0.0; color: "#451200" }
         GradientStop { position: 0.33; color: "#996666" }
-        GradientStop { position: 1.0; color: "#45161c" }
+        GradientStop { position: 1.0; color: "#451200" }
     }
 
     scale: buttonMouse.pressed ? 0.8 : 1.0
@@ -29,6 +29,6 @@ Rectangle {
         id: buttonMouse
         anchors.fill: parent
         anchors.margins: -10
-        onReleased: console.log(parent.height/1.58)
+        onReleased: console.log("Нажал")
     }
 }

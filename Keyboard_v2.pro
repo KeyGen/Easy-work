@@ -1,26 +1,24 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-06-15T10:27:18
+# Project created by QtCreator 2012-06-19T20:51:23
 #
 #-------------------------------------------------
 
 QT       += core gui declarative
 
-TARGET = keyboard
+TARGET = Keyboard_v2
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        keyboard_my.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += keyboard_my.h
 
 OTHER_FILES += \
-    Qml/Main_Qml.qml \
+    Qml/Main_qml.qml \
     Qml/Exit_Qml.qml \
-    Qml/Button_Qml.qml \
-    Qml/Size_input_Qml.qml \
-    Qml/Move_Qml.qml
+    Qml/Button_Qml.qml
 
 RESOURCES += \
-    Resource_Qml.qrc
+    file.qrc

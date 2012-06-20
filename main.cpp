@@ -1,10 +1,10 @@
 #include <QtGui/QApplication>
-#include "mainwindow.h"
+#include "keyboard_my.h"
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    MainWindow w;
+    Keyboard_my w;
     w.show();
     
     return a.exec();

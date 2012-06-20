@@ -7,7 +7,10 @@ Image {
     id: quit //Имя кнопки
     source: ":/picture/quit"
 
-    x: parent.width - 25
+    width: 30
+    height: 30
+
+    x: parent.width - 33
     y: 5
 
     scale: quitMouse.pressed ? 0.8 : 1.0
@@ -21,4 +24,3 @@ Image {
         onClicked: Qt_fun.quit()
     }
 }
-

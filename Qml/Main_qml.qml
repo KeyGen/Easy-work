@@ -1,27 +1,91 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
 
-//////////////////////////////////////
-//////////////////// Main для Qml
-Item {
+Item{
     id: main
-    width: 1050
-    height: 455
 
-//    // Фон
-//    Image {
-//        id: background //Имя кнопки
-//        source: ":/picture/background"
+    // Фон
+    Rectangle {
+        id: background //Имя кнопки
 
-//        width: parent.width
-//        height: parent.height
-//    }
+        width: parent.width
+        height: parent.height
+
+        color: "#9C9C9C"
+    }
+
+    Rectangle {
+        id: background_top //Имя кнопки
+
+        width: parent.width
+        height: 35
+
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "#363636" }
+            GradientStop { position: 1.0; color: "#9C9C9C" }
+        }
+    }
+
+    Rectangle {
+        id: background_down //Имя кнопки
+
+        y: parent.height-30
+        width: parent.width
+        height: 30
+
+        gradient: Gradient {
+            GradientStop { position: 1.0; color: "#363636" }
+            GradientStop { position: 0.0; color: "#9C9C9C" }
+        }
+    }
+
+    MouseArea {
+        id: input_move_Mouse
+        anchors.fill: parent
+        acceptedButtons: Qt.LeftButton
+        onPositionChanged: Qt_fun.move_window()
+        onReleased: Qt_fun.bl_true()
+    }
+
+    Rectangle{
+        id: size_input
+        height: 60
+        width: 60
+        rotation: 320
+
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "red" }
+            GradientStop { position: 0.5; color: "black" }
+        }
+
+        radius: 80
+
+        x: parent.width- 30
+        y: parent.height-30
+
+        smooth: true
+
+        MouseArea {
+            id: input_size_2_Mouse
+            anchors.fill: parent
+            onClicked: Qt.LeftButton
+            hoverEnabled: true
+            onEntered: Qt_fun.cursor_up()
+            onExited: Qt_fun.cursor_down()
+        }
+
+        MouseArea {
+            id: input_size_Mouse
+            anchors.fill: parent
+            onClicked: Qt.LeftButton
+            onPositionChanged: Qt_fun.size_input()
+            onReleased: Qt_fun.bl_true_size()
+        }
+    }
 
     // Кнопка выключения
-    Exit_Qml{
-        width: parent.width/52.4
-        height: parent.height/22.7
-    }
+    Exit_Qml{}
+
 
     //////////////////////////////////////
     ////////////// Клавиши ///////////////
@@ -29,14 +93,11 @@ Item {
         id: button_1
         x: parent.width/37
         y: parent.height/12.8
-        width: 104
-        height: 57
         //Текст кнопки
         Text {
             id: buttonLabel_1
             font.bold : true
             text: "Esc"
-            scale: 0.100
             color: "black"
             anchors.centerIn: parent;
         }
@@ -44,9 +105,8 @@ Item {
 
     Button_Qml{
         id: button_2
-        opacity: 0.640
-        transformOrigin: Item.TopLeft
-        anchors.fill: parent
+
+        x: button_1.x + button_1.width + parent.width/261.7 + parent.width/34.5
         //Текст кнопки
         Text {
             id: buttonLabel_2
@@ -85,8 +145,7 @@ Item {
     Button_Qml{
         id: button_5
         x: button_4.x + button_5.width + parent.width/261.7
-        opacity: 0.850
-        visible: true
+        //visible: true
         //Текст кнопки
         Text {
             id: buttonLabel_5
@@ -387,7 +446,8 @@ Item {
         id: button_27
         x: button_26.x + button_26.width + parent.width/261.7
         y: button_1.y + button_15.height + button_15.height/2.3
-        width: parent.width/5.72
+        //width: parent.width/5.72
+        width: parent.width/7
         //Текст кнопки
         Text {
             id: buttonLabel_27
@@ -404,7 +464,7 @@ Item {
     Button_Qml{
         id: button_28
         x: parent.width/37
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         width: button_27.width
         //Текст кнопки
         Text {
@@ -419,7 +479,7 @@ Item {
     Button_Qml{
         id: button_29
         x: button_28.x + button_28.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_29
@@ -433,7 +493,7 @@ Item {
     Button_Qml{
         id: button_30
         x: button_29.x + button_29.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_30
@@ -447,7 +507,7 @@ Item {
     Button_Qml{
         id: button_31
         x: button_30.x + button_30.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_31
@@ -461,7 +521,7 @@ Item {
     Button_Qml{
         id: button_32
         x: button_31.x + button_31.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_32
@@ -475,7 +535,7 @@ Item {
     Button_Qml{
         id: button_33
         x: button_32.x + button_32.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_33
@@ -489,7 +549,7 @@ Item {
     Button_Qml{
         id: button_34
         x: button_33.x + button_33.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_34
@@ -503,7 +563,7 @@ Item {
     Button_Qml{
         id: button_35
         x: button_34.x + button_34.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_35
@@ -517,7 +577,7 @@ Item {
     Button_Qml{
         id: button_36
         x: button_35.x + button_35.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_36
@@ -531,7 +591,7 @@ Item {
     Button_Qml{
         id: button_37
         x: button_36.x + button_36.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_37
@@ -545,7 +605,7 @@ Item {
     Button_Qml{
         id: button_38
         x: button_37.x + button_37.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_38
@@ -559,7 +619,7 @@ Item {
     Button_Qml{
         id: button_39
         x: button_38.x + button_38.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_39
@@ -573,7 +633,7 @@ Item {
     Button_Qml{
         id: button_40
         x: button_39.x + button_39.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_40
@@ -587,7 +647,7 @@ Item {
     Button_Qml{
         id: button_41
         x: button_40.x + button_40.width + parent.width/261.7
-        y: button_27.y + button_28.height + parent.width/261.7
+        y: button_27.y + button_28.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_41
@@ -604,7 +664,7 @@ Item {
     Button_Qml{
         id: button_42
         x: parent.width/37
-        y: button_41.y + button_15.height + parent.width/261.7
+        y: button_41.y + button_15.height + parent.height/295
         width: button_40.width*2.072
         //Текст кнопки
         Text {
@@ -619,7 +679,7 @@ Item {
     Button_Qml{
         id: button_43
         x: button_42.x + button_42.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_43
@@ -633,7 +693,7 @@ Item {
     Button_Qml{
         id: button_44
         x: button_43.x + button_43.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_44
@@ -647,7 +707,7 @@ Item {
     Button_Qml{
         id: button_45
         x: button_44.x + button_44.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_45
@@ -661,7 +721,7 @@ Item {
     Button_Qml{
         id: button_46
         x: button_45.x + button_45.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_46
@@ -675,7 +735,7 @@ Item {
     Button_Qml{
         id: button_47
         x: button_46.x + button_46.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_47
@@ -689,7 +749,7 @@ Item {
     Button_Qml{
         id: button_48
         x: button_47.x + button_47.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_48
@@ -703,7 +763,7 @@ Item {
     Button_Qml{
         id: button_49
         x: button_48.x + button_48.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_49
@@ -717,7 +777,7 @@ Item {
     Button_Qml{
         id: button_50
         x: button_49.x + button_49.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_50
@@ -731,7 +791,7 @@ Item {
     Button_Qml{
         id: button_51
         x: button_50.x + button_50.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_51
@@ -745,7 +805,7 @@ Item {
     Button_Qml{
         id: button_52
         x: button_51.x + button_51.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_52
@@ -759,7 +819,7 @@ Item {
     Button_Qml{
         id: button_53
         x: button_52.x + button_52.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
+        y: button_41.y + button_43.height + parent.height/295
         //Текст кнопки
         Text {
             id: buttonLabel_53
@@ -773,8 +833,8 @@ Item {
     Button_Qml{
         id: button_55
         x: button_53.x + button_53.width + parent.width/261.7
-        y: button_41.y + button_43.height + parent.width/261.7
-        width: parent.width/5.72
+        y: button_41.y + button_43.height + parent.height/295
+        width: button_27.width
         //Текст кнопки
         Text {
             id: buttonLabel_55
@@ -791,8 +851,8 @@ Item {
     Button_Qml{
         id: button_56
         x: parent.width/37
-        y: button_55.y + button_55.height + parent.width/261.7
-        width: button_53.width*2.615
+        y: button_55.y + button_55.height + parent.height/295
+        width: button_27.width/1.11
         //Текст кнопки
         Text {
             id: buttonLabel_56
@@ -961,7 +1021,7 @@ Item {
         id: button_68
         x: button_67.x + button_67.width + parent.width/261.7
         y: button_56.y
-        width: button_53.width*2.615
+        width: button_56.width
         //Текст кнопки
         Text {
             id: buttonLabel_68
@@ -978,7 +1038,7 @@ Item {
     Button_Qml{
         id: button_69
         x: parent.width/37
-        y: button_68.y + button_18.height + parent.width/261.7
+        y: button_68.y + button_18.height + parent.height/295
         width: button_26.width*1.5
         //Текст кнопки
         Text {
@@ -1024,12 +1084,13 @@ Item {
         id: button_72
         x: button_71.x + button_71.width + parent.width/261.7
         y: button_71.y
-        width: button_26.width*6.08
+        width: button_27.width*2.13
         //Текст кнопки
         Text {
             id: buttonLabel_72
             font.bold : true
-            text: "Space"
+            font.pixelSize: 20
+            text: "versia 2.0 :)"
             color: "black"
             anchors.centerIn: parent;
         }
@@ -1097,12 +1158,4 @@ Item {
 
     //////////////////////////////////////
     ////////////// The end ///////////////
-
-    // Перемещения окна
-    Move_Qml{
-        width: parent.width/52.4
-        height: parent.height/22.7
-    }
-    // Для изменения размера
-    Size_input_Qml{ x: 20;y: 117}
 }
