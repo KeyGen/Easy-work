@@ -18,7 +18,9 @@ HEADERS  += keyboard_my.h
 OTHER_FILES += \
     Qml/Main_qml.qml \
     Qml/Exit_Qml.qml \
-    Qml/Button_Qml.qml
+    Qml/Button_Qml.qml \
+    Qml/Menu_Qml.qml \
+    Qml/Keyboard_Qml.qml
 
 RESOURCES += \
     file.qrc

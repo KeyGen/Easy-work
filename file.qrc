@@ -3,8 +3,11 @@
         <file>Qml/Main_qml.qml</file>
         <file>Qml/Exit_Qml.qml</file>
         <file>Qml/Button_Qml.qml</file>
+        <file>Qml/Menu_Qml.qml</file>
+        <file>Qml/Keyboard_Qml.qml</file>
     </qresource>
     <qresource prefix="/picture">
         <file alias="quit">Qml/picture/quit.png</file>
+        <file alias="menu">Qml/picture/menu.png</file>
     </qresource>
 </RCC>
