@@ -1,8 +1,15 @@
 #include "keyboard_my.h"
 
 Keyboard_my::Keyboard_my(QWidget *parent)
-    : QMainWindow(parent)
+    : QMainWindow(parent),font_ui(new Ui::Font_input)
 {
+    // Создаем окно для формы
+    dialog_font = new QDialog(this);
+    font_ui->setupUi(dialog_font);
+
+    // Коннектим отнену dialog_font
+    connect(font_ui->pushButton_2,SIGNAL(clicked()),dialog_font,SLOT(close()));
+
     // Отключаем обводку
     this->setWindowFlags(Qt::CustomizeWindowHint);
 
@@ -42,17 +49,23 @@ Keyboard_my::Keyboard_my(QWidget *parent)
     // Разрешаем галочку
     font_action->setCheckable(true);
 
+    input_font = new QAction("Выбор шрифта", this);
+
     quit_action = new QAction("Закрыть",this);
 
     connect(fixed_window_action,SIGNAL(triggered()),this,SLOT(slot_fixed_window_action()));
     connect(fixed_action,SIGNAL(triggered(bool)),this,SLOT(slot_fixed_action(bool)));
     connect(font_action,SIGNAL(triggered()),this,SLOT(slot_font_action()));
+    connect(input_font,SIGNAL(triggered()),this,SLOT(slot_font_input()));
     connect(quit_action,SIGNAL(triggered()),this,SLOT(close()));
 
     menu->addAction(fixed_action);
     menu->addAction(fixed_window_action);
     menu->addAction(font_action);
+    menu->addAction(input_font);
     menu->addAction(quit_action);
+
+    Initialization_language_key();
 }
 
 Keyboard_my::~Keyboard_my()
@@ -89,7 +102,7 @@ void Keyboard_my::bl_true()
 }
 
 //Функция C++ вызываемая из QML изменяющие размер окна
-void Keyboard_my::size_input()
+QSize Keyboard_my::size_input()
 {
     if(Bl_fixed)
     {
@@ -104,6 +117,8 @@ void Keyboard_my::size_input()
 
         this->resize(QCursor::pos().x()-this->pos().x() - save_x_size, QCursor::pos().y() - this->pos().y() - save_y_size);
     }
+
+    return this->size();
 }
 
 //Функция C++ вызываемая из QML изменяющие BL_size_input на true
@@ -152,10 +167,27 @@ void Keyboard_my::slot_fixed_action(bool BL_temp)
 
 }
 
+// Cлот С++ вызываемый QAction input_font
+void Keyboard_my::slot_font_input()
+{
+   dialog_font->exec();
+}
+
 //Слот C++ вызываемый QAction font_action для разрешения/запрешения изменения размера шрифта
 void Keyboard_my::slot_font_action()
 {
-    qDebug() << "Пока не знаю что делать!";
+    qDebug() << "ewrwe";
+    QString i_str;
+    for(int i =0; i<9; i++)
+    {
+        QObject *rect = Root->findChild<QObject*>("button_" + i_str.setNum(i));
+
+         if (rect)
+         {
+             rect->setProperty("buttonState", "input_text");
+             rect->setProperty("buttonLabel", "Esc");
+         }
+    }
 }
 
 // Функция C++ вызываемая из QML увеличивающие окно на максимум

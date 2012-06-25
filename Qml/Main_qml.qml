@@ -3,6 +3,7 @@ import QtQuick 1.1
 
 Item{
     id: main
+    objectName: "main"
 
     // Фон
     Rectangle {
@@ -89,7 +90,8 @@ Item{
     Exit_Qml{}
 
     // Клавиатура
-    Keyboard_Qml{}
+    Keyboard_Qml{
+    }
 
     // Меню
     Menu_Qml{}

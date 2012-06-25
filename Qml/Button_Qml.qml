@@ -5,7 +5,6 @@ import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 
 Rectangle {
     id: button //Имя кнопки
-    //source: ":/picture/quit"
 
     //Размеры кнопки
     width: parent.width/18
@@ -61,13 +60,33 @@ Rectangle {
 
     // Разрешаем доступ buttonLabel
     property alias buttonLabel: buttonLabel.text
+    property alias buttonState: buttonLabel.state
     ///////////////////
      Text {
         id: buttonLabel
         font.bold : true
-        font.pixelSize : 12
+
         color: "white"
         anchors.centerIn: parent;
+
+        state: "normal_text"
+
+                states: [
+                    State {
+                        name: "normal_text"
+                        PropertyChanges {
+                            target: buttonLabel
+                            font.pixelSize : 13
+                        }
+                    },
+                    State {
+                        name: "input_text"
+                        PropertyChanges {
+                            target: buttonLabel
+                            font.pixelSize : parent.height/3
+                        }
+                    }
+                ]
     }
 
     MouseArea {
@@ -75,20 +94,38 @@ Rectangle {
         anchors.fill: parent
         onClicked: Qt.LeftButton
         hoverEnabled: true
-        onEntered: button.state = 'shift'
+        onCanceled: button.state = 'shift'
+        onPositionChanged: button.state = 'shift'
         onExited: button.state = 'normal'
     }
-
-    scale: buttonMouse.pressed ? 0.8 : 1.0
 
     MouseArea {
         id: buttonMouse
         anchors.fill: parent
         anchors.margins: 10
-        onReleased: console.log(buttonLabel.text + " clicked" )
-//        onClicked:
-//        {
-//            console.log("No")
+
+        onEntered:
+        {
+            button.scale = 0.8
+            console.log(buttonLabel.text + " clicked")
+        }
+
+        onReleased:
+        {
+            button.scale = 1.0
+        }
+
+
+//        focus: true
+
+//        Keys.onPressed: {
+//            if (event.key == Qt.Key_Space) {
+//                button.state = "shift";
+//                button.scale = 0.8
+//                console.log(button.buttonLabel.toLocaleString() + " clicked" )
+//            }
 //        }
+
+
     }
 }

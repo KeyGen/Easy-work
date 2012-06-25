@@ -11,7 +11,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        keyboard_my.cpp
+        keyboard_my.cpp \
+    initialization_language_key.cpp
 
 HEADERS  += keyboard_my.h
 
@@ -24,3 +25,6 @@ OTHER_FILES += \
 
 RESOURCES += \
     file.qrc
+
+FORMS += \
+    font_input.ui
