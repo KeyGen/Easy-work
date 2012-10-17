@@ -1,15 +1,5 @@
-# Compiled Object files
-*.slo
-*.lo
+.gitignore
 *.o
-
-# Compiled Dynamic libraries
 *.so
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.[oa]
 *~
 .directory
