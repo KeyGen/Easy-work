@@ -1,5 +1,10 @@
+.gitignore
+
 *.o
+
 *.so
+*.so.*
+
 *.user
 *~
 .directory
