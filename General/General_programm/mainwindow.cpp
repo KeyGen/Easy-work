@@ -52,8 +52,7 @@ void MainWindow::loadPlugins(const QString dir) {
             if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
             {
                 m_modules.insert(plugin->getName(), plugin);
-
-                connect(ui->pushButton,SIGNAL(clicked()),m_modules.find(plugin->getName()).value(),SLOT(exec()));
+                ui->help->addAction(plugin->getAction());
 
             }
         }

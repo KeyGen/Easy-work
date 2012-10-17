@@ -19,6 +19,8 @@ public:
 
     virtual QString getVersion() { return "1.0"; }
     virtual QString getName()    { return "What is"; }
+    virtual QAction* getAction();
+    virtual void renameAction(QString);
 
 public slots:
     virtual void exec();
@@ -26,6 +28,7 @@ public slots:
 private:
     Ui::Dialog *ui;
     QDialog *dialog;
+    QAction *action;
 };
 
 #endif // WHAT_IS_H

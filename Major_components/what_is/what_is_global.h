@@ -7,6 +7,7 @@
 
 QT_BEGIN_NAMESPACE
 class QDialog;
+class QAction;
 QT_END_NAMESPACE
 
 class WhatIs : public QObject
@@ -15,6 +16,8 @@ class WhatIs : public QObject
 public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
+    virtual QAction* getAction()    = 0;
+    virtual void renameAction(QString)   = 0;
 
     virtual ~WhatIs() {}
 

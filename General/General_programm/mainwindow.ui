@@ -13,21 +13,7 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>80</y>
-      <width>91</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
-  </widget>
+  <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
@@ -37,6 +23,36 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="start">
+    <property name="title">
+     <string>Старт</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="regime">
+    <property name="title">
+     <string>Режимы</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="students">
+    <property name="title">
+     <string>Ученики</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="setting">
+    <property name="title">
+     <string>Настройки</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="help">
+    <property name="title">
+     <string>Справка</string>
+    </property>
+   </widget>
+   <addaction name="start"/>
+   <addaction name="regime"/>
+   <addaction name="students"/>
+   <addaction name="setting"/>
+   <addaction name="help"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
