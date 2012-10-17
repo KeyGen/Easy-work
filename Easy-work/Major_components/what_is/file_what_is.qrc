@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="gloabl_icon">image/global_icon.png</file>
+    </qresource>
+</RCC>
