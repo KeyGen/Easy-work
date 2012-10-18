@@ -23,7 +23,6 @@ public:
     
 private:
     Ui::MainWindow *ui;
-    QDialog *dialog;
     QString pathPluginDir;
     void loadPlugins(const QString dirPlugins);
     QHash<QString, WhatIs *> m_modules;

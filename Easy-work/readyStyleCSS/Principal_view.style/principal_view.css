@@ -1,0 +1,79 @@
+/*
+ * name_ru: Главный стиль
+ * name_en: Principal view
+ */
+
+QWidget {
+background-image: url(../../readyStyleCSS/Principal_view.style/image/background.jpg);
+
+background-position: top center;
+background-origin: padding  ;
+}
+
+
+QLabel#showText { 
+background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 black, stop: 0.25 gray, stop:0.5 white, stop:0.5 white, stop: 0.75 gray, stop:1 black);
+border: solid black;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+color: white;
+font-size: 40px;
+border-width: 2px 0px 2px 2px;}
+
+QLabel#inputText { 
+background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 blue, stop:0.5 black, stop:1 blue);
+border: solid;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+color: red;
+font-size: 40px;
+border-width: 2px 2px 2px 0px;}
+
+QProgressBar::chunk {
+background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 black, stop:1 blue);
+border-radius: 7px;
+}
+
+QProgressBar {
+background: grey;
+color: red;
+border: 2px solid black;
+border-radius: 10px;
+text-align: center;
+}
+
+QMenuBar {
+spacing: 10;
+min-width: 72px;
+min-height: 25px;
+background: red;
+}
+
+QMenuBar::item {
+background: qlineargradient(x1:0.5, y1:0, x2:1, y2:0.5, stop:0 blue, stop:0.5 black, stop:1 blue);
+border: 2px solid;
+border-top-right-radius: 5px;
+border-top-left-radius: 5px;
+border-width: 2px 2px 0px 2px;
+color: white;
+}
+
+QMenu::item:selected {
+    background: red;
+}
+ 
+QMenu::icon:checked { /* внешний вид пиктограммы 'отмечено' */
+    background: gray;
+}
+
+ QMenu::separator {
+     background: red;
+ }
+
+ QMenu::indicator {
+     background: red;
+ }
+
+QMenuBar::item:pressed {
+background: red;
+}

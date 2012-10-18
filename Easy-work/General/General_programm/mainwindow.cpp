@@ -3,6 +3,7 @@
 
 // Интерфейсы плагинов
 #include "what_is_global.h"
+#include "style_css_global.h"
 
 #include <QPluginLoader>
 #include <QDialog>
@@ -15,11 +16,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    pathPluginDir = "/home/keygen/Документы/Easy-work/plugins";
+    pathPluginDir = "../../readyPlugins";
 
     loadPlugins(pathPluginDir);
 
-    dialog = new QDialog(this);
+    ui->inputText->setFixedWidth(400);
+    ui->showText->setFixedWidth(400);
 }
 
 void MainWindow::loadPlugins(const QString dir) {
@@ -55,6 +57,13 @@ void MainWindow::loadPlugins(const QString dir) {
                 ui->help->addAction(plugin->getAction());
 
             }
+            else if(StyleCSS *pluginCss = qobject_cast<StyleCSS *>(obj))
+            {
+                ui->setting->addActions(pluginCss->getActions());
+
+                connect(pluginCss,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
+            }
+
         }
     }
 }

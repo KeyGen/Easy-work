@@ -18,3 +18,4 @@ HEADERS  += mainwindow.h
 FORMS    += mainwindow.ui
 
 INCLUDEPATH += $$PWD/../../Major_components/what_is/
+INCLUDEPATH += $$PWD/../../Major_components/style_css/
