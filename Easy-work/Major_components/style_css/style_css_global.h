@@ -1,20 +1,22 @@
 #ifndef STYLE_CSS_GLOBAL_H
 #define STYLE_CSS_GLOBAL_H
 
-#include <QtCore/qglobal.h>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
 class QAction;
+class QMenu;
 QT_END_NAMESPACE
 
 class StyleCSS : public QObject
 {
 
 public:
-    virtual QString getVersion()    = 0;
-    virtual QString getName()       = 0;
-    virtual QList <QAction*> getActions()    = 0;
+    virtual QString getVersion()            = 0;
+    virtual QString getName()               = 0;
+    virtual QList <QAction*> getActions()   = 0;
+    virtual QMenu * getMenu()               = 0;
+    virtual QString getStandardStyleSheet() = 0;
 
     virtual ~StyleCSS() {}
 

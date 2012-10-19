@@ -5,6 +5,7 @@
 #include "what_is_global.h"
 #include "style_css_global.h"
 
+#include <QDesktopWidget>
 #include <QPluginLoader>
 #include <QDialog>
 #include <QDebug>
@@ -16,12 +17,18 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    // Запустим программу по центру экрана
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    this->move((desktop->width()-this->width())/2,(desktop->height()-this->height())/2-100); // Распологаем MainWindow в ценре
+
+
     pathPluginDir = "../../readyPlugins";
 
     loadPlugins(pathPluginDir);
 
     ui->inputText->setFixedWidth(400);
     ui->showText->setFixedWidth(400);
+    ui->progressBar->setFixedWidth(800);
 }
 
 void MainWindow::loadPlugins(const QString dir) {
@@ -59,9 +66,12 @@ void MainWindow::loadPlugins(const QString dir) {
             }
             else if(StyleCSS *pluginCss = qobject_cast<StyleCSS *>(obj))
             {
-                ui->setting->addActions(pluginCss->getActions());
+                ui->setting->addMenu(pluginCss->getMenu());
 
                 connect(pluginCss,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
+
+                this->setStyleSheet(pluginCss->getStandardStyleSheet());
+
             }
 
         }

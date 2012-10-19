@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'style_css.h'
 **
-** Created: Thu Oct 18 23:22:32 2012
+** Created: Fri Oct 19 19:42:32 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -41,7 +41,7 @@ static const uint qt_meta_data_StyleCSSclass[] = {
 
 static const char qt_meta_stringdata_StyleCSSclass[] = {
     "StyleCSSclass\0\0getStyle(QString)\0"
-    "slotActivateCSS(bool)\0"
+    "slotActivateCSS()\0"
 };
 
 void StyleCSSclass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -51,7 +51,7 @@ void StyleCSSclass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         StyleCSSclass *_t = static_cast<StyleCSSclass *>(_o);
         switch (_id) {
         case 0: _t->getStyle((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 1: _t->slotActivateCSS((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 1: _t->slotActivateCSS(); break;
         default: ;
         }
     }

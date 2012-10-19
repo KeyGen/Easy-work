@@ -14,19 +14,23 @@ public:
     virtual QString getVersion()            { return "1.0"; }
     virtual QString getName()               { return "Style CSS"; }
     virtual QList <QAction*> getActions()   { return actionsNameCSS; }
+    virtual QMenu * getMenu()               { return menuStyle; }
+    virtual QString getStandardStyleSheet();
 
     virtual ~StyleCSSclass()                {}
 
 signals:
-    virtual void getStyle(QString);
+    void getStyle(QString);
 
 private:
     QList <QAction*> actionsNameCSS;
     QMap <QString, QString> downloadCSS;
-    QString strDir;
+    QString pathDir;
+    QString rememberActionActive;
+    QMenu *menuStyle;
 
 private slots:
-    void slotActivateCSS(bool);
+    void slotActivateCSS();
 
 };
 
