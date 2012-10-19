@@ -19,3 +19,4 @@ FORMS    += mainwindow.ui
 
 INCLUDEPATH += $$PWD/../../Major_components/what_is/
 INCLUDEPATH += $$PWD/../../Major_components/style_css/
+INCLUDEPATH += $$PWD/../../Major_components/regime_outward_file/

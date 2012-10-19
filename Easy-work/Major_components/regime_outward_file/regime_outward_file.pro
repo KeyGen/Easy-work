@@ -32,3 +32,8 @@ unix:!symbian {
     }
     INSTALLS += target
 }
+
+DESTDIR = $$PWD/../../readyPlugins
+
+FORMS += \
+    outward_file.ui

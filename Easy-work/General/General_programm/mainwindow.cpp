@@ -4,6 +4,7 @@
 // Интерфейсы плагинов
 #include "what_is_global.h"
 #include "style_css_global.h"
+#include "regime_outward_file_global.h"
 
 #include <QDesktopWidget>
 #include <QPluginLoader>
@@ -72,6 +73,10 @@ void MainWindow::loadPlugins(const QString dir) {
 
                 this->setStyleSheet(pluginCss->getStandardStyleSheet());
 
+            }
+            else if(RegimeFile *pluginRFile = qobject_cast<RegimeFile *>(obj))
+            {
+                ui->regime->addAction(pluginRFile->getActions());
             }
 
         }
