@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ui_whatIs.ui'
 **
-** Created: Fri Oct 19 16:32:58 2012
+** Created: Sat Oct 20 19:28:42 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -107,7 +107,7 @@ public:
     {
         Dialog->setWindowTitle(QApplication::translate("Dialog", "\320\236 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\265", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("Dialog", "<html><head/><body><p><img src=\":/gloabl_icon\"/></p></body></html>", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("Dialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Easy work </span></p><p align=\"center\">\320\222\320\265\321\200\321\201\320\270\321\217 1.0</p><p align=\"center\"><br/>\320\237\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\260 \320\264\320\273\321\217 \320\276\320\261\321\203\321\207\320\265\320\275\321\217<br/>\321\201\320\273\320\265\320\277\320\276\320\274\321\203 \320\274\320\265\321\202\320\276\320\264\321\203<br/>\320\277\320\265\321\207\320\260\321\202\320\270<br/><br/>\320\233\320\265\321\206\320\265\320\275\320\267\320\270\321\217 GPL 3<br/>\320\235\320\260\320\277\320\270\321\201\320\260\320\275\320\276 \320\275\320\260 Qt<br/>\320\235\320\260\320\277\320\270\321\201\320\260\320\273 KeyGen</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("Dialog", "<html><head/><body><p align=\"center\"><span style=\" font-size:14pt; font-weight:600;\">Easy work </span></p><p align=\"center\">\320\222\320\265\321\200\321\201\320\270\321\217 1.0</p><p align=\"center\"><br/>\320\237\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\260 \320\264\320\273\321\217 \320\276\320\261\321\203\321\207\320\265\320\275\321\217<br/>\321\201\320\273\320\265\320\277\320\276\320\274\321\203 \320\274\320\265\321\202\320\276\320\264\321\203<br/>\320\277\320\265\321\207\320\260\321\202\320\270<br/><br/>\320\233\320\265\321\206\320\265\320\275\320\267\320\270\321\217 GPL 2<br/>\320\235\320\260\320\277\320\270\321\201\320\260\320\275\320\276 \320\275\320\260 Qt<br/>\320\235\320\260\320\277\320\270\321\201\320\260\320\273 KeyGen</p></body></html>", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("Dialog", "Ok", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

@@ -1,27 +1,27 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-10-16T22:49:57
+# Project created by QtCreator 2012-10-20T19:37:30
 #
 #-------------------------------------------------
 
-QT       +=  gui
+QT       += gui
 
-TARGET = what_is
+TARGET = downloadLanguageKeyboard
 TEMPLATE = lib
 
-DEFINES += WHAT_IS_LIBRARY
+DEFINES += DOWNLOADLANGUAGEKEYBOARD_LIBRARY
 
-SOURCES += what_is.cpp
+SOURCES += downloadlanguagekeyboard.cpp
 
-HEADERS += what_is.h\
-        what_is_global.h
+HEADERS += downloadlanguagekeyboard.h\
+        downloadLanguageKeyboard_global.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE14E423D
+    TARGET.UID3 = 0xED26F443
     TARGET.CAPABILITY = 
     TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = what_is.dll
+    addFiles.sources = downloadLanguageKeyboard.dll
     addFiles.path = !:/sys/bin
     DEPLOYMENT += addFiles
 }
@@ -35,10 +35,4 @@ unix:!symbian {
     INSTALLS += target
 }
 
-DESTDIR = $$PWD/../../readyPlugins
-
-FORMS += \
-    ui_whatIs.ui
-
-RESOURCES += \
-    file_what_is.qrc
+DESTDIR = $$PWD/../../../readyPluginsForKeyboard

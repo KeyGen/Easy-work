@@ -31,7 +31,8 @@ unix:!symbian {
         target.path = /opt/usr/lib
     } else {
         target.path = /usr/lib
-        DESTDIR = $$PWD/../../readyPlugins
     }
     INSTALLS += target
 }
+
+DESTDIR = $$PWD/../../readyPlugins

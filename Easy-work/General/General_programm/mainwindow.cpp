@@ -1,86 +1,69 @@
+/**
+ * Easy work - writed by KeyGen 2012
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-// Интерфейсы плагинов
-#include "what_is_global.h"
-#include "style_css_global.h"
-#include "regime_outward_file_global.h"
-
 #include <QDesktopWidget>
-#include <QPluginLoader>
-#include <QDialog>
-#include <QDebug>
-#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    // Установки переменных
+    pathDir = "../../readyPlugins";
+
     ui->setupUi(this);
 
-    // Запустим программу по центру экрана
-    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
-    this->move((desktop->width()-this->width())/2,(desktop->height()-this->height())/2-100); // Распологаем MainWindow в ценре
+    moveWindowCenter();
 
+    loadPlugins(pathDir); // installationPlugin.cpp
 
-    pathPluginDir = "../../readyPlugins";
-
-    loadPlugins(pathPluginDir);
 
     ui->inputText->setFixedWidth(400);
     ui->showText->setFixedWidth(400);
     ui->progressBar->setFixedWidth(800);
+
+    connect(ui->start,SIGNAL(aboutToShow()),this,SLOT(close()));
+
 }
 
-void MainWindow::loadPlugins(const QString dir) {
+void MainWindow::resizeEvent ( QResizeEvent * event )
+{
+    emit traceSizeWindow(event->size());
+}
 
-    const QDir pluginsDir(dir);
+void MainWindow::closeEvent ( QCloseEvent * )
+{
+    emit rejected();
+}
 
-    QStringList filter;
-    filter << "*.so";
+void MainWindow::moveEvent ( QMoveEvent * event )
+{
+    emit traceMoveWindow(event->pos());
+}
 
-    foreach (QString fileName, pluginsDir.entryList(filter, QDir::Files))
-    {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+void MainWindow::moveWindowCenter(){
 
-        if (loader.isLoaded())
-        {
-            qDebug() << QString("%1: %2 %3.").arg("Plugin file").arg(fileName).arg(QObject::tr("is already loaded"));
-            continue;
-        }
-
-        if (loader.load() == false)
-        {
-            qDebug() << QString("%1 %2\n%3: %4").arg(QObject::tr("Can't load a plugin"))
-                .arg(fileName).arg(QObject::tr("error"))
-                .arg(loader.errorString());
-        }
-        else
-        {
-            QObject * obj = loader.instance();
-
-            if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
-            {
-                m_modules.insert(plugin->getName(), plugin);
-                ui->help->addAction(plugin->getAction());
-
-            }
-            else if(StyleCSS *pluginCss = qobject_cast<StyleCSS *>(obj))
-            {
-                ui->setting->addMenu(pluginCss->getMenu());
-
-                connect(pluginCss,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
-
-                this->setStyleSheet(pluginCss->getStandardStyleSheet());
-
-            }
-            else if(RegimeFile *pluginRFile = qobject_cast<RegimeFile *>(obj))
-            {
-                ui->regime->addAction(pluginRFile->getActions());
-            }
-
-        }
-    }
+    // Запустим программу по центру экрана
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    this->move((desktop->width()-this->width())/2,(desktop->height()-this->height())/2-100); // Распологаем MainWindow в ценре
 }
 
 MainWindow::~MainWindow()

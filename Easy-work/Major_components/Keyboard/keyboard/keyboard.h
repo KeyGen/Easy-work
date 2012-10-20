@@ -17,37 +17,56 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef REGIME_OUTWARD_FILE_H
-#define REGIME_OUTWARD_FILE_H
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
-#include "regime_outward_file_global.h"
+#include "keyboard_global.h"
 
 namespace Ui {
 class Dialog;
 }
 
 QT_BEGIN_NAMESPACE
-class QDialog;
+class QAction;
 QT_END_NAMESPACE
 
-class RegimeFileClass : public RegimeFile
+class KeyboardClass : public Keyboard
 {
-    Q_OBJECT Q_INTERFACES(RegimeFile)
+    Q_OBJECT Q_INTERFACES(Keyboard)
 
 public:
-    RegimeFileClass();
-
+    explicit KeyboardClass(QWidget * parent = 0);
     virtual QString getVersion()    { return "1.0"; }
-    virtual QString getName()       { return "Regime File"; }
-    virtual QAction* getActions()   { return actionFile; }
+    virtual QString getName()       { return "Keyboard"; }
+    virtual QMenu* getMenu()        { return menu; }
 
-    virtual ~RegimeFileClass() {}
+    virtual ~KeyboardClass()        {}
 
 private:
-    QAction *actionFile;
-    QDialog *dialog;
     Ui::Dialog *ui;
+    QDialog *dialog;
+
+    QMenu *menu;
+    QAction *show_close;
+    QAction *move_yes_no;
+
+    QSize sizeMainWindow;
+    QPoint saveMoveMainWindowPoint;
+
+    QString pathDir;
+
+    void loadPlugins(const QString dir);
+
+public slots:
+    virtual void setQPoinParent(QPoint);
+    virtual void setQSizeParent(QSize);
+    virtual void close();
+    void fasteningDialog();
+
+private slots:
+    void show(bool);
+    void actionCheckFalse();
+    void setKeyLanguage(QStringList);
 };
 
-
-#endif // REGIME_OUTWARD_FILE_H
+#endif // KEYBOARD_H

@@ -17,34 +17,38 @@
  * MA 02110-1301, USA.
  */
 
-#include "what_is.h"
-#include "ui_ui_whatIs.h"
+#ifndef DOWNLOADLANGUAGEKEYBOARD_GLOBAL_H
+#define DOWNLOADLANGUAGEKEYBOARD_GLOBAL_H
 
-#include <QDialog>
-#include <QAction>
+#include <QtPlugin>
 
-Q_EXPORT_PLUGIN(WhatIsClass);
+QT_BEGIN_NAMESPACE
+class QStringList;
+class QMenu;
+QT_END_NAMESPACE
 
-WhatIsClass::WhatIsClass() : ui(new Ui::Dialog) {
-
-    dialog = new QDialog();
-    ui->setupUi(dialog);
-    action = new QAction(tr("О программе"),this);
-
-    connect(action,SIGNAL(triggered()),dialog,SLOT(exec()));
-}
-
-void WhatIsClass::exec()
+class KeyboardLanguage : public QObject
 {
-    dialog->exec();
-}
 
-QAction* WhatIsClass::getAction()
-{
-    return action;
-}
+public:
 
-void WhatIsClass::renameAction(QString str)
-{
-    action->setText(str);
-}
+    virtual QString getVersion()    = 0;
+    virtual QString getName()       = 0;
+    virtual QMenu* getMenu()        = 0;
+
+    virtual ~KeyboardLanguage() {}
+
+private slots:
+    virtual void slotActivateLanguage() = 0;
+
+signals:
+    virtual void getLanguage(QStringList) = 0;
+};
+
+QT_BEGIN_NAMESPACE
+
+Q_DECLARE_INTERFACE(KeyboardLanguage, "keyboard.language.for.keyboardPlugin.programm/EasyWork/Plagin/1.0.0")
+
+QT_END_NAMESPACE
+
+#endif // DOWNLOADLANGUAGEKEYBOARD_GLOBAL_H

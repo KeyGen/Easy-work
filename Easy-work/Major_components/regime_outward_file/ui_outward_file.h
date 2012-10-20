@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'outward_file.ui'
 **
-** Created: Fri Oct 19 20:56:53 2012
+** Created: Sat Oct 20 19:28:46 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

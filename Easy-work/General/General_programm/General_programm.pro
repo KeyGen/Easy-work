@@ -11,7 +11,8 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    installationsPlugins.cpp
 
 HEADERS  += mainwindow.h
 
@@ -20,3 +21,4 @@ FORMS    += mainwindow.ui
 INCLUDEPATH += $$PWD/../../Major_components/what_is/
 INCLUDEPATH += $$PWD/../../Major_components/style_css/
 INCLUDEPATH += $$PWD/../../Major_components/regime_outward_file/
+INCLUDEPATH += $$PWD/../../Major_components/Keyboard/keyboard/

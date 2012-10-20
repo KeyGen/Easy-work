@@ -513,7 +513,7 @@
              <enum>QFrame::NoFrame</enum>
             </property>
             <property name="text">
-             <string>Эксперемент с раз</string>
+             <string>Эксперимент с раз</string>
             </property>
             <property name="scaledContents">
              <bool>false</bool>

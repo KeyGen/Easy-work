@@ -17,40 +17,40 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef STYLE_CSS_H
-#define STYLE_CSS_H
+#ifndef DOWNLOADLANGUAGEKEYBOARD_H
+#define DOWNLOADLANGUAGEKEYBOARD_H
 
-#include "style_css_global.h"
-#include <QMap>
+#include "downloadLanguageKeyboard_global.h"
 
-class StyleCSSclass : public StyleCSS
+#include <QHash>
+#include <QStringList>
+#include <QMenu>
+
+class KeyboardLanguageClass : public KeyboardLanguage
 {
-    Q_OBJECT Q_INTERFACES(StyleCSS)
+    Q_OBJECT Q_INTERFACES(KeyboardLanguage)
 
 public:
-    StyleCSSclass();
+    KeyboardLanguageClass();
+    virtual ~KeyboardLanguageClass() {}
 
-    virtual QString getVersion()            { return "1.0"; }
-    virtual QString getName()               { return "Style CSS"; }
-    virtual QList <QAction*> getActions()   { return actionsNameCSS; }
-    virtual QMenu * getMenu()               { return menuStyle; }
-    virtual QString getStandardStyleSheet();
-
-    virtual ~StyleCSSclass()                {}
-
-signals:
-    void getStyle(QString);
+    virtual QString getVersion()    { return "1.0"; }
+    virtual QString getName()       { return "Keyboard Language"; }
+    virtual QMenu* getMenu()        { return menuLanguage; }
 
 private:
-    QList <QAction*> actionsNameCSS;
-    QMap <QString, QString> downloadCSS;
     QString pathDir;
+    QHash < QString, QStringList> hashLanguage;
+    QList <QAction*> actionsLanguage;
     QString rememberActionActive;
-    QMenu *menuStyle;
+    QMenu *menuLanguage;
 
 private slots:
-    void slotActivateCSS();
+    void slotActivateLanguage();
 
+signals:
+    void getLanguage(QStringList);
 };
 
-#endif // STYLE_CSS_H
+
+#endif // DOWNLOADLANGUAGEKEYBOARD_H

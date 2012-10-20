@@ -17,34 +17,39 @@
  * MA 02110-1301, USA.
  */
 
-#include "what_is.h"
-#include "ui_ui_whatIs.h"
+#ifndef KEYBOARD_GLOBAL_H
+#define KEYBOARD_GLOBAL_H
 
+#include <QtPlugin>
 #include <QDialog>
-#include <QAction>
+#include <QPoint>
 
-Q_EXPORT_PLUGIN(WhatIsClass);
+QT_BEGIN_NAMESPACE
+class QMenu;
+class QPoint;
+QT_END_NAMESPACE
 
-WhatIsClass::WhatIsClass() : ui(new Ui::Dialog) {
-
-    dialog = new QDialog();
-    ui->setupUi(dialog);
-    action = new QAction(tr("О программе"),this);
-
-    connect(action,SIGNAL(triggered()),dialog,SLOT(exec()));
-}
-
-void WhatIsClass::exec()
+class Keyboard : public QObject
 {
-    dialog->exec();
-}
 
-QAction* WhatIsClass::getAction()
-{
-    return action;
-}
+public:
+    Keyboard(QWidget *parent = 0) : QObject(parent){}
+    virtual QString getVersion()    = 0;
+    virtual QString getName()       = 0;
+    virtual QMenu* getMenu()        = 0;
 
-void WhatIsClass::renameAction(QString str)
-{
-    action->setText(str);
-}
+    virtual ~Keyboard() {}
+
+public slots:
+    virtual void setQPoinParent(QPoint) = 0;
+    virtual void setQSizeParent(QSize)  = 0;
+    virtual void close()                = 0;
+};
+
+QT_BEGIN_NAMESPACE
+
+Q_DECLARE_INTERFACE(Keyboard, "keyboard.for.EasyWork.programm/EasyWork/Plagin/1.0.0")
+
+QT_END_NAMESPACE
+
+#endif // KEYBOARD_GLOBAL_H

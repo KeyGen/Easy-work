@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Oct 19 16:32:55 2012
+** Created: Sat Oct 20 19:28:37 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -230,7 +230,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0, QApplication::UnicodeUTF8));
-        showText->setText(QApplication::translate("MainWindow", "\320\255\320\272\321\201\320\277\320\265\321\200\320\265\320\274\320\265\320\275\321\202 \321\201 \321\200\320\260\320\267", 0, QApplication::UnicodeUTF8));
+        showText->setText(QApplication::translate("MainWindow", "\320\255\320\272\321\201\320\277\320\265\321\200\320\270\320\274\320\265\320\275\321\202 \321\201 \321\200\320\260\320\267", 0, QApplication::UnicodeUTF8));
         inputText->setText(QApplication::translate("MainWindow", "\321\200\321\213\320\262\320\276\320\274 \321\202\320\265\320\272\321\201\321\202\320\260...", 0, QApplication::UnicodeUTF8));
         label_3->setText(QApplication::translate("MainWindow", "\320\222\321\213\320\262\320\276\320\264 \320\270\320\275\321\204\320\276\321\200\320\274\320\260\321\206\320\270\320\270", 0, QApplication::UnicodeUTF8));
         start->setTitle(QApplication::translate("MainWindow", "\320\241\321\202\320\260\321\200\321\202", 0, QApplication::UnicodeUTF8));
