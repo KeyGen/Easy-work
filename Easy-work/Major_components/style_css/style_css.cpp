@@ -228,7 +228,46 @@ QString StyleCSSclass::getStandardStyleSheet()
                                 "stop:1 blue);"
     "color: white"
 "}"
-                          );
+
+"QWidget#gridWidget {"
+
+    "background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1,"
+    "stop:0 blue,"
+    "stop:0.25 blue,"
+    "stop: 0.50 #00ffff,"
+    "stop:0.75 blue,"
+    "stop:1 blue);"
+
+    "border-radius: 15px;"
+    "background-position: top center;"
+    "background-origin: padding;"
+"}"
+
+"QPushButton {"
+
+    "background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,"
+    "stop:0 #464451,"
+    "stop:0.5  #9C9C9C,"
+    "stop:1 #464451);"
+
+    "border-style: outset;"
+    "border-width: 1px;"
+    "border-radius: 10px;"
+    "border-color: black;"
+    "font: bold 14px;"
+    "padding: 6px;"
+    "color: white;"
+"}"
+
+"QPushButton:pressed {"
+
+    "border-style: inset;"
+
+    "background-color: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,"
+    "stop:0 #9C9C9C,"
+    "stop:0.5  #464451,"
+    "stop:1 #9C9C9C);"
+"}" );
 
     return standardSheet;
 }

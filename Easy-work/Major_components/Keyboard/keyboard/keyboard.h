@@ -22,6 +22,8 @@
 
 #include "keyboard_global.h"
 
+#include <QMultiHash>
+
 namespace Ui {
 class Dialog;
 }
@@ -55,6 +57,8 @@ private:
 
     QString pathDir;
 
+    QMultiHash<QString, QString> listLanguage;
+
     void loadPlugins(const QString dir);
 
 public slots:
@@ -62,11 +66,12 @@ public slots:
     virtual void setQSizeParent(QSize);
     virtual void close();
     void fasteningDialog();
+    virtual void setStyleSheet(QString str) { dialog->setStyleSheet(str); }
 
 private slots:
     void show(bool);
     void actionCheckFalse();
-    void setKeyLanguage(QStringList);
+    void setKeyLanguage(QMultiHash<QString, QString>);
 };
 
 #endif // KEYBOARD_H

@@ -71,6 +71,7 @@ private:
     void installationsRegimeFile(RegimeFile *);
     // Keyborad класс клавиатуры отображение клавиш
     void installationsKeyboard(Keyboard *);
+    QList <Keyboard *> keyboard;
 
 signals:
     void traceMoveWindow(QPoint);

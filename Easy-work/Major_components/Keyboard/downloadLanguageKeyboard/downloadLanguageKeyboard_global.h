@@ -21,9 +21,9 @@
 #define DOWNLOADLANGUAGEKEYBOARD_GLOBAL_H
 
 #include <QtPlugin>
+#include <QMultiHash>
 
 QT_BEGIN_NAMESPACE
-class QStringList;
 class QMenu;
 QT_END_NAMESPACE
 
@@ -42,7 +42,7 @@ private slots:
     virtual void slotActivateLanguage() = 0;
 
 signals:
-    virtual void getLanguage(QStringList) = 0;
+    virtual void getLanguage(QMultiHash<QString, QString>) = 0;
 };
 
 QT_BEGIN_NAMESPACE

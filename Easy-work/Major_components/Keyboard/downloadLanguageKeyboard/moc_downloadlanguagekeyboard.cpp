@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'downloadlanguagekeyboard.h'
 **
-** Created: Sun Oct 21 01:05:01 2012
+** Created: Sun Oct 21 19:14:42 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -34,13 +34,14 @@ static const uint qt_meta_data_KeyboardLanguageClass[] = {
       23,   22,   22,   22, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      48,   22,   22,   22, 0x08,
+      64,   22,   22,   22, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_KeyboardLanguageClass[] = {
-    "KeyboardLanguageClass\0\0getLanguage(QStringList)\0"
+    "KeyboardLanguageClass\0\0"
+    "getLanguage(QMultiHash<QString,QString>)\0"
     "slotActivateLanguage()\0"
 };
 
@@ -50,7 +51,7 @@ void KeyboardLanguageClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         Q_ASSERT(staticMetaObject.cast(_o));
         KeyboardLanguageClass *_t = static_cast<KeyboardLanguageClass *>(_o);
         switch (_id) {
-        case 0: _t->getLanguage((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
+        case 0: _t->getLanguage((*reinterpret_cast< QMultiHash<QString,QString>(*)>(_a[1]))); break;
         case 1: _t->slotActivateLanguage(); break;
         default: ;
         }
@@ -99,7 +100,7 @@ int KeyboardLanguageClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void KeyboardLanguageClass::getLanguage(QStringList _t1)
+void KeyboardLanguageClass::getLanguage(QMultiHash<QString,QString> _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

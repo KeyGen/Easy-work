@@ -99,7 +99,23 @@ void KeyboardClass::actionCheckFalse()
     show_close->setChecked(false);
 }
 
-void KeyboardClass::setKeyLanguage(QStringList listLanguage)
+void KeyboardClass::setKeyLanguage(QMultiHash<QString, QString> getListLanguage)
 {
-    qDebug() << listLanguage;
+    QList<QPushButton *> allPButtons = ui->gridWidget->findChildren<QPushButton *>();
+
+    if(!allPButtons.isEmpty())
+    {
+        for(int i = 0; i<allPButtons.size(); i++)
+        {
+            QMultiHash <QString,QString>::iterator it = getListLanguage.find(allPButtons.at(i)->objectName());
+
+            for(; it != getListLanguage.end(); ++it)
+            {
+                allPButtons.at(i)->setText(it.value());
+                break;
+            }
+        }
+    }
+    else
+        qDebug() << "no child";
 }

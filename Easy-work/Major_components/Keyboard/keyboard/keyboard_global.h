@@ -44,6 +44,7 @@ public slots:
     virtual void setQPoinParent(QPoint) = 0;
     virtual void setQSizeParent(QSize)  = 0;
     virtual void close()                = 0;
+    virtual void setStyleSheet(QString) = 0;
 };
 
 QT_BEGIN_NAMESPACE

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialog.ui'
 **
-** Created: Sat Oct 20 19:30:24 2012
+** Created: Sun Oct 21 22:06:13 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -16,474 +16,398 @@
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
 #include <QtGui/QGridLayout>
-#include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
 #include <QtGui/QPushButton>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Dialog
 {
 public:
+    QGridLayout *gridLayout_2;
+    QWidget *gridWidget;
     QGridLayout *gridLayout;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_7;
-    QPushButton *pushButton_14;
-    QPushButton *pushButton_13;
-    QPushButton *pushButton_12;
-    QPushButton *pushButton_11;
-    QPushButton *pushButton_10;
-    QPushButton *pushButton_9;
-    QPushButton *pushButton_8;
-    QHBoxLayout *horizontalLayout_2;
-    QPushButton *pushButton_15;
-    QPushButton *pushButton_16;
-    QPushButton *pushButton_17;
-    QPushButton *pushButton_18;
-    QPushButton *pushButton_19;
-    QPushButton *pushButton_20;
-    QPushButton *pushButton_21;
-    QPushButton *pushButton_22;
-    QPushButton *pushButton_23;
-    QPushButton *pushButton_24;
-    QPushButton *pushButton_25;
-    QPushButton *pushButton_26;
-    QPushButton *pushButton_27;
-    QPushButton *pushButton_28;
-    QHBoxLayout *horizontalLayout_3;
-    QPushButton *pushButton_29;
-    QPushButton *pushButton_30;
-    QPushButton *pushButton_31;
-    QPushButton *pushButton_32;
-    QPushButton *pushButton_33;
-    QPushButton *pushButton_34;
-    QPushButton *pushButton_35;
-    QPushButton *pushButton_36;
-    QPushButton *pushButton_37;
-    QPushButton *pushButton_38;
-    QPushButton *pushButton_39;
-    QPushButton *pushButton_40;
-    QPushButton *pushButton_41;
-    QPushButton *pushButton_42;
-    QHBoxLayout *horizontalLayout_4;
-    QPushButton *pushButton_43;
-    QPushButton *pushButton_44;
-    QPushButton *pushButton_45;
-    QPushButton *pushButton_46;
-    QPushButton *pushButton_47;
-    QPushButton *pushButton_48;
-    QPushButton *pushButton_49;
-    QPushButton *pushButton_50;
-    QPushButton *pushButton_51;
-    QPushButton *pushButton_52;
-    QPushButton *pushButton_53;
-    QPushButton *pushButton_54;
-    QPushButton *pushButton_55;
-    QPushButton *pushButton_56;
-    QHBoxLayout *horizontalLayout_5;
-    QPushButton *pushButton_57;
-    QPushButton *pushButton_58;
-    QPushButton *pushButton_59;
-    QPushButton *pushButton_60;
-    QPushButton *pushButton_61;
-    QPushButton *pushButton_62;
-    QPushButton *pushButton_63;
-    QPushButton *pushButton_64;
-    QPushButton *pushButton_65;
-    QPushButton *pushButton_66;
-    QPushButton *pushButton_67;
-    QPushButton *pushButton_68;
-    QPushButton *pushButton_69;
-    QPushButton *pushButton_70;
+    QPushButton *Seven;
+    QPushButton *Z;
+    QPushButton *Two;
+    QPushButton *Square_brackets_left;
+    QPushButton *Eight;
+    QPushButton *V;
+    QPushButton *Y;
+    QPushButton *One;
+    QPushButton *P;
+    QPushButton *H;
+    QPushButton *O;
+    QPushButton *T;
+    QPushButton *Caps_Lock;
+    QPushButton *Six;
+    QPushButton *Backspese;
+    QPushButton *apostrophe_two;
+    QPushButton *I;
+    QPushButton *Five;
+    QPushButton *Four;
+    QPushButton *Three;
+    QPushButton *G;
+    QPushButton *A;
+    QPushButton *Space;
+    QPushButton *Alt_right;
+    QPushButton *F;
+    QPushButton *Point;
+    QPushButton *Ctrl_left;
+    QPushButton *N;
+    QPushButton *Semicolon;
+    QPushButton *K;
+    QPushButton *Shift_right;
+    QPushButton *L;
+    QPushButton *Menu;
+    QPushButton *Alt_left;
+    QPushButton *Shift_left;
+    QPushButton *Ctrl_right;
+    QPushButton *Comma;
+    QPushButton *B;
+    QPushButton *M;
+    QPushButton *X;
+    QPushButton *Enter;
+    QPushButton *Dash;
+    QPushButton *Nine;
+    QPushButton *Skew_right;
+    QPushButton *U;
+    QPushButton *Win;
+    QPushButton *Null;
+    QPushButton *Tab;
+    QPushButton *Q;
+    QPushButton *Skew_left;
+    QPushButton *Square_brackets_right;
+    QPushButton *S;
+    QPushButton *C;
+    QPushButton *W;
+    QPushButton *D;
+    QPushButton *Equal;
+    QPushButton *E;
+    QPushButton *R;
+    QPushButton *J;
+    QPushButton *apostrophe_one;
 
     void setupUi(QDialog *Dialog)
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(713, 154);
+        Dialog->resize(724, 221);
+        Dialog->setMinimumSize(QSize(0, 0));
+        Dialog->setMaximumSize(QSize(16777215, 16777215));
         Dialog->setStyleSheet(QString::fromUtf8(""));
-        gridLayout = new QGridLayout(Dialog);
+        gridLayout_2 = new QGridLayout(Dialog);
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridWidget = new QWidget(Dialog);
+        gridWidget->setObjectName(QString::fromUtf8("gridWidget"));
+        gridLayout = new QGridLayout(gridWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        pushButton = new QPushButton(Dialog);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        Seven = new QPushButton(gridWidget);
+        Seven->setObjectName(QString::fromUtf8("Seven"));
 
-        horizontalLayout->addWidget(pushButton);
+        gridLayout->addWidget(Seven, 1, 7, 1, 1);
 
-        pushButton_6 = new QPushButton(Dialog);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
+        Z = new QPushButton(gridWidget);
+        Z->setObjectName(QString::fromUtf8("Z"));
 
-        horizontalLayout->addWidget(pushButton_6);
+        gridLayout->addWidget(Z, 5, 2, 1, 1);
 
-        pushButton_3 = new QPushButton(Dialog);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        Two = new QPushButton(gridWidget);
+        Two->setObjectName(QString::fromUtf8("Two"));
 
-        horizontalLayout->addWidget(pushButton_3);
+        gridLayout->addWidget(Two, 1, 2, 1, 1);
 
-        pushButton_5 = new QPushButton(Dialog);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
+        Square_brackets_left = new QPushButton(gridWidget);
+        Square_brackets_left->setObjectName(QString::fromUtf8("Square_brackets_left"));
 
-        horizontalLayout->addWidget(pushButton_5);
+        gridLayout->addWidget(Square_brackets_left, 2, 12, 1, 1);
 
-        pushButton_2 = new QPushButton(Dialog);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        Eight = new QPushButton(gridWidget);
+        Eight->setObjectName(QString::fromUtf8("Eight"));
 
-        horizontalLayout->addWidget(pushButton_2);
+        gridLayout->addWidget(Eight, 1, 8, 1, 1);
 
-        pushButton_4 = new QPushButton(Dialog);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        V = new QPushButton(gridWidget);
+        V->setObjectName(QString::fromUtf8("V"));
 
-        horizontalLayout->addWidget(pushButton_4);
+        gridLayout->addWidget(V, 5, 5, 1, 1);
 
-        pushButton_7 = new QPushButton(Dialog);
-        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
+        Y = new QPushButton(gridWidget);
+        Y->setObjectName(QString::fromUtf8("Y"));
 
-        horizontalLayout->addWidget(pushButton_7);
+        gridLayout->addWidget(Y, 2, 7, 1, 1);
 
-        pushButton_14 = new QPushButton(Dialog);
-        pushButton_14->setObjectName(QString::fromUtf8("pushButton_14"));
+        One = new QPushButton(gridWidget);
+        One->setObjectName(QString::fromUtf8("One"));
 
-        horizontalLayout->addWidget(pushButton_14);
+        gridLayout->addWidget(One, 1, 1, 1, 1);
 
-        pushButton_13 = new QPushButton(Dialog);
-        pushButton_13->setObjectName(QString::fromUtf8("pushButton_13"));
+        P = new QPushButton(gridWidget);
+        P->setObjectName(QString::fromUtf8("P"));
 
-        horizontalLayout->addWidget(pushButton_13);
+        gridLayout->addWidget(P, 2, 11, 1, 1);
 
-        pushButton_12 = new QPushButton(Dialog);
-        pushButton_12->setObjectName(QString::fromUtf8("pushButton_12"));
+        H = new QPushButton(gridWidget);
+        H->setObjectName(QString::fromUtf8("H"));
 
-        horizontalLayout->addWidget(pushButton_12);
+        gridLayout->addWidget(H, 3, 7, 1, 1);
 
-        pushButton_11 = new QPushButton(Dialog);
-        pushButton_11->setObjectName(QString::fromUtf8("pushButton_11"));
+        O = new QPushButton(gridWidget);
+        O->setObjectName(QString::fromUtf8("O"));
 
-        horizontalLayout->addWidget(pushButton_11);
+        gridLayout->addWidget(O, 2, 10, 1, 1);
 
-        pushButton_10 = new QPushButton(Dialog);
-        pushButton_10->setObjectName(QString::fromUtf8("pushButton_10"));
+        T = new QPushButton(gridWidget);
+        T->setObjectName(QString::fromUtf8("T"));
 
-        horizontalLayout->addWidget(pushButton_10);
+        gridLayout->addWidget(T, 2, 6, 1, 1);
 
-        pushButton_9 = new QPushButton(Dialog);
-        pushButton_9->setObjectName(QString::fromUtf8("pushButton_9"));
+        Caps_Lock = new QPushButton(gridWidget);
+        Caps_Lock->setObjectName(QString::fromUtf8("Caps_Lock"));
 
-        horizontalLayout->addWidget(pushButton_9);
+        gridLayout->addWidget(Caps_Lock, 3, 0, 1, 2);
 
-        pushButton_8 = new QPushButton(Dialog);
-        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
+        Six = new QPushButton(gridWidget);
+        Six->setObjectName(QString::fromUtf8("Six"));
 
-        horizontalLayout->addWidget(pushButton_8);
+        gridLayout->addWidget(Six, 1, 6, 1, 1);
 
+        Backspese = new QPushButton(gridWidget);
+        Backspese->setObjectName(QString::fromUtf8("Backspese"));
 
-        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
+        gridLayout->addWidget(Backspese, 1, 13, 1, 2);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        pushButton_15 = new QPushButton(Dialog);
-        pushButton_15->setObjectName(QString::fromUtf8("pushButton_15"));
+        apostrophe_two = new QPushButton(gridWidget);
+        apostrophe_two->setObjectName(QString::fromUtf8("apostrophe_two"));
 
-        horizontalLayout_2->addWidget(pushButton_15);
+        gridLayout->addWidget(apostrophe_two, 3, 12, 1, 1);
 
-        pushButton_16 = new QPushButton(Dialog);
-        pushButton_16->setObjectName(QString::fromUtf8("pushButton_16"));
+        I = new QPushButton(gridWidget);
+        I->setObjectName(QString::fromUtf8("I"));
 
-        horizontalLayout_2->addWidget(pushButton_16);
+        gridLayout->addWidget(I, 2, 9, 1, 1);
 
-        pushButton_17 = new QPushButton(Dialog);
-        pushButton_17->setObjectName(QString::fromUtf8("pushButton_17"));
+        Five = new QPushButton(gridWidget);
+        Five->setObjectName(QString::fromUtf8("Five"));
 
-        horizontalLayout_2->addWidget(pushButton_17);
+        gridLayout->addWidget(Five, 1, 5, 1, 1);
 
-        pushButton_18 = new QPushButton(Dialog);
-        pushButton_18->setObjectName(QString::fromUtf8("pushButton_18"));
+        Four = new QPushButton(gridWidget);
+        Four->setObjectName(QString::fromUtf8("Four"));
 
-        horizontalLayout_2->addWidget(pushButton_18);
+        gridLayout->addWidget(Four, 1, 4, 1, 1);
 
-        pushButton_19 = new QPushButton(Dialog);
-        pushButton_19->setObjectName(QString::fromUtf8("pushButton_19"));
+        Three = new QPushButton(gridWidget);
+        Three->setObjectName(QString::fromUtf8("Three"));
 
-        horizontalLayout_2->addWidget(pushButton_19);
+        gridLayout->addWidget(Three, 1, 3, 1, 1);
 
-        pushButton_20 = new QPushButton(Dialog);
-        pushButton_20->setObjectName(QString::fromUtf8("pushButton_20"));
+        G = new QPushButton(gridWidget);
+        G->setObjectName(QString::fromUtf8("G"));
 
-        horizontalLayout_2->addWidget(pushButton_20);
+        gridLayout->addWidget(G, 3, 6, 1, 1);
 
-        pushButton_21 = new QPushButton(Dialog);
-        pushButton_21->setObjectName(QString::fromUtf8("pushButton_21"));
+        A = new QPushButton(gridWidget);
+        A->setObjectName(QString::fromUtf8("A"));
 
-        horizontalLayout_2->addWidget(pushButton_21);
+        gridLayout->addWidget(A, 3, 2, 1, 1);
 
-        pushButton_22 = new QPushButton(Dialog);
-        pushButton_22->setObjectName(QString::fromUtf8("pushButton_22"));
+        Space = new QPushButton(gridWidget);
+        Space->setObjectName(QString::fromUtf8("Space"));
 
-        horizontalLayout_2->addWidget(pushButton_22);
+        gridLayout->addWidget(Space, 6, 3, 1, 9);
 
-        pushButton_23 = new QPushButton(Dialog);
-        pushButton_23->setObjectName(QString::fromUtf8("pushButton_23"));
+        Alt_right = new QPushButton(gridWidget);
+        Alt_right->setObjectName(QString::fromUtf8("Alt_right"));
 
-        horizontalLayout_2->addWidget(pushButton_23);
+        gridLayout->addWidget(Alt_right, 6, 12, 1, 1);
 
-        pushButton_24 = new QPushButton(Dialog);
-        pushButton_24->setObjectName(QString::fromUtf8("pushButton_24"));
+        F = new QPushButton(gridWidget);
+        F->setObjectName(QString::fromUtf8("F"));
 
-        horizontalLayout_2->addWidget(pushButton_24);
+        gridLayout->addWidget(F, 3, 5, 1, 1);
 
-        pushButton_25 = new QPushButton(Dialog);
-        pushButton_25->setObjectName(QString::fromUtf8("pushButton_25"));
+        Point = new QPushButton(gridWidget);
+        Point->setObjectName(QString::fromUtf8("Point"));
 
-        horizontalLayout_2->addWidget(pushButton_25);
+        gridLayout->addWidget(Point, 5, 10, 1, 1);
 
-        pushButton_26 = new QPushButton(Dialog);
-        pushButton_26->setObjectName(QString::fromUtf8("pushButton_26"));
+        Ctrl_left = new QPushButton(gridWidget);
+        Ctrl_left->setObjectName(QString::fromUtf8("Ctrl_left"));
 
-        horizontalLayout_2->addWidget(pushButton_26);
+        gridLayout->addWidget(Ctrl_left, 6, 0, 1, 1);
 
-        pushButton_27 = new QPushButton(Dialog);
-        pushButton_27->setObjectName(QString::fromUtf8("pushButton_27"));
+        N = new QPushButton(gridWidget);
+        N->setObjectName(QString::fromUtf8("N"));
 
-        horizontalLayout_2->addWidget(pushButton_27);
+        gridLayout->addWidget(N, 5, 7, 1, 1);
 
-        pushButton_28 = new QPushButton(Dialog);
-        pushButton_28->setObjectName(QString::fromUtf8("pushButton_28"));
+        Semicolon = new QPushButton(gridWidget);
+        Semicolon->setObjectName(QString::fromUtf8("Semicolon"));
 
-        horizontalLayout_2->addWidget(pushButton_28);
+        gridLayout->addWidget(Semicolon, 3, 11, 1, 1);
 
+        K = new QPushButton(gridWidget);
+        K->setObjectName(QString::fromUtf8("K"));
 
-        gridLayout->addLayout(horizontalLayout_2, 1, 0, 1, 1);
+        gridLayout->addWidget(K, 3, 9, 1, 1);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        pushButton_29 = new QPushButton(Dialog);
-        pushButton_29->setObjectName(QString::fromUtf8("pushButton_29"));
+        Shift_right = new QPushButton(gridWidget);
+        Shift_right->setObjectName(QString::fromUtf8("Shift_right"));
 
-        horizontalLayout_3->addWidget(pushButton_29);
+        gridLayout->addWidget(Shift_right, 5, 12, 1, 3);
 
-        pushButton_30 = new QPushButton(Dialog);
-        pushButton_30->setObjectName(QString::fromUtf8("pushButton_30"));
+        L = new QPushButton(gridWidget);
+        L->setObjectName(QString::fromUtf8("L"));
 
-        horizontalLayout_3->addWidget(pushButton_30);
+        gridLayout->addWidget(L, 3, 10, 1, 1);
 
-        pushButton_31 = new QPushButton(Dialog);
-        pushButton_31->setObjectName(QString::fromUtf8("pushButton_31"));
+        Menu = new QPushButton(gridWidget);
+        Menu->setObjectName(QString::fromUtf8("Menu"));
 
-        horizontalLayout_3->addWidget(pushButton_31);
+        gridLayout->addWidget(Menu, 6, 13, 1, 1);
 
-        pushButton_32 = new QPushButton(Dialog);
-        pushButton_32->setObjectName(QString::fromUtf8("pushButton_32"));
+        Alt_left = new QPushButton(gridWidget);
+        Alt_left->setObjectName(QString::fromUtf8("Alt_left"));
 
-        horizontalLayout_3->addWidget(pushButton_32);
+        gridLayout->addWidget(Alt_left, 6, 2, 1, 1);
 
-        pushButton_33 = new QPushButton(Dialog);
-        pushButton_33->setObjectName(QString::fromUtf8("pushButton_33"));
+        Shift_left = new QPushButton(gridWidget);
+        Shift_left->setObjectName(QString::fromUtf8("Shift_left"));
 
-        horizontalLayout_3->addWidget(pushButton_33);
+        gridLayout->addWidget(Shift_left, 5, 0, 1, 2);
 
-        pushButton_34 = new QPushButton(Dialog);
-        pushButton_34->setObjectName(QString::fromUtf8("pushButton_34"));
+        Ctrl_right = new QPushButton(gridWidget);
+        Ctrl_right->setObjectName(QString::fromUtf8("Ctrl_right"));
 
-        horizontalLayout_3->addWidget(pushButton_34);
+        gridLayout->addWidget(Ctrl_right, 6, 14, 1, 1);
 
-        pushButton_35 = new QPushButton(Dialog);
-        pushButton_35->setObjectName(QString::fromUtf8("pushButton_35"));
+        Comma = new QPushButton(gridWidget);
+        Comma->setObjectName(QString::fromUtf8("Comma"));
 
-        horizontalLayout_3->addWidget(pushButton_35);
+        gridLayout->addWidget(Comma, 5, 9, 1, 1);
 
-        pushButton_36 = new QPushButton(Dialog);
-        pushButton_36->setObjectName(QString::fromUtf8("pushButton_36"));
+        B = new QPushButton(gridWidget);
+        B->setObjectName(QString::fromUtf8("B"));
 
-        horizontalLayout_3->addWidget(pushButton_36);
+        gridLayout->addWidget(B, 5, 6, 1, 1);
 
-        pushButton_37 = new QPushButton(Dialog);
-        pushButton_37->setObjectName(QString::fromUtf8("pushButton_37"));
+        M = new QPushButton(gridWidget);
+        M->setObjectName(QString::fromUtf8("M"));
 
-        horizontalLayout_3->addWidget(pushButton_37);
+        gridLayout->addWidget(M, 5, 8, 1, 1);
 
-        pushButton_38 = new QPushButton(Dialog);
-        pushButton_38->setObjectName(QString::fromUtf8("pushButton_38"));
+        X = new QPushButton(gridWidget);
+        X->setObjectName(QString::fromUtf8("X"));
 
-        horizontalLayout_3->addWidget(pushButton_38);
+        gridLayout->addWidget(X, 5, 3, 1, 1);
 
-        pushButton_39 = new QPushButton(Dialog);
-        pushButton_39->setObjectName(QString::fromUtf8("pushButton_39"));
+        Enter = new QPushButton(gridWidget);
+        Enter->setObjectName(QString::fromUtf8("Enter"));
 
-        horizontalLayout_3->addWidget(pushButton_39);
+        gridLayout->addWidget(Enter, 3, 13, 1, 2);
 
-        pushButton_40 = new QPushButton(Dialog);
-        pushButton_40->setObjectName(QString::fromUtf8("pushButton_40"));
+        Dash = new QPushButton(gridWidget);
+        Dash->setObjectName(QString::fromUtf8("Dash"));
 
-        horizontalLayout_3->addWidget(pushButton_40);
+        gridLayout->addWidget(Dash, 1, 11, 1, 1);
 
-        pushButton_41 = new QPushButton(Dialog);
-        pushButton_41->setObjectName(QString::fromUtf8("pushButton_41"));
+        Nine = new QPushButton(gridWidget);
+        Nine->setObjectName(QString::fromUtf8("Nine"));
 
-        horizontalLayout_3->addWidget(pushButton_41);
+        gridLayout->addWidget(Nine, 1, 9, 1, 1);
 
-        pushButton_42 = new QPushButton(Dialog);
-        pushButton_42->setObjectName(QString::fromUtf8("pushButton_42"));
+        Skew_right = new QPushButton(gridWidget);
+        Skew_right->setObjectName(QString::fromUtf8("Skew_right"));
 
-        horizontalLayout_3->addWidget(pushButton_42);
+        gridLayout->addWidget(Skew_right, 5, 11, 1, 1);
 
+        U = new QPushButton(gridWidget);
+        U->setObjectName(QString::fromUtf8("U"));
 
-        gridLayout->addLayout(horizontalLayout_3, 2, 0, 1, 1);
+        gridLayout->addWidget(U, 2, 8, 1, 1);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        pushButton_43 = new QPushButton(Dialog);
-        pushButton_43->setObjectName(QString::fromUtf8("pushButton_43"));
+        Win = new QPushButton(gridWidget);
+        Win->setObjectName(QString::fromUtf8("Win"));
 
-        horizontalLayout_4->addWidget(pushButton_43);
+        gridLayout->addWidget(Win, 6, 1, 1, 1);
 
-        pushButton_44 = new QPushButton(Dialog);
-        pushButton_44->setObjectName(QString::fromUtf8("pushButton_44"));
+        Null = new QPushButton(gridWidget);
+        Null->setObjectName(QString::fromUtf8("Null"));
 
-        horizontalLayout_4->addWidget(pushButton_44);
+        gridLayout->addWidget(Null, 1, 10, 1, 1);
 
-        pushButton_45 = new QPushButton(Dialog);
-        pushButton_45->setObjectName(QString::fromUtf8("pushButton_45"));
+        Tab = new QPushButton(gridWidget);
+        Tab->setObjectName(QString::fromUtf8("Tab"));
 
-        horizontalLayout_4->addWidget(pushButton_45);
+        gridLayout->addWidget(Tab, 2, 0, 1, 2);
 
-        pushButton_46 = new QPushButton(Dialog);
-        pushButton_46->setObjectName(QString::fromUtf8("pushButton_46"));
+        Q = new QPushButton(gridWidget);
+        Q->setObjectName(QString::fromUtf8("Q"));
 
-        horizontalLayout_4->addWidget(pushButton_46);
+        gridLayout->addWidget(Q, 2, 2, 1, 1);
 
-        pushButton_47 = new QPushButton(Dialog);
-        pushButton_47->setObjectName(QString::fromUtf8("pushButton_47"));
+        Skew_left = new QPushButton(gridWidget);
+        Skew_left->setObjectName(QString::fromUtf8("Skew_left"));
 
-        horizontalLayout_4->addWidget(pushButton_47);
+        gridLayout->addWidget(Skew_left, 2, 14, 1, 1);
 
-        pushButton_48 = new QPushButton(Dialog);
-        pushButton_48->setObjectName(QString::fromUtf8("pushButton_48"));
+        Square_brackets_right = new QPushButton(gridWidget);
+        Square_brackets_right->setObjectName(QString::fromUtf8("Square_brackets_right"));
 
-        horizontalLayout_4->addWidget(pushButton_48);
+        gridLayout->addWidget(Square_brackets_right, 2, 13, 1, 1);
 
-        pushButton_49 = new QPushButton(Dialog);
-        pushButton_49->setObjectName(QString::fromUtf8("pushButton_49"));
+        S = new QPushButton(gridWidget);
+        S->setObjectName(QString::fromUtf8("S"));
 
-        horizontalLayout_4->addWidget(pushButton_49);
+        gridLayout->addWidget(S, 3, 3, 1, 1);
 
-        pushButton_50 = new QPushButton(Dialog);
-        pushButton_50->setObjectName(QString::fromUtf8("pushButton_50"));
+        C = new QPushButton(gridWidget);
+        C->setObjectName(QString::fromUtf8("C"));
 
-        horizontalLayout_4->addWidget(pushButton_50);
+        gridLayout->addWidget(C, 5, 4, 1, 1);
 
-        pushButton_51 = new QPushButton(Dialog);
-        pushButton_51->setObjectName(QString::fromUtf8("pushButton_51"));
+        W = new QPushButton(gridWidget);
+        W->setObjectName(QString::fromUtf8("W"));
 
-        horizontalLayout_4->addWidget(pushButton_51);
+        gridLayout->addWidget(W, 2, 3, 1, 1);
 
-        pushButton_52 = new QPushButton(Dialog);
-        pushButton_52->setObjectName(QString::fromUtf8("pushButton_52"));
+        D = new QPushButton(gridWidget);
+        D->setObjectName(QString::fromUtf8("D"));
 
-        horizontalLayout_4->addWidget(pushButton_52);
+        gridLayout->addWidget(D, 3, 4, 1, 1);
 
-        pushButton_53 = new QPushButton(Dialog);
-        pushButton_53->setObjectName(QString::fromUtf8("pushButton_53"));
+        Equal = new QPushButton(gridWidget);
+        Equal->setObjectName(QString::fromUtf8("Equal"));
 
-        horizontalLayout_4->addWidget(pushButton_53);
+        gridLayout->addWidget(Equal, 1, 12, 1, 1);
 
-        pushButton_54 = new QPushButton(Dialog);
-        pushButton_54->setObjectName(QString::fromUtf8("pushButton_54"));
+        E = new QPushButton(gridWidget);
+        E->setObjectName(QString::fromUtf8("E"));
 
-        horizontalLayout_4->addWidget(pushButton_54);
+        gridLayout->addWidget(E, 2, 4, 1, 1);
 
-        pushButton_55 = new QPushButton(Dialog);
-        pushButton_55->setObjectName(QString::fromUtf8("pushButton_55"));
+        R = new QPushButton(gridWidget);
+        R->setObjectName(QString::fromUtf8("R"));
 
-        horizontalLayout_4->addWidget(pushButton_55);
+        gridLayout->addWidget(R, 2, 5, 1, 1);
 
-        pushButton_56 = new QPushButton(Dialog);
-        pushButton_56->setObjectName(QString::fromUtf8("pushButton_56"));
+        J = new QPushButton(gridWidget);
+        J->setObjectName(QString::fromUtf8("J"));
 
-        horizontalLayout_4->addWidget(pushButton_56);
+        gridLayout->addWidget(J, 3, 8, 1, 1);
 
+        apostrophe_one = new QPushButton(gridWidget);
+        apostrophe_one->setObjectName(QString::fromUtf8("apostrophe_one"));
+        apostrophe_one->setMinimumSize(QSize(0, 0));
+        apostrophe_one->setMaximumSize(QSize(16777215, 16777215));
 
-        gridLayout->addLayout(horizontalLayout_4, 3, 0, 1, 1);
+        gridLayout->addWidget(apostrophe_one, 1, 0, 1, 1);
 
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
-        pushButton_57 = new QPushButton(Dialog);
-        pushButton_57->setObjectName(QString::fromUtf8("pushButton_57"));
 
-        horizontalLayout_5->addWidget(pushButton_57);
-
-        pushButton_58 = new QPushButton(Dialog);
-        pushButton_58->setObjectName(QString::fromUtf8("pushButton_58"));
-
-        horizontalLayout_5->addWidget(pushButton_58);
-
-        pushButton_59 = new QPushButton(Dialog);
-        pushButton_59->setObjectName(QString::fromUtf8("pushButton_59"));
-
-        horizontalLayout_5->addWidget(pushButton_59);
-
-        pushButton_60 = new QPushButton(Dialog);
-        pushButton_60->setObjectName(QString::fromUtf8("pushButton_60"));
-
-        horizontalLayout_5->addWidget(pushButton_60);
-
-        pushButton_61 = new QPushButton(Dialog);
-        pushButton_61->setObjectName(QString::fromUtf8("pushButton_61"));
-
-        horizontalLayout_5->addWidget(pushButton_61);
-
-        pushButton_62 = new QPushButton(Dialog);
-        pushButton_62->setObjectName(QString::fromUtf8("pushButton_62"));
-
-        horizontalLayout_5->addWidget(pushButton_62);
-
-        pushButton_63 = new QPushButton(Dialog);
-        pushButton_63->setObjectName(QString::fromUtf8("pushButton_63"));
-
-        horizontalLayout_5->addWidget(pushButton_63);
-
-        pushButton_64 = new QPushButton(Dialog);
-        pushButton_64->setObjectName(QString::fromUtf8("pushButton_64"));
-
-        horizontalLayout_5->addWidget(pushButton_64);
-
-        pushButton_65 = new QPushButton(Dialog);
-        pushButton_65->setObjectName(QString::fromUtf8("pushButton_65"));
-
-        horizontalLayout_5->addWidget(pushButton_65);
-
-        pushButton_66 = new QPushButton(Dialog);
-        pushButton_66->setObjectName(QString::fromUtf8("pushButton_66"));
-
-        horizontalLayout_5->addWidget(pushButton_66);
-
-        pushButton_67 = new QPushButton(Dialog);
-        pushButton_67->setObjectName(QString::fromUtf8("pushButton_67"));
-
-        horizontalLayout_5->addWidget(pushButton_67);
-
-        pushButton_68 = new QPushButton(Dialog);
-        pushButton_68->setObjectName(QString::fromUtf8("pushButton_68"));
-
-        horizontalLayout_5->addWidget(pushButton_68);
-
-        pushButton_69 = new QPushButton(Dialog);
-        pushButton_69->setObjectName(QString::fromUtf8("pushButton_69"));
-
-        horizontalLayout_5->addWidget(pushButton_69);
-
-        pushButton_70 = new QPushButton(Dialog);
-        pushButton_70->setObjectName(QString::fromUtf8("pushButton_70"));
-
-        horizontalLayout_5->addWidget(pushButton_70);
-
-
-        gridLayout->addLayout(horizontalLayout_5, 4, 0, 1, 1);
+        gridLayout_2->addWidget(gridWidget, 0, 0, 1, 1);
 
 
         retranslateUi(Dialog);
@@ -494,76 +418,66 @@ public:
     void retranslateUi(QDialog *Dialog)
     {
         Dialog->setWindowTitle(QApplication::translate("Dialog", "English", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_6->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_3->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_5->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_2->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_4->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_7->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_14->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_13->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_12->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_11->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_10->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_9->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_8->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_15->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_16->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_17->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_18->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_19->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_20->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_21->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_22->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_23->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_24->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_25->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_26->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_27->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_28->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_29->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_30->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_31->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_32->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_33->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_34->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_35->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_36->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_37->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_38->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_39->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_40->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_41->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_42->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_43->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_44->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_45->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_46->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_47->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_48->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_49->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_50->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_51->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_52->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_53->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_54->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_55->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_56->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_57->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_58->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_59->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_60->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_61->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_62->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_63->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_64->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_65->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_66->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_67->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_68->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_69->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
-        pushButton_70->setText(QApplication::translate("Dialog", "Q", 0, QApplication::UnicodeUTF8));
+        Seven->setText(QApplication::translate("Dialog", "7", 0, QApplication::UnicodeUTF8));
+        Z->setText(QApplication::translate("Dialog", "z", 0, QApplication::UnicodeUTF8));
+        Two->setText(QApplication::translate("Dialog", "2", 0, QApplication::UnicodeUTF8));
+        Square_brackets_left->setText(QApplication::translate("Dialog", "[", 0, QApplication::UnicodeUTF8));
+        Eight->setText(QApplication::translate("Dialog", "8", 0, QApplication::UnicodeUTF8));
+        V->setText(QApplication::translate("Dialog", "v", 0, QApplication::UnicodeUTF8));
+        Y->setText(QApplication::translate("Dialog", "y", 0, QApplication::UnicodeUTF8));
+        One->setText(QApplication::translate("Dialog", "1", 0, QApplication::UnicodeUTF8));
+        P->setText(QApplication::translate("Dialog", "p", 0, QApplication::UnicodeUTF8));
+        H->setText(QApplication::translate("Dialog", "h", 0, QApplication::UnicodeUTF8));
+        O->setText(QApplication::translate("Dialog", "o", 0, QApplication::UnicodeUTF8));
+        T->setText(QApplication::translate("Dialog", "t", 0, QApplication::UnicodeUTF8));
+        Caps_Lock->setText(QApplication::translate("Dialog", "Caps Lock", 0, QApplication::UnicodeUTF8));
+        Six->setText(QApplication::translate("Dialog", "6", 0, QApplication::UnicodeUTF8));
+        Backspese->setText(QApplication::translate("Dialog", "Backspace", 0, QApplication::UnicodeUTF8));
+        apostrophe_two->setText(QApplication::translate("Dialog", "'", 0, QApplication::UnicodeUTF8));
+        I->setText(QApplication::translate("Dialog", "i", 0, QApplication::UnicodeUTF8));
+        Five->setText(QApplication::translate("Dialog", "5", 0, QApplication::UnicodeUTF8));
+        Four->setText(QApplication::translate("Dialog", "4", 0, QApplication::UnicodeUTF8));
+        Three->setText(QApplication::translate("Dialog", "3", 0, QApplication::UnicodeUTF8));
+        G->setText(QApplication::translate("Dialog", "g", 0, QApplication::UnicodeUTF8));
+        A->setText(QApplication::translate("Dialog", "a", 0, QApplication::UnicodeUTF8));
+        Space->setText(QString());
+        Alt_right->setText(QApplication::translate("Dialog", "Alt", 0, QApplication::UnicodeUTF8));
+        F->setText(QApplication::translate("Dialog", "f", 0, QApplication::UnicodeUTF8));
+        Point->setText(QApplication::translate("Dialog", ".", 0, QApplication::UnicodeUTF8));
+        Ctrl_left->setText(QApplication::translate("Dialog", "Ctrl", 0, QApplication::UnicodeUTF8));
+        N->setText(QApplication::translate("Dialog", "n", 0, QApplication::UnicodeUTF8));
+        Semicolon->setText(QApplication::translate("Dialog", ";", 0, QApplication::UnicodeUTF8));
+        K->setText(QApplication::translate("Dialog", "k", 0, QApplication::UnicodeUTF8));
+        Shift_right->setText(QApplication::translate("Dialog", "Shift", 0, QApplication::UnicodeUTF8));
+        L->setText(QApplication::translate("Dialog", "l", 0, QApplication::UnicodeUTF8));
+        Menu->setText(QApplication::translate("Dialog", "Menu", 0, QApplication::UnicodeUTF8));
+        Alt_left->setText(QApplication::translate("Dialog", "Alt", 0, QApplication::UnicodeUTF8));
+        Shift_left->setText(QApplication::translate("Dialog", "Shift", 0, QApplication::UnicodeUTF8));
+        Ctrl_right->setText(QApplication::translate("Dialog", "Ctrl", 0, QApplication::UnicodeUTF8));
+        Comma->setText(QApplication::translate("Dialog", ",", 0, QApplication::UnicodeUTF8));
+        B->setText(QApplication::translate("Dialog", "b", 0, QApplication::UnicodeUTF8));
+        M->setText(QApplication::translate("Dialog", "m", 0, QApplication::UnicodeUTF8));
+        X->setText(QApplication::translate("Dialog", "x", 0, QApplication::UnicodeUTF8));
+        Enter->setText(QApplication::translate("Dialog", "Enter", 0, QApplication::UnicodeUTF8));
+        Dash->setText(QApplication::translate("Dialog", "-", 0, QApplication::UnicodeUTF8));
+        Nine->setText(QApplication::translate("Dialog", "9", 0, QApplication::UnicodeUTF8));
+        Skew_right->setText(QApplication::translate("Dialog", "/", 0, QApplication::UnicodeUTF8));
+        U->setText(QApplication::translate("Dialog", "u", 0, QApplication::UnicodeUTF8));
+        Win->setText(QApplication::translate("Dialog", "Win", 0, QApplication::UnicodeUTF8));
+        Null->setText(QApplication::translate("Dialog", "0", 0, QApplication::UnicodeUTF8));
+        Tab->setText(QApplication::translate("Dialog", "Tab", 0, QApplication::UnicodeUTF8));
+        Q->setText(QApplication::translate("Dialog", "q", 0, QApplication::UnicodeUTF8));
+        Skew_left->setText(QApplication::translate("Dialog", "\\", 0, QApplication::UnicodeUTF8));
+        Square_brackets_right->setText(QApplication::translate("Dialog", "]", 0, QApplication::UnicodeUTF8));
+        S->setText(QApplication::translate("Dialog", "s", 0, QApplication::UnicodeUTF8));
+        C->setText(QApplication::translate("Dialog", "c", 0, QApplication::UnicodeUTF8));
+        W->setText(QApplication::translate("Dialog", "w", 0, QApplication::UnicodeUTF8));
+        D->setText(QApplication::translate("Dialog", "d", 0, QApplication::UnicodeUTF8));
+        Equal->setText(QApplication::translate("Dialog", "=", 0, QApplication::UnicodeUTF8));
+        E->setText(QApplication::translate("Dialog", "e", 0, QApplication::UnicodeUTF8));
+        R->setText(QApplication::translate("Dialog", "r", 0, QApplication::UnicodeUTF8));
+        J->setText(QApplication::translate("Dialog", "j", 0, QApplication::UnicodeUTF8));
+        apostrophe_one->setText(QApplication::translate("Dialog", "`", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

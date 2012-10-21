@@ -62,6 +62,10 @@ void MainWindow::loadPlugins(const QString dir) {
             {
                 installationsWhatIs(plugin);
             }
+            else if(Keyboard *pluginKeyboard = qobject_cast<Keyboard *>(obj))
+            {
+                installationsKeyboard(pluginKeyboard);
+            }
             else if(StyleCSS *pluginCSS = qobject_cast<StyleCSS *>(obj))
             {
                 installationsStyleCSS(pluginCSS);
@@ -69,10 +73,6 @@ void MainWindow::loadPlugins(const QString dir) {
             else if(RegimeFile *pluginRFile = qobject_cast<RegimeFile *>(obj))
             {
                 installationsRegimeFile(pluginRFile);
-            }
-            else if(Keyboard *pluginKeyboard = qobject_cast<Keyboard *>(obj))
-            {
-                installationsKeyboard(pluginKeyboard);
             }
 
         }
@@ -94,6 +94,11 @@ void MainWindow::installationsStyleCSS(StyleCSS * plugin){
 
     connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
 
+    if(!keyboard.isEmpty()){
+        connect(plugin,SIGNAL(getStyle(QString)),keyboard.at(0),SLOT(setStyleSheet(QString)));
+        keyboard.at(0)->setStyleSheet(plugin->getStandardStyleSheet());
+    }
+
     this->setStyleSheet(plugin->getStandardStyleSheet());
 }
 
@@ -107,6 +112,9 @@ void MainWindow::installationsRegimeFile(RegimeFile * plugin){
 void MainWindow::installationsKeyboard(Keyboard * plugin){
 
     ui->setting->addMenu(plugin->getMenu());
+
+    keyboard << plugin;
+
     connect(this,SIGNAL(rejected()),plugin,SLOT(close()));
     connect(this,SIGNAL(traceMoveWindow(QPoint)),plugin,SLOT(setQPoinParent(QPoint)));
     connect(this,SIGNAL(traceSizeWindow(QSize)),plugin,SLOT(setQSizeParent(QSize)));

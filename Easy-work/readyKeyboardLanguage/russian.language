@@ -1,4 +1,4 @@
-WindowTitle=English
+WindowTitle=Русский
 
 <key>
   <objectName>One</objectName>
@@ -11,7 +11,7 @@ WindowTitle=English
 <key>
   <objectName>Two</objectName>
   
-  <shift>@</shift>
+  <shift>"</shift>
   
   <noShift>2</noShift>
 </key>
@@ -19,7 +19,7 @@ WindowTitle=English
 <key>
   <objectName>Three</objectName>
   
-  <shift>#</shift>
+  <shift>№</shift>
   
   <noShift>3</noShift>
 </key>
@@ -27,7 +27,7 @@ WindowTitle=English
 <key>
   <objectName>Four</objectName>
   
-  <shift>$</shift>
+  <shift>;</shift>
   
   <noShift>4</noShift>
 </key>
@@ -43,7 +43,7 @@ WindowTitle=English
 <key>
   <objectName>Six</objectName>
   
-  <shift>^</shift>
+  <shift>:</shift>
   
   <noShift>6</noShift>
 </key>
@@ -51,7 +51,7 @@ WindowTitle=English
 <key>
   <objectName>Seven</objectName>
   
-  <shift>&</shift>
+  <shift>?</shift>
   
   <noShift>7</noShift>
 </key>
@@ -83,23 +83,23 @@ WindowTitle=English
 <key>
   <objectName>Square_brackets_left</objectName>
   
-  <shift>{</shift>
+  <shift>Х</shift>
   
-  <noShift>[</noShift>
+  <noShift>х</noShift>
 </key>
 
 <key>
   <objectName>Square_brackets_right</objectName>
   
-  <shift>}</shift>
+  <shift>Ъ</shift>
   
-  <noShift>]</noShift>
+  <noShift>ъ</noShift>
 </key>
 
 <key>
   <objectName>Skew_left</objectName>
   
-  <shift>|</shift>
+  <shift>/</shift>
   
   <noShift>\</noShift>
 </key>
@@ -107,49 +107,49 @@ WindowTitle=English
 <key>
   <objectName>Skew_right</objectName>
   
-  <shift>?</shift>
-  
-  <noShift>/</noShift>
-</key>
-
-<key>
-  <objectName>apostrophe_one</objectName>
-  
-  <shift>~</shift>
-  
-  <noShift>`</noShift>
-</key>
-
-<key>
-  <objectName>apostrophe_two</objectName>
-  
-  <shift>"</shift>
-  
-  <noShift>'</noShift>
-</key>
-
-<key>
-  <objectName>Comma</objectName>
-  
-  <shift><</shift>
-  
-  <noShift>,</noShift>
-</key>
-
-<key>
-  <objectName>Point</objectName>
-  
-  <shift>></shift>
+  <shift>,</shift>
   
   <noShift>.</noShift>
 </key>
 
 <key>
+  <objectName>apostrophe_one</objectName>
+  
+  <shift>Ё</shift>
+  
+  <noShift>ё</noShift>
+</key>
+
+<key>
+  <objectName>apostrophe_two</objectName>
+  
+  <shift>Э</shift>
+  
+  <noShift>э</noShift>
+</key>
+
+<key>
+  <objectName>Comma</objectName>
+  
+  <shift>Б</shift>
+  
+  <noShift>б</noShift>
+</key>
+
+<key>
+  <objectName>Point</objectName>
+  
+  <shift>Ю</shift>
+  
+  <noShift>ю</noShift>
+</key>
+
+<key>
   <objectName>Semicolon</objectName>
   
-  <shift>:</shift>
+  <shift>Ж</shift>
   
-  <noShift>;</noShift>
+  <noShift>ж</noShift>
 </key>
 
 <key>
@@ -171,207 +171,207 @@ WindowTitle=English
 <key>
   <objectName>Z</objectName>
   
-  <shift>Z</shift>
+  <shift>Я</shift>
   
-  <noShift>z</noShift>
+  <noShift>я</noShift>
 </key>
 
 <key>
   <objectName>V</objectName>
   
-  <shift>V</shift>
+  <shift>М</shift>
   
-  <noShift>v</noShift>
+  <noShift>м</noShift>
 </key>
 
 <key>
   <objectName>Y</objectName>
   
-  <shift>Y</shift>
+  <shift>Н</shift>
   
-  <noShift>y</noShift>
+  <noShift>н</noShift>
 </key>
 
 <key>
   <objectName>P</objectName>
   
-  <shift>P</shift>
+  <shift>З</shift>
   
-  <noShift>p</noShift>
+  <noShift>з</noShift>
 </key>
 
 <key>
   <objectName>H</objectName>
   
-  <shift>H</shift>
+  <shift>Р</shift>
   
-  <noShift>h</noShift>
+  <noShift>р</noShift>
 </key>
 
 <key>
   <objectName>O</objectName>
   
-  <shift>O</shift>
+  <shift>Щ</shift>
   
-  <noShift>o</noShift>
+  <noShift>щ</noShift>
 </key>
 
 <key>
   <objectName>T</objectName>
   
-  <shift>T</shift>
+  <shift>Е</shift>
   
-  <noShift>t</noShift>
+  <noShift>е</noShift>
 </key>
 
 <key>
   <objectName>I</objectName>
   
-  <shift>I</shift>
+  <shift>Ш</shift>
   
-  <noShift>i</noShift>
+  <noShift>ш</noShift>
 </key>
 
 <key>
   <objectName>G</objectName>
   
-  <shift>G</shift>
+  <shift>П</shift>
   
-  <noShift>g</noShift>
+  <noShift>п</noShift>
 </key>
 
 <key>
   <objectName>A</objectName>
   
-  <shift>A</shift>
+  <shift>Ф</shift>
   
-  <noShift>a</noShift>
+  <noShift>ф</noShift>
 </key>
 
 <key>
   <objectName>F</objectName>
   
-  <shift>F</shift>
+  <shift>А</shift>
   
-  <noShift>f</noShift>
+  <noShift>а</noShift>
 </key>
 
 <key>
   <objectName>N</objectName>
   
-  <shift>N</shift>
+  <shift>Т</shift>
   
-  <noShift>n</noShift>
+  <noShift>т</noShift>
 </key>
 
 <key>
   <objectName>K</objectName>
   
-  <shift>K</shift>
+  <shift>Л</shift>
   
-  <noShift>k</noShift>
+  <noShift>л</noShift>
 </key>
 
 <key>
   <objectName>L</objectName>
   
-  <shift>L</shift>
+  <shift>Д</shift>
   
-  <noShift>l</noShift>
+  <noShift>д</noShift>
 </key>
 
 <key>
   <objectName>B</objectName>
   
-  <shift>B</shift>
+  <shift>И</shift>
   
-  <noShift>b</noShift>
+  <noShift>и</noShift>
 </key>
 
 <key>
   <objectName>M</objectName>
   
-  <shift>M</shift>
+  <shift>Ь</shift>
   
-  <noShift>m</noShift>
+  <noShift>ь</noShift>
 </key>
 
 <key>
   <objectName>X</objectName>
   
-  <shift>X</shift>
+  <shift>Ч</shift>
   
-  <noShift>x</noShift>
+  <noShift>ч</noShift>
 </key>
 
 <key>
   <objectName>U</objectName>
   
-  <shift>U</shift>
+  <shift>Г</shift>
   
-  <noShift>u</noShift>
+  <noShift>г</noShift>
 </key>
 
 <key>
   <objectName>Q</objectName>
   
-  <shift>Q</shift>
+  <shift>Й</shift>
   
-  <noShift>q</noShift>
+  <noShift>й</noShift>
 </key>
 
 <key>
   <objectName>S</objectName>
   
-  <shift>S</shift>
+  <shift>Ы</shift>
   
-  <noShift>s</noShift>
+  <noShift>ы</noShift>
 </key>
 
 <key>
   <objectName>C</objectName>
   
-  <shift>C</shift>
+  <shift>С</shift>
   
-  <noShift>c</noShift>
+  <noShift>с</noShift>
 </key>
 
 <key>
   <objectName>W</objectName>
   
-  <shift>W</shift>
+  <shift>Ц</shift>
   
-  <noShift>w</noShift>
+  <noShift>ц</noShift>
 </key>
 
 <key>
   <objectName>D</objectName>
   
-  <shift>D</shift>
+  <shift>В</shift>
   
-  <noShift>d</noShift>
+  <noShift>в</noShift>
 </key>
 
 <key>
   <objectName>E</objectName>
   
-  <shift>E</shift>
+  <shift>У</shift>
   
-  <noShift>e</noShift>
+  <noShift>у</noShift>
 </key>
 
 <key>
   <objectName>R</objectName>
   
-  <shift>R</shift>
+  <shift>К</shift>
   
-  <noShift>r</noShift>
+  <noShift>к</noShift>
 </key>
 
 <key>
   <objectName>J</objectName>
   
-  <shift>J</shift>
+  <shift>О</shift>
   
-  <noShift>j</noShift>
+  <noShift>о</noShift>
 </key>

@@ -22,8 +22,8 @@
 
 #include "downloadLanguageKeyboard_global.h"
 
+#include <QMultiHash>
 #include <QHash>
-#include <QStringList>
 #include <QMenu>
 
 class KeyboardLanguageClass : public KeyboardLanguage
@@ -40,16 +40,26 @@ public:
 
 private:
     QString pathDir;
-    QHash < QString, QStringList> hashLanguage;
+    QHash < QString, QMultiHash<QString, QString> > hashLanguage;
     QList <QAction*> actionsLanguage;
     QString rememberActionActive;
     QMenu *menuLanguage;
+
+    void installationQMenuStyleSheet();
+    void installationQMenu(QHash < QString, QMultiHash<QString, QString> > hashLanguageTemp);
+
+    QMultiHash <QString, QString> getMultiHahs(QString);
+    QString getNameLanguage(QString);
+
+    QString getStrObjectName(QString);
+    QString getNoShift(QString);
+    QString getShift(QString);
 
 private slots:
     void slotActivateLanguage();
 
 signals:
-    void getLanguage(QStringList);
+    void getLanguage(QMultiHash<QString, QString>);
 };
 
 
