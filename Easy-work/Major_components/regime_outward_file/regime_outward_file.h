@@ -21,6 +21,7 @@
 #define REGIME_OUTWARD_FILE_H
 
 #include "regime_outward_file_global.h"
+#include <QDebug>
 
 namespace Ui {
 class Dialog;
@@ -47,6 +48,12 @@ private:
     QAction *actionFile;
     QDialog *dialog;
     Ui::Dialog *ui;
+    QString saveOutwardText;
+
+    void setCodecComboBox();
+
+private slots:
+    void setCodec(QString);
 };
 
 

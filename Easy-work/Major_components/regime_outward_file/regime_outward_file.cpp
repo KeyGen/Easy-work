@@ -19,6 +19,8 @@
 
 #include "regime_outward_file.h"
 #include "ui_outward_file.h"
+
+#include <QTextCodec>
 #include <QAction>
 
 Q_EXPORT_PLUGIN(RegimeFileClass);
@@ -30,5 +32,50 @@ RegimeFileClass::RegimeFileClass() : ui(new Ui::Dialog)
 
     actionFile = new QAction(tr("Режим файла"),this);
 
+    saveOutwardText = "Text для проверки кодировок";
+    ui->textOutwardShow->setText(saveOutwardText);
+
+    setCodecComboBox();
+
     connect(actionFile,SIGNAL(triggered()),dialog,SLOT(exec()));
+    connect(ui->comboBoxCodec,SIGNAL(activated(QString)),this,SLOT(setCodec(QString)));
+}
+
+void RegimeFileClass::setCodecComboBox(){
+
+    QStringList listCodec;
+    // Вот некоторые кодеки из доступных в Qt
+    listCodec << "Apple Roman";
+    listCodec << "Big5";
+    listCodec << "Big5-HKSCS";
+    listCodec << "CP949";
+    listCodec << "EUC-JP";
+    listCodec << "EUC-KR";
+    listCodec << "KOI8-R";
+    listCodec << "KOI8-U";
+    listCodec << "MuleLao-1";
+    listCodec << "ROMAN8";
+    listCodec << "Shift-JIS";
+    listCodec << "TIS-620";
+    listCodec << "TSCII";
+    listCodec << "UTF-8";
+    listCodec << "UTF-16";
+    listCodec << "UTF-16BE";
+    listCodec << "Windows-1250"; // to 1258
+    listCodec << "Windows-1251"; // Русский
+
+    // Добавим из в comboBox
+    ui->comboBoxCodec->addItems(listCodec);
+}
+
+void RegimeFileClass::setCodec(QString nameCodec){
+
+    // Выбор кодека
+     QTextCodec *codec = QTextCodec::codecForName(nameCodec.toAscii());
+
+     // Изменяем кодировку
+     QByteArray encodedString = codec->fromUnicode(saveOutwardText);
+
+     // В label вписываем текст с новой кодировкой
+     ui->textOutwardShow->setText(encodedString);
 }

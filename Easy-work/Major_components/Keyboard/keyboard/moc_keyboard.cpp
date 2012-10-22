@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'keyboard.h'
 **
-** Created: Sun Oct 21 21:10:02 2012
+** Created: Mon Oct 22 22:58:10 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_KeyboardClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,9 +36,10 @@ static const uint qt_meta_data_KeyboardClass[] = {
       60,   14,   14,   14, 0x0a,
       68,   14,   14,   14, 0x0a,
       90,   86,   14,   14, 0x0a,
-     113,   14,   14,   14, 0x08,
-     124,   14,   14,   14, 0x08,
-     143,   14,   14,   14, 0x08,
+     115,  113,   14,   14, 0x0a,
+     146,   14,   14,   14, 0x08,
+     157,   14,   14,   14, 0x08,
+     176,  113,   14,   14, 0x08,
 
        0        // eod
 };
@@ -47,8 +48,9 @@ static const char qt_meta_stringdata_KeyboardClass[] = {
     "KeyboardClass\0\0setQPoinParent(QPoint)\0"
     "setQSizeParent(QSize)\0close()\0"
     "fasteningDialog()\0str\0setStyleSheet(QString)\0"
+    ",\0pressKeyboard(QKeyEvent*,bool)\0"
     "show(bool)\0actionCheckFalse()\0"
-    "setKeyLanguage(QMultiHash<QString,QString>)\0"
+    "setKeyLanguage(QMultiHash<QString,QString>,bool)\0"
 };
 
 void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -62,9 +64,10 @@ void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 2: _t->close(); break;
         case 3: _t->fasteningDialog(); break;
         case 4: _t->setStyleSheet((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 5: _t->show((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 6: _t->actionCheckFalse(); break;
-        case 7: _t->setKeyLanguage((*reinterpret_cast< QMultiHash<QString,QString>(*)>(_a[1]))); break;
+        case 5: _t->pressKeyboard((*reinterpret_cast< QKeyEvent*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 6: _t->show((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 7: _t->actionCheckFalse(); break;
+        case 8: _t->setKeyLanguage((*reinterpret_cast< QMultiHash<QString,QString>(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
         default: ;
         }
     }
@@ -104,9 +107,9 @@ int KeyboardClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

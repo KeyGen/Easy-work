@@ -35,6 +35,7 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QMenu* getMenu()        = 0;
+    virtual QMultiHash<QString, QString> getLanguageHash() = 0;
 
     virtual ~KeyboardLanguage() {}
 
@@ -42,7 +43,7 @@ private slots:
     virtual void slotActivateLanguage() = 0;
 
 signals:
-    virtual void getLanguage(QMultiHash<QString, QString>) = 0;
+    virtual void getLanguage(QMultiHash<QString, QString>,bool) = 0;
 };
 
 QT_BEGIN_NAMESPACE

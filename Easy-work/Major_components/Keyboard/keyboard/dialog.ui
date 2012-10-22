@@ -134,7 +134,7 @@
        </widget>
       </item>
       <item row="1" column="13" colspan="2">
-       <widget class="QPushButton" name="Backspese">
+       <widget class="QPushButton" name="Backspace">
         <property name="text">
          <string>Backspace</string>
         </property>

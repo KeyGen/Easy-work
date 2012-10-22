@@ -38,8 +38,10 @@ void KeyboardClass::loadPlugins(const QString dir) {
             {
                 menu->addMenu(plugin->getMenu());
 
-                connect(plugin,SIGNAL(getLanguage(QMultiHash<QString, QString>)),
-                        this,SLOT(setKeyLanguage(QMultiHash<QString, QString>)));
+                this->setKeyLanguage(plugin->getLanguageHash(),false);
+
+                connect(plugin,SIGNAL(getLanguage(QMultiHash<QString, QString>,bool)),
+                        this,SLOT(setKeyLanguage(QMultiHash<QString, QString>,bool)));
 
             }
         }

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Sun Oct 21 21:21:04 2012
+** Created: Mon Oct 22 11:36:12 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,24 +23,27 @@ static const uint qt_meta_data_MainWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x05,
       36,   11,   11,   11, 0x05,
-      59,   11,   11,   11, 0x05,
+      61,   59,   11,   11, 0x05,
+      97,   11,   11,   11, 0x05,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0traceMoveWindow(QPoint)\0"
-    "traceSizeWindow(QSize)\0rejected()\0"
+    "traceSizeWindow(QSize)\0,\0"
+    "tracePressKeyboard(QKeyEvent*,bool)\0"
+    "rejected()\0"
 };
 
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -51,7 +54,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         switch (_id) {
         case 0: _t->traceMoveWindow((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
         case 1: _t->traceSizeWindow((*reinterpret_cast< QSize(*)>(_a[1]))); break;
-        case 2: _t->rejected(); break;
+        case 2: _t->tracePressKeyboard((*reinterpret_cast< QKeyEvent*(*)>(_a[1])),(*reinterpret_cast< bool(*)>(_a[2]))); break;
+        case 3: _t->rejected(); break;
         default: ;
         }
     }
@@ -89,9 +93,9 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
@@ -111,8 +115,15 @@ void MainWindow::traceSizeWindow(QSize _t1)
 }
 
 // SIGNAL 2
+void MainWindow::tracePressKeyboard(QKeyEvent * _t1, bool _t2)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+
+// SIGNAL 3
 void MainWindow::rejected()
 {
-    QMetaObject::activate(this, &staticMetaObject, 2, 0);
+    QMetaObject::activate(this, &staticMetaObject, 3, 0);
 }
 QT_END_MOC_NAMESPACE

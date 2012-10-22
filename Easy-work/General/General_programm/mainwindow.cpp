@@ -40,8 +40,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->showText->setFixedWidth(400);
     ui->progressBar->setFixedWidth(800);
 
-    connect(ui->start,SIGNAL(aboutToShow()),this,SLOT(close()));
+}
 
+void MainWindow::keyPressEvent ( QKeyEvent * event )
+{
+    bool keyPress = true;
+    emit tracePressKeyboard(event,keyPress);
+}
+
+void MainWindow::keyReleaseEvent ( QKeyEvent * event )
+{
+    bool keyRelease = false;
+    emit tracePressKeyboard(event,keyRelease);
 }
 
 void MainWindow::resizeEvent ( QResizeEvent * event )

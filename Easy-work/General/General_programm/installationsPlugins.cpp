@@ -118,4 +118,5 @@ void MainWindow::installationsKeyboard(Keyboard * plugin){
     connect(this,SIGNAL(rejected()),plugin,SLOT(close()));
     connect(this,SIGNAL(traceMoveWindow(QPoint)),plugin,SLOT(setQPoinParent(QPoint)));
     connect(this,SIGNAL(traceSizeWindow(QSize)),plugin,SLOT(setQSizeParent(QSize)));
+    connect(this,SIGNAL(tracePressKeyboard(QKeyEvent*,bool)),plugin,SLOT(pressKeyboard(QKeyEvent*,bool)));
 }

@@ -26,6 +26,7 @@
 
 namespace Ui {
 class Dialog;
+class QPushButton;
 }
 
 QT_BEGIN_NAMESPACE
@@ -58,6 +59,7 @@ private:
     QString pathDir;
 
     QMultiHash<QString, QString> listLanguage;
+    QHash< int, QPushButton *> listUiPushButton;
 
     void loadPlugins(const QString dir);
 
@@ -67,11 +69,12 @@ public slots:
     virtual void close();
     void fasteningDialog();
     virtual void setStyleSheet(QString str) { dialog->setStyleSheet(str); }
+    virtual void pressKeyboard(QKeyEvent*,bool);
 
 private slots:
     void show(bool);
     void actionCheckFalse();
-    void setKeyLanguage(QMultiHash<QString, QString>);
+    void setKeyLanguage(QMultiHash<QString, QString>,bool);
 };
 
 #endif // KEYBOARD_H

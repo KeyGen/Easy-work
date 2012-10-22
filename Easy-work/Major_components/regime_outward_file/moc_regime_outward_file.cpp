@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regime_outward_file.h'
 **
-** Created: Sat Oct 20 19:28:47 2012
+** Created: Mon Oct 22 01:56:14 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,33 @@ static const uint qt_meta_data_RegimeFileClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      17,   16,   16,   16, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_RegimeFileClass[] = {
-    "RegimeFileClass\0"
+    "RegimeFileClass\0\0setCodec(QString)\0"
 };
 
 void RegimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        RegimeFileClass *_t = static_cast<RegimeFileClass *>(_o);
+        switch (_id) {
+        case 0: _t->setCodec((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData RegimeFileClass::staticMetaObjectExtraData = {
@@ -78,6 +85,11 @@ int RegimeFileClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = RegimeFile::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 1)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 1;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

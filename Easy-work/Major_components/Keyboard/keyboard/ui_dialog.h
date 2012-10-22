@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'dialog.ui'
 **
-** Created: Sun Oct 21 22:06:13 2012
+** Created: Mon Oct 22 23:06:36 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -42,7 +42,7 @@ public:
     QPushButton *T;
     QPushButton *Caps_Lock;
     QPushButton *Six;
-    QPushButton *Backspese;
+    QPushButton *Backspace;
     QPushButton *apostrophe_two;
     QPushButton *I;
     QPushButton *Five;
@@ -174,10 +174,10 @@ public:
 
         gridLayout->addWidget(Six, 1, 6, 1, 1);
 
-        Backspese = new QPushButton(gridWidget);
-        Backspese->setObjectName(QString::fromUtf8("Backspese"));
+        Backspace = new QPushButton(gridWidget);
+        Backspace->setObjectName(QString::fromUtf8("Backspace"));
 
-        gridLayout->addWidget(Backspese, 1, 13, 1, 2);
+        gridLayout->addWidget(Backspace, 1, 13, 1, 2);
 
         apostrophe_two = new QPushButton(gridWidget);
         apostrophe_two->setObjectName(QString::fromUtf8("apostrophe_two"));
@@ -432,7 +432,7 @@ public:
         T->setText(QApplication::translate("Dialog", "t", 0, QApplication::UnicodeUTF8));
         Caps_Lock->setText(QApplication::translate("Dialog", "Caps Lock", 0, QApplication::UnicodeUTF8));
         Six->setText(QApplication::translate("Dialog", "6", 0, QApplication::UnicodeUTF8));
-        Backspese->setText(QApplication::translate("Dialog", "Backspace", 0, QApplication::UnicodeUTF8));
+        Backspace->setText(QApplication::translate("Dialog", "Backspace", 0, QApplication::UnicodeUTF8));
         apostrophe_two->setText(QApplication::translate("Dialog", "'", 0, QApplication::UnicodeUTF8));
         I->setText(QApplication::translate("Dialog", "i", 0, QApplication::UnicodeUTF8));
         Five->setText(QApplication::translate("Dialog", "5", 0, QApplication::UnicodeUTF8));

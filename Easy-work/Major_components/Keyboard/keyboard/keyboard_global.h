@@ -20,6 +20,7 @@
 #ifndef KEYBOARD_GLOBAL_H
 #define KEYBOARD_GLOBAL_H
 
+#include <QKeyEvent>
 #include <QtPlugin>
 #include <QDialog>
 #include <QPoint>
@@ -41,10 +42,11 @@ public:
     virtual ~Keyboard() {}
 
 public slots:
-    virtual void setQPoinParent(QPoint) = 0;
-    virtual void setQSizeParent(QSize)  = 0;
-    virtual void close()                = 0;
-    virtual void setStyleSheet(QString) = 0;
+    virtual void setQPoinParent(QPoint)         = 0;
+    virtual void setQSizeParent(QSize)          = 0;
+    virtual void close()                        = 0;
+    virtual void setStyleSheet(QString)         = 0;
+    virtual void pressKeyboard(QKeyEvent*,bool) = 0;
 };
 
 QT_BEGIN_NAMESPACE

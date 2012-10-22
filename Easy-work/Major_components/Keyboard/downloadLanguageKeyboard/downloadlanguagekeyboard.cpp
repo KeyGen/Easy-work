@@ -29,6 +29,7 @@ KeyboardLanguageClass::KeyboardLanguageClass()
     pathDir = "../../readyKeyboardLanguage";
 
     menuLanguage = new QMenu(tr("Выбор языка"));
+    rememberActionActive = "English";
 
     QDir dir(pathDir);
     QStringList filter;
@@ -78,7 +79,15 @@ void KeyboardLanguageClass::slotActivateLanguage()
 
     QHash <QString, QMultiHash<QString, QString> >::iterator it = hashLanguage.find(rememberActionActive);
 
-    emit getLanguage(it.value());
+    bool pressShift = false;
+    emit getLanguage(it.value(),pressShift);
+}
+
+QMultiHash<QString, QString> KeyboardLanguageClass::getLanguageHash()
+{
+    QHash <QString, QMultiHash<QString, QString> >::iterator it = hashLanguage.find(rememberActionActive);
+
+    return it.value();
 }
 
 void KeyboardLanguageClass::installationQMenuStyleSheet(){
@@ -144,7 +153,7 @@ QMultiHash <QString, QString > KeyboardLanguageClass::getMultiHahs(QString str)
     {
         str.remove('\n');
 
-        QRegExp rxKey       ("<key>([^\\A]*)</key>");
+        QRegExp rxKey       ("<key>([^”]*)</key>");
         rxKey.setMinimal(true);
 
         int pos = 0;
@@ -154,7 +163,9 @@ QMultiHash <QString, QString > KeyboardLanguageClass::getMultiHahs(QString str)
             QString strObjectName = getStrObjectName(strKey);
 
             temp.insert(strObjectName,getShift(strKey));
+            temp.insert(strObjectName,getKeyCodeShift(strKey));
             temp.insert(strObjectName,getNoShift(strKey));
+            temp.insert(strObjectName,getKeyCodeNoShift(strKey));
 
             pos += rxKey.matchedLength();
         }
@@ -167,7 +178,7 @@ QString KeyboardLanguageClass::getStrObjectName(QString str){
 
     QString temp;
 
-    QRegExp rxObjectName("<objectName>([^\\A]*)</objectName>");
+    QRegExp rxObjectName("<objectName>([^”]*)</objectName>");
     rxObjectName.setMinimal(true);
 
     int pos = 0;
@@ -185,7 +196,7 @@ QString KeyboardLanguageClass::getNoShift(QString str){
 
     QString temp;
 
-    QRegExp rxNoShift   ("<noShift>([^\\A]*)</noShift>");
+    QRegExp rxNoShift   ("<noShift>([^”]*)</noShift>");
     rxNoShift.setMinimal(true);
 
     int pos = 0;
@@ -203,7 +214,7 @@ QString KeyboardLanguageClass::getShift(QString str){
 
     QString temp;
 
-    QRegExp rxShift     ("<shift>([^\\A]*)</shift>");
+    QRegExp rxShift     ("<shift>([^”]*)</shift>");
     rxShift.setMinimal(true);
 
     int pos = 0;
@@ -212,6 +223,42 @@ QString KeyboardLanguageClass::getShift(QString str){
         temp = rxShift.cap(1);
 
         pos += rxShift.matchedLength();
+    }
+
+    return temp;
+}
+
+QString KeyboardLanguageClass::getKeyCodeShift(QString str){
+
+    QString temp;
+
+    QRegExp rxShift     ("<keyCodeShift>([^”]*)</keyCodeShift>");
+    rxShift.setMinimal(true);
+
+    int pos = 0;
+    while ((pos = rxShift.indexIn(str, pos)) != -1)
+    {
+        temp = rxShift.cap(1);
+
+        pos += rxShift.matchedLength();
+    }
+
+    return temp;
+}
+
+QString KeyboardLanguageClass::getKeyCodeNoShift(QString str){
+
+    QString temp;
+
+    QRegExp rxNoShift   ("<keyCodeNoShift>([^”]*)</keyCodeNoShift>");
+    rxNoShift.setMinimal(true);
+
+    int pos = 0;
+    while ((pos = rxNoShift.indexIn(str, pos)) != -1)
+    {
+        temp = rxNoShift.cap(1);
+
+        pos += rxNoShift.matchedLength();
     }
 
     return temp;

@@ -69,6 +69,8 @@ void KeyboardClass::setQSizeParent(QSize size)
     {
         sizeMainWindow = size;
         sizeMainWindow.setHeight(sizeMainWindow.height()+20);
+
+        setQPoinParent(saveMoveMainWindowPoint);
     }
 
 }
@@ -99,8 +101,12 @@ void KeyboardClass::actionCheckFalse()
     show_close->setChecked(false);
 }
 
-void KeyboardClass::setKeyLanguage(QMultiHash<QString, QString> getListLanguage)
+void KeyboardClass::setKeyLanguage(QMultiHash<QString, QString> getListLanguage,bool pressShift)
 {
+
+    if(listLanguage!=getListLanguage)
+        listLanguage = getListLanguage;
+
     QList<QPushButton *> allPButtons = ui->gridWidget->findChildren<QPushButton *>();
 
     if(!allPButtons.isEmpty())
@@ -111,11 +117,159 @@ void KeyboardClass::setKeyLanguage(QMultiHash<QString, QString> getListLanguage)
 
             for(; it != getListLanguage.end(); ++it)
             {
-                allPButtons.at(i)->setText(it.value());
+                if(pressShift) // ? & ????
+                {++it; ++it;}
+
+                ///////////////////
+                listUiPushButton.insertMulti(it.value().toInt(),allPButtons.at(i));
+                ////////////////////
+
+                ++it;
+
+                if(it.value()=="&")
+                    allPButtons.at(i)->setText(it.value()+"&");
+                else
+                    allPButtons.at(i)->setText(it.value());
+
                 break;
             }
         }
     }
     else
         qDebug() << "no child";
+}
+
+void KeyboardClass::pressKeyboard(QKeyEvent* event,bool state)
+{
+    qDebug() << event->key();
+
+    if(event->key() == 16777248 /*shift*/)
+        if(state)
+        {
+            ui->Shift_left->animateClick(99999999);
+            ui->Shift_right->animateClick(99999999);
+
+            bool pressShift = true;
+            this->setKeyLanguage(listLanguage,pressShift);
+        }
+        else
+        {
+            bool pressShift = false;
+            this->setKeyLanguage(listLanguage,pressShift);
+
+            ui->Shift_left->animateClick(0);
+            ui->Shift_right->animateClick(0);
+        }
+
+    else if(event->key() == 16777252 /*Caps Lock*/) // нужна проверка Caps Lock из системы
+        if(state)
+        {
+            ui->Caps_Lock->animateClick(99999999);
+        }
+        else
+        {
+            ui->Caps_Lock->animateClick(0);
+        }
+
+    else if(event->key() == 16777220 /*Enter*/)
+        if(state)
+        {
+            ui->Enter->animateClick(99999999);
+        }
+        else
+        {
+            ui->Enter->animateClick(0);
+        }
+
+    else if(event->key() == 16777249 /*Ctrl*/)
+        if(state)
+        {
+            ui->Ctrl_left->animateClick(99999999);
+            ui->Ctrl_right->animateClick(99999999);
+        }
+        else
+        {
+            ui->Ctrl_left->animateClick(0);
+            ui->Ctrl_right->animateClick(0);
+        }
+
+    else if(event->key() == 16777251 /*Alt*/)
+        if(state)
+        {
+            ui->Alt_left->animateClick(99999999);
+            ui->Alt_right->animateClick(99999999);
+        }
+        else
+        {
+            ui->Alt_left->animateClick(0);
+            ui->Alt_right->animateClick(0);
+        }
+
+    else if(event->key() == 16777250 /*Win*/)
+        if(state)
+        {
+            ui->Win->animateClick(99999999);
+        }
+        else
+        {
+            ui->Win->animateClick(0);
+        }
+
+    else if(event->key() == 16777301 /*Menu*/)
+        if(state)
+        {
+            ui->Menu->animateClick(99999999);
+        }
+        else
+        {
+            ui->Menu->animateClick(0);
+        }
+
+    else if(event->key() == 16777219 /*Backspace*/)
+        if(state)
+        {
+            ui->Backspace->animateClick(99999999);
+        }
+        else
+        {
+            ui->Backspace->animateClick(0);
+        }
+
+    else if(event->key() == 16777217 /*Tab*/)
+        if(state)
+        {
+            ui->Tab->animateClick(99999999);
+        }
+        else
+        {
+            ui->Tab->animateClick(0);
+        }
+
+    else if(event->key() == 32 /*Space*/) // нужна проверка Caps Lock из системы
+        if(state)
+        {
+            ui->Space->animateClick(99999999);
+        }
+        else
+        {
+            ui->Space->animateClick(0);
+        }
+
+    else
+    {
+        QHash<int,QPushButton*>::iterator it = listUiPushButton.find(event->key());
+
+        for(;it!=listUiPushButton.end(); it++)
+        {
+            if(state)
+            {
+                it.value()->animateClick(99999999);
+            }
+            else
+            {
+                it.value()->animateClick(0);
+            }
+            break;
+        }
+    }
 }

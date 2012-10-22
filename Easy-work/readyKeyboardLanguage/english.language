@@ -4,374 +4,468 @@ WindowTitle=English
   <objectName>One</objectName>
   
   <shift>!</shift>
+    <keyCodeShift>33</keyCodeShift>
   
   <noShift>1</noShift>
+    <keyCodeNoShift>49</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Two</objectName>
   
   <shift>@</shift>
+    <keyCodeShift>64</keyCodeShift>
   
   <noShift>2</noShift>
+    <keyCodeNoShift>50</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Three</objectName>
   
   <shift>#</shift>
+    <keyCodeShift>35</keyCodeShift>
   
   <noShift>3</noShift>
+    <keyCodeNoShift>51</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Four</objectName>
   
   <shift>$</shift>
+    <keyCodeShift>36</keyCodeShift>
   
   <noShift>4</noShift>
+    <keyCodeNoShift>52</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Five</objectName>
   
   <shift>%</shift>
+    <keyCodeShift>37</keyCodeShift>
   
   <noShift>5</noShift>
+    <keyCodeNoShift>53</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Six</objectName>
   
   <shift>^</shift>
+    <keyCodeShift>94</keyCodeShift>
   
   <noShift>6</noShift>
+    <keyCodeNoShift>54</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Seven</objectName>
   
   <shift>&</shift>
+    <keyCodeShift>38</keyCodeShift>
   
   <noShift>7</noShift>
+    <keyCodeNoShift>55</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Eight</objectName>
   
   <shift>*</shift>
+    <keyCodeShift>42</keyCodeShift>
   
   <noShift>8</noShift>
+    <keyCodeNoShift>56</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Nine</objectName>
   
   <shift>(</shift>
+    <keyCodeShift>40</keyCodeShift>
   
   <noShift>9</noShift>
+    <keyCodeNoShift>57</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Null</objectName>
   
   <shift>)</shift>
+    <keyCodeShift>41</keyCodeShift>
   
   <noShift>0</noShift>
+    <keyCodeNoShift>48</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Square_brackets_left</objectName>
   
   <shift>{</shift>
+    <keyCodeShift>123</keyCodeShift>
   
   <noShift>[</noShift>
+    <keyCodeNoShift>91</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Square_brackets_right</objectName>
   
   <shift>}</shift>
+    <keyCodeShift>125</keyCodeShift>
   
   <noShift>]</noShift>
+    <keyCodeNoShift>93</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Skew_left</objectName>
   
   <shift>|</shift>
+    <keyCodeShift>124</keyCodeShift>
   
   <noShift>\</noShift>
+    <keyCodeNoShift>92</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Skew_right</objectName>
   
   <shift>?</shift>
+    <keyCodeShift>63</keyCodeShift>
   
   <noShift>/</noShift>
+    <keyCodeNoShift>47</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>apostrophe_one</objectName>
   
   <shift>~</shift>
+    <keyCodeShift>126</keyCodeShift>
   
   <noShift>`</noShift>
+    <keyCodeNoShift>96</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>apostrophe_two</objectName>
   
   <shift>"</shift>
+    <keyCodeShift>34</keyCodeShift>
   
   <noShift>'</noShift>
+    <keyCodeNoShift>39</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Comma</objectName>
   
   <shift><</shift>
+    <keyCodeShift>60</keyCodeShift>
   
   <noShift>,</noShift>
+    <keyCodeNoShift>44</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Point</objectName>
   
   <shift>></shift>
+    <keyCodeShift>62</keyCodeShift>
   
   <noShift>.</noShift>
+    <keyCodeNoShift>46</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Semicolon</objectName>
   
   <shift>:</shift>
+    <keyCodeShift>58</keyCodeShift>
   
   <noShift>;</noShift>
+    <keyCodeNoShift>59</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Dash</objectName>
   
   <shift>_</shift>
+    <keyCodeShift>95</keyCodeShift>
   
   <noShift>-</noShift>
+    <keyCodeNoShift>45</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Equal</objectName>
   
   <shift>+</shift>
+    <keyCodeShift>43</keyCodeShift>
   
   <noShift>=</noShift>
+    <keyCodeNoShift>61</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Z</objectName>
   
   <shift>Z</shift>
+    <keyCodeShift>90</keyCodeShift>
   
   <noShift>z</noShift>
+    <keyCodeNoShift>90</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>V</objectName>
   
   <shift>V</shift>
+    <keyCodeShift>86</keyCodeShift>
   
   <noShift>v</noShift>
+    <keyCodeNoShift>86</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Y</objectName>
   
   <shift>Y</shift>
+    <keyCodeShift>89</keyCodeShift>
   
   <noShift>y</noShift>
+    <keyCodeNoShift>89</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>P</objectName>
   
   <shift>P</shift>
+    <keyCodeShift>80</keyCodeShift>
   
   <noShift>p</noShift>
+    <keyCodeNoShift>80</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>H</objectName>
   
   <shift>H</shift>
+    <keyCodeShift>72</keyCodeShift>
   
   <noShift>h</noShift>
+    <keyCodeNoShift>72</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>O</objectName>
   
   <shift>O</shift>
+    <keyCodeShift>79</keyCodeShift>
   
   <noShift>o</noShift>
+    <keyCodeNoShift>79</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>T</objectName>
   
   <shift>T</shift>
+    <keyCodeShift>84</keyCodeShift>
   
   <noShift>t</noShift>
+    <keyCodeNoShift>84</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>I</objectName>
   
   <shift>I</shift>
+    <keyCodeShift>73</keyCodeShift>
   
   <noShift>i</noShift>
+    <keyCodeNoShift>73</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>G</objectName>
   
   <shift>G</shift>
+    <keyCodeShift>71</keyCodeShift>
   
   <noShift>g</noShift>
-</key>
-
-<key>
-  <objectName>A</objectName>
-  
-  <shift>A</shift>
-  
-  <noShift>a</noShift>
+    <keyCodeNoShift>71</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>F</objectName>
   
   <shift>F</shift>
+    <keyCodeShift>70</keyCodeShift>
   
   <noShift>f</noShift>
+    <keyCodeNoShift>70</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>N</objectName>
   
   <shift>N</shift>
+    <keyCodeShift>78</keyCodeShift>
   
   <noShift>n</noShift>
+    <keyCodeNoShift>78</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>K</objectName>
   
   <shift>K</shift>
+    <keyCodeShift>75</keyCodeShift>
   
   <noShift>k</noShift>
+    <keyCodeNoShift>75</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>L</objectName>
   
   <shift>L</shift>
+    <keyCodeShift>76</keyCodeShift>
   
   <noShift>l</noShift>
+    <keyCodeNoShift>76</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>B</objectName>
   
   <shift>B</shift>
+    <keyCodeShift>66</keyCodeShift>
   
   <noShift>b</noShift>
+    <keyCodeNoShift>66</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>M</objectName>
   
   <shift>M</shift>
+    <keyCodeShift>77</keyCodeShift>
   
   <noShift>m</noShift>
+    <keyCodeNoShift>77</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>X</objectName>
   
   <shift>X</shift>
+    <keyCodeShift>88</keyCodeShift>
   
   <noShift>x</noShift>
+    <keyCodeNoShift>88</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>U</objectName>
   
   <shift>U</shift>
+    <keyCodeShift>85</keyCodeShift>
   
   <noShift>u</noShift>
+    <keyCodeNoShift>85</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>Q</objectName>
   
   <shift>Q</shift>
+    <keyCodeShift>81</keyCodeShift>
   
   <noShift>q</noShift>
+    <keyCodeNoShift>81</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>S</objectName>
   
   <shift>S</shift>
+    <keyCodeShift>83</keyCodeShift>
   
   <noShift>s</noShift>
+    <keyCodeNoShift>83</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>C</objectName>
   
   <shift>C</shift>
+    <keyCodeShift>67</keyCodeShift>
   
   <noShift>c</noShift>
+    <keyCodeNoShift>67</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>W</objectName>
   
   <shift>W</shift>
+    <keyCodeShift>87</keyCodeShift>
   
   <noShift>w</noShift>
+    <keyCodeNoShift>87</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>D</objectName>
   
   <shift>D</shift>
+    <keyCodeShift>68</keyCodeShift>
   
   <noShift>d</noShift>
+    <keyCodeNoShift>68</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>E</objectName>
   
   <shift>E</shift>
+    <keyCodeShift>69</keyCodeShift>
   
   <noShift>e</noShift>
+    <keyCodeNoShift>69</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>R</objectName>
   
   <shift>R</shift>
+    <keyCodeShift>82</keyCodeShift>
   
   <noShift>r</noShift>
+    <keyCodeNoShift>82</keyCodeNoShift>
 </key>
 
 <key>
   <objectName>J</objectName>
   
   <shift>J</shift>
+    <keyCodeShift>74</keyCodeShift>
   
   <noShift>j</noShift>
+    <keyCodeNoShift>74</keyCodeNoShift>
+</key>
+
+<key>
+  <objectName>A</objectName>
+  
+  <shift>A</shift>
+    <keyCodeShift>65</keyCodeShift>
+  
+  <noShift>a</noShift>
+    <keyCodeNoShift>65</keyCodeNoShift>
 </key>

@@ -22,10 +22,8 @@
 
 #include <QMainWindow>
 #include <QDebug>
-
-
-///
 #include <QMoveEvent>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -57,6 +55,8 @@ private:
     virtual void moveEvent ( QMoveEvent * event );
     virtual void closeEvent ( QCloseEvent * );
     virtual void resizeEvent ( QResizeEvent * event );
+    virtual void keyPressEvent ( QKeyEvent * event );
+    virtual void keyReleaseEvent ( QKeyEvent * event );
 
 private:
     // Функции для загрузки прагинов
@@ -76,6 +76,7 @@ private:
 signals:
     void traceMoveWindow(QPoint);
     void traceSizeWindow(QSize);
+    void tracePressKeyboard(QKeyEvent *,bool);
     void rejected();
 };
 

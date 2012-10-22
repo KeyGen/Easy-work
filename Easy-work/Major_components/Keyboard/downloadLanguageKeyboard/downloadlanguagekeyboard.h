@@ -37,6 +37,7 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Keyboard Language"; }
     virtual QMenu* getMenu()        { return menuLanguage; }
+    virtual QMultiHash<QString, QString> getLanguageHash();
 
 private:
     QString pathDir;
@@ -55,11 +56,14 @@ private:
     QString getNoShift(QString);
     QString getShift(QString);
 
+    QString getKeyCodeShift(QString);
+    QString getKeyCodeNoShift(QString);
+
 private slots:
     void slotActivateLanguage();
 
 signals:
-    void getLanguage(QMultiHash<QString, QString>);
+    void getLanguage(QMultiHash<QString, QString>,bool);
 };
 
 
