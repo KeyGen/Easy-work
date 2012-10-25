@@ -1,8 +1,17 @@
-*.o
-
+# Скомпилированные модули
 *.so
 *.so.*
 
+# Makefile
+Makefile
+*.o
+
+# Скомпилированное ядро
+Core
+
+# Pro.user
 *.user
+
+# Темп файлы ОС
 *~
 .directory
