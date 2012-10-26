@@ -14,6 +14,10 @@ RigimeFileClass::RigimeFileClass()
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
 }
 
+RigimeFileClass::~RigimeFileClass(){
+    delete ui;
+}
+
 QWidget * RigimeFileClass::getWidget() {
 
     menuBar = new QMenuBar();

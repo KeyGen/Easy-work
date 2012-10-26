@@ -24,7 +24,7 @@ public:
     virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
 
-    virtual ~RigimeFileClass() {}
+    virtual ~RigimeFileClass();
 
 private:
     QWidget *widget;

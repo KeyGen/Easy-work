@@ -24,7 +24,7 @@ public:
     virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
 
-    virtual ~CoreWidgetClass() {}
+    virtual ~CoreWidgetClass() { delete ui; }
 
 private:
     QWidget *widget;
