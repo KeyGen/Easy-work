@@ -6,9 +6,6 @@
 Makefile
 *.o
 
-# Скомпилированное ядро
-Core
-
 # Pro.user
 *.user
 
