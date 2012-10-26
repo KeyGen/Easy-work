@@ -1,26 +1,25 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-10-26T09:48:28
+# Project created by QtCreator 2012-10-26T16:26:06
 #
 #-------------------------------------------------
 
-TARGET = RegimeFile
+TARGET = OpenFile
 TEMPLATE = lib
 
-DEFINES += REGIMEFILE_LIBRARY
+DEFINES += OPENFILE_LIBRARY
 
-SOURCES += regimefile.cpp \
-    installationPlugins.cpp
+SOURCES += openfile.cpp
 
-HEADERS += regimefile.h\
-        RegimeFile_global.h
+HEADERS += openfile.h\
+        OpenFile_global.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE2DF4087
+    TARGET.UID3 = 0xE5809F5F
     TARGET.CAPABILITY = 
     TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = RegimeFile.dll
+    addFiles.sources = OpenFile.dll
     addFiles.path = !:/sys/bin
     DEPLOYMENT += addFiles
 }
@@ -34,9 +33,6 @@ unix:!symbian {
     INSTALLS += target
 }
 
-INCLUDEPATH += $$PWD/../OpenFile/
+DESTDIR = $$PWD/../readyPlugins
 
-DESTDIR = $$PWD/../../../readyPlugins
-
-FORMS += \
-    regimefile.ui
+FORMS += openfile.ui

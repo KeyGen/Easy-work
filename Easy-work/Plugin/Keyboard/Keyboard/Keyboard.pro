@@ -1,26 +1,27 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-10-26T09:48:28
+# Project created by QtCreator 2012-10-26T20:31:09
 #
 #-------------------------------------------------
 
-TARGET = RegimeFile
+TARGET = Keyboard
 TEMPLATE = lib
 
-DEFINES += REGIMEFILE_LIBRARY
+DEFINES += KEYBOARD_LIBRARY
 
-SOURCES += regimefile.cpp \
-    installationPlugins.cpp
+QT       += core
 
-HEADERS += regimefile.h\
-        RegimeFile_global.h
+SOURCES += keyboard.cpp
+
+HEADERS += keyboard.h\
+        Keyboard_global.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE2DF4087
+    TARGET.UID3 = 0xE3043CFC
     TARGET.CAPABILITY = 
     TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = RegimeFile.dll
+    addFiles.sources = Keyboard.dll
     addFiles.path = !:/sys/bin
     DEPLOYMENT += addFiles
 }
@@ -34,9 +35,7 @@ unix:!symbian {
     INSTALLS += target
 }
 
-INCLUDEPATH += $$PWD/../OpenFile/
-
 DESTDIR = $$PWD/../../../readyPlugins
 
 FORMS += \
-    regimefile.ui
+    keyboard.ui

@@ -33,9 +33,15 @@ private:
     QAction *startRegime;
     Ui::RegimeFile *ui;
     QList <QMenu *> listMenu;
+    QString pathPlugin;
+    QString workerText;
+
+private:
+     void loadPlugins(const QString dir);
 
 private slots:
     void slGetWidget();
+    void setWorkerText(QString);
 
 signals:
     void siGetWidget(QWidget *);

@@ -8,10 +8,16 @@ Q_EXPORT_PLUGIN(RigimeFileClass);
 
 RigimeFileClass::RigimeFileClass()
 {
+    pathPlugin = "../Plugin/RegimeFile/readyPlugins";
+
+    workerText = "Этот текст будет отображаться когда не загружен ни какой другой";
+
     menuRegimeFile = new QMenu(tr("Режим файла"));
     startRegime = new QAction(tr("Режим файла"),this);
 
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
+
+    loadPlugins(pathPlugin);
 }
 
 RigimeFileClass::~RigimeFileClass(){
@@ -54,4 +60,10 @@ void RigimeFileClass::setMenuBar(QList <QMenu *> bar)
 void RigimeFileClass::slGetWidget(){
 
     emit siGetWidget(getWidget());
+}
+
+void RigimeFileClass::setWorkerText(QString workerTextTemp)
+{
+    workerText = workerTextTemp;
+    ui->label_2->setText(workerText);
 }
