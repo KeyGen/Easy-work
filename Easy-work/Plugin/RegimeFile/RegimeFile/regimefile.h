@@ -1,7 +1,7 @@
-#ifndef COREWIDGET_H
-#define COREWIDGET_H
+#ifndef REGIMEFILE_H
+#define REGIMEFILE_H
 
-#include "CoreWidget_global.h"
+#include "RegimeFile_global.h"
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
@@ -9,28 +9,29 @@ class QAction;
 QT_END_NAMESPACE
 
 namespace Ui {
-class CoreForm;
+class RegimeFile;
 }
 
-class CoreWidgetClass : public CoreWidget
+class RigimeFileClass : public RigimeFile
 {
-    Q_OBJECT Q_INTERFACES(CoreWidget)
+    Q_OBJECT Q_INTERFACES(RigimeFile)
 
 public:
-    CoreWidgetClass();
+    RigimeFileClass();
     virtual QString getVersion()    { return "1.0"; }
-    virtual QString getName()       { return "Core Widget"; }
+    virtual QString getName()       { return "Regime File"; }
     virtual QWidget * getWidget();
     virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
 
-    virtual ~CoreWidgetClass() {}
+    virtual ~RigimeFileClass() {}
 
 private:
     QWidget *widget;
     QMenuBar *menuBar;
+    QMenu *menuRegimeFile;
     QAction *startRegime;
-    Ui::CoreForm *ui;
+    Ui::RegimeFile *ui;
     QList <QMenu *> listMenu;
 
 private slots:
@@ -40,4 +41,4 @@ signals:
     void siGetWidget(QWidget *);
 };
 
-#endif // COREWIDGET_H
+#endif // REGIMEFILE_H

@@ -1,5 +1,5 @@
-#ifndef COREWIDGET_GLOBAL_H
-#define COREWIDGET_GLOBAL_H
+#ifndef REGIMEFILE_GLOBAL_H
+#define REGIMEFILE_GLOBAL_H
 
 #include <QtPlugin>
 
@@ -9,7 +9,7 @@ class QMenuBar;
 class QMenu;
 QT_END_NAMESPACE
 
-class CoreWidget : public QObject
+class RigimeFile : public QObject
 {
 
 public:
@@ -19,7 +19,7 @@ public:
     virtual QSize getSize()         = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
 
-    virtual ~CoreWidget() {}
+    virtual ~RigimeFile() {}
 
 signals:
     virtual void siGetWidget(QWidget *) = 0;
@@ -27,8 +27,8 @@ signals:
 
 QT_BEGIN_NAMESPACE
 
-Q_DECLARE_INTERFACE(CoreWidget, "CoreWidget/EasyWork/Plagin/1.0.0")
+Q_DECLARE_INTERFACE(RigimeFile, "RigimeFile/EasyWork/Plagin/1.0.0")
 
 QT_END_NAMESPACE
 
-#endif // COREWIDGET_GLOBAL_H
+#endif // REGIMEFILE_GLOBAL_H

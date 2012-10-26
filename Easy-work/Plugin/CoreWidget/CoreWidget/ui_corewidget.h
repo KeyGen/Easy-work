@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'corewidget.ui'
 **
-** Created: Fri Oct 26 09:28:55 2012
+** Created: Fri Oct 26 14:41:42 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -24,16 +24,16 @@ QT_BEGIN_NAMESPACE
 class Ui_CoreForm
 {
 public:
-    QGridLayout *gridLayout;
+    QGridLayout *centralGridLayout;
     QLabel *label;
 
     void setupUi(QWidget *CoreForm)
     {
         if (CoreForm->objectName().isEmpty())
             CoreForm->setObjectName(QString::fromUtf8("CoreForm"));
-        CoreForm->resize(665, 262);
-        gridLayout = new QGridLayout(CoreForm);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        CoreForm->resize(705, 243);
+        centralGridLayout = new QGridLayout(CoreForm);
+        centralGridLayout->setObjectName(QString::fromUtf8("centralGridLayout"));
         label = new QLabel(CoreForm);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
@@ -44,7 +44,7 @@ public:
         label->setFrameShape(QFrame::Box);
         label->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        centralGridLayout->addWidget(label, 0, 0, 1, 1);
 
 
         retranslateUi(CoreForm);
@@ -54,7 +54,7 @@ public:
 
     void retranslateUi(QWidget *CoreForm)
     {
-        CoreForm->setWindowTitle(QApplication::translate("CoreForm", "Form", 0, QApplication::UnicodeUTF8));
+        CoreForm->setWindowTitle(QApplication::translate("CoreForm", "Easy work v1.0", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("CoreForm", "\320\224\320\276\320\261\321\200\320\276 \320\277\320\276\320\266\320\260\320\273\320\276\320\262\320\260\321\202\321\214 \320\262 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\203 Easy work", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
