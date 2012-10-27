@@ -11,7 +11,9 @@ DEFINES += KEYBOARD_LIBRARY
 
 QT       += core
 
-SOURCES += keyboard.cpp
+SOURCES += keyboard.cpp \
+    slots.cpp \
+    installatiosPlugins.cpp
 
 HEADERS += keyboard.h\
         Keyboard_global.h
@@ -36,6 +38,8 @@ unix:!symbian {
 }
 
 DESTDIR = $$PWD/../../../readyPlugins
+
+INCLUDEPATH += $$PWD/../Plugin/FindKeyboardLayout/
 
 FORMS += \
     keyboard.ui

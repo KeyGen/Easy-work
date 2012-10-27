@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="standartLanguage">standartEnglish.language</file>
+    </qresource>
+</RCC>

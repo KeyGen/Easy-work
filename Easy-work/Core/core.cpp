@@ -15,6 +15,8 @@ Core::Core(QWidget *parent)
     moveWindowCenter();
 }
 
+Core::~Core() {}
+
 void Core::moveWindowCenter(){
     // Запустим программу по центру экрана
     QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
@@ -42,24 +44,36 @@ void Core::installationsCoreMenu()
     this->setFocusPolicy(Qt::StrongFocus); // Focus Tab and Click
 }
 
+// slots
 void Core::slSetCentralWidget(QWidget *widget)
 {
     QMainWindow::setWindowTitle(widget->windowTitle());
     this->setCentralWidget(widget);
 }
 
-void Core::keyPressEvent (QKeyEvent *event)
-{
-    qDebug() << event->text();
-    qDebug() << QApplication::keyboardInputLocale().bcp47Name();
+// signals
+void Core::keyPressEvent  (QKeyEvent *event){
+    emit siKeyPressEvent  (event);
 }
 
-void Core::focusInEvent ( QFocusEvent * event )
-{
-    qDebug() << "проверка раскладки";
+void Core::keyReleaseEvent(QKeyEvent * event){
+    emit siKeyReleaseEvent(event);
 }
 
-Core::~Core()
-{
-
+void Core::resizeEvent    (QResizeEvent * event){
+    emit siResizeEvent(event);
 }
+
+void Core::moveEvent      (QMoveEvent * event){
+    emit siMoveEvent(event);
+}
+
+void Core::closeEvent     (QCloseEvent * event){
+    emit siCloseEvent(event);
+}
+
+void Core::focusInEvent   (QFocusEvent * event){
+    emit siFocusInEvent(event);
+}
+
+

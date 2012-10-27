@@ -1,0 +1,283 @@
+WindowTitle=English
+
+<key>
+  <objectName>One</objectName>
+  <shift>!</shift>
+  <noShift>1</noShift>
+</key>
+
+<key>
+  <objectName>Two</objectName>
+  <shift>@</shift>
+  <noShift>2</noShift>
+</key>
+
+<key>
+  <objectName>Three</objectName>
+  <shift>#</shift>
+  <noShift>3</noShift>
+</key>
+
+<key>
+  <objectName>Four</objectName>
+  <shift>$</shift>
+  <noShift>4</noShift>
+</key>
+
+<key>
+  <objectName>Five</objectName>
+  <shift>%</shift>
+  <noShift>5</noShift>
+</key>
+
+<key>
+  <objectName>Six</objectName>
+  <shift>^</shift>
+  <noShift>6</noShift>
+</key>
+
+<key>
+  <objectName>Seven</objectName>
+  <shift>&</shift>
+  <noShift>7</noShift>
+</key>
+
+<key>
+  <objectName>Eight</objectName>
+  <shift>*</shift>
+  <noShift>8</noShift>
+</key>
+
+<key>
+  <objectName>Nine</objectName>
+  <shift>(</shift>
+  <noShift>9</noShift>
+</key>
+
+<key>
+  <objectName>Null</objectName>
+  <shift>)</shift>
+  <noShift>0</noShift>
+</key>
+
+<key>
+  <objectName>Square_brackets_left</objectName>
+  <shift>{</shift>
+  <noShift>[</noShift>
+</key>
+
+<key>
+  <objectName>Square_brackets_right</objectName>
+  <shift>}</shift>
+  <noShift>]</noShift>
+</key>
+
+<key>
+  <objectName>Skew_left</objectName>
+  <shift>|</shift>
+  <noShift>\</noShift>
+</key>
+
+<key>
+  <objectName>Skew_right</objectName>
+  <shift>?</shift>
+  <noShift>/</noShift>
+</key>
+
+<key>
+  <objectName>apostrophe_one</objectName>
+  <shift>~</shift>
+  <noShift>`</noShift>
+</key>
+
+<key>
+  <objectName>apostrophe_two</objectName>
+  <shift>"</shift>
+  <noShift>'</noShift>
+</key>
+
+<key>
+  <objectName>Comma</objectName>
+  <shift><</shift>
+  <noShift>,</noShift>
+</key>
+
+<key>
+  <objectName>Point</objectName>
+  <shift>></shift>
+  <noShift>.</noShift>
+</key>
+
+<key>
+  <objectName>Semicolon</objectName>
+  <shift>:</shift>
+  <noShift>;</noShift>
+</key>
+
+<key>
+  <objectName>Dash</objectName>
+  <shift>_</shift>
+  <noShift>-</noShift>
+</key>
+
+<key>
+  <objectName>Equal</objectName>
+  <shift>+</shift>
+  <noShift>=</noShift>
+</key>
+
+<key>
+  <objectName>Z</objectName>
+  <shift>Z</shift>
+  <noShift>z</noShift>
+</key>
+
+<key>
+  <objectName>V</objectName>
+  <shift>V</shift>
+  <noShift>v</noShift>
+</key>
+
+<key>
+  <objectName>Y</objectName>
+  <shift>Y</shift>
+  <noShift>y</noShift>
+</key>
+
+<key>
+  <objectName>P</objectName>
+  <shift>P</shift>
+  <noShift>p</noShift>
+</key>
+
+<key>
+  <objectName>H</objectName>
+  <shift>H</shift>
+  <noShift>h</noShift>
+</key>
+
+<key>
+  <objectName>O</objectName>
+  <shift>O</shift>
+  <noShift>o</noShift>
+</key>
+
+<key>
+  <objectName>T</objectName>
+  <shift>T</shift>
+  <noShift>t</noShift>
+</key>
+
+<key>
+  <objectName>I</objectName>
+  <shift>I</shift>
+  <noShift>i</noShift>
+</key>
+
+<key>
+  <objectName>G</objectName>
+  <shift>G</shift>
+  <noShift>g</noShift>
+</key>
+
+<key>
+  <objectName>F</objectName>
+  <shift>F</shift>
+  <noShift>f</noShift>
+</key>
+
+<key>
+  <objectName>N</objectName>
+  <shift>N</shift>
+  <noShift>n</noShift>
+</key>
+
+<key>
+  <objectName>K</objectName>
+  <shift>K</shift>
+  <noShift>k</noShift>
+</key>
+
+<key>
+  <objectName>L</objectName>
+  <shift>L</shift>
+  <noShift>l</noShift>
+</key>
+
+<key>
+  <objectName>B</objectName>
+  <shift>B</shift>
+  <noShift>b</noShift>
+</key>
+
+<key>
+  <objectName>M</objectName>
+  <shift>M</shift>
+  <noShift>m</noShift>
+</key>
+
+<key>
+  <objectName>X</objectName>
+  <shift>X</shift>
+  <noShift>x</noShift>
+</key>
+
+<key>
+  <objectName>U</objectName>
+  <shift>U</shift>
+  <noShift>u</noShift>
+</key>
+
+<key>
+  <objectName>Q</objectName>
+  <shift>Q</shift>
+  <noShift>q</noShift>
+</key>
+
+<key>
+  <objectName>S</objectName>
+  <shift>S</shift>
+  <noShift>s</noShift>
+</key>
+
+<key>
+  <objectName>C</objectName>
+  <shift>C</shift>
+  <noShift>c</noShift>
+</key>
+
+<key>
+  <objectName>W</objectName>
+  <shift>W</shift>
+  <noShift>w</noShift>
+</key>
+
+<key>
+  <objectName>D</objectName>
+  <shift>D</shift>
+  <noShift>d</noShift>
+</key>
+
+<key>
+  <objectName>E</objectName>
+  <shift>E</shift>
+  <noShift>e</noShift>
+</key>
+
+<key>
+  <objectName>R</objectName>
+  <shift>R</shift>
+  <noShift>r</noShift>
+</key>
+
+<key>
+  <objectName>J</objectName>
+  <shift>J</shift>
+  <noShift>j</noShift>
+</key>
+
+<key>
+  <objectName>A</objectName>
+  <shift>A</shift>
+  <noShift>a</noShift>
+</key>

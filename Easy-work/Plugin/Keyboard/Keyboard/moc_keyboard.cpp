@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'keyboard.h'
 **
-** Created: Fri Oct 26 21:05:39 2012
+** Created: Sun Oct 28 00:19:49 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,26 +23,54 @@ static const uint qt_meta_data_KeyboardClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       0,    0, // methods
+       8,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
+ // slots: signature, parameters, type, tag, flags
+      15,   14,   14,   14, 0x08,
+      33,   14,   14,   14, 0x08,
+      61,   55,   14,   14, 0x0a,
+      89,   55,   14,   14, 0x0a,
+     119,   55,   14,   14, 0x0a,
+     148,   55,   14,   14, 0x0a,
+     173,   55,   14,   14, 0x0a,
+     200,   55,   14,   14, 0x0a,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_KeyboardClass[] = {
-    "KeyboardClass\0"
+    "KeyboardClass\0\0slMoveEvent(bool)\0"
+    "setKeyboardLanguage()\0event\0"
+    "slKeyPressEvent(QKeyEvent*)\0"
+    "slKeyReleaseEvent(QKeyEvent*)\0"
+    "slResizeEvent(QResizeEvent*)\0"
+    "slMoveEvent(QMoveEvent*)\0"
+    "slCloseEvent(QCloseEvent*)\0"
+    "slFocusInEvent(QFocusEvent*)\0"
 };
 
 void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    Q_UNUSED(_o);
-    Q_UNUSED(_id);
-    Q_UNUSED(_c);
-    Q_UNUSED(_a);
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        Q_ASSERT(staticMetaObject.cast(_o));
+        KeyboardClass *_t = static_cast<KeyboardClass *>(_o);
+        switch (_id) {
+        case 0: _t->slMoveEvent((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 1: _t->setKeyboardLanguage(); break;
+        case 2: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 3: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 4: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 5: _t->slMoveEvent((*reinterpret_cast< QMoveEvent*(*)>(_a[1]))); break;
+        case 6: _t->slCloseEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 7: _t->slFocusInEvent((*reinterpret_cast< QFocusEvent*(*)>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObjectExtraData KeyboardClass::staticMetaObjectExtraData = {
@@ -78,6 +106,11 @@ int KeyboardClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = Keyboard::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 8)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 8;
+    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

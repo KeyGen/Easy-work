@@ -5,6 +5,11 @@
 
 QT_BEGIN_NAMESPACE
 class QMenu;
+class QKeyEvent;
+class QResizeEvent;
+class QMoveEvent;
+class QCloseEvent;
+class QFocusEvent;
 QT_END_NAMESPACE
 
 class Keyboard : public QObject
@@ -16,6 +21,14 @@ public:
     virtual QMenu* getMenu()        = 0;
 
     virtual ~Keyboard() {}
+
+public slots:
+    virtual void slKeyPressEvent  (QKeyEvent *event)        = 0;
+    virtual void slKeyReleaseEvent(QKeyEvent *event)        = 0;
+    virtual void slResizeEvent    (QResizeEvent * event)    = 0;
+    virtual void slMoveEvent      (QMoveEvent * event)      = 0;
+    virtual void slCloseEvent     (QCloseEvent * event)     = 0;
+    virtual void slFocusInEvent   (QFocusEvent * event)     = 0;
 };
 
 QT_BEGIN_NAMESPACE
