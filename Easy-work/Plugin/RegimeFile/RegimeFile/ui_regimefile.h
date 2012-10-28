@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimefile.ui'
 **
-** Created: Fri Oct 26 14:41:43 2012
+** Created: Sun Oct 28 14:25:06 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,8 +27,8 @@ class Ui_RegimeFile
 public:
     QGridLayout *centralGridLayout;
     QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLabel *label_2;
+    QLabel *labelShow;
+    QLabel *labelInput;
 
     void setupUi(QWidget *RegimeFile)
     {
@@ -42,25 +42,25 @@ public:
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, -1, -1, -1);
-        label = new QLabel(RegimeFile);
-        label->setObjectName(QString::fromUtf8("label"));
+        labelShow = new QLabel(RegimeFile);
+        labelShow->setObjectName(QString::fromUtf8("labelShow"));
         QFont font;
         font.setPointSize(18);
         font.setBold(true);
         font.setWeight(75);
-        label->setFont(font);
-        label->setFrameShape(QFrame::Box);
-        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-        label->setMargin(0);
+        labelShow->setFont(font);
+        labelShow->setFrameShape(QFrame::Box);
+        labelShow->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        labelShow->setMargin(0);
 
-        horizontalLayout->addWidget(label);
+        horizontalLayout->addWidget(labelShow);
 
-        label_2 = new QLabel(RegimeFile);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setFont(font);
-        label_2->setFrameShape(QFrame::Box);
+        labelInput = new QLabel(RegimeFile);
+        labelInput->setObjectName(QString::fromUtf8("labelInput"));
+        labelInput->setFont(font);
+        labelInput->setFrameShape(QFrame::Box);
 
-        horizontalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(labelInput);
 
 
         centralGridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
@@ -74,8 +74,8 @@ public:
     void retranslateUi(QWidget *RegimeFile)
     {
         RegimeFile->setWindowTitle(QApplication::translate("RegimeFile", "\320\240\320\265\320\266\320\270\320\274 \321\204\320\260\320\271\320\273\320\260", 0, QApplication::UnicodeUTF8));
-        label->setText(QApplication::translate("RegimeFile", "\320\237\321\200\320\276\320\261\320\265\320\273 = \321\201\321\202\320\260\321\200\321\202", 0, QApplication::UnicodeUTF8));
-        label_2->setText(QApplication::translate("RegimeFile", "Enter = \321\201\321\202\320\276\320\277", 0, QApplication::UnicodeUTF8));
+        labelShow->setText(QApplication::translate("RegimeFile", "\320\237\321\200\320\276\320\261\320\265\320\273 = \321\201\321\202\320\260\321\200\321\202", 0, QApplication::UnicodeUTF8));
+        labelInput->setText(QApplication::translate("RegimeFile", "Enter = \321\201\321\202\320\276\320\277", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

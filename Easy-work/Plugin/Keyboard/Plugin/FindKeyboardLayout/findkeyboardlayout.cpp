@@ -1,3 +1,22 @@
+/**
+ * Easy work - writed by KeyGen 2012
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301, USA.
+ */
+
 #include "findkeyboardlayout.h"
 
 #include "qzipreader_p.h"
@@ -8,8 +27,7 @@ Q_EXPORT_PLUGIN(FindKeyboardLayoutClass);
 
 FindKeyboardLayoutClass::FindKeyboardLayoutClass()
 {
-    menu = new QMenu();
-    //readerZipKeyboardLayout();
+    menu = new QMenu("Доступны языки");
 }
 
 // Распаковка zip
@@ -30,7 +48,9 @@ QMultiHash <QString, QString> FindKeyboardLayoutClass::readerZipKeyboardLayout(Q
             foreach (QZipReader::FileInfo info, zip_reader.fileInfoList()) {
                 if(info.isFile)
                     if(info.filePath.contains(".language")) {
-                        qDebug() << "Файл:" << info.filePath << "Размер:" << info.size; // размер извлекаемого файла
+                        //qDebug() << "Файл:" << info.filePath << "Размер:" << info.size; // размер извлекаемого файла
+
+                        emit getWindowsTitle(findNameLanguage(zip_reader.fileData(info.filePath)));
                         return createLanguageHash(zip_reader.fileData(info.filePath));
                     }
             }
@@ -133,4 +153,46 @@ QString FindKeyboardLayoutClass::getShift(QString str){
     }
 
     return temp;
+}
+
+QMenu* FindKeyboardLayoutClass::createLanguageMenu(QString path){
+
+    QDir dir(path.toAscii());    // Создаем QDir в указанном пути (path)
+
+    QStringList filters;            // Устанавливаем фильтры
+    filters << "*.language";  // Устанавливаем фильтры
+
+    QStringList listLanguage = dir.entryList(filters);
+
+    for(int i = 0; i < listLanguage.size(); i++)
+    {
+        QZipReader zip_reader(path.toAscii() + listLanguage.at(i));
+
+        if (zip_reader.exists()) {          // Если все чудно
+
+            foreach (QZipReader::FileInfo info, zip_reader.fileInfoList()) {
+                if(info.isFile)
+                    if(info.filePath.contains(".language")) {
+
+                        listActionLanguage.append(new QAction(findNameLanguage(zip_reader.fileData(info.filePath)),this));
+                    }
+            }
+        }
+    }
+
+    menu->addActions(listActionLanguage);
+
+    return menu;
+}
+
+QString FindKeyboardLayoutClass::findNameLanguage(QByteArray By){
+
+    QString text = By;
+    QString name;
+
+    for(int i = text.indexOf("WindowTitle=") + 12; text.at(i)!='\n'; i++)
+        name += text.at(i);
+
+
+    return name;
 }

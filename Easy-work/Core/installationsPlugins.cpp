@@ -89,14 +89,17 @@ void Core::installationsRigimeFile(RigimeFile * plugin)
 {
     qDebug() << plugin->getName() << plugin->getVersion();
     plugin->setMenuBar(coreMenu);
+    plugin->setRegExpWord(&coreExpWord);
 
     connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
+    connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
 }
 
 void Core::installationsKeyboard(Keyboard *plugin)
 {
     qDebug() << plugin->getName() << plugin->getVersion();
     setting->addMenu(plugin->getMenu());
+    plugin->setRegExpWord(&coreExpWord);
 
     connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent(QCloseEvent*)));
     connect(this,SIGNAL(siKeyReleaseEvent(QKeyEvent*)),plugin,SLOT(slKeyReleaseEvent(QKeyEvent*)));

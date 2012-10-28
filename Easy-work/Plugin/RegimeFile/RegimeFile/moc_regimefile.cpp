@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimefile.h'
 **
-** Created: Fri Oct 26 17:13:58 2012
+** Created: Sun Oct 28 15:19:47 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_RigimeFileClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -36,6 +36,7 @@ static const uint qt_meta_data_RigimeFileClass[] = {
  // slots: signature, parameters, type, tag, flags
       39,   16,   16,   16, 0x08,
       53,   16,   16,   16, 0x08,
+      82,   76,   16,   16, 0x0a,
 
        0        // eod
 };
@@ -43,6 +44,7 @@ static const uint qt_meta_data_RigimeFileClass[] = {
 static const char qt_meta_stringdata_RigimeFileClass[] = {
     "RigimeFileClass\0\0siGetWidget(QWidget*)\0"
     "slGetWidget()\0setWorkerText(QString)\0"
+    "event\0slKeyPressEvent(QKeyEvent*)\0"
 };
 
 void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -54,6 +56,7 @@ void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->siGetWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
         case 1: _t->slGetWidget(); break;
         case 2: _t->setWorkerText((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 3: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -93,9 +96,9 @@ int RigimeFileClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 4;
     }
     return _id;
 }
