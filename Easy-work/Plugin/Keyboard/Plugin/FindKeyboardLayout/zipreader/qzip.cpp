@@ -51,7 +51,7 @@
 #include <qdebug.h>
 #include <qdir.h>
 
-#include "zlib.h"
+#include "qzip/zlib/zlib.h"
 
 #if defined(Q_OS_WIN)
 #undef S_IFREG

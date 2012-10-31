@@ -29,26 +29,30 @@
 #include <QRegExp>
 #include <QAction>
 
+void KeyboardClass::slAnimatePressWord (QChar ch){
+    if(!examinationKeyboardLanguage())
+        findKeyAndPress(QString(ch));
+}
+
 void KeyboardClass::slKeyPressEvent  (QKeyEvent *event){
 
-    if(event->text().contains(*regExpWord))
-    {
-        if(!examinationKeyboardLanguage())
-        setDownWordAndSymbolKey(event->text(), true);
+    if(!examinationKeyboardLanguage()){
+        if(!setDownWordAndSymbolKey(event->text(), true))
+            setDownControlKey(event, true);
     }
     else
-        setDownControlKey(event, true);
+            setDownControlKey(event, true);
+
 }
 
 void KeyboardClass::slKeyReleaseEvent(QKeyEvent *event){
 
-    if(event->text().contains(*regExpWord))
-    {
-        if(!examinationKeyboardLanguage())
-        setDownWordAndSymbolKey(event->text(), false);
+    if(!examinationKeyboardLanguage()){
+        if(!setDownWordAndSymbolKey(event->text(), false))
+            setDownControlKey(event, false);
     }
     else
-        setDownControlKey(event, false);
+            setDownControlKey(event, false);
 }
 
 void KeyboardClass::slResizeEvent    (QResizeEvent * event){

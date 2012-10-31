@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimefile.ui'
 **
-** Created: Sun Oct 28 14:25:06 2012
+** Created: Tue Oct 30 21:54:47 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -25,23 +25,22 @@ QT_BEGIN_NAMESPACE
 class Ui_RegimeFile
 {
 public:
-    QGridLayout *centralGridLayout;
+    QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *labelShow;
     QLabel *labelInput;
+    QLabel *labelStart;
 
     void setupUi(QWidget *RegimeFile)
     {
         if (RegimeFile->objectName().isEmpty())
             RegimeFile->setObjectName(QString::fromUtf8("RegimeFile"));
-        RegimeFile->resize(668, 218);
-        centralGridLayout = new QGridLayout(RegimeFile);
-        centralGridLayout->setContentsMargins(4, 4, 4, 4);
-        centralGridLayout->setObjectName(QString::fromUtf8("centralGridLayout"));
+        RegimeFile->resize(765, 210);
+        gridLayout = new QGridLayout(RegimeFile);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, -1, -1, -1);
         labelShow = new QLabel(RegimeFile);
         labelShow->setObjectName(QString::fromUtf8("labelShow"));
         QFont font;
@@ -49,6 +48,10 @@ public:
         font.setBold(true);
         font.setWeight(75);
         labelShow->setFont(font);
+        labelShow->setStyleSheet(QString::fromUtf8("    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, \n"
+"				stop:0 #9C9C9C, \n"
+"				stop:0.5 #E8E8E8, \n"
+"				stop:1 #9C9C9C);"));
         labelShow->setFrameShape(QFrame::Box);
         labelShow->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         labelShow->setMargin(0);
@@ -58,12 +61,22 @@ public:
         labelInput = new QLabel(RegimeFile);
         labelInput->setObjectName(QString::fromUtf8("labelInput"));
         labelInput->setFont(font);
+        labelInput->setStyleSheet(QString::fromUtf8("    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,\n"
+"			      stop:0 #464451, \n"
+"			      stop:0.5  #9C9C9C, \n"
+"			      stop:1 #464451);"));
         labelInput->setFrameShape(QFrame::Box);
 
         horizontalLayout->addWidget(labelInput);
 
+        labelStart = new QLabel(RegimeFile);
+        labelStart->setObjectName(QString::fromUtf8("labelStart"));
+        labelStart->setFrameShape(QFrame::Box);
 
-        centralGridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
+        horizontalLayout->addWidget(labelStart);
+
+
+        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
 
 
         retranslateUi(RegimeFile);
@@ -74,8 +87,9 @@ public:
     void retranslateUi(QWidget *RegimeFile)
     {
         RegimeFile->setWindowTitle(QApplication::translate("RegimeFile", "\320\240\320\265\320\266\320\270\320\274 \321\204\320\260\320\271\320\273\320\260", 0, QApplication::UnicodeUTF8));
-        labelShow->setText(QApplication::translate("RegimeFile", "\320\237\321\200\320\276\320\261\320\265\320\273 = \321\201\321\202\320\260\321\200\321\202", 0, QApplication::UnicodeUTF8));
-        labelInput->setText(QApplication::translate("RegimeFile", "Enter = \321\201\321\202\320\276\320\277", 0, QApplication::UnicodeUTF8));
+        labelShow->setText(QString());
+        labelInput->setText(QString());
+        labelStart->setText(QApplication::translate("RegimeFile", "<html><head/><body><p align=\"center\"><span style=\" font-size:22pt;\">\320\237\321\200\320\276\320\261\320\265\320\273 - \321\201\321\202\320\260\321\200\321\202, Enter - \321\201\321\202\320\276\320\277, Pause - \320\277\320\260\321\203\320\267\320\260</span></p></body></html>", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

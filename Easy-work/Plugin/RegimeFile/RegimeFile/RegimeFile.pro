@@ -39,4 +39,5 @@ INCLUDEPATH += $$PWD/../OpenFile/
 DESTDIR = $$PWD/../../../readyPlugins
 
 FORMS += \
-    regimefile.ui
+    regimefile.ui \
+    infoPrint.ui

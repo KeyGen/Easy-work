@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'corewidget.ui'
 **
-** Created: Sun Oct 28 11:04:00 2012
+** Created: Tue Oct 30 21:54:45 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

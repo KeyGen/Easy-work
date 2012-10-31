@@ -27,6 +27,7 @@ class QSize;
 class QMenuBar;
 class QMenu;
 class QKeyEvent;
+class QResizeEvent;
 QT_END_NAMESPACE
 
 class RigimeFile : public QObject
@@ -37,16 +38,19 @@ public:
     virtual QString getName()       = 0;
     virtual QWidget* getWidget()    = 0;
     virtual QSize getSize()         = 0;
-    virtual void setRegExpWord(QRegExp *) = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
 
     virtual ~RigimeFile() {}
 
 signals:
     virtual void siGetWidget(QWidget *) = 0;
+    virtual void siGetWord(QChar)       = 0;
+    virtual void stopLesson()           = 0;
 
 public slots:
     virtual void slKeyPressEvent  (QKeyEvent *event)        = 0;
+    virtual void slResizeEvent    (QResizeEvent * event)    = 0;
+    virtual void siKeyboardLanguageChange()                 = 0;
 };
 
 QT_BEGIN_NAMESPACE

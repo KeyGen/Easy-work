@@ -22,6 +22,7 @@
 #include "FindKeyboardLayout_global.h"
 
 #include <QMenu>
+#include <QTimer>
 #include <QDialog>
 #include <QKeyEvent>
 #include <QApplication>
@@ -61,9 +62,60 @@ bool KeyboardClass::findAndSetKeyboardLanguage(){
 
     setKeyboardLanguage();
 
+    pressDownOffAllKey();
+
+    emit siKeyboardLanguageChange();
+
     languageBL = false;
 
     return true;
+}
+
+void KeyboardClass::pressDownOffAllKey(){
+    QList<QPushButton *> widgets = ui->gridWidget->findChildren<QPushButton *>();
+    for(int i = 0; i<widgets.size(); i++) widgets.at(i)->setDown(false);
+}
+
+void KeyboardClass::findKeyAndPress(QString findKeyTemp){
+    findKey = findKeyTemp;
+    QTimer::singleShot(150, this, SLOT(findKeyAndPressTimer()));
+}
+
+void KeyboardClass::findKeyAndPressTimer(){
+
+    if(findKey != " ")
+    {
+        QMultiHash <QString,QString>::iterator it = hashLanguage.begin();
+
+        for(int i = 2; it!= hashLanguage.end(); ++it,i++)
+        {
+            if(it.value() == findKey){
+
+                QList<QPushButton *> widgets = ui->gridWidget->findChildren<QPushButton *>(it.key());
+
+                if(!widgets.isEmpty())
+                    widgets.at(0)->setDown(true);
+
+                if(!(i%2)){
+                    ui->Shift_left->setDown(true);
+                    ui->Shift_right->setDown(true);
+                }
+            }
+        }
+    }
+    else
+        ui->Space->setDown(true);
+}
+
+bool KeyboardClass::setDownWordAndSymbolKey(QString ch, bool BL)
+{
+    QList<QPushButton *> allPButtons = ui->gridWidget->findChildren<QPushButton *>();
+
+    for(int i = 0; i<allPButtons.size(); i++)
+        if(allPButtons.at(i)->text() == ch)
+        {allPButtons.at(i)->setDown(BL); return true; break;}
+
+    return false;
 }
 
 void KeyboardClass::setKeyboardLanguage(){
@@ -138,15 +190,6 @@ void KeyboardClass::setDownControlKey(QKeyEvent *event, bool BL)
             if(examinationKeyboardLanguage())
                 if(!findAndSetKeyboardLanguage())
                     qDebug() << "Раскладка не найдена";
-}
-
-void KeyboardClass::setDownWordAndSymbolKey(QString ch, bool BL)
-{
-    QList<QPushButton *> allPButtons = ui->gridWidget->findChildren<QPushButton *>();
-
-    for(int i = 0; i<allPButtons.size(); i++)
-        if(allPButtons.at(i)->text() == ch)
-        {allPButtons.at(i)->setDown(BL); break;}
 }
 
 KeyboardClass::~KeyboardClass(){

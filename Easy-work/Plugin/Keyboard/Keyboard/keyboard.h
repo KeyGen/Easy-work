@@ -46,7 +46,6 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Keyboard"; }
     virtual QMenu* getMenu()        { return menu; }
-    virtual void setRegExpWord(QRegExp * rx) { regExpWord = rx; }
 
     virtual ~KeyboardClass();
 
@@ -63,20 +62,23 @@ private:
     bool languageBL;
     bool pressShift;
     QMultiHash <QString,QString> hashLanguage;
-    QRegExp *regExpWord;
     FindKeyboardLayout *keyboardLayout;
+
+    QString findKey;
 
 private:
     void setDownControlKey(QKeyEvent *event, bool);
-    void setDownWordAndSymbolKey(QString, bool);
+    bool setDownWordAndSymbolKey(QString, bool);
     bool examinationKeyboardLanguage();
     bool findAndSetKeyboardLanguage();
     QString sistemsKeyboardLanguage();
     void loadPlugins(const QString dir);
+    void findKeyAndPress(QString);
 
 private slots:
     void slMoveEvent(bool);
     void setKeyboardLanguage();
+    void findKeyAndPressTimer();
 
 public slots:
     virtual void slKeyPressEvent  (QKeyEvent *event);
@@ -85,6 +87,11 @@ public slots:
     virtual void slMoveEvent      (QMoveEvent * event);
     virtual void slCloseEvent     (QCloseEvent * event);
     virtual void slFocusInEvent   (QFocusEvent * event);
+    virtual void slAnimatePressWord (QChar);
+    virtual void pressDownOffAllKey();
+
+signals:
+    void siKeyboardLanguageChange();
 };
 
 #endif // KEYBOARD_H

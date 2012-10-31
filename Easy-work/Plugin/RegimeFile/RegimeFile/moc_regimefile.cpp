@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimefile.h'
 **
-** Created: Sun Oct 28 15:19:47 2012
+** Created: Wed Oct 31 20:56:39 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,28 +23,37 @@ static const uint qt_meta_data_RigimeFileClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       3,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       17,   16,   16,   16, 0x05,
+      39,   16,   16,   16, 0x05,
+      56,   16,   16,   16, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      39,   16,   16,   16, 0x08,
-      53,   16,   16,   16, 0x08,
-      82,   76,   16,   16, 0x0a,
+      69,   16,   16,   16, 0x08,
+      83,   16,   16,   16, 0x08,
+     106,   16,   16,   16, 0x08,
+     130,  124,   16,   16, 0x0a,
+     158,  124,   16,   16, 0x0a,
+     187,   16,   16,   16, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_RigimeFileClass[] = {
     "RigimeFileClass\0\0siGetWidget(QWidget*)\0"
+    "siGetWord(QChar)\0stopLesson()\0"
     "slGetWidget()\0setWorkerText(QString)\0"
-    "event\0slKeyPressEvent(QKeyEvent*)\0"
+    "destroyedWidget()\0event\0"
+    "slKeyPressEvent(QKeyEvent*)\0"
+    "slResizeEvent(QResizeEvent*)\0"
+    "siKeyboardLanguageChange()\0"
 };
 
 void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -54,9 +63,14 @@ void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         RigimeFileClass *_t = static_cast<RigimeFileClass *>(_o);
         switch (_id) {
         case 0: _t->siGetWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
-        case 1: _t->slGetWidget(); break;
-        case 2: _t->setWorkerText((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 1: _t->siGetWord((*reinterpret_cast< QChar(*)>(_a[1]))); break;
+        case 2: _t->stopLesson(); break;
+        case 3: _t->slGetWidget(); break;
+        case 4: _t->setWorkerText((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 5: _t->destroyedWidget(); break;
+        case 6: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 7: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 8: _t->siKeyboardLanguageChange(); break;
         default: ;
         }
     }
@@ -96,9 +110,9 @@ int RigimeFileClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 9;
     }
     return _id;
 }
@@ -108,5 +122,18 @@ void RigimeFileClass::siGetWidget(QWidget * _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void RigimeFileClass::siGetWord(QChar _t1)
+{
+    void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
+}
+
+// SIGNAL 2
+void RigimeFileClass::stopLesson()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, 0);
 }
 QT_END_MOC_NAMESPACE

@@ -21,14 +21,18 @@
 #define REGIMEFILE_H
 
 #include "RegimeFile_global.h"
+#include <QSize>
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
 class QAction;
+class QDialog;
+class QTime;
 QT_END_NAMESPACE
 
 namespace Ui {
 class RegimeFile;
+class InfoPrint;
 }
 
 class RigimeFileClass : public RigimeFile
@@ -39,7 +43,6 @@ public:
     RigimeFileClass();
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Regime File"; }
-    virtual void setRegExpWord(QRegExp * rx) { regExpWord = rx; }
     virtual QWidget * getWidget();
     virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
@@ -52,24 +55,40 @@ private:
     QMenu *menuRegimeFile;
     QAction *startRegime;
     Ui::RegimeFile *ui;
+    Ui::InfoPrint *uiDialog;
     QList <QMenu *> listMenu;
     QString pathPlugin;
     QString workerText;
-    QRegExp *regExpWord;
+    bool destroyedBL;
+    bool startBL;
+    QSize saveSizeLabelInputAndShow;
+
+    int calculateCorrectly;
+    int calculateError;
+    QTime *calculateTime;
+
+    QDialog *dialog;
 
 private:
      void loadPlugins(const QString dir);
      void centralAdministration(QChar);
+     void startPrint();
+     void stopPrint();
 
 private slots:
     void slGetWidget();
     void setWorkerText(QString);
+    void destroyedWidget();
 
 public slots:
     void slKeyPressEvent  (QKeyEvent *event);
+    void slResizeEvent (QResizeEvent * event);
+    void siKeyboardLanguageChange();
 
 signals:
     void siGetWidget(QWidget *);
+    void siGetWord(QChar);
+    void stopLesson();
 };
 
 #endif // REGIMEFILE_H

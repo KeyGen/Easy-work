@@ -63,7 +63,7 @@ private:
     QMenu *setting;
     QMenu *help;
 
-    QRegExp coreExpWord;
+    Keyboard *keyboard;
 
 private slots:
     void slSetCentralWidget(QWidget *);

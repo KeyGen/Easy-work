@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'openfile.ui'
 **
-** Created: Sun Oct 28 11:04:05 2012
+** Created: Tue Oct 30 21:54:50 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

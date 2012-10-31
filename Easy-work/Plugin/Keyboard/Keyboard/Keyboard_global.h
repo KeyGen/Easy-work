@@ -38,7 +38,6 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QMenu* getMenu()        = 0;
-    virtual void setRegExpWord(QRegExp *) = 0;
 
     virtual ~Keyboard() {}
 
@@ -49,6 +48,11 @@ public slots:
     virtual void slMoveEvent      (QMoveEvent * event)      = 0;
     virtual void slCloseEvent     (QCloseEvent * event)     = 0;
     virtual void slFocusInEvent   (QFocusEvent * event)     = 0;
+    virtual void slAnimatePressWord (QChar)                 = 0;
+    virtual void pressDownOffAllKey()                       = 0;
+
+signals:
+    virtual void siKeyboardLanguageChange()                 = 0;
 };
 
 QT_BEGIN_NAMESPACE

@@ -32,11 +32,6 @@ Core::Core(QWidget *parent)
     pathPlugin = "../readyPlugins";
     loadPlugins(pathPlugin);
     moveWindowCenter();
-
-    coreExpWord.setPattern("(\\w+)|" // Буквы
-                           "([~`!@#$%^&*()_+-={}|\\]\\\\:\\[\";\',./<>?])|" // English
-                           "([№])|" // Russian
-                           "([“„])");
 }
 
 Core::~Core() {}

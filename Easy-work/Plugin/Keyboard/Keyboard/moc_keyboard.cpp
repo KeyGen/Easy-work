@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'keyboard.h'
 **
-** Created: Sun Oct 28 13:50:04 2012
+** Created: Wed Oct 31 20:38:31 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,35 +23,44 @@ static const uint qt_meta_data_KeyboardClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      15,   14,   14,   14, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      15,   14,   14,   14, 0x08,
-      33,   14,   14,   14, 0x08,
-      61,   55,   14,   14, 0x0a,
-      89,   55,   14,   14, 0x0a,
-     119,   55,   14,   14, 0x0a,
-     148,   55,   14,   14, 0x0a,
-     173,   55,   14,   14, 0x0a,
-     200,   55,   14,   14, 0x0a,
+      42,   14,   14,   14, 0x08,
+      60,   14,   14,   14, 0x08,
+      82,   14,   14,   14, 0x08,
+     111,  105,   14,   14, 0x0a,
+     139,  105,   14,   14, 0x0a,
+     169,  105,   14,   14, 0x0a,
+     198,  105,   14,   14, 0x0a,
+     223,  105,   14,   14, 0x0a,
+     250,  105,   14,   14, 0x0a,
+     279,   14,   14,   14, 0x0a,
+     305,   14,   14,   14, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_KeyboardClass[] = {
-    "KeyboardClass\0\0slMoveEvent(bool)\0"
-    "setKeyboardLanguage()\0event\0"
+    "KeyboardClass\0\0siKeyboardLanguageChange()\0"
+    "slMoveEvent(bool)\0setKeyboardLanguage()\0"
+    "findKeyAndPressTimer()\0event\0"
     "slKeyPressEvent(QKeyEvent*)\0"
     "slKeyReleaseEvent(QKeyEvent*)\0"
     "slResizeEvent(QResizeEvent*)\0"
     "slMoveEvent(QMoveEvent*)\0"
     "slCloseEvent(QCloseEvent*)\0"
     "slFocusInEvent(QFocusEvent*)\0"
+    "slAnimatePressWord(QChar)\0"
+    "pressDownOffAllKey()\0"
 };
 
 void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -60,14 +69,18 @@ void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         Q_ASSERT(staticMetaObject.cast(_o));
         KeyboardClass *_t = static_cast<KeyboardClass *>(_o);
         switch (_id) {
-        case 0: _t->slMoveEvent((*reinterpret_cast< bool(*)>(_a[1]))); break;
-        case 1: _t->setKeyboardLanguage(); break;
-        case 2: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 3: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 4: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
-        case 5: _t->slMoveEvent((*reinterpret_cast< QMoveEvent*(*)>(_a[1]))); break;
-        case 6: _t->slCloseEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
-        case 7: _t->slFocusInEvent((*reinterpret_cast< QFocusEvent*(*)>(_a[1]))); break;
+        case 0: _t->siKeyboardLanguageChange(); break;
+        case 1: _t->slMoveEvent((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 2: _t->setKeyboardLanguage(); break;
+        case 3: _t->findKeyAndPressTimer(); break;
+        case 4: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 5: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 6: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 7: _t->slMoveEvent((*reinterpret_cast< QMoveEvent*(*)>(_a[1]))); break;
+        case 8: _t->slCloseEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 9: _t->slFocusInEvent((*reinterpret_cast< QFocusEvent*(*)>(_a[1]))); break;
+        case 10: _t->slAnimatePressWord((*reinterpret_cast< QChar(*)>(_a[1]))); break;
+        case 11: _t->pressDownOffAllKey(); break;
         default: ;
         }
     }
@@ -107,10 +120,16 @@ int KeyboardClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 12;
     }
     return _id;
+}
+
+// SIGNAL 0
+void KeyboardClass::siKeyboardLanguageChange()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
 }
 QT_END_MOC_NAMESPACE
