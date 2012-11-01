@@ -1,0 +1,272 @@
+/*
+ * name_ru: Море
+ * name_en: Principal view
+ */
+
+QWidget {
+  /*background-image: url(../../readyStyleCSS/Principal_view.style/image/background.jpg);*/
+
+    background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, 
+				stop:0 blue, 
+				stop: 0.50 blue, 
+				stop:1 #00ffff);
+
+    border-radius: 15px;
+    background-position: top center;
+    background-origin: padding;
+}
+
+
+QLabel { 
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+				stop:0 #9C9C9C, 
+				stop:0.5 #E8E8E8, 
+				stop:1 #9C9C9C);
+
+    border: solid black;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: black;
+    font-size: 40px;
+    /*border-width: 2px 0px 2px 2px;*/
+}
+
+QLabel#inputText { 
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,
+			      stop:0 #464451, 
+			      stop:0.5  #9C9C9C, 
+			      stop:1 #464451);
+    border: solid;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-size: 40px;
+    border-width: 2px 2px 2px 0px;
+      
+}
+
+QProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 #464451, stop:1 #9C9C9C);
+    border-radius: 9px;
+}
+
+QProgressBar {
+    background: #E8E8E8;
+    color: black;
+    font: bold;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+
+QMenuBar {
+spacing: 20;
+min-width: 72px;
+min-height: 25px;
+
+background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+			    stop:0 #171717, 
+			    stop: 0.25 grey, 
+			    stop: 0.75 grey, 
+			    stop:1 #171717);
+}
+
+QMenuBar::item {
+    background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, 
+				stop:0 #00ffff,
+				stop:1 blue);
+    border: 1px solid blue;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-width: 1px 1px 0px 1px;
+    color: black;
+}
+
+QMenuBar::item:pressed {
+  background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, 
+			  stop:0 #000000,
+			  stop:1 blue);
+  color: white
+}
+
+/* Keyboard */
+
+QWidget#gridWidget {
+  
+      background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, 
+				stop:0 blue,
+				stop:0.25 blue,
+				stop: 0.50 #00ffff,
+				stop:0.75 blue,
+				stop:1 blue);
+
+    border-radius: 15px;
+    background-position: top center;
+    background-origin: padding;
+}
+
+QPushButton {
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+			  stop:0 #464451,
+			  stop:0.5  #9C9C9C,
+			  stop:1 #464451);
+  
+     border-style: outset;
+     border-width: 1px;
+     border-radius: 10px;
+     border-color: black;
+     font: bold 14px;
+     padding: 6px;
+     color: white;
+}
+
+QPushButton:pressed {
+
+    border-style: inset;
+     
+    background-color: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+		    stop:0 #464451, 
+		    stop:0.5  #000000, 
+		    stop:1 #464451);
+}
+/*
+ * Применяются общие параметры для:
+QPushButton#Enter, 
+QPushButton#Backspace,
+QPushButton#Null,
+QPushButton#Dash,
+QPushButton#Equal,
+QPushButton#P,
+QPushButton#Square_brackets_left,
+QPushButton#Square_brackets_right,
+QPushButton#Skew_left,
+QPushButton#Semicolon,
+QPushButton#apostrophe_two,
+QPushButton#Skew_right,
+QPushButton#Shift_right,
+QPushButton#Alt_right,
+QPushButton#Menu,
+QPushButton#Ctrl_right,
+QPushButton#apostrophe_one, 
+QPushButton#One,
+QPushButton#Tab,
+QPushButton#Q,
+QPushButton#Caps_Lock,
+QPushButton#A,
+QPushButton#Shift_left,
+QPushButton#Z,
+QPushButton#Ctrl_left,
+QPushButton#Win,
+QPushButton#Alt_left
+*/
+
+QPushButton#Nine, 
+QPushButton#O,
+QPushButton#L,
+QPushButton#Point,
+QPushButton#Two, 
+QPushButton#W,
+QPushButton#S,
+QPushButton#X
+{
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+			  stop:0 #8f3d00,
+			  stop:0.5  #df865c,
+			  stop:1 #8f3d00);
+}
+
+QPushButton#Eight, 
+QPushButton#I,
+QPushButton#K,
+QPushButton#Comma,
+QPushButton#Three, 
+QPushButton#E,
+QPushButton#D,
+QPushButton#C
+{
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+			  stop:0 #005c16,
+			  stop:0.5  #00a940,
+			  stop:1 #005c16);
+}
+
+
+QPushButton#Seven, 
+QPushButton#Y,
+QPushButton#U,
+QPushButton#H,
+QPushButton#J,
+QPushButton#N,
+QPushButton#M
+{
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+			  stop:0 #960000,
+			  stop:0.5  #e97f66,
+			  stop:1 #960000);
+}
+
+QPushButton#Four, 
+QPushButton#Five,
+QPushButton#Six,
+QPushButton#R,
+QPushButton#T,
+QPushButton#F,
+QPushButton#G,
+QPushButton#V,
+QPushButton#B
+{
+  
+    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+			  stop:0 #431353,
+			  stop:0.5  #9623e5,
+			  stop:1 #431353);
+}
+
+
+QPushButton:pressed#Nine, 
+QPushButton:pressed#O,
+QPushButton:pressed#L, 
+QPushButton:pressed#Point,
+QPushButton:pressed#Seven,
+QPushButton:pressed#Y,
+QPushButton:pressed#U,
+QPushButton:pressed#H,
+QPushButton:pressed#J,
+QPushButton:pressed#N,
+QPushButton:pressed#M,
+QPushButton:pressed#Four, 
+QPushButton:pressed#Five,
+QPushButton:pressed#Six,
+QPushButton:pressed#R,
+QPushButton:pressed#T,
+QPushButton:pressed#F,
+QPushButton:pressed#G,
+QPushButton:pressed#V,
+QPushButton:pressed#B,
+QPushButton:pressed#Eight, 
+QPushButton:pressed#I,
+QPushButton:pressed#K,
+QPushButton:pressed#Comma,
+QPushButton:pressed#Two,
+QPushButton:pressed#W,
+QPushButton:pressed#S,
+QPushButton:pressed#X,
+QPushButton:pressed#Three,
+QPushButton:pressed#E,
+QPushButton:pressed#D,
+QPushButton:pressed#C
+{
+
+    border-style: inset;
+     
+    background-color: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
+		    stop:0 #464451, 
+		    stop:0.5  #000000, 
+		    stop:1 #464451);
+}

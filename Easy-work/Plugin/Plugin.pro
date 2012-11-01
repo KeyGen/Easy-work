@@ -3,4 +3,6 @@ TEMPLATE = subdirs
 SUBDIRS += \
     CoreWidget \
     RegimeFile \
-    Keyboard
+    Keyboard \
+    what_is \
+    Style

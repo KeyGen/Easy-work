@@ -23,6 +23,8 @@
 #include "CoreWidget_global.h"
 #include "RegimeFile_global.h"
 #include "Keyboard_global.h"
+#include "Style_global.h"
+#include "what_is_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
@@ -70,6 +72,14 @@ void Core::loadPlugins(const QString dir) {
             {
                 installationsRigimeFile(plugin);
             }
+            else if(Style * plugin = qobject_cast<Style *>(obj))
+            {
+                installationsStyle(plugin);
+            }
+            else if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
+            {
+                installationsWhatIs(plugin);
+            }
 
         }
     }
@@ -110,4 +120,15 @@ void Core::installationsKeyboard(Keyboard *plugin)
     connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
     connect(this,SIGNAL(siMoveEvent(QMoveEvent*)),plugin,SLOT(slMoveEvent(QMoveEvent*)));
     connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
+}
+
+void Core::installationsWhatIs(WhatIs * plugin){
+    qDebug() << plugin->getName() << plugin->getVersion();
+    help->addAction(plugin->getAction());
+}
+
+void Core::installationsStyle(Style *plugin){
+    qDebug() << plugin->getName() << plugin->getVersion();
+    this->setStyleSheet(plugin->getStyleSheet());
+    //connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
 }

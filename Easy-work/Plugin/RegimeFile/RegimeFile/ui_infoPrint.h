@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infoPrint.ui'
 **
-** Created: Wed Oct 31 22:09:11 2012
+** Created: Thu Nov 1 21:06:43 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -15,6 +15,7 @@
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
 #include <QtGui/QDialog>
+#include <QtGui/QFrame>
 #include <QtGui/QGridLayout>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QHeaderView>
@@ -30,25 +31,29 @@ public:
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *labelError;
+    QFrame *line;
     QLabel *inputError;
     QPushButton *Ok;
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout_2;
     QLabel *labelCorrectly;
+    QFrame *line_2;
     QLabel *inputCorrectly;
     QHBoxLayout *horizontalLayout_3;
     QLabel *labelTime;
+    QFrame *line_3;
     QLabel *inputTime;
     QHBoxLayout *horizontalLayout_5;
     QLabel *labelSign;
+    QFrame *line_4;
     QLabel *inputSign;
 
     void setupUi(QDialog *InfoPrint)
     {
         if (InfoPrint->objectName().isEmpty())
             InfoPrint->setObjectName(QString::fromUtf8("InfoPrint"));
-        InfoPrint->resize(418, 211);
+        InfoPrint->resize(448, 211);
         gridLayout = new QGridLayout(InfoPrint);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout = new QHBoxLayout();
@@ -63,6 +68,13 @@ public:
         labelError->setFont(font);
 
         horizontalLayout->addWidget(labelError);
+
+        line = new QFrame(InfoPrint);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout->addWidget(line);
 
         inputError = new QLabel(InfoPrint);
         inputError->setObjectName(QString::fromUtf8("inputError"));
@@ -95,6 +107,13 @@ public:
 
         horizontalLayout_2->addWidget(labelCorrectly);
 
+        line_2 = new QFrame(InfoPrint);
+        line_2->setObjectName(QString::fromUtf8("line_2"));
+        line_2->setFrameShape(QFrame::VLine);
+        line_2->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_2->addWidget(line_2);
+
         inputCorrectly = new QLabel(InfoPrint);
         inputCorrectly->setObjectName(QString::fromUtf8("inputCorrectly"));
         inputCorrectly->setFont(font);
@@ -112,6 +131,13 @@ public:
 
         horizontalLayout_3->addWidget(labelTime);
 
+        line_3 = new QFrame(InfoPrint);
+        line_3->setObjectName(QString::fromUtf8("line_3"));
+        line_3->setFrameShape(QFrame::VLine);
+        line_3->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_3->addWidget(line_3);
+
         inputTime = new QLabel(InfoPrint);
         inputTime->setObjectName(QString::fromUtf8("inputTime"));
         inputTime->setFont(font);
@@ -128,6 +154,13 @@ public:
         labelSign->setFont(font);
 
         horizontalLayout_5->addWidget(labelSign);
+
+        line_4 = new QFrame(InfoPrint);
+        line_4->setObjectName(QString::fromUtf8("line_4"));
+        line_4->setFrameShape(QFrame::VLine);
+        line_4->setFrameShadow(QFrame::Sunken);
+
+        horizontalLayout_5->addWidget(line_4);
 
         inputSign = new QLabel(InfoPrint);
         inputSign->setObjectName(QString::fromUtf8("inputSign"));
@@ -155,7 +188,7 @@ public:
         inputCorrectly->setText(QString());
         labelTime->setText(QApplication::translate("InfoPrint", "\320\227\320\260\321\202\321\200\320\260\321\207\320\265\320\275\320\275\320\276\320\265 \320\262\321\200\320\265\320\274\321\217 (\320\274\320\270\320\275):", 0, QApplication::UnicodeUTF8));
         inputTime->setText(QString());
-        labelSign->setText(QApplication::translate("InfoPrint", "\320\227\320\275\320\260\320\272\320\276\320\262 \320\267\320\260 \320\274\320\270\320\275\321\203\321\202\321\203:", 0, QApplication::UnicodeUTF8));
+        labelSign->setText(QApplication::translate("InfoPrint", "\320\227\320\275\320\260\320\272\320\276\320\262 \320\267\320\260 \320\274\320\270\320\275\321\203\321\202\321\203 :", 0, QApplication::UnicodeUTF8));
         inputSign->setText(QString());
     } // retranslateUi
 

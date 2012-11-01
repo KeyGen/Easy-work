@@ -27,6 +27,8 @@ QT_BEGIN_NAMESPACE
 class CoreWidget;
 class RigimeFile;
 class Keyboard;
+class Style;
+class WhatIs;
 class QMenuBar;
 QT_END_NAMESPACE
 
@@ -50,6 +52,8 @@ private:
     void installationsCoreWidget(CoreWidget * plugin);
     void installationsRigimeFile(RigimeFile * plugin);
     void installationsKeyboard(Keyboard *plugin);
+    void installationsWhatIs(WhatIs *plugin);
+    void installationsStyle(Style *plugin);
 
     void installationsCoreMenu();
     void moveWindowCenter();

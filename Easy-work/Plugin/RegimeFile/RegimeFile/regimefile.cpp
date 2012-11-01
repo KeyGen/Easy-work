@@ -137,8 +137,8 @@ void RigimeFileClass::stopPrint(){
 
     uiDialog->inputCorrectly->setText(QString::number(calculateCorrectly,10));
     uiDialog->inputError->setText(QString::number(calculateError,10));
-    uiDialog->inputTime->setText(QString::number((calculateTime->elapsed()/1000.0)/60.0));
-    uiDialog->inputSign->setText(QString::number(calculateCorrectly/((calculateTime->elapsed()/1000.0)/60.0)));
+    uiDialog->inputTime->setText(QString::number((calculateTime->elapsed()/1000.0)));
+    uiDialog->inputSign->setText(QString::number(calculateCorrectly/((calculateTime->elapsed()/1000.0))));
 
     dialog->exec();
 }

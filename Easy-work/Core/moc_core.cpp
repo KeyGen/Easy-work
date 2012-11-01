@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'core.h'
 **
-** Created: Wed Oct 31 20:44:26 2012
+** Created: Thu Nov 1 21:06:40 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

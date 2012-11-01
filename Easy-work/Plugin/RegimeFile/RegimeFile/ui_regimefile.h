@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimefile.ui'
 **
-** Created: Tue Oct 30 21:54:47 2012
+** Created: Thu Nov 1 21:06:43 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -52,7 +52,7 @@ public:
 "				stop:0 #9C9C9C, \n"
 "				stop:0.5 #E8E8E8, \n"
 "				stop:1 #9C9C9C);"));
-        labelShow->setFrameShape(QFrame::Box);
+        labelShow->setFrameShape(QFrame::NoFrame);
         labelShow->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         labelShow->setMargin(0);
 
@@ -64,8 +64,10 @@ public:
         labelInput->setStyleSheet(QString::fromUtf8("    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,\n"
 "			      stop:0 #464451, \n"
 "			      stop:0.5  #9C9C9C, \n"
-"			      stop:1 #464451);"));
-        labelInput->setFrameShape(QFrame::Box);
+"			      stop:1 #464451);\n"
+"\n"
+"color: white"));
+        labelInput->setFrameShape(QFrame::NoFrame);
 
         horizontalLayout->addWidget(labelInput);
 
@@ -89,7 +91,7 @@ public:
         RegimeFile->setWindowTitle(QApplication::translate("RegimeFile", "\320\240\320\265\320\266\320\270\320\274 \321\204\320\260\320\271\320\273\320\260", 0, QApplication::UnicodeUTF8));
         labelShow->setText(QString());
         labelInput->setText(QString());
-        labelStart->setText(QApplication::translate("RegimeFile", "<html><head/><body><p align=\"center\"><span style=\" font-size:22pt;\">\320\237\321\200\320\276\320\261\320\265\320\273 - \321\201\321\202\320\260\321\200\321\202, Enter - \321\201\321\202\320\276\320\277, Pause - \320\277\320\260\321\203\320\267\320\260</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+        labelStart->setText(QApplication::translate("RegimeFile", "<html><head/><body><p align=\"center\"><span style=\" font-size:22pt;\">\320\237\321\200\320\276\320\261\320\265\320\273 - \321\201\321\202\320\260\321\200\321\202, Enter - \321\201\321\202\320\276\320\277</span></p></body></html>", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };

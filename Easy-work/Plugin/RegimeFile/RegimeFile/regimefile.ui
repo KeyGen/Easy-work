@@ -35,7 +35,7 @@
 				stop:1 #9C9C9C);</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Box</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <property name="text">
         <string/>
@@ -61,10 +61,12 @@
         <string notr="true">    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,
 			      stop:0 #464451, 
 			      stop:0.5  #9C9C9C, 
-			      stop:1 #464451);</string>
+			      stop:1 #464451);
+
+color: white</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::Box</enum>
+        <enum>QFrame::NoFrame</enum>
        </property>
        <property name="text">
         <string/>
@@ -77,7 +79,7 @@
         <enum>QFrame::Box</enum>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;Пробел - старт, Enter - стоп, Pause - пауза&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;Пробел - старт, Enter - стоп&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
       </widget>
      </item>

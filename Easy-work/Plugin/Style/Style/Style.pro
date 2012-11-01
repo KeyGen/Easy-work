@@ -1,27 +1,27 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-10-27T19:03:03
+# Project created by QtCreator 2012-11-01T20:24:31
 #
 #-------------------------------------------------
 
-#QT       -= gui
+QT       += gui
 
-TARGET = FindKeyboardLayout
+TARGET = Style
 TEMPLATE = lib
 
-DEFINES += FINDKEYBOARDLAYOUT_LIBRARY
+DEFINES += STYLE_LIBRARY
 
-SOURCES += findkeyboardlayout.cpp
+SOURCES += style.cpp
 
-HEADERS += findkeyboardlayout.h\
-        FindKeyboardLayout_global.h
+HEADERS += style.h\
+        Style_global.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE72EAB80
+    TARGET.UID3 = 0xE79E0364
     TARGET.CAPABILITY = 
     TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = FindKeyboardLayout.dll
+    addFiles.sources = Style.dll
     addFiles.path = !:/sys/bin
     DEPLOYMENT += addFiles
 }
@@ -35,9 +35,9 @@ unix:!symbian {
     INSTALLS += target
 }
 
-DESTDIR = $$PWD/../../readyPlugins
+INCLUDEPATH += $$PWD/../../qzip/
 
-INCLUDEPATH += $$PWD/../../../qzip/
+DESTDIR = $$PWD/../../../readyPlugins
 
 RESOURCES += \
-    standartLanguage.qrc
+    standartStyle.qrc
