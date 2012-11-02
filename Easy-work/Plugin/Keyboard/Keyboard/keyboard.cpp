@@ -33,7 +33,7 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 {
     dialog = new QDialog;
     ui->setupUi(dialog);
-    dialog->setWindowFlags(Qt::Widget);
+    dialog->setWindowFlags(Qt::Tool);
 
     menu = new QMenu(tr("Клавиатура"));
 
@@ -51,8 +51,24 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 
     pressShift = false;
 
-    connect(showKeyboard,SIGNAL(triggered()),dialog,SLOT(show()));
+    connect(showKeyboard,SIGNAL(triggered()),this,SLOT(show()));
     connect(move_yes_no,SIGNAL(triggered(bool)),this,SLOT(slMoveEvent(bool)));
+}
+
+void KeyboardClass::setStyleSheet(QString style){
+    dialog->setStyleSheet(style);
+}
+
+void KeyboardClass::show() {
+
+    if(examinationKeyboardLanguage())
+        if(!findAndSetKeyboardLanguage())
+            qDebug() << "Раскладка не найдена";
+
+    if(dialog->isMinimized())
+    dialog->close();
+
+    dialog->show();
 }
 
 bool KeyboardClass::findAndSetKeyboardLanguage(){
@@ -74,11 +90,14 @@ bool KeyboardClass::findAndSetKeyboardLanguage(){
 void KeyboardClass::pressDownOffAllKey(){
     QList<QPushButton *> widgets = ui->gridWidget->findChildren<QPushButton *>();
     for(int i = 0; i<widgets.size(); i++) widgets.at(i)->setDown(false);
+
+    pressShift = false;
+    setKeyboardLanguage();
 }
 
 void KeyboardClass::findKeyAndPress(QString findKeyTemp){
     findKey = findKeyTemp;
-    QTimer::singleShot(150, this, SLOT(findKeyAndPressTimer()));
+    QTimer::singleShot(100, this, SLOT(findKeyAndPressTimer()));
 }
 
 void KeyboardClass::findKeyAndPressTimer(){
@@ -131,7 +150,7 @@ void KeyboardClass::setKeyboardLanguage(){
             for(; it!=hashLanguage.end(); ++it) {
 
                 if(!pressShift)
-                ++it;
+                        ++it;
 
                 if(it.value() == "&")
                     allPButtons.at(i)->setText("&&");
@@ -161,8 +180,11 @@ void KeyboardClass::setDownControlKey(QKeyEvent *event, bool BL)
         ui->Space->setDown(BL);
     else if(event->key() == Qt::Key_Tab)
         ui->Tab->setDown(BL);
-    else if(event->key() == Qt::Key_Shift)
-        {ui->Shift_left->setDown(BL); ui->Shift_right->setDown(BL); pressShift = BL; setKeyboardLanguage();}
+    else if(event->key() == Qt::Key_Shift){
+        ui->Shift_left->setDown(BL); ui->Shift_right->setDown(BL); pressShift = BL; setKeyboardLanguage();
+        if(!BL)
+            pressDownOffAllKey();
+    }
     else if(event->key() == Qt::Key_CapsLock)
         ui->Caps_Lock->setDown(BL);
     else if(event->key() == Qt::Key_Control)
@@ -181,21 +203,12 @@ void KeyboardClass::setDownControlKey(QKeyEvent *event, bool BL)
         ui->Alt_right->setDown(BL);
     }
 
-    if(ui->Shift_left->isDown()&&ui->Ctrl_left->isDown()) {
-        languageBL = true;
-    }
-
-    if(languageBL)
-        if(!(ui->Shift_left->isDown())&&!(ui->Alt_left->isDown())|!(ui->Shift_left->isDown())&&!(ui->Ctrl_left->isDown()))
-            if(examinationKeyboardLanguage())
-                if(!findAndSetKeyboardLanguage())
-                    qDebug() << "Раскладка не найдена";
+    if(!(ui->Shift_left->isDown())&&!(ui->Alt_left->isDown())|!(ui->Shift_left->isDown())&&!(ui->Ctrl_left->isDown()))
+        if(examinationKeyboardLanguage())
+            if(!findAndSetKeyboardLanguage())
+                qDebug() << "Раскладка не найдена";
 }
 
 KeyboardClass::~KeyboardClass(){
     delete ui;
-}
-
-QString KeyboardClass::sistemsKeyboardLanguage(){
-    return QApplication::keyboardInputLocale().bcp47Name();
 }

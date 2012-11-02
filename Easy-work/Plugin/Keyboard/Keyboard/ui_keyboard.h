@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'keyboard.ui'
 **
-** Created: Thu Nov 1 21:06:49 2012
+** Created: Sat Nov 3 00:06:12 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -93,7 +93,7 @@ public:
     {
         if (DialogKeyboard->objectName().isEmpty())
             DialogKeyboard->setObjectName(QString::fromUtf8("DialogKeyboard"));
-        DialogKeyboard->resize(672, 145);
+        DialogKeyboard->resize(734, 195);
         DialogKeyboard->setMinimumSize(QSize(0, 0));
         DialogKeyboard->setMaximumSize(QSize(16777215, 16777215));
         DialogKeyboard->setStyleSheet(QString::fromUtf8(""));

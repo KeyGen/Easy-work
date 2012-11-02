@@ -61,6 +61,7 @@ void Core::loadPlugins(const QString dir) {
 
             if (CoreWidget * plugin = qobject_cast<CoreWidget *>(obj))
             {
+                coreWidget = plugin;
                 installationsCoreWidget(plugin);
             }
             else if(Keyboard * plugin = qobject_cast<Keyboard *>(obj))
@@ -83,6 +84,9 @@ void Core::loadPlugins(const QString dir) {
 
         }
     }
+
+    keyboard->show();
+    coreWidget->getActionRegime()->trigger();
 }
 
 // Знагрузка найденных плагинов:
@@ -90,8 +94,6 @@ void Core::installationsCoreWidget(CoreWidget * plugin){
 
    qDebug() << plugin->getName() << plugin->getVersion();
    plugin->setMenuBar(coreMenu);
-   this->setCentralWidget(plugin->getWidget());
-   this->resize(plugin->getSize());
 
    connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
 }
@@ -101,8 +103,11 @@ void Core::installationsRigimeFile(RigimeFile * plugin)
     qDebug() << plugin->getName() << plugin->getVersion();
     plugin->setMenuBar(coreMenu);
 
+    coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
+
     connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
     connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
+    connect(this,SIGNAL(siKeyReleaseEvent(QKeyEvent*)),plugin,SLOT(slKeyReleaseEvent(QKeyEvent*)));
     connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
     connect(plugin,SIGNAL(siGetWord(QChar)),keyboard,SLOT(slAnimatePressWord(QChar)));
     connect(keyboard,SIGNAL(siKeyboardLanguageChange()),plugin,SLOT(siKeyboardLanguageChange()));
@@ -130,5 +135,6 @@ void Core::installationsWhatIs(WhatIs * plugin){
 void Core::installationsStyle(Style *plugin){
     qDebug() << plugin->getName() << plugin->getVersion();
     this->setStyleSheet(plugin->getStyleSheet());
+    keyboard->setStyleSheet(plugin->getStyleSheet());
     //connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
 }

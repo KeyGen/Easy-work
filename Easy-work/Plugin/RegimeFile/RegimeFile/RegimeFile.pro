@@ -41,3 +41,6 @@ DESTDIR = $$PWD/../../../readyPlugins
 FORMS += \
     regimefile.ui \
     infoPrint.ui
+
+RESOURCES += \
+    icon.qrc

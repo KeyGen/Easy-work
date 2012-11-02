@@ -13,7 +13,8 @@ QT       += core
 
 SOURCES += keyboard.cpp \
     slots.cpp \
-    installatiosPlugins.cpp
+    installatiosPlugins.cpp \
+    systemWindowsLinux.cpp
 
 HEADERS += keyboard.h\
         Keyboard_global.h

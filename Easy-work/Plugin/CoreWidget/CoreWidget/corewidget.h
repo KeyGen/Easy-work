@@ -21,6 +21,8 @@
 #define COREWIDGET_H
 
 #include "CoreWidget_global.h"
+#include <QIcon>
+
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
@@ -40,8 +42,10 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Core Widget"; }
     virtual QWidget * getWidget();
-    virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
+    virtual QAction * getActionRegime() { return startRegime; }
+
+    virtual void setRegimeMenu(QAction *, QIcon);
 
     ~CoreWidgetClass() {}
 
@@ -51,6 +55,12 @@ private:
     QAction *startRegime;
     Ui::CoreForm *ui;
     QList <QMenu *> listMenu;
+
+    QList <QAction *> listActionRegime;
+    QList <QIcon> listIconRegime;
+
+private:
+    void createRegimeMenu();
 
 private slots:
     void slGetWidget();

@@ -68,6 +68,7 @@ private:
     QMenu *help;
 
     Keyboard *keyboard;
+    CoreWidget *coreWidget;
 
 private slots:
     void slSetCentralWidget(QWidget *);

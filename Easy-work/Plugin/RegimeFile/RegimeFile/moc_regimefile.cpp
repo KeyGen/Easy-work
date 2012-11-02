@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimefile.h'
 **
-** Created: Thu Nov 1 21:06:46 2012
+** Created: Sat Nov 3 00:06:07 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_RigimeFileClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -39,9 +39,12 @@ static const uint qt_meta_data_RigimeFileClass[] = {
       69,   16,   16,   16, 0x08,
       83,   16,   16,   16, 0x08,
      106,   16,   16,   16, 0x08,
-     130,  124,   16,   16, 0x0a,
-     158,  124,   16,   16, 0x0a,
-     187,   16,   16,   16, 0x0a,
+     124,   16,   16,   16, 0x08,
+     152,   16,   16,   16, 0x08,
+     184,  178,   16,   16, 0x0a,
+     212,  178,   16,   16, 0x0a,
+     242,  178,   16,   16, 0x0a,
+     271,   16,   16,   16, 0x0a,
 
        0        // eod
 };
@@ -50,8 +53,10 @@ static const char qt_meta_stringdata_RigimeFileClass[] = {
     "RigimeFileClass\0\0siGetWidget(QWidget*)\0"
     "siGetWord(QChar)\0stopLesson()\0"
     "slGetWidget()\0setWorkerText(QString)\0"
-    "destroyedWidget()\0event\0"
+    "destroyedWidget()\0labelSetStyleSheetDefault()\0"
+    "labelSetStyleSheetError()\0event\0"
     "slKeyPressEvent(QKeyEvent*)\0"
+    "slKeyReleaseEvent(QKeyEvent*)\0"
     "slResizeEvent(QResizeEvent*)\0"
     "siKeyboardLanguageChange()\0"
 };
@@ -68,9 +73,12 @@ void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 3: _t->slGetWidget(); break;
         case 4: _t->setWorkerText((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 5: _t->destroyedWidget(); break;
-        case 6: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 7: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
-        case 8: _t->siKeyboardLanguageChange(); break;
+        case 6: _t->labelSetStyleSheetDefault(); break;
+        case 7: _t->labelSetStyleSheetError(); break;
+        case 8: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 9: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 10: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 11: _t->siKeyboardLanguageChange(); break;
         default: ;
         }
     }
@@ -110,9 +118,9 @@ int RigimeFileClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 12;
     }
     return _id;
 }

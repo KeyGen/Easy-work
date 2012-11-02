@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infoPrint.ui'
 **
-** Created: Thu Nov 1 21:06:43 2012
+** Created: Sat Nov 3 00:06:05 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -53,7 +53,7 @@ public:
     {
         if (InfoPrint->objectName().isEmpty())
             InfoPrint->setObjectName(QString::fromUtf8("InfoPrint"));
-        InfoPrint->resize(448, 211);
+        InfoPrint->resize(519, 178);
         gridLayout = new QGridLayout(InfoPrint);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout = new QHBoxLayout();
@@ -186,7 +186,7 @@ public:
         Ok->setText(QApplication::translate("InfoPrint", "Ok", 0, QApplication::UnicodeUTF8));
         labelCorrectly->setText(QApplication::translate("InfoPrint", "\320\237\321\200\320\260\320\262\320\270\320\273\321\214\320\275\320\276 \320\275\320\260\320\261\321\200\320\260\320\275\320\276:", 0, QApplication::UnicodeUTF8));
         inputCorrectly->setText(QString());
-        labelTime->setText(QApplication::translate("InfoPrint", "\320\227\320\260\321\202\321\200\320\260\321\207\320\265\320\275\320\275\320\276\320\265 \320\262\321\200\320\265\320\274\321\217 (\320\274\320\270\320\275):", 0, QApplication::UnicodeUTF8));
+        labelTime->setText(QApplication::translate("InfoPrint", "\320\227\320\260\321\202\321\200\320\260\321\207\320\265\320\275\320\275\320\276\320\265 \320\262\321\200\320\265\320\274\321\217 (\321\201\320\265\320\272):", 0, QApplication::UnicodeUTF8));
         inputTime->setText(QString());
         labelSign->setText(QApplication::translate("InfoPrint", "\320\227\320\275\320\260\320\272\320\276\320\262 \320\267\320\260 \320\274\320\270\320\275\321\203\321\202\321\203 :", 0, QApplication::UnicodeUTF8));
         inputSign->setText(QString());

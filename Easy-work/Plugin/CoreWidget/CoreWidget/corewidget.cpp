@@ -44,11 +44,9 @@ QWidget * CoreWidgetClass::getWidget() {
     for(int i = 0; i<listMenu.size(); i++)
     menuBar->addMenu(listMenu.at(i));
 
-    return widget;
-}
+    createRegimeMenu();
 
-QSize CoreWidgetClass::getSize(){
-    return widget->size();
+    return widget;
 }
 
 void CoreWidgetClass::setMenuBar(QList <QMenu *> bar)
@@ -61,4 +59,20 @@ void CoreWidgetClass::setMenuBar(QList <QMenu *> bar)
 
 void CoreWidgetClass::slGetWidget(){
     emit siGetWidget(getWidget());
+}
+
+void CoreWidgetClass::setRegimeMenu(QAction* action, QIcon icon){
+    listActionRegime << action;
+    listIconRegime << icon;
+}
+
+void CoreWidgetClass::createRegimeMenu(){
+
+    if(!listActionRegime.isEmpty())
+    {
+        ui->pushButton->setText(listActionRegime.at(0)->text());
+        ui->pushButton->setIcon(listIconRegime.at(0));
+
+        connect(ui->pushButton,SIGNAL(clicked()),listActionRegime.at(0),SIGNAL(triggered()));
+    }
 }

@@ -48,3 +48,5 @@ void WhatIsClass::renameAction(QString str)
 {
     action->setText(str);
 }
+
+// Всего строк 2135, актуальных 1660

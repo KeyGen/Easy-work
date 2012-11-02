@@ -25,6 +25,8 @@
 #include <QMenuBar>
 #include <QDialog>
 #include <QWidget>
+#include <QTimer>
+#include <QIcon>
 #include <QTime>
 #include <QSize>
 
@@ -42,7 +44,7 @@ RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
     destroyedBL = true;
     startBL = false;
 
-    workerText = "H1!lo world hello world hello world hello world";
+    workerText = "Вы можете загрузить внешний файл в меню \"Режим файла\"";
 
     menuRegimeFile = new QMenu(tr("Режим файла"));
     startRegime = new QAction(tr("Режим файла"),this);
@@ -50,6 +52,10 @@ RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
 
     loadPlugins(pathPlugin);
+}
+
+QIcon RigimeFileClass::getIcon(){
+    return QIcon(":/icon");
 }
 
 void RigimeFileClass::slResizeEvent (QResizeEvent * event){
@@ -97,6 +103,14 @@ void RigimeFileClass::slKeyPressEvent (QKeyEvent *event){
     }
 }
 
+void RigimeFileClass::slKeyReleaseEvent(QKeyEvent *event){
+
+    if(!destroyedBL)
+        if(event->key() == Qt::Key_Shift)
+            if(!ui->labelInput->text().isEmpty())
+                emit siGetWord(ui->labelInput->text().at(0));
+}
+
 void RigimeFileClass::startPrint(){
 
     startBL = true;
@@ -138,7 +152,7 @@ void RigimeFileClass::stopPrint(){
     uiDialog->inputCorrectly->setText(QString::number(calculateCorrectly,10));
     uiDialog->inputError->setText(QString::number(calculateError,10));
     uiDialog->inputTime->setText(QString::number((calculateTime->elapsed()/1000.0)));
-    uiDialog->inputSign->setText(QString::number(calculateCorrectly/((calculateTime->elapsed()/1000.0))));
+    uiDialog->inputSign->setText(QString::number((calculateCorrectly/(calculateTime->elapsed()/1000.0))*60.0));
 
     dialog->exec();
 }
@@ -161,6 +175,7 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
         }
         else
         {
+            labelSetStyleSheetError();
             calculateError++;
             emit siGetWord(ui->labelInput->text().at(0));
         }
@@ -169,6 +184,19 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
     {
         stopPrint();
     }
+}
+
+void RigimeFileClass::labelSetStyleSheetDefault(){
+    ui->labelInput->setStyleSheet("border-color: black; border-width: 2px 2px 2px 0px;");
+    ui->labelShow->setStyleSheet("border-color: black; border-width: 2px 0px 2px 2px;");
+}
+
+void RigimeFileClass::labelSetStyleSheetError(){
+
+    ui->labelInput->setStyleSheet("border-color: red; border-width: 3px 3px 3px 0px;");
+    ui->labelShow->setStyleSheet("border-color: red; border-width: 3px 0px 3px 3px;");
+
+    QTimer::singleShot(200, this, SLOT(labelSetStyleSheetDefault()));
 }
 
 RigimeFileClass::~RigimeFileClass(){
@@ -209,6 +237,8 @@ QWidget * RigimeFileClass::getWidget() {
 }
 
 void RigimeFileClass::destroyedWidget(){
+    emit stopLesson();
+    startBL = false;
     destroyedBL = true;
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
 }
@@ -236,5 +266,3 @@ void RigimeFileClass::setWorkerText(QString workerTextTemp) {
     ui->labelInput->setText(workerText);
     ui->labelShow->clear();
 }
-
-// 1761

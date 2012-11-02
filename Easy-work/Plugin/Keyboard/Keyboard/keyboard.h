@@ -46,6 +46,7 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Keyboard"; }
     virtual QMenu* getMenu()        { return menu; }
+    virtual void setStyleSheet(QString);
 
     virtual ~KeyboardClass();
 
@@ -89,6 +90,7 @@ public slots:
     virtual void slFocusInEvent   (QFocusEvent * event);
     virtual void slAnimatePressWord (QChar);
     virtual void pressDownOffAllKey();
+    virtual void show();
 
 signals:
     void siKeyboardLanguageChange();

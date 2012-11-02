@@ -26,7 +26,9 @@
 Core::Core(QWidget *parent)
     : QMainWindow(parent)
 {
-    QMainWindow::setWindowTitle("Easy work v1.0");
+    QMainWindow::setWindowTitle("Easy work beta");
+    QMainWindow::resize(850,220);
+    QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();
 
     pathPlugin = "../readyPlugins";
@@ -39,7 +41,7 @@ Core::~Core() {}
 void Core::moveWindowCenter(){
     // Запустим программу по центру экрана
     QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
-    this->move((desktop->width()-this->width())/2,(desktop->height()-this->height())/2-20); // Распологаем MainWindow в ценре
+    this->move((desktop->width()-this->width())/2,(desktop->height()-this->height())/2-150); // Распологаем MainWindow в ценре
 }
 
 void Core::installationsCoreMenu()

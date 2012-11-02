@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>448</width>
-    <height>211</height>
+    <width>519</width>
+    <height>178</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -148,7 +148,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Затраченное время (мин):</string>
+        <string>Затраченное время (сек):</string>
        </property>
       </widget>
      </item>

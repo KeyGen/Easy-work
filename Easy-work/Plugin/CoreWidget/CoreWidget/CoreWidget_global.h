@@ -26,6 +26,8 @@ QT_BEGIN_NAMESPACE
 class QSize;
 class QMenuBar;
 class QMenu;
+class QAction;
+class QIcon;
 QT_END_NAMESPACE
 
 class CoreWidget : public QObject
@@ -35,8 +37,10 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QWidget* getWidget()    = 0;
-    virtual QSize getSize()         = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
+    virtual QAction * getActionRegime() = 0;
+
+    virtual void setRegimeMenu(QAction*, QIcon) = 0;
 
     virtual ~CoreWidget() {}
 

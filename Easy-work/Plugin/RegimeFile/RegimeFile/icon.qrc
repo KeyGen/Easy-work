@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="icon">down arrow.png</file>
+        <file>Delta_Icon.ico</file>
+    </qresource>
+</RCC>

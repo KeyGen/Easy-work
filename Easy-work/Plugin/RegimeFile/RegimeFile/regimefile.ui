@@ -29,10 +29,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, 
-				stop:0 #9C9C9C, 
-				stop:0.5 #E8E8E8, 
-				stop:1 #9C9C9C);</string>
+        <string notr="true"/>
        </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
@@ -58,12 +55,7 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">    background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5,
-			      stop:0 #464451, 
-			      stop:0.5  #9C9C9C, 
-			      stop:1 #464451);
-
-color: white</string>
+        <string notr="true"/>
        </property>
        <property name="frameShape">
         <enum>QFrame::NoFrame</enum>
@@ -79,7 +71,10 @@ color: white</string>
         <enum>QFrame::Box</enum>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:22pt;&quot;&gt;Пробел - старт, Enter - стоп&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>Пробел - старт, Enter - стоп</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>

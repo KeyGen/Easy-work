@@ -28,6 +28,8 @@ class QMenuBar;
 class QMenu;
 class QKeyEvent;
 class QResizeEvent;
+class QIcon;
+class QAction;
 QT_END_NAMESPACE
 
 class RigimeFile : public QObject
@@ -39,6 +41,8 @@ public:
     virtual QWidget* getWidget()    = 0;
     virtual QSize getSize()         = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
+    virtual QAction * getActionRegime() = 0;
+    virtual QIcon getIcon() = 0;
 
     virtual ~RigimeFile() {}
 
@@ -49,6 +53,7 @@ signals:
 
 public slots:
     virtual void slKeyPressEvent  (QKeyEvent *event)        = 0;
+    virtual void slKeyReleaseEvent(QKeyEvent *event)        = 0;
     virtual void slResizeEvent    (QResizeEvent * event)    = 0;
     virtual void siKeyboardLanguageChange()                 = 0;
 };

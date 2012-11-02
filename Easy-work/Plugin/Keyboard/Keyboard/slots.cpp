@@ -58,6 +58,7 @@ void KeyboardClass::slKeyReleaseEvent(QKeyEvent *event){
 void KeyboardClass::slResizeEvent    (QResizeEvent * event){
 
     saveSizeMainWindow = event->size();
+
     saveSizeMainWindow.setHeight(saveSizeMainWindow.height()+20);
 
     slMoveEvent(true);

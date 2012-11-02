@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'keyboard.h'
 **
-** Created: Thu Nov 1 21:06:53 2012
+** Created: Sat Nov 3 00:06:17 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_KeyboardClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -45,6 +45,7 @@ static const uint qt_meta_data_KeyboardClass[] = {
      250,  105,   14,   14, 0x0a,
      279,   14,   14,   14, 0x0a,
      305,   14,   14,   14, 0x0a,
+     326,   14,   14,   14, 0x0a,
 
        0        // eod
 };
@@ -60,7 +61,7 @@ static const char qt_meta_stringdata_KeyboardClass[] = {
     "slCloseEvent(QCloseEvent*)\0"
     "slFocusInEvent(QFocusEvent*)\0"
     "slAnimatePressWord(QChar)\0"
-    "pressDownOffAllKey()\0"
+    "pressDownOffAllKey()\0show()\0"
 };
 
 void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -81,6 +82,7 @@ void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 9: _t->slFocusInEvent((*reinterpret_cast< QFocusEvent*(*)>(_a[1]))); break;
         case 10: _t->slAnimatePressWord((*reinterpret_cast< QChar(*)>(_a[1]))); break;
         case 11: _t->pressDownOffAllKey(); break;
+        case 12: _t->show(); break;
         default: ;
         }
     }
@@ -120,9 +122,9 @@ int KeyboardClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

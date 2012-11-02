@@ -46,6 +46,8 @@ public:
     virtual QWidget * getWidget();
     virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
+    virtual QIcon getIcon();
+    virtual QAction * getActionRegime() { return startRegime; }
 
     virtual ~RigimeFileClass();
 
@@ -79,9 +81,12 @@ private slots:
     void slGetWidget();
     void setWorkerText(QString);
     void destroyedWidget();
+    void labelSetStyleSheetDefault();
+    void labelSetStyleSheetError();
 
 public slots:
     void slKeyPressEvent  (QKeyEvent *event);
+    void slKeyReleaseEvent(QKeyEvent *event);
     void slResizeEvent (QResizeEvent * event);
     void siKeyboardLanguageChange();
 
