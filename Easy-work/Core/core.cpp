@@ -31,7 +31,7 @@ Core::Core(QWidget *parent)
     QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();
 
-    pathPlugin = "../readyPlugins";
+    pathPlugin = "Plugins";
     loadPlugins(pathPlugin);
     moveWindowCenter();
 }

@@ -38,7 +38,7 @@ unix:!symbian {
     INSTALLS += target
 }
 
-DESTDIR = $$PWD/../../../readyPlugins
+DESTDIR = $$PWD/../../../Easy-work/Plugins
 
 INCLUDEPATH += $$PWD/../Plugin/FindKeyboardLayout/
 

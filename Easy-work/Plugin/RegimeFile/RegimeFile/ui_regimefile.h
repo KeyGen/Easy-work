@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimefile.ui'
 **
-** Created: Sat Nov 3 00:06:05 2012
+** Created: Sat Nov 3 14:02:46 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

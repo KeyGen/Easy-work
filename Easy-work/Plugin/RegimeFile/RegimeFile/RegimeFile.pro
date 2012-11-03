@@ -36,7 +36,7 @@ unix:!symbian {
 
 INCLUDEPATH += $$PWD/../OpenFile/
 
-DESTDIR = $$PWD/../../../readyPlugins
+DESTDIR = $$PWD/../../../Easy-work/Plugins
 
 FORMS += \
     regimefile.ui \

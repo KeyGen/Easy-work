@@ -46,7 +46,7 @@ private:
 
 public:
     QMultiHash <QString, QString> readerZipKeyboardLayout(QString, QString);
-    QMenu* createLanguageMenu(QString path = "../Plugin/Keyboard/KeyboardLayout/");
+    QMenu* createLanguageMenu(QString path = "KeyboardLayout/");
 
 private:
     QMultiHash <QString, QString> returnStandartLanguage();

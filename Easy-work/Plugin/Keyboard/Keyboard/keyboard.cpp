@@ -37,7 +37,7 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 
     menu = new QMenu(tr("Клавиатура"));
 
-    pathPlugin = "../Plugin/Keyboard/readyPlugins";
+    pathPlugin = "Plugins/PluginsKeyboard";
 
     loadPlugins(pathPlugin);
 

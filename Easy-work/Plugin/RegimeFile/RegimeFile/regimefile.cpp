@@ -39,7 +39,7 @@ RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
 
     calculateTime = new QTime;
 
-    pathPlugin = "../Plugin/RegimeFile/readyPlugins";
+    pathPlugin = "Plugins/PluginsRegimeFile";
 
     destroyedBL = true;
     startBL = false;

@@ -35,7 +35,7 @@ unix:!symbian {
     INSTALLS += target
 }
 
-DESTDIR = $$PWD/../../../readyPlugins
+DESTDIR = $$PWD/../../../Easy-work/Plugins
 
 FORMS += \
     corewidget.ui

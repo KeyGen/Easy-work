@@ -38,7 +38,7 @@ class OpenFileClass : public OpenFile
 public:
     OpenFileClass();
     virtual QString getVersion()    { return "1.0"; }
-    virtual QString getName()       { return "Open File"; }
+    virtual QString getName()       { return "Plugin Regime File - Open File"; }
     virtual QAction * getAction()   { return actionOpenFile; }
 
     virtual ~OpenFileClass() {}
