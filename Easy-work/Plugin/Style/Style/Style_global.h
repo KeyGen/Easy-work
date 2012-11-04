@@ -22,9 +22,9 @@
 
 #include <QtPlugin>
 
-//QT_BEGIN_NAMESPACE
-
-//QT_END_NAMESPACE
+QT_BEGIN_NAMESPACE
+class QMenu;
+QT_END_NAMESPACE
 
 class Style : public QObject
 {
@@ -33,6 +33,8 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QString getStyleSheet() = 0;
+
+    virtual QMenu * createZipStyle(QString path = "Style/") = 0;
 
     virtual ~Style() {}
 

@@ -67,8 +67,10 @@ private:
     QMenu *setting;
     QMenu *help;
 
+    QWidget *saveCentralWidget;
     Keyboard *keyboard;
     CoreWidget *coreWidget;
+    Style *style;
 
 private slots:
     void slSetCentralWidget(QWidget *);

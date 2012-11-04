@@ -24,6 +24,10 @@
 
 #include <QDebug>
 
+QT_BEGIN_NAMESPACE
+class QAction;
+QT_END_NAMESPACE
+
 class StyleClass : public Style
 {
     Q_OBJECT Q_INTERFACES(Style)
@@ -32,12 +36,25 @@ public:
     StyleClass();
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Style"; }
-    virtual QString getStyleSheet() { return readFile(); }
+    virtual QString getStyleSheet() { return readStyleSheet(); }
+
+    virtual QMenu * createZipStyle(QString path = "Style/");
 
     virtual ~StyleClass();
 
 private:
-    QString readFile(QString path = ":/standart.style");
+    QString readStyleSheet(QString path = ":/standart.style");
+    QString findStyleName(QByteArray, QString language = "name_ru");
+    void getStyleForName(QString, QString path = "Style/");
+    void removeTempFolderPath();
+
+private:
+    QMenu *menu;
+    QList <QAction*> listAction;
+    QString tempFolderPath;
+
+private slots:
+    void slotActivateCSS();
 
 signals:
     void getStyle(QString);

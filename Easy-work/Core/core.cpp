@@ -68,6 +68,7 @@ void Core::installationsCoreMenu()
 // slots
 void Core::slSetCentralWidget(QWidget *widget)
 {
+    saveCentralWidget = widget;
     widget->setStyleSheet(this->styleSheet());
     QMainWindow::setWindowTitle(widget->windowTitle());
     this->setCentralWidget(widget);

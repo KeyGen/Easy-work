@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'corewidget.h'
 **
-** Created: Sat Nov 3 14:02:45 2012
+** Created: Sun Nov 4 23:54:39 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!

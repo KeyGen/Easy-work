@@ -75,6 +75,7 @@ void Core::loadPlugins(const QString dir) {
             }
             else if(Style * plugin = qobject_cast<Style *>(obj))
             {
+                style = plugin;
                 installationsStyle(plugin);
             }
             else if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
@@ -87,6 +88,7 @@ void Core::loadPlugins(const QString dir) {
 
     keyboard->show();
     coreWidget->getActionRegime()->trigger();
+    connect(style,SIGNAL(getStyle(QString)),saveCentralWidget,SLOT(setStyleSheet(QString)));
 }
 
 // Знагрузка найденных плагинов:
@@ -135,6 +137,7 @@ void Core::installationsWhatIs(WhatIs * plugin){
 void Core::installationsStyle(Style *plugin){
     qDebug() << plugin->getName() << plugin->getVersion();
     this->setStyleSheet(plugin->getStyleSheet());
+    setting->addMenu(plugin->createZipStyle());
     keyboard->setStyleSheet(plugin->getStyleSheet());
-    //connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
+    connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
 }

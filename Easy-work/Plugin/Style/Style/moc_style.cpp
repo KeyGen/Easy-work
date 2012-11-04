@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'style.h'
 **
-** Created: Sat Nov 3 14:03:04 2012
+** Created: Sun Nov 4 23:54:59 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_StyleClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,11 +33,15 @@ static const uint qt_meta_data_StyleClass[] = {
  // signals: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x05,
 
+ // slots: signature, parameters, type, tag, flags
+      30,   11,   11,   11, 0x08,
+
        0        // eod
 };
 
 static const char qt_meta_stringdata_StyleClass[] = {
     "StyleClass\0\0getStyle(QString)\0"
+    "slotActivateCSS()\0"
 };
 
 void StyleClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -47,6 +51,7 @@ void StyleClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         StyleClass *_t = static_cast<StyleClass *>(_o);
         switch (_id) {
         case 0: _t->getStyle((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 1: _t->slotActivateCSS(); break;
         default: ;
         }
     }
@@ -86,9 +91,9 @@ int StyleClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

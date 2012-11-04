@@ -21,14 +21,21 @@
 
 #include "qzipreader_p.h"
 
+#include <QMenu>
+#include <QDir>
+
 Q_EXPORT_PLUGIN(StyleClass);
 
 StyleClass::StyleClass(){
+    menu = new QMenu(tr("Стили"));
+    tempFolderPath = "Style/readStyle";
 }
 
-StyleClass::~StyleClass() {}
+StyleClass::~StyleClass(){
+    removeTempFolderPath();
+}
 
-QString StyleClass::readFile(QString path){
+QString StyleClass::readStyleSheet(QString path){
 
     QFile read_file(path);
 
@@ -40,3 +47,132 @@ QString StyleClass::readFile(QString path){
 
     return "";
 }
+
+QMenu * StyleClass::createZipStyle(QString path)
+{
+    QDir dir(path.toAscii());    // Создаем QDir в указанном пути (path)
+
+    QStringList filters;
+    filters << "*.style";
+
+    QStringList files = dir.entryList(filters);
+
+    listAction.append(new QAction(tr("Стандартная"),this));
+    listAction.last()->setCheckable(true);
+    connect(listAction.last(),SIGNAL(triggered()),this,SLOT(slotActivateCSS()));
+    menu->addAction(listAction.last());
+
+    for(int i = 0; i<files.size(); i++ )
+    {
+        QZipReader zip_reader(path.toAscii() + files.at(i).toAscii());
+
+        if (zip_reader.exists()) {          // Если все чудно
+
+            foreach (QZipReader::FileInfo info, zip_reader.fileInfoList()) {
+                if(info.filePath.contains(".style")){
+                    //qDebug() << "Файл:" << info.filePath << "Размер:" << info.size; // размер извлекаемого файла
+                    listAction.append(new QAction (findStyleName(zip_reader.fileData(info.filePath)),this));
+                    listAction.last()->setCheckable(true);
+                    connect(listAction.last(),SIGNAL(triggered()),this,SLOT(slotActivateCSS()));
+                    menu->addAction(listAction.last());
+                }
+            }
+        }
+    }
+
+    menu->setStyleSheet(
+                        "QMenu::indicator {"
+                        "background: #505050;"
+                        "}"
+
+                        "QMenu::indicator:non-exclusive:unchecked:selected {"
+                        "background: #228B22;"
+                        "}"
+                        );
+
+    return menu;
+}
+
+QString StyleClass::findStyleName(QByteArray byte, QString language){
+
+    QString allFile = byte;
+    QString name;
+
+    for(int i = allFile.indexOf(language + ":") + language.size() + 1; allFile.at(i)!='\n'; i++)
+        name += allFile.at(i);
+
+    if(!name.isEmpty())
+    {
+        while(name.at(0) == ' ')
+            name = name.right(name.size()-1);
+    }
+
+    return name;
+}
+
+void StyleClass::slotActivateCSS()
+{
+
+    for(int i = 0; i<listAction.size(); i++)
+    {
+        if(listAction.at(i)->isChecked())
+        {
+            getStyleForName(listAction.at(i)->text());
+
+            for(int j = 0; j<listAction.size(); j++)
+            {
+                listAction.at(j)->setChecked(false);
+            }
+
+            break;
+        }
+    }
+}
+
+void StyleClass::getStyleForName(QString nameFind, QString path){
+
+    bool endCycle = false;
+    QDir dir(path.toAscii());    // Создаем QDir в указанном пути (path)
+
+    QStringList filters;
+    filters << "*.style";
+
+    QStringList files = dir.entryList(filters);
+
+    for(int i = 0; i<files.size(); i++ )
+    {
+        QZipReader zip_reader(path.toAscii() + files.at(i).toAscii());
+
+        if (zip_reader.exists()) {          // Если все чудно
+
+            foreach (QZipReader::FileInfo info, zip_reader.fileInfoList()) {
+                if(info.filePath.contains(".style")){
+                    if(nameFind == findStyleName(zip_reader.fileData(info.filePath))){
+
+                        if(zip_reader.count() == 1){
+                            removeTempFolderPath();
+                            emit getStyle(QString(zip_reader.fileData(info.filePath)));
+                            //qDebug() << zip_reader.fileData(info.filePath);
+                        }
+                        else{
+                            removeTempFolderPath();
+                            zip_reader.extractAll(tempFolderPath.toAscii());
+                            emit getStyle(readStyleSheet(tempFolderPath.toAscii() + "/" + info.filePath));
+                        }
+
+                        endCycle = true;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if(endCycle)
+            break;
+    }
+}
+
+void StyleClass::removeTempFolderPath(){
+
+}
+
