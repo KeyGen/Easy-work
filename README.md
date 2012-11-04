@@ -7,6 +7,7 @@ Easy work (Touch typing)
 Лецензия GPL 2.<br>
 
 Готова бета версия.
+Проверено на: Ubuntu, Kubuntu, Windows 7, Windows Xp
 <br><br>
 <b>Установка на Linux</b>
 <br>
