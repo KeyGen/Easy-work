@@ -1,4 +1,4 @@
-Easy-work
+Easy-work beta 0.1
 =========
 
 Easy work (Touch typing)
