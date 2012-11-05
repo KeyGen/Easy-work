@@ -6,7 +6,7 @@ Easy work (Touch typing)
 Программа предназначена для обучения печати слепым методом.<br>
 Лецензия GPL 2.<br>
 
-Готова бета версия.
+Готова бета версия. (beta 0.1)
 Проверено на: Ubuntu, Kubuntu, Windows 7, Windows Xp
 <br><br>
 <b>Установка на Linux</b>
