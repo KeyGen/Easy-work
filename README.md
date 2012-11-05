@@ -5,3 +5,4 @@ Easy-work beta 0.1
 Лецензия GPL 2.<br>
 
 Читаем Wiki...
+<a HREF="https://github.com/KeyGen/Easy-work/wiki/%D0%A1%D0%B2%D1%8F%D0%B7%D1%8C">Связь</a>
