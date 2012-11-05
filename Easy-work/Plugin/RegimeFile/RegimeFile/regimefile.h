@@ -21,6 +21,7 @@
 #define REGIMEFILE_H
 
 #include "RegimeFile_global.h"
+
 #include <QSize>
 #include <QDebug>
 
@@ -48,6 +49,7 @@ public:
     virtual void setMenuBar(QList <QMenu *>);
     virtual QIcon getIcon();
     virtual QAction * getActionRegime() { return startRegime; }
+    virtual QStringList getLoadPlugin() { return listLoadPlugin; }
 
     virtual ~RigimeFileClass();
 
@@ -64,7 +66,7 @@ private:
     bool destroyedBL;
     bool startBL;
     QSize saveSizeLabelInputAndShow;
-
+    QStringList listLoadPlugin;
     int calculateCorrectly;
     int calculateError;
     QTime *calculateTime;

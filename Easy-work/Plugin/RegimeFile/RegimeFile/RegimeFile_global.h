@@ -21,6 +21,7 @@
 #define REGIMEFILE_GLOBAL_H
 
 #include <QtPlugin>
+#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 class QSize;
@@ -43,6 +44,8 @@ public:
     virtual void setMenuBar(QList <QMenu *>) = 0;
     virtual QAction * getActionRegime() = 0;
     virtual QIcon getIcon() = 0;
+
+    virtual QStringList getLoadPlugin() = 0;
 
     virtual ~RigimeFile() {}
 

@@ -56,6 +56,9 @@ private:
 private slots:
     void slotActivateCSS();
 
+public slots:
+    virtual void slCloseEvent ();
+
 signals:
     void getStyle(QString);
 };

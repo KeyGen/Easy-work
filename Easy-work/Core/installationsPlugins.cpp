@@ -34,6 +34,7 @@
 void Core::loadPlugins(const QString dir) {
 
     const QDir pluginsDir(dir);
+    QStringList listLoadPlugin;
 
     QStringList filter;
     filter << "*.so";   // Для Linux
@@ -61,48 +62,58 @@ void Core::loadPlugins(const QString dir) {
 
             if (CoreWidget * plugin = qobject_cast<CoreWidget *>(obj))
             {
+                listLoadPlugin << plugin->getName();
                 coreWidget = plugin;
                 installationsCoreWidget(plugin);
             }
             else if(Keyboard * plugin = qobject_cast<Keyboard *>(obj))
             {
+                listLoadPlugin << plugin->getName();
+                listLoadPlugin << plugin->getLoadPlugin();
                 keyboard = plugin;
                 installationsKeyboard(plugin);
             }
             else if(RigimeFile * plugin = qobject_cast<RigimeFile *>(obj))
             {
+                listLoadPlugin << plugin->getName();
+                listLoadPlugin << plugin->getLoadPlugin();
                 installationsRigimeFile(plugin);
             }
             else if(Style * plugin = qobject_cast<Style *>(obj))
             {
+                listLoadPlugin << plugin->getName();
                 style = plugin;
                 installationsStyle(plugin);
             }
             else if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
             {
+                listLoadPlugin << plugin->getName();
                 installationsWhatIs(plugin);
             }
 
         }
     }
 
+    controlLoadPlugin(listLoadPlugin);
+
     keyboard->show();
     coreWidget->getActionRegime()->trigger();
+
+    connect(style,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
     connect(style,SIGNAL(getStyle(QString)),saveCentralWidget,SLOT(setStyleSheet(QString)));
+    connect(style,SIGNAL(getStyle(QString)),keyboard,SLOT(setStyleSheet(QString)));
 }
 
 // Знагрузка найденных плагинов:
 void Core::installationsCoreWidget(CoreWidget * plugin){
 
-   qDebug() << plugin->getName() << plugin->getVersion();
    plugin->setMenuBar(coreMenu);
 
    connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
 }
 
-void Core::installationsRigimeFile(RigimeFile * plugin)
-{
-    qDebug() << plugin->getName() << plugin->getVersion();
+void Core::installationsRigimeFile(RigimeFile * plugin){
+
     plugin->setMenuBar(coreMenu);
 
     coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
@@ -116,12 +127,11 @@ void Core::installationsRigimeFile(RigimeFile * plugin)
     connect(plugin,SIGNAL(stopLesson()),keyboard,SLOT(pressDownOffAllKey()));
 }
 
-void Core::installationsKeyboard(Keyboard *plugin)
-{
-    qDebug() << plugin->getName() << plugin->getVersion();
+void Core::installationsKeyboard(Keyboard *plugin) {
+
     setting->addMenu(plugin->getMenu());
 
-    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent(QCloseEvent*)));
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
     connect(this,SIGNAL(siKeyReleaseEvent(QKeyEvent*)),plugin,SLOT(slKeyReleaseEvent(QKeyEvent*)));
     connect(this,SIGNAL(siFocusInEvent(QFocusEvent*)),plugin,SLOT(slFocusInEvent(QFocusEvent*)));
     connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
@@ -130,14 +140,14 @@ void Core::installationsKeyboard(Keyboard *plugin)
 }
 
 void Core::installationsWhatIs(WhatIs * plugin){
-    qDebug() << plugin->getName() << plugin->getVersion();
     help->addAction(plugin->getAction());
 }
 
 void Core::installationsStyle(Style *plugin){
-    qDebug() << plugin->getName() << plugin->getVersion();
+
     this->setStyleSheet(plugin->getStyleSheet());
     setting->addMenu(plugin->createZipStyle());
-    keyboard->setStyleSheet(plugin->getStyleSheet());
-    connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
+    keyboard->setStyleSheet(this->styleSheet());
+
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
 }

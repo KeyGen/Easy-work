@@ -32,6 +32,9 @@ StyleClass::StyleClass(){
 }
 
 StyleClass::~StyleClass(){
+}
+
+void StyleClass::slCloseEvent (){
     removeTempFolderPath();
 }
 
@@ -152,12 +155,13 @@ void StyleClass::getStyleForName(QString nameFind, QString path){
                         if(zip_reader.count() == 1){
                             removeTempFolderPath();
                             emit getStyle(QString(zip_reader.fileData(info.filePath)));
-                            //qDebug() << zip_reader.fileData(info.filePath);
                         }
                         else{
                             removeTempFolderPath();
-                            zip_reader.extractAll(tempFolderPath.toAscii());
-                            emit getStyle(readStyleSheet(tempFolderPath.toAscii() + "/" + info.filePath));
+                            QDir createFolder;
+                            createFolder.mkdir(tempFolderPath);
+                            zip_reader.extractAll(tempFolderPath);
+                            emit getStyle(readStyleSheet(tempFolderPath + "/" + info.filePath));
                         }
 
                         endCycle = true;
@@ -170,9 +174,25 @@ void StyleClass::getStyleForName(QString nameFind, QString path){
         if(endCycle)
             break;
     }
+
+    if(!endCycle)
+        emit getStyle(readStyleSheet());
 }
 
 void StyleClass::removeTempFolderPath(){
+
+    QDir dir(tempFolderPath.toAscii());
+
+    if(!dir.entryList().isEmpty()){
+
+        QStringList filesList = dir.entryList();
+
+        for (int i = 0; i < filesList.size(); ++i)
+            dir.remove(filesList.at(i));
+
+        dir.cdUp();
+        dir.rmdir(tempFolderPath.split("/").last());
+    }
 
 }
 

@@ -20,8 +20,9 @@
 #include "core.h"
 #include <QDesktopWidget>
 #include <QApplication>
-#include <QMenuBar>
+#include <QMessageBox>
 #include <QKeyEvent>
+#include <QMenuBar>
 
 Core::Core(QWidget *parent)
     : QMainWindow(parent)
@@ -69,7 +70,6 @@ void Core::installationsCoreMenu()
 void Core::slSetCentralWidget(QWidget *widget)
 {
     saveCentralWidget = widget;
-    widget->setStyleSheet(this->styleSheet());
     QMainWindow::setWindowTitle(widget->windowTitle());
     this->setCentralWidget(widget);
 }
@@ -97,6 +97,37 @@ void Core::closeEvent     (QCloseEvent * event){
 
 void Core::focusInEvent   (QFocusEvent * event){
     emit siFocusInEvent(event);
+}
+
+void Core::controlLoadPlugin(QStringList listLoadPlugin){
+
+    QStringList listFindPlugin;
+    listFindPlugin << "Core Widget";
+    listFindPlugin << "Keyboard";
+    listFindPlugin << "Regime File";
+    listFindPlugin << "Style";
+    listFindPlugin << "What is";
+
+    listFindPlugin << "Plugin Keyboard - Find keyboard layout";
+    listFindPlugin << "Plugin Regime File - Open File";
+
+    for(int i = 0; i<listFindPlugin.size(); i++)
+        if(!listLoadPlugin.contains(listFindPlugin.at(i))){
+
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setText("Not found plugin: " + listFindPlugin.at(i) + "    ");
+            msgBox.setStandardButtons(QMessageBox::Cancel);
+            msgBox.exec();
+
+            QMetaObject::invokeMethod(this, "close", Qt::QueuedConnection); // Завершение приложения
+            break;
+        }
+        else{
+            qDebug() << "Load plugin:" << listFindPlugin.at(i);
+        }
+
+
 }
 
 

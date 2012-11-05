@@ -57,7 +57,7 @@ void RigimeFileClass::loadPlugins(const QString dir) {
 
             if (OpenFile * plugin = qobject_cast<OpenFile *>(obj))
             {
-                qDebug() << plugin->getName() << plugin->getVersion();
+                listLoadPlugin << plugin->getName();
                 menuRegimeFile->addAction(plugin->getAction());
                 connect(plugin,SIGNAL(siSetNewText(QString)),this,SLOT(setWorkerText(QString)));
             }

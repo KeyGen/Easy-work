@@ -56,7 +56,7 @@ void KeyboardClass::loadPlugins(const QString dir) {
             if (FindKeyboardLayout * plugin = qobject_cast<FindKeyboardLayout *>(obj))
             {
                 keyboardLayout = plugin;
-                qDebug() << keyboardLayout->getName() << keyboardLayout->getVersion();
+                listLoadPlugin << keyboardLayout->getName();
                 menu->addMenu(keyboardLayout->createLanguageMenu());
 
                 connect(keyboardLayout,SIGNAL(getWindowsTitle(QString)),dialog,SLOT(setWindowTitle(QString)));

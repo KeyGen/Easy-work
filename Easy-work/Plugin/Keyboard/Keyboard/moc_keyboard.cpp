@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'keyboard.h'
 **
-** Created: Sun Nov 4 23:54:52 2012
+** Created: Mon Nov 5 16:12:47 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_KeyboardClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -41,11 +41,12 @@ static const uint qt_meta_data_KeyboardClass[] = {
      139,  105,   14,   14, 0x0a,
      169,  105,   14,   14, 0x0a,
      198,  105,   14,   14, 0x0a,
-     223,  105,   14,   14, 0x0a,
-     250,  105,   14,   14, 0x0a,
-     279,   14,   14,   14, 0x0a,
-     305,   14,   14,   14, 0x0a,
-     326,   14,   14,   14, 0x0a,
+     223,   14,   14,   14, 0x0a,
+     238,  105,   14,   14, 0x0a,
+     267,   14,   14,   14, 0x0a,
+     293,   14,   14,   14, 0x0a,
+     314,   14,   14,   14, 0x0a,
+     321,   14,   14,   14, 0x0a,
 
        0        // eod
 };
@@ -57,11 +58,11 @@ static const char qt_meta_stringdata_KeyboardClass[] = {
     "slKeyPressEvent(QKeyEvent*)\0"
     "slKeyReleaseEvent(QKeyEvent*)\0"
     "slResizeEvent(QResizeEvent*)\0"
-    "slMoveEvent(QMoveEvent*)\0"
-    "slCloseEvent(QCloseEvent*)\0"
+    "slMoveEvent(QMoveEvent*)\0slCloseEvent()\0"
     "slFocusInEvent(QFocusEvent*)\0"
     "slAnimatePressWord(QChar)\0"
     "pressDownOffAllKey()\0show()\0"
+    "setStyleSheet(QString)\0"
 };
 
 void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -78,11 +79,12 @@ void KeyboardClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 5: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         case 6: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
         case 7: _t->slMoveEvent((*reinterpret_cast< QMoveEvent*(*)>(_a[1]))); break;
-        case 8: _t->slCloseEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
+        case 8: _t->slCloseEvent(); break;
         case 9: _t->slFocusInEvent((*reinterpret_cast< QFocusEvent*(*)>(_a[1]))); break;
         case 10: _t->slAnimatePressWord((*reinterpret_cast< QChar(*)>(_a[1]))); break;
         case 11: _t->pressDownOffAllKey(); break;
         case 12: _t->show(); break;
+        case 13: _t->setStyleSheet((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -122,9 +124,9 @@ int KeyboardClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
 }

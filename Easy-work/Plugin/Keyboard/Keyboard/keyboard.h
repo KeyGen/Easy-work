@@ -21,6 +21,7 @@
 #define KEYBOARD_H
 
 #include "Keyboard_global.h"
+
 #include <QSize>
 #include <QPoint>
 
@@ -46,7 +47,7 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Keyboard"; }
     virtual QMenu* getMenu()        { return menu; }
-    virtual void setStyleSheet(QString);
+    virtual QStringList getLoadPlugin() { return listLoadPlugin; }
 
     virtual ~KeyboardClass();
 
@@ -64,7 +65,7 @@ private:
     bool pressShift;
     QMultiHash <QString,QString> hashLanguage;
     FindKeyboardLayout *keyboardLayout;
-
+    QStringList listLoadPlugin;
     QString findKey;
 
 private:
@@ -86,11 +87,12 @@ public slots:
     virtual void slKeyReleaseEvent(QKeyEvent *event);
     virtual void slResizeEvent    (QResizeEvent * event);
     virtual void slMoveEvent      (QMoveEvent * event);
-    virtual void slCloseEvent     (QCloseEvent * event);
+    virtual void slCloseEvent     ();
     virtual void slFocusInEvent   (QFocusEvent * event);
     virtual void slAnimatePressWord (QChar);
     virtual void pressDownOffAllKey();
     virtual void show();
+    void setStyleSheet(QString);
 
 signals:
     void siKeyboardLanguageChange();

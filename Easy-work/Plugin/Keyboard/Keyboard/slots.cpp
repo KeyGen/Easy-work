@@ -22,11 +22,9 @@
 #include <QKeyEvent>
 #include <QResizeEvent>
 #include <QMoveEvent>
-#include <QCloseEvent>
 #include <QFocusEvent>
 
 #include <QDialog>
-#include <QRegExp>
 #include <QAction>
 
 void KeyboardClass::slAnimatePressWord (QChar ch){
@@ -84,8 +82,7 @@ void KeyboardClass::slMoveEvent(bool BL) {
     }
 }
 
-void KeyboardClass::slCloseEvent     (QCloseEvent * event){
-    qDebug() << event;
+void KeyboardClass::slCloseEvent (){
     dialog->close();
 }
 

@@ -21,13 +21,13 @@
 #define KEYBOARD_GLOBAL_H
 
 #include <QtPlugin>
+#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 class QMenu;
 class QKeyEvent;
 class QResizeEvent;
 class QMoveEvent;
-class QCloseEvent;
 class QFocusEvent;
 QT_END_NAMESPACE
 
@@ -35,10 +35,10 @@ class Keyboard : public QObject
 {
 
 public:
-    virtual QString getVersion()    = 0;
-    virtual QString getName()       = 0;
-    virtual QMenu* getMenu()        = 0;
-    virtual void setStyleSheet(QString) = 0;
+    virtual QString getVersion()        = 0;
+    virtual QString getName()           = 0;
+    virtual QMenu* getMenu()            = 0;
+    virtual QStringList getLoadPlugin() = 0;
 
     virtual ~Keyboard() {}
 
@@ -47,11 +47,12 @@ public slots:
     virtual void slKeyReleaseEvent(QKeyEvent *event)        = 0;
     virtual void slResizeEvent    (QResizeEvent * event)    = 0;
     virtual void slMoveEvent      (QMoveEvent * event)      = 0;
-    virtual void slCloseEvent     (QCloseEvent * event)     = 0;
+    virtual void slCloseEvent     ()     = 0;
     virtual void slFocusInEvent   (QFocusEvent * event)     = 0;
     virtual void slAnimatePressWord (QChar)                 = 0;
     virtual void pressDownOffAllKey()                       = 0;
     virtual void show()                                     = 0;
+    virtual void setStyleSheet(QString)                     = 0;
 
 signals:
     virtual void siKeyboardLanguageChange()                 = 0;

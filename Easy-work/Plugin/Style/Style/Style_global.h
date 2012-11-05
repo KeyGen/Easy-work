@@ -38,6 +38,9 @@ public:
 
     virtual ~Style() {}
 
+public slots:
+    virtual void slCloseEvent     ()     = 0;
+
 signals:
     virtual void getStyle(QString) = 0;
 };

@@ -55,6 +55,7 @@ private:
     void installationsWhatIs(WhatIs *plugin);
     void installationsStyle(Style *plugin);
 
+    void controlLoadPlugin(QStringList);
     void installationsCoreMenu();
     void moveWindowCenter();
 
