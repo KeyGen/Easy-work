@@ -56,7 +56,23 @@ OpenFileClass::OpenFileClass() : ui(new Ui::DialogOpenFile)
 
 void OpenFileClass::slSetNewTex(){
     if(!ui->textOutwardShow->toPlainText().isEmpty())
-    emit siSetNewText(ui->textOutwardShow->toPlainText());
+    emit siSetNewText(preparationText(ui->textOutwardShow->toPlainText()));
+}
+
+QString OpenFileClass::preparationText(QString text){
+
+    text.replace('\n',' ');
+
+    while(text.contains("  "))
+        text.replace("  ", " ");
+
+    if(text.at(0) == ' ')
+        text = text.right(text.size()-1);
+
+    if(text.at(text.size()-1) == ' ')
+        text.chop(1);
+
+    return text;
 }
 
 void OpenFileClass::maskTextEdit(int in)

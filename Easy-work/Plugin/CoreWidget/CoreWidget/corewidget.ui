@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Easy work beta</string>
+   <string>Easy work</string>
   </property>
   <layout class="QGridLayout" name="centralGridLayout">
    <item row="1" column="0">

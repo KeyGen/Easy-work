@@ -27,7 +27,7 @@
 Core::Core(QWidget *parent)
     : QMainWindow(parent)
 {
-    QMainWindow::setWindowTitle("Easy work beta");
+    QMainWindow::setWindowTitle("Easy work");
     QMainWindow::resize(850,220);
     QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();

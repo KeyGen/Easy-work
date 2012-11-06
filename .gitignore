@@ -12,3 +12,6 @@ Makefile
 # Темп файлы ОС
 *~
 .directory
+
+# Папки
+Create-Install

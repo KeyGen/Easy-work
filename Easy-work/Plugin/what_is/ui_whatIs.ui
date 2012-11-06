@@ -37,7 +37,7 @@
        <item>
         <widget class="QLabel" name="label_2">
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Easy work &lt;/span&gt;&lt;br/&gt;Версия beta&lt;br/&gt;&lt;br/&gt;Программа для обученя&lt;br/&gt;слепому методу&lt;br/&gt;печати&lt;br/&gt;&lt;br/&gt;Лецензия GPL 2&lt;br/&gt;Написано на Qt&lt;br/&gt;Вложился в 1660 строк кода&lt;br&gt;Написал KeyGen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Easy work &lt;/span&gt;&lt;br/&gt;Версия 0.1&lt;br/&gt;&lt;br/&gt;Программа для обученя&lt;br/&gt;слепому методу&lt;br/&gt;печати&lt;br/&gt;&lt;br/&gt;Лецензия GPL 2&lt;br/&gt;Написано на Qt&lt;br/&gt;Вложился в 1660 строк кода&lt;br/&gt;Написал KeyGen&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>

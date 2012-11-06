@@ -52,6 +52,7 @@ private:
 
 private:
     void setCodecComboBox();
+    QString preparationText(QString);
 
 private slots:
     void slSetNewTex();

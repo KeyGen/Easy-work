@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'corewidget.ui'
 **
-** Created: Mon Nov 5 16:12:31 2012
+** Created: Tue Nov 6 11:45:04 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -72,7 +72,7 @@ public:
 
     void retranslateUi(QWidget *CoreForm)
     {
-        CoreForm->setWindowTitle(QApplication::translate("CoreForm", "Easy work beta", 0, QApplication::UnicodeUTF8));
+        CoreForm->setWindowTitle(QApplication::translate("CoreForm", "Easy work", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("CoreForm", "<html><head/><body><p>\320\224\320\276\320\261\321\200\320\276 \320\277\320\276\320\266\320\260\320\273\320\276\320\262\320\260\321\202\321\214 \320\262 \320\277\321\200\320\276\320\263\321\200\320\260\320\274\320\274\321\203 Easy work<br/><span style=\" font-size:14pt; font-style:italic;\">(\320\221\320\265\321\202\320\260 \320\262\320\265\321\200\321\201\320\270\321\217)</span></p><p><span style=\" font-size:14pt;\">\320\222 \320\277\321\200\320\276\320\265\320\272\321\202\320\265 \320\265\321\211\320\265 \320\274\320\275\320\276\320\263\320\276 \321\200\320\265\320\266\320\270\320\274\320\276\320\262.<br/>\320\225\321\201\321\202\321\214 \320\262\320\276\320\277\321\200\320\276\321\201\321\213, \320\277\320\270\321\210\320\270\321\202\320\265 KeyGenQt@gmail.com </span></p></body></html>", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("CoreForm", "PushButton", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
