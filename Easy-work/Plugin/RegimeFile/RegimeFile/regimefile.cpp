@@ -39,8 +39,6 @@ RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
 
     calculateTime = new QTime;
 
-    pathPlugin = "Plugins/PluginsRegimeFile";
-
     destroyedBL = true;
     startBL = false;
 
@@ -50,8 +48,6 @@ RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
     startRegime = new QAction(tr("Режим файла"),this);
 
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
-
-    loadPlugins(pathPlugin);
 }
 
 QIcon RigimeFileClass::getIcon(){
@@ -77,7 +73,7 @@ void RigimeFileClass::slResizeEvent (QResizeEvent * event){
 
 }
 
-void RigimeFileClass::siKeyboardLanguageChange(){
+void RigimeFileClass::slKeyboardLanguageChange(){
     if(startBL)
         if(!ui->labelInput->text().isEmpty())
             emit siGetWord(ui->labelInput->text().at(0));
@@ -241,10 +237,6 @@ void RigimeFileClass::destroyedWidget(){
     startBL = false;
     destroyedBL = true;
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
-}
-
-QSize RigimeFileClass::getSize(){
-    return widget->size();
 }
 
 void RigimeFileClass::setMenuBar(QList <QMenu *> bar)

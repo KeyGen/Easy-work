@@ -43,7 +43,7 @@ public:
     virtual QString getName()       { return "Core Widget"; }
     virtual QWidget * getWidget();
     virtual void setMenuBar(QList <QMenu *>);
-    virtual QAction * getActionRegime() { return startRegime; }
+    virtual void activationRegime();
 
     virtual void setRegimeMenu(QAction *, QIcon);
 

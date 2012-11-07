@@ -31,104 +31,98 @@
 #include <QMenu>
 #include <QDir>
 
-void Core::loadPlugins(const QString dir) {
+void Core::loadPlugins(QString pathPlugin) {
 
-    const QDir pluginsDir(dir);
-    QStringList listLoadPlugin;
+    #ifdef Q_OS_WIN32
+        QString enlargement = ".dll";  // Для Windows
+        QString prefix = "";
+    #endif
 
-    QStringList filter;
-    filter << "*.so";   // Для Linux
-    filter << "*.dll";  // Для Windows
+    #ifdef Q_OS_LINUX
+        QString enlargement = ".so";   // Для Linux
+        QString prefix = "lib";
+    #endif
 
-    foreach (QString fileName, pluginsDir.entryList(filter, QDir::Files))
-    {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+    QStringList readPluginsName;
+    readPluginsName << "CoreWidget";
+    readPluginsName << "Keyboard";
+    readPluginsName << "RegimeFile";
+    readPluginsName << "Style";
+    readPluginsName << "what_is";
 
-        if (loader.isLoaded())
-        {
-            qDebug() << QString("%1: %2 %3.").arg("Plugin file").arg(fileName).arg(QObject::tr("is already loaded"));
-            continue;
+    for(int i = 0; i < readPluginsName.size(); i++){
+        QDir findPlugin(pathPlugin);
+
+        if(findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement)){
+            QPluginLoader loader(pathPlugin + "/" + prefix + readPluginsName.at(i) + enlargement);
+
+            if (loader.isLoaded())
+            {
+                qDebug() << QString("%1: %2 %3.")
+                            .arg("Plugin file")
+                            .arg(readPluginsName.at(i))
+                            .arg(QObject::tr("is already loaded"));
+                continue;
+            }
+
+            if (loader.load() == false)
+            {
+                qDebug() << QString("%1 %2\n%3: %4")
+                            .arg(QObject::tr("Can't load a plugin"))
+                            .arg(readPluginsName.at(i)).arg(QObject::tr("error"))
+                            .arg(loader.errorString());
+            }
+            else
+            {
+                QObject * obj = loader.instance();
+
+                if (CoreWidget * plugin = qobject_cast<CoreWidget *>(obj))
+                {
+                    installationsCoreWidget(plugin);
+                }
+                else if(Keyboard * plugin = qobject_cast<Keyboard *>(obj))
+                {
+                    if(plugin->loadPlugins(pathPlugin))
+                        installationsKeyboard(plugin);
+                }
+                else if(RigimeFile * plugin = qobject_cast<RigimeFile *>(obj))
+                {
+                    if(plugin->loadPlugins(pathPlugin))
+                        installationsRigimeFile(plugin);
+                }
+                else if(Style * plugin = qobject_cast<Style *>(obj))
+                {
+                    installationsStyle(plugin);
+                }
+                else if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
+                {
+                    installationsWhatIs(plugin);
+                }
+            }
         }
-
-        if (loader.load() == false)
-        {
-            qDebug() << QString("%1 %2\n%3: %4").arg(QObject::tr("Can't load a plugin"))
-                .arg(fileName).arg(QObject::tr("error"))
-                .arg(loader.errorString());
-        }
-        else
-        {
-            QObject * obj = loader.instance();
-
-            if (CoreWidget * plugin = qobject_cast<CoreWidget *>(obj))
-            {
-                listLoadPlugin << plugin->getName();
-                coreWidget = plugin;
-                installationsCoreWidget(plugin);
-            }
-            else if(Keyboard * plugin = qobject_cast<Keyboard *>(obj))
-            {
-                listLoadPlugin << plugin->getName();
-                listLoadPlugin << plugin->getLoadPlugin();
-                keyboard = plugin;
-                installationsKeyboard(plugin);
-            }
-            else if(RigimeFile * plugin = qobject_cast<RigimeFile *>(obj))
-            {
-                listLoadPlugin << plugin->getName();
-                listLoadPlugin << plugin->getLoadPlugin();
-                installationsRigimeFile(plugin);
-            }
-            else if(Style * plugin = qobject_cast<Style *>(obj))
-            {
-                listLoadPlugin << plugin->getName();
-                style = plugin;
-                installationsStyle(plugin);
-            }
-            else if (WhatIs * plugin = qobject_cast<WhatIs *>(obj))
-            {
-                listLoadPlugin << plugin->getName();
-                installationsWhatIs(plugin);
-            }
-
+        else{
+            controlLoadPlugin(readPluginsName.at(i));
         }
     }
 
-    controlLoadPlugin(listLoadPlugin);
+    coreWidget->activationRegime();
 
+    if(loadKeyboard)
     keyboard->show();
-    coreWidget->getActionRegime()->trigger();
-
-    connect(style,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
-    connect(style,SIGNAL(getStyle(QString)),saveCentralWidget,SLOT(setStyleSheet(QString)));
-    connect(style,SIGNAL(getStyle(QString)),keyboard,SLOT(setStyleSheet(QString)));
 }
 
 // Знагрузка найденных плагинов:
 void Core::installationsCoreWidget(CoreWidget * plugin){
-
-   plugin->setMenuBar(coreMenu);
-
-   connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
-}
-
-void Core::installationsRigimeFile(RigimeFile * plugin){
-
-    plugin->setMenuBar(coreMenu);
-
-    coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
-
-    connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
-    connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
-    connect(this,SIGNAL(siKeyReleaseEvent(QKeyEvent*)),plugin,SLOT(slKeyReleaseEvent(QKeyEvent*)));
-    connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
-    connect(plugin,SIGNAL(siGetWord(QChar)),keyboard,SLOT(slAnimatePressWord(QChar)));
-    connect(keyboard,SIGNAL(siKeyboardLanguageChange()),plugin,SLOT(siKeyboardLanguageChange()));
-    connect(plugin,SIGNAL(stopLesson()),keyboard,SLOT(pressDownOffAllKey()));
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+    coreWidget = plugin;
+    coreWidget->setMenuBar(coreMenu);
+    connect(coreWidget,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
 }
 
 void Core::installationsKeyboard(Keyboard *plugin) {
-
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+    loadKeyboard = true;
+    keyboard = plugin;
     setting->addMenu(plugin->getMenu());
 
     connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
@@ -139,15 +133,40 @@ void Core::installationsKeyboard(Keyboard *plugin) {
     connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
 }
 
+void Core::installationsRigimeFile(RigimeFile * plugin){
+
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+    plugin->setMenuBar(coreMenu);
+    coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
+
+    connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
+    connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
+    connect(this,SIGNAL(siKeyReleaseEvent(QKeyEvent*)),plugin,SLOT(slKeyReleaseEvent(QKeyEvent*)));
+    connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
+
+    if(loadKeyboard){
+        connect(plugin,SIGNAL(siGetWord(QChar)),keyboard,SLOT(slAnimatePressWord(QChar)));
+        connect(keyboard,SIGNAL(siKeyboardLanguageChange()),plugin,SLOT(slKeyboardLanguageChange()));
+        connect(plugin,SIGNAL(stopLesson()),keyboard,SLOT(pressDownOffAllKey()));
+    }
+}
+
 void Core::installationsWhatIs(WhatIs * plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
     help->addAction(plugin->getAction());
 }
 
 void Core::installationsStyle(Style *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
 
     this->setStyleSheet(plugin->getStyleSheet());
     setting->addMenu(plugin->createZipStyle());
-    keyboard->setStyleSheet(this->styleSheet());
 
+    connect(plugin,SIGNAL(getStyle(QString)),this,SLOT(setStyleSheet(QString)));
     connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
+
+    if(loadKeyboard){
+        keyboard->setStyleSheet(this->styleSheet());
+        connect(plugin,SIGNAL(getStyle(QString)),keyboard,SLOT(setStyleSheet(QString)));
+    }
 }

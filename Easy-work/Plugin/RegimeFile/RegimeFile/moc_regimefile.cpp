@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimefile.h'
 **
-** Created: Mon Nov 5 16:12:37 2012
+** Created: Wed Nov 7 16:49:40 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -58,7 +58,7 @@ static const char qt_meta_stringdata_RigimeFileClass[] = {
     "slKeyPressEvent(QKeyEvent*)\0"
     "slKeyReleaseEvent(QKeyEvent*)\0"
     "slResizeEvent(QResizeEvent*)\0"
-    "siKeyboardLanguageChange()\0"
+    "slKeyboardLanguageChange()\0"
 };
 
 void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -78,7 +78,7 @@ void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 8: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         case 9: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
         case 10: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
-        case 11: _t->siKeyboardLanguageChange(); break;
+        case 11: _t->slKeyboardLanguageChange(); break;
         default: ;
         }
     }

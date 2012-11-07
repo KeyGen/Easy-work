@@ -33,6 +33,6 @@ unix:!symbian {
     INSTALLS += target
 }
 
-DESTDIR = $$PWD/../../../Easy-work/Plugins/PluginsRegimeFile
+DESTDIR = $$PWD/../../../Easy-work/Plugins
 
 FORMS += openfile.ui

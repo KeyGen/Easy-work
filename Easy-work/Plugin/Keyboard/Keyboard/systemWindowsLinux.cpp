@@ -19,34 +19,38 @@
 
 #include "keyboard.h"
 #include <QApplication>
-//#include <windows.h>
 
-QString KeyboardClass::sistemsKeyboardLanguage(){
+#ifdef Q_OS_WIN32
+    #include <windows.h>
 
-// -----------Windows-----------
-//    HKL hkl;
-//    DWORD threadId;
-//    threadId = GetWindowThreadProcessId(NULL, NULL);
-//    hkl = GetKeyboardLayout(threadId);
-//    int codLayoutKeyboard = LOWORD(hkl);
+    QString KeyboardClass::sistemsKeyboardLanguage(){
 
-//    if(codLayoutKeyboard == 1049)
-//        return "ru-RU";
-//    if(codLayoutKeyboard == 1033)
-//        return "en-US";
-//    if(codLayoutKeyboard == 1079)
-//        return "ka-GE";
-//    if(codLayoutKeyboard == 1059)
-//        return "be-BY";
-//    if(codLayoutKeyboard == 1058)
-//        return "uk-UA";
-//    if(codLayoutKeyboard == 1031)
-//        return "de-DE";
-//    if(codLayoutKeyboard == 1040)
-//        return "it-IT";
+        HKL hkl;
+        DWORD threadId;
+        threadId = GetWindowThreadProcessId(NULL, NULL);
+        hkl = GetKeyboardLayout(threadId);
+        int codLayoutKeyboard = LOWORD(hkl);
 
-////    if(codLayoutKeyboard == 1036) // пока уберем
-////        return "fr-FR";
+        if(codLayoutKeyboard == ru_RU)
+            return "ru-RU";
+        if(codLayoutKeyboard == en_US)
+            return "en-US";
+        if(codLayoutKeyboard == ka_GE)
+            return "ka-GE";
+        if(codLayoutKeyboard == be_BY)
+            return "be-BY";
+        if(codLayoutKeyboard == uk_UA)
+            return "uk-UA";
+        if(codLayoutKeyboard == de_DE)
+            return "de-DE";
+        if(codLayoutKeyboard == it_IT)
+            return "it-IT";
 
-    return QApplication::keyboardInputLocale().bcp47Name();
-}
+        return QApplication::keyboardInputLocale().bcp47Name();
+    }
+
+#else
+    QString KeyboardClass::sistemsKeyboardLanguage(){
+        return QApplication::keyboardInputLocale().bcp47Name();
+    }
+#endif

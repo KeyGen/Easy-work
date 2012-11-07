@@ -35,7 +35,13 @@ OpenFileClass::OpenFileClass() : ui(new Ui::DialogOpenFile)
     actionOpenFile = new QAction(tr("Загрузить файл"),this);
 
     saveOutwardText = "Text для проверки кодировок";
-    defaultCodec = "UTF-8";
+
+    #ifdef Q_OS_WIN32
+        defaultCodec = "Windows-1251";
+    #else
+        defaultCodec = "UTF-8";
+    #endif
+
 
     ui->sliderPositionInText->setMaximum(saveOutwardText.size()-1);
     ui->boxPositionInText->setMaximum(saveOutwardText.size()-1);

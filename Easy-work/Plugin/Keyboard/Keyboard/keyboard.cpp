@@ -37,10 +37,6 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 
     menu = new QMenu(tr("Клавиатура"));
 
-    pathPlugin = "Plugins/PluginsKeyboard";
-
-    loadPlugins(pathPlugin);
-
     showKeyboard = new QAction(tr("Включить"),this);
     move_yes_no = new QAction(tr("Прикрепить"),this);
     move_yes_no->setCheckable(true);

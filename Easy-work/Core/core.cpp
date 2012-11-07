@@ -32,8 +32,9 @@ Core::Core(QWidget *parent)
     QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();
 
-    pathPlugin = "Plugins";
-    loadPlugins(pathPlugin);
+    loadKeyboard = false;
+
+    loadPlugins();
     moveWindowCenter();
 }
 
@@ -69,7 +70,7 @@ void Core::installationsCoreMenu()
 // slots
 void Core::slSetCentralWidget(QWidget *widget)
 {
-    saveCentralWidget = widget;
+    //saveCentralWidget = widget;
     QMainWindow::setWindowTitle(widget->windowTitle());
     this->setCentralWidget(widget);
 }
@@ -99,35 +100,20 @@ void Core::focusInEvent   (QFocusEvent * event){
     emit siFocusInEvent(event);
 }
 
-void Core::controlLoadPlugin(QStringList listLoadPlugin){
+void Core::controlLoadPlugin(QString LoadPlugin){
 
     QStringList listFindPlugin;
-    listFindPlugin << "Core Widget";
-    listFindPlugin << "Keyboard";
-    listFindPlugin << "Regime File";
-    listFindPlugin << "Style";
-    listFindPlugin << "What is";
+    listFindPlugin << "CoreWidget";
 
-    listFindPlugin << "Plugin Keyboard - Find keyboard layout";
-    listFindPlugin << "Plugin Regime File - Open File";
+    if(listFindPlugin.contains(LoadPlugin)){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setText("Not found plugin: " + LoadPlugin + "    \nРабота приложения не возможна");
+        msgBox.setStandardButtons(QMessageBox::Cancel);
+        msgBox.exec();
 
-    for(int i = 0; i<listFindPlugin.size(); i++)
-        if(!listLoadPlugin.contains(listFindPlugin.at(i))){
-
-            QMessageBox msgBox;
-            msgBox.setIcon(QMessageBox::Critical);
-            msgBox.setText("Not found plugin: " + listFindPlugin.at(i) + "    ");
-            msgBox.setStandardButtons(QMessageBox::Cancel);
-            msgBox.exec();
-
-            QMetaObject::invokeMethod(this, "close", Qt::QueuedConnection); // Завершение приложения
-            break;
-        }
-        else{
-            qDebug() << "Load plugin:" << listFindPlugin.at(i);
-        }
-
-
+        QMetaObject::invokeMethod(this, "close", Qt::QueuedConnection); // Завершение приложения
+    }
 }
 
 

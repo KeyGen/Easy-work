@@ -38,7 +38,7 @@ public:
     virtual QString getName()       = 0;
     virtual QWidget* getWidget()    = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
-    virtual QAction * getActionRegime() = 0;
+    virtual void activationRegime() = 0;
 
     virtual void setRegimeMenu(QAction*, QIcon) = 0;
 

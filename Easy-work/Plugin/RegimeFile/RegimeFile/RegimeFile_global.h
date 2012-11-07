@@ -21,7 +21,6 @@
 #define REGIMEFILE_GLOBAL_H
 
 #include <QtPlugin>
-#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 class QSize;
@@ -37,15 +36,13 @@ class RigimeFile : public QObject
 {
 
 public:
-    virtual QString getVersion()    = 0;
-    virtual QString getName()       = 0;
-    virtual QWidget* getWidget()    = 0;
-    virtual QSize getSize()         = 0;
+    virtual QString getVersion()        = 0;
+    virtual QString getName()           = 0;
+    virtual QWidget* getWidget()        = 0;
+    virtual bool loadPlugins(QString)   = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
     virtual QAction * getActionRegime() = 0;
     virtual QIcon getIcon() = 0;
-
-    virtual QStringList getLoadPlugin() = 0;
 
     virtual ~RigimeFile() {}
 
@@ -58,7 +55,7 @@ public slots:
     virtual void slKeyPressEvent  (QKeyEvent *event)        = 0;
     virtual void slKeyReleaseEvent(QKeyEvent *event)        = 0;
     virtual void slResizeEvent    (QResizeEvent * event)    = 0;
-    virtual void siKeyboardLanguageChange()                 = 0;
+    virtual void slKeyboardLanguageChange()                 = 0;
 };
 
 QT_BEGIN_NAMESPACE

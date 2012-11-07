@@ -24,44 +24,78 @@
 //-------------------------//
 
 #include <QPluginLoader>
+#include <QMessageBox>
 #include <QMenu>
 #include <QDir>
 
-void RigimeFileClass::loadPlugins(const QString dir) {
+bool RigimeFileClass::loadPlugins(QString pathPlugin) {
 
-    const QDir pluginsDir(dir);
+    #ifdef Q_OS_WIN32
+        QString enlargement = ".dll";  // Для Windows
+        QString prefix = "";
+    #endif
 
-    QStringList filter;
-    filter << "*.so";   // Для Linux
-    filter << "*.dll";  // Для Windows
+    #ifdef Q_OS_LINUX
+        QString enlargement = ".so";   // Для Linux
+        QString prefix = "lib";
+    #endif
 
-    foreach (QString fileName, pluginsDir.entryList(filter, QDir::Files))
-    {
-        QPluginLoader loader(pluginsDir.absoluteFilePath(fileName));
+    QStringList readPluginsName;
+    readPluginsName << "OpenFile";
 
-        if (loader.isLoaded())
-        {
-            qDebug() << QString("%1: %2 %3.").arg("Plugin file").arg(fileName).arg(QObject::tr("is already loaded"));
-            continue;
-        }
+    for(int i = 0; i < readPluginsName.size(); i++){
+        QDir findPlugin(pathPlugin);
 
-        if (loader.load() == false)
-        {
-            qDebug() << QString("%1 %2\n%3: %4").arg(QObject::tr("Can't load a plugin"))
-                .arg(fileName).arg(QObject::tr("error"))
-                .arg(loader.errorString());
-        }
-        else
-        {
-            QObject * obj = loader.instance();
+        if(findPlugin.entryList().contains(prefix + readPluginsName.at(i) + enlargement)){
+            QPluginLoader loader(pathPlugin + "/" + prefix + readPluginsName.at(i) + enlargement);
 
-            if (OpenFile * plugin = qobject_cast<OpenFile *>(obj))
+            if (loader.isLoaded())
             {
-                listLoadPlugin << plugin->getName();
-                menuRegimeFile->addAction(plugin->getAction());
-                connect(plugin,SIGNAL(siSetNewText(QString)),this,SLOT(setWorkerText(QString)));
+                qDebug() << QString("%1: %2 %3.")
+                            .arg("Plugin file")
+                            .arg(readPluginsName.at(i))
+                            .arg(QObject::tr("is already loaded"));
+                continue;
             }
 
+            if (loader.load() == false)
+            {
+                qDebug() << QString("%1 %2\n%3: %4")
+                            .arg(QObject::tr("Can't load a plugin"))
+                            .arg(readPluginsName.at(i)).arg(QObject::tr("error"))
+                            .arg(loader.errorString());
+            }
+            else
+            {
+                QObject * obj = loader.instance();
+
+                if (OpenFile * plugin = qobject_cast<OpenFile *>(obj))
+                {
+                    menuRegimeFile->addAction(plugin->getAction());
+                    connect(plugin,SIGNAL(siSetNewText(QString)),this,SLOT(setWorkerText(QString)));
+                }
+            }
+        }
+        else{
+            return controlLoadPlugin(readPluginsName.at(i));
         }
     }
+
+    return true;
+}
+
+bool RigimeFileClass::controlLoadPlugin(QString LoadPlugin){
+
+    QStringList listFindPlugin;
+
+    if(listFindPlugin.contains(LoadPlugin)){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setText(tr("Not found plugin: ") + LoadPlugin + tr("    \nКлавиатура не доступна."));
+        msgBox.setStandardButtons(QMessageBox::Cancel);
+        msgBox.exec();
+        return false;
+    }
+    else
+        return true;
 }

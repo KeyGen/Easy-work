@@ -44,12 +44,11 @@ public:
     RigimeFileClass();
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Regime File"; }
+    virtual bool loadPlugins(QString pathPlugin);
     virtual QWidget * getWidget();
-    virtual QSize getSize();
     virtual void setMenuBar(QList <QMenu *>);
     virtual QIcon getIcon();
     virtual QAction * getActionRegime() { return startRegime; }
-    virtual QStringList getLoadPlugin() { return listLoadPlugin; }
 
     virtual ~RigimeFileClass();
 
@@ -61,12 +60,10 @@ private:
     Ui::RegimeFile *ui;
     Ui::InfoPrint *uiDialog;
     QList <QMenu *> listMenu;
-    QString pathPlugin;
     QString workerText;
     bool destroyedBL;
     bool startBL;
     QSize saveSizeLabelInputAndShow;
-    QStringList listLoadPlugin;
     int calculateCorrectly;
     int calculateError;
     QTime *calculateTime;
@@ -74,7 +71,7 @@ private:
     QDialog *dialog;
 
 private:
-     void loadPlugins(const QString dir);
+     bool controlLoadPlugin(QString LoadPlugin);
      void centralAdministration(QChar);
      void startPrint();
      void stopPrint();
@@ -90,7 +87,7 @@ public slots:
     void slKeyPressEvent  (QKeyEvent *event);
     void slKeyReleaseEvent(QKeyEvent *event);
     void slResizeEvent (QResizeEvent * event);
-    void siKeyboardLanguageChange();
+    void slKeyboardLanguageChange();
 
 signals:
     void siGetWidget(QWidget *);

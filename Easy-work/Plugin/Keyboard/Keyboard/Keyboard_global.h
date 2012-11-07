@@ -21,7 +21,6 @@
 #define KEYBOARD_GLOBAL_H
 
 #include <QtPlugin>
-#include <QStringList>
 
 QT_BEGIN_NAMESPACE
 class QMenu;
@@ -38,7 +37,7 @@ public:
     virtual QString getVersion()        = 0;
     virtual QString getName()           = 0;
     virtual QMenu* getMenu()            = 0;
-    virtual QStringList getLoadPlugin() = 0;
+    virtual bool loadPlugins(QString)   = 0;
 
     virtual ~Keyboard() {}
 

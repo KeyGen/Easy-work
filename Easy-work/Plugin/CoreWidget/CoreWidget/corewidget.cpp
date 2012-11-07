@@ -49,6 +49,10 @@ QWidget * CoreWidgetClass::getWidget() {
     return widget;
 }
 
+void CoreWidgetClass::activationRegime(){
+    startRegime->trigger();
+}
+
 void CoreWidgetClass::setMenuBar(QList <QMenu *> bar)
 {
     listMenu = bar;

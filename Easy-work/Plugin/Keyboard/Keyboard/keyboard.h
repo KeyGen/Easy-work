@@ -47,7 +47,7 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Keyboard"; }
     virtual QMenu* getMenu()        { return menu; }
-    virtual QStringList getLoadPlugin() { return listLoadPlugin; }
+    virtual bool loadPlugins(QString pathPlugin);
 
     virtual ~KeyboardClass();
 
@@ -60,13 +60,24 @@ private:
     QSize saveSizeMainWindow;
     QPoint savePointMianWindow;
     QString saveLanguageKeboard;
-    QString pathPlugin;
     bool languageBL;
     bool pressShift;
     QMultiHash <QString,QString> hashLanguage;
     FindKeyboardLayout *keyboardLayout;
-    QStringList listLoadPlugin;
     QString findKey;
+
+#ifdef Q_OS_WIN32
+
+    enum {  ru_RU = 1049,
+            en_US = 1033,
+            ka_GE = 1079,
+            be_BY = 1059,
+            uk_UA = 1058,
+            de_DE = 1031,
+            it_IT = 1040,
+            fr_FR = 1036 };
+
+#endif
 
 private:
     void setDownControlKey(QKeyEvent *event, bool);
@@ -74,8 +85,8 @@ private:
     bool examinationKeyboardLanguage();
     bool findAndSetKeyboardLanguage();
     QString sistemsKeyboardLanguage();
-    void loadPlugins(const QString dir);
     void findKeyAndPress(QString);
+    bool controlLoadPlugin(QString LoadPlugin);
 
 private slots:
     void slMoveEvent(bool);

@@ -48,19 +48,19 @@ public:
     virtual void focusInEvent   (QFocusEvent * event); // Срабатывает когда приложение получает фокус
 
 private:
-    void loadPlugins(const QString dir);
+    void loadPlugins(QString pathPlugin = "Plugins");
+
     void installationsCoreWidget(CoreWidget * plugin);
     void installationsRigimeFile(RigimeFile * plugin);
     void installationsKeyboard(Keyboard *plugin);
     void installationsWhatIs(WhatIs *plugin);
     void installationsStyle(Style *plugin);
 
-    void controlLoadPlugin(QStringList);
+    void controlLoadPlugin(QString);
     void installationsCoreMenu();
     void moveWindowCenter();
 
 private:
-    QString pathPlugin;
     QList <QMenu *> coreMenu;
     QMenu *menu;
     QMenu *regime;
@@ -68,10 +68,9 @@ private:
     QMenu *setting;
     QMenu *help;
 
-    QWidget *saveCentralWidget;
     Keyboard *keyboard;
+    bool loadKeyboard;
     CoreWidget *coreWidget;
-    Style *style;
 
 private slots:
     void slSetCentralWidget(QWidget *);
