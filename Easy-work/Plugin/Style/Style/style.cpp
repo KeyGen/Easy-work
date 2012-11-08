@@ -24,7 +24,7 @@
 #include <QMenu>
 #include <QDir>
 
-Q_EXPORT_PLUGIN(StyleClass);
+Q_EXPORT_PLUGIN(StyleClass)
 
 StyleClass::StyleClass(){
     menu = new QMenu(tr("Стили"));
@@ -35,6 +35,7 @@ StyleClass::~StyleClass(){
 }
 
 void StyleClass::slCloseEvent (){
+    qDebug() << "style close";
     removeTempFolderPath();
 }
 

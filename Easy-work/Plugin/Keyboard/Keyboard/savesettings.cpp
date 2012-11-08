@@ -17,38 +17,30 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef WHAT_IS_GLOBAL_H
-#define WHAT_IS_GLOBAL_H
+#include "keyboard.h"
+#include <QDialog>
 
-#include <QtCore/qglobal.h>
+void KeyboardClass::saveSetting(){
 
-#include <QtPlugin>
+    QStringList listSaveSettings;
+    listSaveSettings << "Keyboard";
 
-QT_BEGIN_NAMESPACE
-class QDialog;
-class QAction;
-QT_END_NAMESPACE
+    listSaveSettings << QString::number(dialog->width());
+    listSaveSettings << QString::number(dialog->height());
+    listSaveSettings << QString::number((int)BLShowDialog);
 
-class WhatIs : public QObject
-{
+    emit siSaveSetting(listSaveSettings);
+}
 
-public:
-    virtual QString getVersion()    = 0;
-    virtual QString getName()       = 0;
-    virtual QAction* getAction()    = 0;
-    virtual void renameAction(QString)   = 0;
+void KeyboardClass::slSetSaveSetting(QStringList setValue){
 
-    virtual ~WhatIs() {}
+    if(!setValue.isEmpty()){
+        if(setValue.at(0) == "Keyboard"){
+            dialog->resize(setValue.at(1).toInt(),setValue.at(2).toInt());
+            BLShowDialog = setValue.at(3).toInt();
+        }
+    }
 
-public slots:
-    virtual void exec() = 0;
-    virtual void slCloseEvent     ()     = 0;
-};
-
-QT_BEGIN_NAMESPACE
-
-Q_DECLARE_INTERFACE(WhatIs, "info.programm/EasyWork/Plagin/1.0.0")
-
-QT_END_NAMESPACE
-
-#endif // WHAT_IS_GLOBAL_H
+    if(BLShowDialog)
+    show();
+}

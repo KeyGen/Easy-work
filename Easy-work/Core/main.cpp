@@ -24,6 +24,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setApplicationName("Easy-work");
 
     // Устанавливаем кодировку с который будет работать программа (UTF-8)
     QTextCodec *codec = QTextCodec::codecForName("UTF-8");

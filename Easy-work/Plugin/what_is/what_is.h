@@ -22,6 +22,8 @@
 
 #include "what_is_global.h"
 
+#include <QDebug>
+
 namespace Ui {
 class Dialog;
 }
@@ -33,7 +35,7 @@ class WhatIsClass : public WhatIs
 public:
 
     explicit WhatIsClass();
-    virtual ~WhatIsClass(){}
+    virtual ~WhatIsClass();
 
 
     virtual QString getVersion() { return "1.0"; }
@@ -43,6 +45,7 @@ public:
 
 public slots:
     virtual void exec();
+    virtual void slCloseEvent();
 
 private:
     Ui::Dialog *ui;

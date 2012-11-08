@@ -20,7 +20,6 @@
 #include "core.h"
 #include <QDesktopWidget>
 #include <QApplication>
-#include <QMessageBox>
 #include <QKeyEvent>
 #include <QMenuBar>
 
@@ -98,22 +97,6 @@ void Core::closeEvent     (QCloseEvent * event){
 
 void Core::focusInEvent   (QFocusEvent * event){
     emit siFocusInEvent(event);
-}
-
-void Core::controlLoadPlugin(QString LoadPlugin){
-
-    QStringList listFindPlugin;
-    listFindPlugin << "CoreWidget";
-
-    if(listFindPlugin.contains(LoadPlugin)){
-        QMessageBox msgBox;
-        msgBox.setIcon(QMessageBox::Critical);
-        msgBox.setText("Not found plugin: " + LoadPlugin + "    \nРабота приложения не возможна");
-        msgBox.setStandardButtons(QMessageBox::Cancel);
-        msgBox.exec();
-
-        QMetaObject::invokeMethod(this, "close", Qt::QueuedConnection); // Завершение приложения
-    }
 }
 
 

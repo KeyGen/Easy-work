@@ -83,7 +83,9 @@ void KeyboardClass::slMoveEvent(bool BL) {
 }
 
 void KeyboardClass::slCloseEvent (){
+    disconnect(dialog,SIGNAL(rejected()),this,SLOT(setBLShow()));
     dialog->close();
+    saveSetting();
 }
 
 void KeyboardClass::slFocusInEvent   (QFocusEvent * event){

@@ -20,6 +20,7 @@
 #ifndef KEYBOARD_GLOBAL_H
 #define KEYBOARD_GLOBAL_H
 
+#include <QStringList>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
@@ -52,9 +53,11 @@ public slots:
     virtual void pressDownOffAllKey()                       = 0;
     virtual void show()                                     = 0;
     virtual void setStyleSheet(QString)                     = 0;
+    virtual void slSetSaveSetting(QStringList)              = 0;
 
 signals:
     virtual void siKeyboardLanguageChange()                 = 0;
+    virtual void siSaveSetting(QStringList)                 = 0;
 };
 
 QT_BEGIN_NAMESPACE

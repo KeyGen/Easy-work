@@ -27,7 +27,7 @@
 #include <QKeyEvent>
 #include <QApplication>
 
-Q_EXPORT_PLUGIN(KeyboardClass);
+Q_EXPORT_PLUGIN(KeyboardClass)
 
 KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 {
@@ -46,9 +46,17 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
     menu->addAction(showKeyboard);
 
     pressShift = false;
+    BLShowDialog = true;
 
     connect(showKeyboard,SIGNAL(triggered()),this,SLOT(show()));
     connect(move_yes_no,SIGNAL(triggered(bool)),this,SLOT(slMoveEvent(bool)));
+    connect(dialog,SIGNAL(rejected()),this,SLOT(setBLShow()));
+    connect(showKeyboard,SIGNAL(triggered()),this,SLOT(setBLShow()));
+}
+
+void KeyboardClass::setBLShow(){
+    qDebug() << dialog->isVisible();
+    BLShowDialog = dialog->isVisible();
 }
 
 void KeyboardClass::setStyleSheet(QString style){

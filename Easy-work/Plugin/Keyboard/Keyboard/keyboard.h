@@ -65,6 +65,7 @@ private:
     QMultiHash <QString,QString> hashLanguage;
     FindKeyboardLayout *keyboardLayout;
     QString findKey;
+    bool BLShowDialog;
 
 #ifdef Q_OS_WIN32
 
@@ -87,11 +88,13 @@ private:
     QString sistemsKeyboardLanguage();
     void findKeyAndPress(QString);
     bool controlLoadPlugin(QString LoadPlugin);
+    void saveSetting();
 
 private slots:
     void slMoveEvent(bool);
     void setKeyboardLanguage();
     void findKeyAndPressTimer();
+    void setBLShow();
 
 public slots:
     virtual void slKeyPressEvent  (QKeyEvent *event);
@@ -105,8 +108,11 @@ public slots:
     virtual void show();
     void setStyleSheet(QString);
 
+    void slSetSaveSetting(QStringList);
+
 signals:
     void siKeyboardLanguageChange();
+    void siSaveSetting(QStringList);
 };
 
 #endif // KEYBOARD_H

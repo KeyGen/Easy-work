@@ -29,6 +29,7 @@ class RigimeFile;
 class Keyboard;
 class Style;
 class WhatIs;
+class SaveSetting;
 class QMenuBar;
 QT_END_NAMESPACE
 
@@ -55,6 +56,7 @@ private:
     void installationsKeyboard(Keyboard *plugin);
     void installationsWhatIs(WhatIs *plugin);
     void installationsStyle(Style *plugin);
+    void installationsSaveSetting(SaveSetting *plugin);
 
     void controlLoadPlugin(QString);
     void installationsCoreMenu();

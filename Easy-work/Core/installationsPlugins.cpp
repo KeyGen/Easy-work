@@ -25,9 +25,11 @@
 #include "Keyboard_global.h"
 #include "Style_global.h"
 #include "what_is_global.h"
+#include "SaveSetting_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
+#include <QMessageBox>
 #include <QMenu>
 #include <QDir>
 
@@ -49,6 +51,9 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "RegimeFile";
     readPluginsName << "Style";
     readPluginsName << "what_is";
+
+    // Загружаем последним
+    readPluginsName << "SaveSetting";
 
     for(int i = 0; i < readPluginsName.size(); i++){
         QDir findPlugin(pathPlugin);
@@ -98,6 +103,10 @@ void Core::loadPlugins(QString pathPlugin) {
                 {
                     installationsWhatIs(plugin);
                 }
+                else if (SaveSetting* plugin = qobject_cast<SaveSetting *>(obj))
+                {
+                    installationsSaveSetting(plugin);
+                }
             }
         }
         else{
@@ -106,9 +115,22 @@ void Core::loadPlugins(QString pathPlugin) {
     }
 
     coreWidget->activationRegime();
+}
 
-    if(loadKeyboard)
-    keyboard->show();
+void Core::controlLoadPlugin(QString LoadPlugin){
+
+    QStringList listFindPlugin;
+    listFindPlugin << "CoreWidget";
+
+    if(listFindPlugin.contains(LoadPlugin)){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setText(tr("Not found plugin: ") + LoadPlugin + tr("    \nРабота приложения не возможна"));
+        msgBox.setStandardButtons(QMessageBox::Cancel);
+        msgBox.exec();
+
+        QMetaObject::invokeMethod(this, "close", Qt::QueuedConnection); // Завершение приложения
+    }
 }
 
 // Знагрузка найденных плагинов:
@@ -154,6 +176,7 @@ void Core::installationsRigimeFile(RigimeFile * plugin){
 void Core::installationsWhatIs(WhatIs * plugin){
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
     help->addAction(plugin->getAction());
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
 }
 
 void Core::installationsStyle(Style *plugin){
@@ -169,4 +192,17 @@ void Core::installationsStyle(Style *plugin){
         keyboard->setStyleSheet(this->styleSheet());
         connect(plugin,SIGNAL(getStyle(QString)),keyboard,SLOT(setStyleSheet(QString)));
     }
+}
+
+void Core::installationsSaveSetting(SaveSetting *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+
+    if(loadKeyboard){
+        connect(keyboard,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),keyboard,SLOT(slSetSaveSetting(QStringList)));
+    }
+
+    setting->addAction(plugin->getAction());
+
+    plugin->setSaveSetting();
 }

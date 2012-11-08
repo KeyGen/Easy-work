@@ -5,4 +5,5 @@ SUBDIRS += \
     RegimeFile \
     Keyboard \
     what_is \
-    Style
+    Style \
+    SaveSetting

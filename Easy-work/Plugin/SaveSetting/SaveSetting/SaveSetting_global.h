@@ -17,38 +17,39 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef WHAT_IS_GLOBAL_H
-#define WHAT_IS_GLOBAL_H
+#ifndef SAVESETTING_GLOBAL_H
+#define SAVESETTING_GLOBAL_H
 
-#include <QtCore/qglobal.h>
-
+#include <QStringList>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
-class QDialog;
 class QAction;
 QT_END_NAMESPACE
 
-class WhatIs : public QObject
+class SaveSetting : public QObject
 {
 
 public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
-    virtual QAction* getAction()    = 0;
-    virtual void renameAction(QString)   = 0;
+    virtual QAction * getAction()   = 0;
 
-    virtual ~WhatIs() {}
+    virtual ~SaveSetting() {}
 
 public slots:
-    virtual void exec() = 0;
-    virtual void slCloseEvent     ()     = 0;
+    virtual void saveSetting(QStringList)   = 0;
+    virtual void setSaveSetting()           = 0;
+    virtual void deleteSetting()            = 0;
+
+signals:
+    virtual void sisetSaveSetting(QStringList)  = 0;
 };
 
 QT_BEGIN_NAMESPACE
 
-Q_DECLARE_INTERFACE(WhatIs, "info.programm/EasyWork/Plagin/1.0.0")
+Q_DECLARE_INTERFACE(SaveSetting, "SaveSetting/EasyWork/Plagin/1.0.0")
 
 QT_END_NAMESPACE
 
-#endif // WHAT_IS_GLOBAL_H
+#endif // SAVESETTING_GLOBAL_H

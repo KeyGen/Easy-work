@@ -1,31 +1,27 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2012-10-26T20:31:09
+# Project created by QtCreator 2012-11-08T09:47:36
 #
 #-------------------------------------------------
 
-TARGET = Keyboard
+QT       += gui
+
+TARGET = SaveSetting
 TEMPLATE = lib
 
-DEFINES += KEYBOARD_LIBRARY
+DEFINES += SAVESETTING_LIBRARY
 
-QT       += core
+SOURCES += savesetting.cpp
 
-SOURCES += keyboard.cpp \
-    slots.cpp \
-    installatiosPlugins.cpp \
-    systemWindowsLinux.cpp \
-    savesettings.cpp
-
-HEADERS += keyboard.h\
-        Keyboard_global.h
+HEADERS += savesetting.h\
+        SaveSetting_global.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
-    TARGET.UID3 = 0xE3043CFC
+    TARGET.UID3 = 0xEED1658D
     TARGET.CAPABILITY = 
     TARGET.EPOCALLOWDLLDATA = 1
-    addFiles.sources = Keyboard.dll
+    addFiles.sources = SaveSetting.dll
     addFiles.path = !:/sys/bin
     DEPLOYMENT += addFiles
 }
@@ -40,8 +36,3 @@ unix:!symbian {
 }
 
 DESTDIR = $$PWD/../../../Easy-work/Plugins
-
-INCLUDEPATH += $$PWD/../Plugin/FindKeyboardLayout/
-
-FORMS += \
-    keyboard.ui

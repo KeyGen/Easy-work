@@ -34,6 +34,10 @@ WhatIsClass::WhatIsClass() : ui(new Ui::Dialog) {
     connect(action,SIGNAL(triggered()),dialog,SLOT(exec()));
 }
 
+WhatIsClass::~WhatIsClass(){
+    qDebug() << "delete";
+}
+
 void WhatIsClass::exec()
 {
     dialog->exec();
@@ -49,4 +53,8 @@ void WhatIsClass::renameAction(QString str)
     action->setText(str);
 }
 
-// Всего строк 2135, актуальных 1660
+void WhatIsClass::slCloseEvent(){
+    qDebug() << "whiat is";
+}
+
+// Всего строк 2861, актуальных 2310, 29 файлов
