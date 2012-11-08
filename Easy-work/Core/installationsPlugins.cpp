@@ -203,6 +203,7 @@ void Core::installationsSaveSetting(SaveSetting *plugin){
     }
 
     setting->addAction(plugin->getAction());
+    connect(plugin,SIGNAL(closeApplication()),this,SLOT(close()));
 
     plugin->setSaveSetting();
 }

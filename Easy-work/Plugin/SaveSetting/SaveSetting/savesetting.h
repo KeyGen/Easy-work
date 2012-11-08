@@ -53,6 +53,7 @@ public slots:
 
 signals:
     void sisetSaveSetting(QStringList);
+    void closeApplication();
 
 };
 

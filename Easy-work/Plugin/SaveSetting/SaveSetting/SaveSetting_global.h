@@ -44,6 +44,7 @@ public slots:
 
 signals:
     virtual void sisetSaveSetting(QStringList)  = 0;
+    virtual void closeApplication()             = 0;
 };
 
 QT_BEGIN_NAMESPACE

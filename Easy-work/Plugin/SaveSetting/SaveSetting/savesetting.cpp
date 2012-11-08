@@ -21,6 +21,8 @@
 #include <QMessageBox>
 #include <QSettings>
 #include <QAction>
+#include <QApplication>
+#include <QProcess>
 
 Q_EXPORT_PLUGIN(SaveSettingClass)
 
@@ -70,8 +72,12 @@ void SaveSettingClass::deleteSetting(){
         removeSetting = true;
 
         msgBox.setIcon(QMessageBox::Information);
-        msgBox.setText(tr("Настройки удалены. Перезагрузите приложение."));
-        msgBox.setStandardButtons(QMessageBox::Ok);
-        msgBox.exec();
+        msgBox.setText(tr("Настройки будут удалены после перезагрузки приложения.\n\nВыполнить это сейчас?"));
+
+        if(msgBox.exec() == MessageYes)
+        {
+            emit closeApplication();
+            QProcess::startDetached(QApplication::applicationFilePath(), QStringList(), QApplication::applicationDirPath());
+        }
     }
 }
