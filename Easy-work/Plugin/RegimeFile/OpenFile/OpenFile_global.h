@@ -20,6 +20,7 @@
 #ifndef OPENFILE_GLOBAL_H
 #define OPENFILE_GLOBAL_H
 
+#include <QStringList>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
@@ -33,10 +34,17 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QAction * getAction()   = 0;
+    virtual QString getAllText()       = 0;
+    virtual void setBoxPosition(QChar) = 0;
+
+    virtual QStringList getSettings() = 0;
+    virtual void setSettings(QStringList)  = 0;
+
     virtual ~OpenFile() {}
 
 signals:
     virtual void siSetNewText(QString)  = 0;
+    virtual void activatedOpenFile()    = 0;
 };
 
 QT_BEGIN_NAMESPACE

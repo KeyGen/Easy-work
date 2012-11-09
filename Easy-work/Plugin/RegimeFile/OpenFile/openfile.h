@@ -40,6 +40,11 @@ public:
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Plugin Regime File - Open File"; }
     virtual QAction * getAction()   { return actionOpenFile; }
+    virtual QString getAllText();
+
+    virtual QStringList getSettings();
+    virtual void setSettings(QStringList);
+    virtual void setBoxPosition(QChar);
 
     virtual ~OpenFileClass() {}
 
@@ -49,20 +54,25 @@ private:
     QAction *actionOpenFile;
     QString saveOutwardText;
     QString defaultCodec;
+    QStringList saveSetting;
+    bool save;
 
 private:
     void setCodecComboBox();
     QString preparationText(QString);
+    bool readFileAndSetText(QString);
 
 private slots:
     void slSetNewTex();
     void setCodec(QString);
     void maskTextEdit(int in);
     void openFile();
-    void setTexEdirWriteRead(bool);
+    void setDefaultSetting();
+    void exec();
 
 signals:
     void siSetNewText(QString);
+    void activatedOpenFile();
 };
 
 #endif // OPENFILE_H

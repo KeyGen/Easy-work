@@ -52,15 +52,19 @@ private:
     QMenu *menu;
     QList <QAction*> listAction;
     QString tempFolderPath;
+    QString saveNaemStile;
 
 private slots:
     void slotActivateCSS();
+    void saveSetting();
 
 public slots:
     virtual void slCloseEvent ();
+    void slSetSaveSetting(QStringList);
 
 signals:
     void getStyle(QString);
+    void siSaveSetting(QStringList);
 };
 
 #endif // STYLE_H

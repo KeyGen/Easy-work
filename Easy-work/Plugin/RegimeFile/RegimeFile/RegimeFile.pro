@@ -10,7 +10,8 @@ TEMPLATE = lib
 DEFINES += REGIMEFILE_LIBRARY
 
 SOURCES += regimefile.cpp \
-    installationPlugins.cpp
+    installationPlugins.cpp \
+    savesettings.cpp
 
 HEADERS += regimefile.h\
         RegimeFile_global.h

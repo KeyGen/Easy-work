@@ -35,7 +35,7 @@ StyleClass::~StyleClass(){
 }
 
 void StyleClass::slCloseEvent (){
-    qDebug() << "style close";
+    saveSetting();
     removeTempFolderPath();
 }
 
@@ -135,6 +135,7 @@ void StyleClass::slotActivateCSS()
 
 void StyleClass::getStyleForName(QString nameFind, QString path){
 
+    saveNaemStile = nameFind;
     bool endCycle = false;
     QDir dir(path.toAscii());    // Создаем QDir в указанном пути (path)
 
@@ -194,6 +195,5 @@ void StyleClass::removeTempFolderPath(){
         dir.cdUp();
         dir.rmdir(tempFolderPath.split("/").last());
     }
-
 }
 

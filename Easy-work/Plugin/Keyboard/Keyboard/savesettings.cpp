@@ -38,9 +38,11 @@ void KeyboardClass::slSetSaveSetting(QStringList setValue){
         if(setValue.at(0) == "Keyboard"){
             dialog->resize(setValue.at(1).toInt(),setValue.at(2).toInt());
             BLShowDialog = setValue.at(3).toInt();
+
+            if(BLShowDialog)
+                show();
         }
     }
-
-    if(BLShowDialog)
-    show();
+    else
+        show();
 }

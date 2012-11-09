@@ -42,7 +42,6 @@ public:
 
 public slots:
     virtual void exec() = 0;
-    virtual void slCloseEvent     ()     = 0;
 };
 
 QT_BEGIN_NAMESPACE

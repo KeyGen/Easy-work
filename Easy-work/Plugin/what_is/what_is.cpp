@@ -23,7 +23,7 @@
 #include <QDialog>
 #include <QAction>
 
-Q_EXPORT_PLUGIN(WhatIsClass);
+Q_EXPORT_PLUGIN(WhatIsClass)
 
 WhatIsClass::WhatIsClass() : ui(new Ui::Dialog) {
 
@@ -35,7 +35,6 @@ WhatIsClass::WhatIsClass() : ui(new Ui::Dialog) {
 }
 
 WhatIsClass::~WhatIsClass(){
-    qDebug() << "delete";
 }
 
 void WhatIsClass::exec()
@@ -53,8 +52,4 @@ void WhatIsClass::renameAction(QString str)
     action->setText(str);
 }
 
-void WhatIsClass::slCloseEvent(){
-    qDebug() << "whiat is";
-}
-
-// Всего строк 2861, актуальных 2310, 29 файлов
+// Всего строк 3488, актуальных 2800, 36 файлов

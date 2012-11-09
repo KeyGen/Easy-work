@@ -72,10 +72,16 @@ private:
 
     Keyboard *keyboard;
     bool loadKeyboard;
+    Style *style;
+    bool loadStyle;
+    RigimeFile *regimeFile;
+    bool loadRegimeFile;
     CoreWidget *coreWidget;
 
 private slots:
     void slSetCentralWidget(QWidget *);
+    void slSetSaveSetting(QStringList);
+    void saveSetting();
 
 signals:
     void siKeyPressEvent  (QKeyEvent *event);
@@ -84,6 +90,8 @@ signals:
     void siMoveEvent      (QMoveEvent * event);
     void siCloseEvent     (QCloseEvent * event);
     void siFocusInEvent   (QFocusEvent * event);
+
+    void siSaveSetting(QStringList);
 
 };
 

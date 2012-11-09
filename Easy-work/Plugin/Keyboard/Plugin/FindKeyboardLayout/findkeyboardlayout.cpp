@@ -23,7 +23,7 @@
 #include <QMenu>
 #include <QDir>
 
-Q_EXPORT_PLUGIN(FindKeyboardLayoutClass);
+Q_EXPORT_PLUGIN(FindKeyboardLayoutClass)
 
 FindKeyboardLayoutClass::FindKeyboardLayoutClass()
 {
@@ -192,7 +192,6 @@ QString FindKeyboardLayoutClass::findNameLanguage(QByteArray By){
 
     for(int i = text.indexOf("WindowTitle=") + 12; text.at(i)!='\n'; i++)
         name += text.at(i);
-
 
     return name;
 }

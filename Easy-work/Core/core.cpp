@@ -31,7 +31,9 @@ Core::Core(QWidget *parent)
     QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();
 
-    loadKeyboard = false;
+    loadKeyboard    = false;
+    loadStyle       = false;
+    loadRegimeFile  = false;
 
     loadPlugins();
     moveWindowCenter();
@@ -92,6 +94,7 @@ void Core::moveEvent      (QMoveEvent * event){
 }
 
 void Core::closeEvent     (QCloseEvent * event){
+    saveSetting();
     emit siCloseEvent(event);
 }
 

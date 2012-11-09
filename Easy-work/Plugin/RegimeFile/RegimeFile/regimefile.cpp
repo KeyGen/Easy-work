@@ -20,6 +20,7 @@
 #include "regimefile.h"
 #include "ui_regimefile.h"
 #include "ui_infoPrint.h"
+#include "OpenFile_global.h"
 
 #include <QKeyEvent>
 #include <QMenuBar>
@@ -30,7 +31,7 @@
 #include <QTime>
 #include <QSize>
 
-Q_EXPORT_PLUGIN(RigimeFileClass);
+Q_EXPORT_PLUGIN(RigimeFileClass)
 
 RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
 {
@@ -42,12 +43,28 @@ RigimeFileClass::RigimeFileClass() : uiDialog (new Ui::InfoPrint)
     destroyedBL = true;
     startBL = false;
 
-    workerText = "Вы можете загрузить внешний файл в меню \"Режим файла\"";
+    defaultWorkerText = "Вы можете загрузить внешний файл в меню \"Режим файла\"";
+    workerText = defaultWorkerText;
 
     menuRegimeFile = new QMenu(tr("Режим файла"));
     startRegime = new QAction(tr("Режим файла"),this);
 
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
+}
+
+RigimeFileClass::~RigimeFileClass(){
+    delete ui;
+}
+
+void RigimeFileClass::destroyedWidget(){
+    emit stopLesson();
+    startBL = false;
+    destroyedBL = true;
+    connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
+}
+
+void RigimeFileClass::slCloseEvent(){
+    saveSetting();
 }
 
 QIcon RigimeFileClass::getIcon(){
@@ -131,26 +148,28 @@ void RigimeFileClass::startPrint(){
 
 void RigimeFileClass::stopPrint(){
 
-    emit stopLesson();
-    startBL = false;
-    ui->labelInput->clear();
-    ui->labelShow->clear();
+    if(startBL) {
+        emit stopLesson();
+        startBL = false;
+        ui->labelInput->clear();
+        ui->labelShow->clear();
 
-    ////////////////////////////////////////////
-    ui->labelInput->setMaximumWidth(0);
-    ui->labelInput->setMinimumWidth(0);
-    ui->labelShow->setMaximumWidth(0);
-    ui->labelShow->setMinimumWidth(0);
-    ////////////////////////////////////////////
+        ////////////////////////////////////////////
+        ui->labelInput->setMaximumWidth(0);
+        ui->labelInput->setMinimumWidth(0);
+        ui->labelShow->setMaximumWidth(0);
+        ui->labelShow->setMinimumWidth(0);
+        ////////////////////////////////////////////
 
-    ui->labelStart->show();
+        ui->labelStart->show();
 
-    uiDialog->inputCorrectly->setText(QString::number(calculateCorrectly,10));
-    uiDialog->inputError->setText(QString::number(calculateError,10));
-    uiDialog->inputTime->setText(QString::number((calculateTime->elapsed()/1000.0)));
-    uiDialog->inputSign->setText(QString::number((calculateCorrectly/(calculateTime->elapsed()/1000.0))*60.0));
+        uiDialog->inputCorrectly->setText(QString::number(calculateCorrectly,10));
+        uiDialog->inputError->setText(QString::number(calculateError,10));
+        uiDialog->inputTime->setText(QString::number((calculateTime->elapsed()/1000.0)));
+        uiDialog->inputSign->setText(QString::number((calculateCorrectly/(calculateTime->elapsed()/1000.0))*60.0));
 
-    dialog->exec();
+        dialog->exec();
+    }
 }
 
 void RigimeFileClass::centralAdministration(QChar inputWord){
@@ -163,9 +182,23 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
 
             if(ui->labelInput->text().isEmpty()){
                 stopPrint();
+                workerText = openFile->getAllText();
+
+                if(workerText.isEmpty())
+                    workerText = defaultWorkerText;
             }
-            else
+            else{
                 emit siGetWord(ui->labelInput->text().at(0));
+                openFile->setBoxPosition(ui->labelInput->text().at(0));
+
+                if(ui->labelInput->text().at(0) != ' '){
+                    workerText = ui->labelInput->text();
+                }
+                else{
+                    workerText = ui->labelInput->text().right(ui->labelInput->text().size() - 1);
+                }
+            }
+
 
             calculateCorrectly++;
         }
@@ -193,10 +226,6 @@ void RigimeFileClass::labelSetStyleSheetError(){
     ui->labelShow->setStyleSheet("border-color: red; border-width: 3px 0px 3px 3px;");
 
     QTimer::singleShot(200, this, SLOT(labelSetStyleSheetDefault()));
-}
-
-RigimeFileClass::~RigimeFileClass(){
-    delete ui;
 }
 
 QWidget * RigimeFileClass::getWidget() {
@@ -232,13 +261,6 @@ QWidget * RigimeFileClass::getWidget() {
     return widget;
 }
 
-void RigimeFileClass::destroyedWidget(){
-    emit stopLesson();
-    startBL = false;
-    destroyedBL = true;
-    connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
-}
-
 void RigimeFileClass::setMenuBar(QList <QMenu *> bar)
 {
     listMenu = bar;
@@ -254,7 +276,11 @@ void RigimeFileClass::slGetWidget(){
 }
 
 void RigimeFileClass::setWorkerText(QString workerTextTemp) {
+
     workerText = workerTextTemp;
-    ui->labelInput->setText(workerText);
-    ui->labelShow->clear();
+
+    if(!destroyedBL){
+        ui->labelInput->setText(workerText);
+        ui->labelShow->clear();
+    }
 }

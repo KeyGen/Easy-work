@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'openfile.ui'
 **
-** Created: Thu Nov 8 10:48:59 2012
+** Created: Fri Nov 9 18:18:16 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -14,7 +14,6 @@
 #include <QtGui/QAction>
 #include <QtGui/QApplication>
 #include <QtGui/QButtonGroup>
-#include <QtGui/QCheckBox>
 #include <QtGui/QComboBox>
 #include <QtGui/QDialog>
 #include <QtGui/QGridLayout>
@@ -38,7 +37,6 @@ public:
     QWidget *gridWidget;
     QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout_3;
-    QCheckBox *checkBox;
     QComboBox *comboBoxCodec;
     QPushButton *pushSave;
     QPushButton *pushClose;
@@ -69,12 +67,6 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        checkBox = new QCheckBox(gridWidget);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setChecked(true);
-
-        horizontalLayout_3->addWidget(checkBox);
-
         comboBoxCodec = new QComboBox(gridWidget);
         comboBoxCodec->setObjectName(QString::fromUtf8("comboBoxCodec"));
 
@@ -162,8 +154,6 @@ public:
 
 
         retranslateUi(DialogOpenFile);
-        QObject::connect(pushClose, SIGNAL(clicked()), DialogOpenFile, SLOT(close()));
-        QObject::connect(pushSave, SIGNAL(clicked()), DialogOpenFile, SLOT(close()));
 
         QMetaObject::connectSlotsByName(DialogOpenFile);
     } // setupUi
@@ -171,7 +161,6 @@ public:
     void retranslateUi(QDialog *DialogOpenFile)
     {
         DialogOpenFile->setWindowTitle(QApplication::translate("DialogOpenFile", "\320\227\320\260\320\263\321\200\321\203\320\267\320\272\320\260 \321\204\320\260\320\271\320\273\320\260", 0, QApplication::UnicodeUTF8));
-        checkBox->setText(QApplication::translate("DialogOpenFile", "\320\242\320\276\320\273\321\214\320\272\320\276 \321\207\321\202\320\265\320\275\320\270\320\265", 0, QApplication::UnicodeUTF8));
         pushSave->setText(QApplication::translate("DialogOpenFile", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", 0, QApplication::UnicodeUTF8));
         pushClose->setText(QApplication::translate("DialogOpenFile", "\320\236\321\202\320\274\320\265\320\275\320\260", 0, QApplication::UnicodeUTF8));
         textOutwardShow->setHtml(QApplication::translate("DialogOpenFile", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

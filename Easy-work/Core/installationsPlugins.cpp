@@ -158,9 +158,13 @@ void Core::installationsKeyboard(Keyboard *plugin) {
 void Core::installationsRigimeFile(RigimeFile * plugin){
 
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+    loadRegimeFile = true;
+    regimeFile = plugin;
+
     plugin->setMenuBar(coreMenu);
     coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
 
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
     connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
     connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
     connect(this,SIGNAL(siKeyReleaseEvent(QKeyEvent*)),plugin,SLOT(slKeyReleaseEvent(QKeyEvent*)));
@@ -176,11 +180,13 @@ void Core::installationsRigimeFile(RigimeFile * plugin){
 void Core::installationsWhatIs(WhatIs * plugin){
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
     help->addAction(plugin->getAction());
-    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
 }
 
 void Core::installationsStyle(Style *plugin){
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+
+    style = plugin;
+    loadStyle = true;
 
     this->setStyleSheet(plugin->getStyleSheet());
     setting->addMenu(plugin->createZipStyle());
@@ -197,13 +203,25 @@ void Core::installationsStyle(Style *plugin){
 void Core::installationsSaveSetting(SaveSetting *plugin){
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
 
+    setting->addAction(plugin->getAction());
+    connect(this,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+    connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),this,SLOT(slSetSaveSetting(QStringList)));
+    connect(plugin,SIGNAL(closeApplication()),this,SLOT(close()));
+
     if(loadKeyboard){
         connect(keyboard,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),keyboard,SLOT(slSetSaveSetting(QStringList)));
     }
 
-    setting->addAction(plugin->getAction());
-    connect(plugin,SIGNAL(closeApplication()),this,SLOT(close()));
+    if(loadStyle){
+        connect(style,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),style,SLOT(slSetSaveSetting(QStringList)));
+    }
+
+    if(loadRegimeFile){
+        connect(regimeFile,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeFile,SLOT(slSetSaveSetting(QStringList)));
+    }
 
     plugin->setSaveSetting();
 }

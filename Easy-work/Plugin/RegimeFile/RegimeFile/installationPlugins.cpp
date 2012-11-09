@@ -71,8 +71,10 @@ bool RigimeFileClass::loadPlugins(QString pathPlugin) {
 
                 if (OpenFile * plugin = qobject_cast<OpenFile *>(obj))
                 {
+                    openFile = plugin;
                     menuRegimeFile->addAction(plugin->getAction());
                     connect(plugin,SIGNAL(siSetNewText(QString)),this,SLOT(setWorkerText(QString)));
+                    connect(plugin,SIGNAL(activatedOpenFile()),this,SLOT(stopPrint()));
                 }
             }
         }
@@ -88,10 +90,12 @@ bool RigimeFileClass::controlLoadPlugin(QString LoadPlugin){
 
     QStringList listFindPlugin;
 
+    listFindPlugin << "OpenFile";
+
     if(listFindPlugin.contains(LoadPlugin)){
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Critical);
-        msgBox.setText(tr("Not found plugin: ") + LoadPlugin + tr("    \nКлавиатура не доступна."));
+        msgBox.setText(tr("Not found plugin: ") + LoadPlugin + tr("    \nРежим файла не доступен."));
         msgBox.setStandardButtons(QMessageBox::Cancel);
         msgBox.exec();
         return false;

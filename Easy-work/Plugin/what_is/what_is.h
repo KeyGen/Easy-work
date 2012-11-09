@@ -45,7 +45,6 @@ public:
 
 public slots:
     virtual void exec();
-    virtual void slCloseEvent();
 
 private:
     Ui::Dialog *ui;

@@ -20,6 +20,7 @@
 #ifndef REGIMEFILE_GLOBAL_H
 #define REGIMEFILE_GLOBAL_H
 
+#include <QStringList>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
@@ -50,12 +51,15 @@ signals:
     virtual void siGetWidget(QWidget *) = 0;
     virtual void siGetWord(QChar)       = 0;
     virtual void stopLesson()           = 0;
+    virtual void siSaveSetting(QStringList) = 0;
 
 public slots:
+    virtual void slCloseEvent     ()                        = 0;
     virtual void slKeyPressEvent  (QKeyEvent *event)        = 0;
     virtual void slKeyReleaseEvent(QKeyEvent *event)        = 0;
     virtual void slResizeEvent    (QResizeEvent * event)    = 0;
     virtual void slKeyboardLanguageChange()                 = 0;
+    virtual void slSetSaveSetting(QStringList)              = 0;
 };
 
 QT_BEGIN_NAMESPACE

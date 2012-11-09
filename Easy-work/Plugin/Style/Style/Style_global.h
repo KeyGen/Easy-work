@@ -20,6 +20,7 @@
 #ifndef STYLE_GLOBAL_H
 #define STYLE_GLOBAL_H
 
+#include <QStringList>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
@@ -33,16 +34,17 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QString getStyleSheet() = 0;
-
     virtual QMenu * createZipStyle(QString path = "Style/") = 0;
 
     virtual ~Style() {}
 
 public slots:
     virtual void slCloseEvent     ()     = 0;
+    virtual void slSetSaveSetting(QStringList) = 0;
 
 signals:
     virtual void getStyle(QString) = 0;
+    virtual void siSaveSetting(QStringList) = 0;
 };
 
 QT_BEGIN_NAMESPACE

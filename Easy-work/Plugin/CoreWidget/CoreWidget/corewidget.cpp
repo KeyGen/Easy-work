@@ -24,7 +24,7 @@
 #include <QWidget>
 #include <QSize>
 
-Q_EXPORT_PLUGIN(CoreWidgetClass);
+Q_EXPORT_PLUGIN(CoreWidgetClass)
 
 CoreWidgetClass::CoreWidgetClass()
 {

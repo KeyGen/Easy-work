@@ -23,16 +23,6 @@
       <item row="2" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QCheckBox" name="checkBox">
-          <property name="text">
-           <string>Только чтение</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QComboBox" name="comboBoxCodec"/>
         </item>
         <item>
@@ -131,38 +121,5 @@ p, li { white-space: pre-wrap; }
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushClose</sender>
-   <signal>clicked()</signal>
-   <receiver>DialogOpenFile</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>435</x>
-     <y>381</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>201</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushSave</sender>
-   <signal>clicked()</signal>
-   <receiver>DialogOpenFile</receiver>
-   <slot>close()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>340</x>
-     <y>381</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>201</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

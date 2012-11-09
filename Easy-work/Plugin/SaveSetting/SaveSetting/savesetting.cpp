@@ -29,8 +29,8 @@ Q_EXPORT_PLUGIN(SaveSettingClass)
 SaveSettingClass::SaveSettingClass(){
 
     removeSetting = false;
-    setting = new QSettings("KeyGen","Easy work");
-    actionRemoveSetting = new QAction(tr("Удалить настройки"),this);
+    setting = new QSettings("KeyGen","Easy-work");
+    actionRemoveSetting = new QAction(tr("Настройки по умолчанию"),this);
 
     connect(actionRemoveSetting,SIGNAL(triggered()),this,SLOT(deleteSetting()));
 }

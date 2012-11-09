@@ -11,7 +11,8 @@ TEMPLATE = lib
 
 DEFINES += STYLE_LIBRARY
 
-SOURCES += style.cpp
+SOURCES += style.cpp \
+    savesettings.cpp
 
 HEADERS += style.h\
         Style_global.h

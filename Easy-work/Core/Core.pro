@@ -12,7 +12,8 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         core.cpp \
-    installationsPlugins.cpp
+    installationsPlugins.cpp \
+    savesettings.cpp
 
 HEADERS  += core.h
 

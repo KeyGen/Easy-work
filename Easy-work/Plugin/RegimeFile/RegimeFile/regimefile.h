@@ -29,6 +29,7 @@ QT_BEGIN_NAMESPACE
 class QAction;
 class QDialog;
 class QTime;
+class OpenFile;
 QT_END_NAMESPACE
 
 namespace Ui {
@@ -61,6 +62,7 @@ private:
     Ui::InfoPrint *uiDialog;
     QList <QMenu *> listMenu;
     QString workerText;
+    QString defaultWorkerText;
     bool destroyedBL;
     bool startBL;
     QSize saveSizeLabelInputAndShow;
@@ -69,12 +71,12 @@ private:
     QTime *calculateTime;
 
     QDialog *dialog;
+    OpenFile *openFile;
 
 private:
      bool controlLoadPlugin(QString LoadPlugin);
      void centralAdministration(QChar);
      void startPrint();
-     void stopPrint();
 
 private slots:
     void slGetWidget();
@@ -82,17 +84,22 @@ private slots:
     void destroyedWidget();
     void labelSetStyleSheetDefault();
     void labelSetStyleSheetError();
+    void saveSetting();
+    void stopPrint();
 
 public slots:
     void slKeyPressEvent  (QKeyEvent *event);
     void slKeyReleaseEvent(QKeyEvent *event);
     void slResizeEvent (QResizeEvent * event);
     void slKeyboardLanguageChange();
+    void slSetSaveSetting(QStringList);
+    void slCloseEvent();
 
 signals:
     void siGetWidget(QWidget *);
     void siGetWord(QChar);
     void stopLesson();
+    void siSaveSetting(QStringList);
 };
 
 #endif // REGIMEFILE_H
