@@ -118,6 +118,17 @@ QString OpenFileClass::preparationText(QString text){
     return text;
 }
 
+QString OpenFileClass::preparationTextSimbol(QString text){
+
+    text.replace("—","-");
+    text.replace("«","\"");
+    text.replace("»", "\"");
+    text.replace("“", "\"");
+    text.replace("”", "\"");
+
+    return text;
+}
+
 void OpenFileClass::maskTextEdit(int in)
 {
     ui->textOutwardShow->setText(saveOutwardText.right(saveOutwardText.size()-in));
@@ -144,7 +155,7 @@ bool OpenFileClass::readFileAndSetText(QString path){
     {
         QTextStream out(&read_file);
         out.setCodec(ui->comboBoxCodec->itemText(ui->comboBoxCodec->currentIndex()).toAscii());
-        saveOutwardText = out.readAll();
+        saveOutwardText = preparationTextSimbol(out.readAll());
 
         while(saveOutwardText.at(saveOutwardText.size()-1) == ' '
               || saveOutwardText.at(saveOutwardText.size()-1) == '\n')

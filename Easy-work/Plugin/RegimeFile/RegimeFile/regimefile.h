@@ -63,6 +63,7 @@ private:
     QList <QMenu *> listMenu;
     QString workerText;
     QString defaultWorkerText;
+    QString dateText;
     bool destroyedBL;
     bool startBL;
     QSize saveSizeLabelInputAndShow;

@@ -60,6 +60,7 @@ private:
 private:
     void setCodecComboBox();
     QString preparationText(QString);
+    QString preparationTextSimbol(QString);
     bool readFileAndSetText(QString);
 
 private slots:
