@@ -129,6 +129,10 @@ void RigimeFileClass::startPrint(){
     startBL = true;
 
     if(!dateText.isEmpty()){
+
+        while(dateText.at(0) == ' ')
+            dateText = dateText.right(dateText.size()-1);
+
         if(dateText.size()>=30){
             workerText = dateText.left(30);
             ui->labelInput->setText(workerText);
