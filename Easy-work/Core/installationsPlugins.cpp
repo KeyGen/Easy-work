@@ -153,6 +153,8 @@ void Core::installationsKeyboard(Keyboard *plugin) {
     connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
     connect(this,SIGNAL(siMoveEvent(QMoveEvent*)),plugin,SLOT(slMoveEvent(QMoveEvent*)));
     connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
+    connect(this,SIGNAL(siShowCore()),plugin,SLOT(slShow()));
+    connect(this,SIGNAL(siHideCore()),plugin,SLOT(slHide()));
 }
 
 void Core::installationsRigimeFile(RigimeFile * plugin){

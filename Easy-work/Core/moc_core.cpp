@@ -1,8 +1,8 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'core.h'
 **
-** Created: Fri Nov 9 18:18:07 2012
-**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.1)
+** Created: Sun Nov 11 19:25:07 2012
+**      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,7 +11,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'core.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 63
-#error "This file was generated using the moc from 4.8.1. It"
+#error "This file was generated using the moc from 4.8.3. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -23,12 +23,12 @@ static const uint qt_meta_data_Core[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      10,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       7,       // signalCount
+       9,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       12,    6,    5,    5, 0x05,
@@ -38,11 +38,13 @@ static const uint qt_meta_data_Core[] = {
      124,    6,    5,    5, 0x05,
      151,    6,    5,    5, 0x05,
      180,    5,    5,    5, 0x05,
+     193,    5,    5,    5, 0x05,
+     206,    5,    5,    5, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-     207,    5,    5,    5, 0x08,
-     236,    5,    5,    5, 0x08,
-     266,    5,    5,    5, 0x08,
+     233,    5,    5,    5, 0x08,
+     262,    5,    5,    5, 0x08,
+     292,    5,    5,    5, 0x08,
 
        0        // eod
 };
@@ -53,8 +55,8 @@ static const char qt_meta_stringdata_Core[] = {
     "siResizeEvent(QResizeEvent*)\0"
     "siMoveEvent(QMoveEvent*)\0"
     "siCloseEvent(QCloseEvent*)\0"
-    "siFocusInEvent(QFocusEvent*)\0"
-    "siSaveSetting(QStringList)\0"
+    "siFocusInEvent(QFocusEvent*)\0siShowCore()\0"
+    "siHideCore()\0siSaveSetting(QStringList)\0"
     "slSetCentralWidget(QWidget*)\0"
     "slSetSaveSetting(QStringList)\0"
     "saveSetting()\0"
@@ -72,10 +74,12 @@ void Core::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 3: _t->siMoveEvent((*reinterpret_cast< QMoveEvent*(*)>(_a[1]))); break;
         case 4: _t->siCloseEvent((*reinterpret_cast< QCloseEvent*(*)>(_a[1]))); break;
         case 5: _t->siFocusInEvent((*reinterpret_cast< QFocusEvent*(*)>(_a[1]))); break;
-        case 6: _t->siSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
-        case 7: _t->slSetCentralWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
-        case 8: _t->slSetSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
-        case 9: _t->saveSetting(); break;
+        case 6: _t->siShowCore(); break;
+        case 7: _t->siHideCore(); break;
+        case 8: _t->siSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
+        case 9: _t->slSetCentralWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
+        case 10: _t->slSetSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
+        case 11: _t->saveSetting(); break;
         default: ;
         }
     }
@@ -113,9 +117,9 @@ int Core::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 10)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 10;
+        _id -= 12;
     }
     return _id;
 }
@@ -163,9 +167,21 @@ void Core::siFocusInEvent(QFocusEvent * _t1)
 }
 
 // SIGNAL 6
+void Core::siShowCore()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, 0);
+}
+
+// SIGNAL 7
+void Core::siHideCore()
+{
+    QMetaObject::activate(this, &staticMetaObject, 7, 0);
+}
+
+// SIGNAL 8
 void Core::siSaveSetting(QStringList _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &staticMetaObject, 6, _a);
+    QMetaObject::activate(this, &staticMetaObject, 8, _a);
 }
 QT_END_MOC_NAMESPACE

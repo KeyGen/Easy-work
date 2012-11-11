@@ -106,6 +106,10 @@ public slots:
     virtual void slAnimatePressWord (QChar);
     virtual void pressDownOffAllKey();
     virtual void show();
+
+    virtual void slShow();
+    virtual void slHide();
+
     void setStyleSheet(QString);
 
     void slSetSaveSetting(QStringList);

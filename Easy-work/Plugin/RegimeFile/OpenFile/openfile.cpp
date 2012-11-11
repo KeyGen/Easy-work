@@ -125,6 +125,7 @@ QString OpenFileClass::preparationTextSimbol(QString text){
     text.replace("»", "\"");
     text.replace("“", "\"");
     text.replace("”", "\"");
+    text.replace("„", "\"");
 
     return text;
 }

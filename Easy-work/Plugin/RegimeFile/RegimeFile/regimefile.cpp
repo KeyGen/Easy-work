@@ -127,7 +127,22 @@ void RigimeFileClass::slKeyReleaseEvent(QKeyEvent *event){
 void RigimeFileClass::startPrint(){
 
     startBL = true;
+
+    if(!dateText.isEmpty()){
+        if(dateText.size()>=30){
+            workerText = dateText.left(30);
+            ui->labelInput->setText(workerText);
+        }
+        else{
+            workerText = dateText;
+            ui->labelInput->setText(workerText);
+        }
+    }
+    else
+        workerText = defaultWorkerText;
+
     ui->labelInput->setText(workerText);
+
     ui->labelStart->close();
 
     if(!ui->labelInput->text().isEmpty())
@@ -179,13 +194,42 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
         {
             ui->labelShow->setText(ui->labelShow->text() + QString(inputWord));
             ui->labelInput->setText(ui->labelInput->text().right(ui->labelInput->text().size() - 1));
+            dateText = dateText.right(dateText.size() -1);
+
+
+            if(ui->labelInput->text().size()<20){
+                if(!dateText.isEmpty()){
+                    if(dateText.size()>=30){
+                        workerText = dateText.left(30);
+                        ui->labelInput->setText(workerText);
+                    }
+                    else{
+                        workerText = dateText;
+                        ui->labelInput->setText(workerText);
+                    }
+                }
+            }
+
 
             if(ui->labelInput->text().isEmpty()){
-                stopPrint();
-                workerText = openFile->getAllText();
 
-                if(workerText.isEmpty())
-                    workerText = defaultWorkerText;
+                if(dateText.isEmpty()){
+                    stopPrint();
+                    dateText = openFile->getAllText();
+
+                    if(!dateText.isEmpty()){
+                        if(dateText.size()>=30){
+                            workerText = dateText.left(30);
+                        }
+                        else{
+                            workerText = dateText;
+                        }
+                    }
+                    else
+                    {
+                        workerText = defaultWorkerText;
+                    }
+                }
             }
             else{
                 emit siGetWord(ui->labelInput->text().at(0));
@@ -277,10 +321,5 @@ void RigimeFileClass::slGetWidget(){
 
 void RigimeFileClass::setWorkerText(QString workerTextTemp) {
 
-    workerText = workerTextTemp;
-
-    if(!destroyedBL){
-        ui->labelInput->setText(workerText);
-        ui->labelShow->clear();
-    }
+    dateText = workerTextTemp;
 }

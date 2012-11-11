@@ -47,6 +47,8 @@ public:
     virtual void moveEvent      (QMoveEvent * event);
     virtual void closeEvent     (QCloseEvent * event); // Срабатывает когда закрывают окно
     virtual void focusInEvent   (QFocusEvent * event); // Срабатывает когда приложение получает фокус
+    virtual void showEvent ( QShowEvent * event );
+    virtual void hideEvent ( QHideEvent * event );
 
 private:
     void loadPlugins(QString pathPlugin = "Plugins");
@@ -90,6 +92,8 @@ signals:
     void siMoveEvent      (QMoveEvent * event);
     void siCloseEvent     (QCloseEvent * event);
     void siFocusInEvent   (QFocusEvent * event);
+    void siShowCore();
+    void siHideCore();
 
     void siSaveSetting(QStringList);
 

@@ -68,6 +68,14 @@ void Core::installationsCoreMenu()
     this->setFocusPolicy(Qt::StrongFocus); // Focus Tab and Click
 }
 
+void Core::showEvent ( QShowEvent * event ){
+    emit siShowCore();
+}
+
+void Core::hideEvent ( QHideEvent * event ){
+    emit siHideCore();
+}
+
 // slots
 void Core::slSetCentralWidget(QWidget *widget)
 {

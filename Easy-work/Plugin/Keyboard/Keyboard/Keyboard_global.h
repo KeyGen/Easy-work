@@ -54,6 +54,8 @@ public slots:
     virtual void show()                                     = 0;
     virtual void setStyleSheet(QString)                     = 0;
     virtual void slSetSaveSetting(QStringList)              = 0;
+    virtual void slShow() = 0;
+    virtual void slHide() = 0;
 
 signals:
     virtual void siKeyboardLanguageChange()                 = 0;

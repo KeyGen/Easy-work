@@ -96,3 +96,11 @@ void KeyboardClass::slFocusInEvent   (QFocusEvent * event){
         if(!findAndSetKeyboardLanguage())
             qDebug() << "Раскладка не найдена";
 }
+
+void KeyboardClass::slShow(){
+    dialog->setVisible(true);
+}
+
+void KeyboardClass::slHide(){
+    dialog->setVisible(false);
+}
