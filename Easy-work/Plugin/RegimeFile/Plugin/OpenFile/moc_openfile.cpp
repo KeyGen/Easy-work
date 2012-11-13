@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'openfile.h'
 **
-** Created: Sun Nov 11 17:28:10 2012
+** Created: Tue Nov 13 18:48:42 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!

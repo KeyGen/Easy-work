@@ -21,6 +21,7 @@
 
 //-- Интерфейсы плагинов --//
 #include "OpenFile_global.h"
+#include "StatisticForRegimeFile_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
@@ -42,6 +43,7 @@ bool RigimeFileClass::loadPlugins(QString pathPlugin) {
 
     QStringList readPluginsName;
     readPluginsName << "OpenFile";
+    readPluginsName << "StatisticForRegimeFile";
 
     for(int i = 0; i < readPluginsName.size(); i++){
         QDir findPlugin(pathPlugin);
@@ -76,6 +78,10 @@ bool RigimeFileClass::loadPlugins(QString pathPlugin) {
                     connect(plugin,SIGNAL(siSetNewText(QString)),this,SLOT(setWorkerText(QString)));
                     connect(plugin,SIGNAL(activatedOpenFile()),this,SLOT(stopPrint()));
                 }
+                else if (StatisticForRegimeFile * plugin = qobject_cast<StatisticForRegimeFile *>(obj))
+                {
+                    installationsStatisticForRegimeFile(plugin);
+                }
             }
         }
         else{
@@ -102,4 +108,11 @@ bool RigimeFileClass::controlLoadPlugin(QString LoadPlugin){
     }
     else
         return true;
+}
+
+void RigimeFileClass::installationsStatisticForRegimeFile(StatisticForRegimeFile * plugin){
+
+    menuRegimeFile->addAction(plugin->getAction());
+
+    connect(this,SIGNAL(siGetDateValue(QStringList)),plugin,SLOT(setValue(QStringList)));
 }

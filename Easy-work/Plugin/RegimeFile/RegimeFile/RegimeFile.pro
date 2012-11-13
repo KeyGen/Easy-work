@@ -35,7 +35,8 @@ unix:!symbian {
     INSTALLS += target
 }
 
-INCLUDEPATH += $$PWD/../OpenFile/
+INCLUDEPATH += $$PWD/../Plugin/OpenFile/
+INCLUDEPATH += $$PWD/../Plugin/StatisticForRegimeFile/
 
 DESTDIR = $$PWD/../../../Easy-work/Plugins
 

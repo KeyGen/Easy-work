@@ -30,6 +30,7 @@ class QAction;
 class QDialog;
 class QTime;
 class OpenFile;
+class StatisticForRegimeFile;
 QT_END_NAMESPACE
 
 namespace Ui {
@@ -77,7 +78,9 @@ private:
 private:
      bool controlLoadPlugin(QString LoadPlugin);
      void centralAdministration(QChar);
+     void installationsStatisticForRegimeFile(StatisticForRegimeFile * plugin);
      void startPrint();
+     QString createFormatTime(int);
 
 private slots:
     void slGetWidget();
@@ -101,6 +104,7 @@ signals:
     void siGetWord(QChar);
     void stopLesson();
     void siSaveSetting(QStringList);
+    void siGetDateValue(QStringList);
 };
 
 #endif // REGIMEFILE_H

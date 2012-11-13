@@ -148,7 +148,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Затраченное время (сек):</string>
+        <string>Затраченное время:</string>
        </property>
       </widget>
      </item>

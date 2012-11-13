@@ -133,13 +133,20 @@ void RigimeFileClass::startPrint(){
         while(dateText.at(0) == ' ')
             dateText = dateText.right(dateText.size()-1);
 
+        if(!dateText.isEmpty())
+        openFile->setBoxPosition(dateText.at(0));
+
         if(dateText.size()>=30){
             workerText = dateText.left(30);
             ui->labelInput->setText(workerText);
         }
         else{
-            workerText = dateText;
-            ui->labelInput->setText(workerText);
+            if(!dateText.isEmpty()){
+                workerText = dateText;
+                ui->labelInput->setText(workerText);
+            }
+            else
+                workerText = defaultWorkerText;
         }
     }
     else
@@ -184,11 +191,59 @@ void RigimeFileClass::stopPrint(){
 
         uiDialog->inputCorrectly->setText(QString::number(calculateCorrectly,10));
         uiDialog->inputError->setText(QString::number(calculateError,10));
-        uiDialog->inputTime->setText(QString::number((calculateTime->elapsed()/1000.0)));
+        uiDialog->inputTime->setText(createFormatTime(calculateTime->elapsed()));
         uiDialog->inputSign->setText(QString::number((calculateCorrectly/(calculateTime->elapsed()/1000.0))*60.0));
+
+
+        if((calculateTime->elapsed())>2000){
+
+            QStringList value;
+
+            value << QDate::currentDate().toString("dd.MM.yyyy")
+                  + QTime::currentTime().toString(" hh:mm:ss");
+            value << uiDialog->inputError->text();
+            value << uiDialog->inputCorrectly->text();
+            value << uiDialog->inputTime->text();
+            value << uiDialog->inputSign->text();
+
+            emit siGetDateValue(value);
+        }
 
         dialog->exec();
     }
+}
+
+QString RigimeFileClass::createFormatTime(int timeMS){
+
+    int allTimeSeconds = timeMS/1000;
+
+    int second  = 0;
+    int min     = 0;
+    int hours   = 0;
+
+    if(allTimeSeconds/60){
+
+        second = allTimeSeconds%60;
+        allTimeSeconds -= second;
+        min = allTimeSeconds/60;
+
+
+        if(min/60){
+            min = min%60;
+            allTimeSeconds -= min*60;
+            hours = (allTimeSeconds/60)/60;
+
+        }
+    }
+    else
+        second = allTimeSeconds;
+
+    QTime resulatTime(hours,min,second);
+
+    if(!resulatTime.toString().isEmpty())
+        return resulatTime.toString();
+    else
+        return tr("Время велико");
 }
 
 void RigimeFileClass::centralAdministration(QChar inputWord){
@@ -238,13 +293,7 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
             else{
                 emit siGetWord(ui->labelInput->text().at(0));
                 openFile->setBoxPosition(ui->labelInput->text().at(0));
-
-                if(ui->labelInput->text().at(0) != ' '){
-                    workerText = ui->labelInput->text();
-                }
-                else{
-                    workerText = ui->labelInput->text().right(ui->labelInput->text().size() - 1);
-                }
+                workerText = ui->labelInput->text();
             }
 
 

@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-TARGET = Easy-work
+TARGET = Easy_work
 TEMPLATE = app
 
 
