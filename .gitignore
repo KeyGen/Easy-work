@@ -14,7 +14,5 @@ Makefile
 .directory
 
 # Папки
-mdb
-
-#Programm
-Easy_work
+bin
+Database
