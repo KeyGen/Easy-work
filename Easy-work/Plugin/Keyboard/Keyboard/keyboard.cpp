@@ -31,6 +31,7 @@ Q_EXPORT_PLUGIN(KeyboardClass)
 
 KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 {
+
     dialog = new QDialog;
     ui->setupUi(dialog);
     dialog->setWindowFlags(Qt::Tool);

@@ -37,6 +37,7 @@ Core::Core(QWidget *parent)
 
     loadPlugins();
     moveWindowCenter();
+
 }
 
 Core::~Core() {}

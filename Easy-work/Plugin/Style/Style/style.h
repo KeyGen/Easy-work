@@ -38,14 +38,14 @@ public:
     virtual QString getName()       { return "Style"; }
     virtual QString getStyleSheet() { return readStyleSheet(); }
 
-    virtual QMenu * createZipStyle(QString path = "Style/");
+    virtual QMenu * createZipStyle(QString path);
 
     virtual ~StyleClass();
 
 private:
     QString readStyleSheet(QString path = ":/standart.style");
     QString findStyleName(QByteArray, QString language = "name_ru");
-    void getStyleForName(QString, QString path = "Style/");
+    void getStyleForName(QString, QString path = "../share/EasyWork/Style");
     void removeTempFolderPath();
 
 private:

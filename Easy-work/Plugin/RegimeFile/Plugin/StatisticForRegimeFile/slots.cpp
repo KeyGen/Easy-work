@@ -35,19 +35,25 @@ void StatisticForRegimeFileClass::deleteStatisticAll(){
 
         if(msgBox.exec() == 16384){
 
-            QDir dir(pathMDB);
-
-            if(!dir.entryList().isEmpty()){
-
-                dir.remove(nameMDB);
-
-                for(int i = ui->tableWidget->rowCount(); i>=0; i--)
-                    ui->tableWidget->removeRow(i);
-
-                createConnection();
+            bool openBL = true;
+            QSqlQuery query;
+            if (!query.exec("SELECT * FROM statistic;")) {
+                qDebug() << "Unable to execute query - exiting";
+                openBL = false;
             }
-            else
-                qDebug() << "Not found dir";
+
+            if(openBL){
+
+                QString strF = "DELETE FROM statistic";
+
+                if (!query.exec(strF)) {
+                    qDebug() << "Unable to do delete opeation";
+                }
+                else{
+                    for(int i = ui->tableWidget->rowCount(); i>=0; i--)
+                        ui->tableWidget->removeRow(i);
+                }
+            }
         }
     }
 }

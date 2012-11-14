@@ -51,7 +51,8 @@ public:
     virtual void hideEvent ( QHideEvent * event );
 
 private:
-    void loadPlugins(QString pathPlugin = "Plugins");
+    // Путь к плагинам
+    void loadPlugins(QString pathPlugin = "../lib/EasyWork");
 
     void installationsCoreWidget(CoreWidget * plugin);
     void installationsRigimeFile(RigimeFile * plugin);

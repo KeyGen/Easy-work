@@ -35,7 +35,7 @@ unix:!symbian {
     INSTALLS += target
 }
 
-DESTDIR = $$PWD/../../../../Easy-work/Plugins
+DESTDIR = $$PWD/../../../../Easy-work/lib/EasyWork
 
 INCLUDEPATH += $$PWD/../../../qzip/
 

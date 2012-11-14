@@ -1,0 +1,12 @@
+Package: EasyWork
+Version: 0.3
+Maintainer: KeyGen <KeyGenQt@gmail.com>
+Architecture: all
+Section: science
+Depends: libqt4-dev
+Installed-Size: 1000
+Origin: https://github.com/KeyGen/Easy-work/wiki
+Description: Easy work Version 0.3
+ New in version 0.3
+ * Addition statistic for Regime file
+;

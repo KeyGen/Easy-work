@@ -38,7 +38,7 @@ unix:!symbian {
 
 INCLUDEPATH += $$PWD/../../qzip/
 
-DESTDIR = $$PWD/../../../Easy-work/Plugins
+DESTDIR = $$PWD/../../../Easy-work/lib/EasyWork
 
 RESOURCES += \
     standartStyle.qrc

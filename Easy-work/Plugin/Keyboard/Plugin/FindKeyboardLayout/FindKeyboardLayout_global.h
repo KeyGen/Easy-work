@@ -34,9 +34,11 @@ public:
 
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
-    virtual QMenu* createLanguageMenu(QString path = "KeyboardLayout/")        = 0;
-    virtual QMultiHash <QString, QString> readerZipKeyboardLayout(QString language = "en-US",
-                                                                  QString path = "KeyboardLayout/") = 0;
+
+        virtual QMenu* createLanguageMenu(QString path = "../share/EasyWork/KeyboardLayout/")        = 0;
+        virtual QMultiHash <QString, QString> readerZipKeyboardLayout(QString language = "en-US",
+                                                                      QString path = "../share/EasyWork/KeyboardLayout/") = 0;
+
 
     virtual ~FindKeyboardLayout() {}
 

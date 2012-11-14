@@ -24,4 +24,10 @@ INCLUDEPATH += $$PWD/../Plugin/Keyboard/Keyboard/
 INCLUDEPATH += $$PWD/../Plugin/Style/Style/
 INCLUDEPATH += $$PWD/../Plugin/what_is/
 
-DESTDIR = $$PWD/../Easy-work
+DESTDIR = $$PWD/../Easy-work/bin
+
+unix: {
+    target.path = /usr/bin
+
+    INSTALLS += target
+}

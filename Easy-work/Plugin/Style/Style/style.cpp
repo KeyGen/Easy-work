@@ -28,7 +28,6 @@ Q_EXPORT_PLUGIN(StyleClass)
 
 StyleClass::StyleClass(){
     menu = new QMenu(tr("Стили"));
-    tempFolderPath = "Style/readStyle";
 }
 
 StyleClass::~StyleClass(){
@@ -54,6 +53,8 @@ QString StyleClass::readStyleSheet(QString path){
 
 QMenu * StyleClass::createZipStyle(QString path)
 {
+    tempFolderPath = path + "/readStyle";
+
     QDir dir(path.toAscii());    // Создаем QDir в указанном пути (path)
 
     QStringList filters;
@@ -68,7 +69,7 @@ QMenu * StyleClass::createZipStyle(QString path)
 
     for(int i = 0; i<files.size(); i++ )
     {
-        QZipReader zip_reader(path.toAscii() + files.at(i).toAscii());
+        QZipReader zip_reader(path.toAscii()  + "/" +  files.at(i).toAscii());
 
         if (zip_reader.exists()) {          // Если все чудно
 
@@ -146,7 +147,7 @@ void StyleClass::getStyleForName(QString nameFind, QString path){
 
     for(int i = 0; i<files.size(); i++ )
     {
-        QZipReader zip_reader(path.toAscii() + files.at(i).toAscii());
+        QZipReader zip_reader(path.toAscii() + "/" + files.at(i).toAscii());
 
         if (zip_reader.exists()) {          // Если все чудно
 

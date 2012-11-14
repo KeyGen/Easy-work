@@ -34,7 +34,8 @@ public:
     virtual QString getVersion()    = 0;
     virtual QString getName()       = 0;
     virtual QString getStyleSheet() = 0;
-    virtual QMenu * createZipStyle(QString path = "Style/") = 0;
+
+    virtual QMenu * createZipStyle(QString path = "../share/EasyWork/Style") = 0;
 
     virtual ~Style() {}
 

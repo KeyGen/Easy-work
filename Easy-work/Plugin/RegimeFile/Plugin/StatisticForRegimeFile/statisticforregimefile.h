@@ -36,7 +36,7 @@ private slots:
     void deleteStatistic();
 
 private:
-    bool createConnection(QString path = "mdb", QString name = "statisticForRegimeFile.mdb");
+    bool createConnection(QString path = "../share/EasyWork/Database", QString name = "statisticForRegimeFile.mdb");
     void readMDB();
     void insertMDB(QStringList value);
     void createTableVerticalHeader(QHash<QString,QStringList>);
