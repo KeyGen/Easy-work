@@ -283,6 +283,11 @@ void OpenFileClass::setBoxPosition(QChar findStr){
 }
 
 QString OpenFileClass::getAllText(){
+
     ui->boxPositionInText->setValue(0);
-    return preparationText(ui->textOutwardShow->toPlainText());
+
+    if(!ui->textOutwardShow->toPlainText().isEmpty())
+        return preparationText(ui->textOutwardShow->toPlainText());
+    else
+        return "";
 }

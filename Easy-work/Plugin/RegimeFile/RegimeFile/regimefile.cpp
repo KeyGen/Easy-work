@@ -100,7 +100,11 @@ void RigimeFileClass::slKeyPressEvent (QKeyEvent *event){
 
     if(!destroyedBL){
         if(startBL){
-            if(event->key() != 16777220){ // 16777220 - Enter
+
+            if(event->key() == Qt::Key_CapsLock)
+                emit siGetWord(ui->labelInput->text().at(0));
+
+            if(event->key() != Qt::Key_Return){ // 16777220 - Enter
                 if(!event->text().isEmpty())
                     centralAdministration(event->text().at(0));
             }
@@ -269,11 +273,10 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
                 }
             }
 
-
             if(ui->labelInput->text().isEmpty()){
 
                 if(dateText.isEmpty()){
-                    stopPrint();
+
                     dateText = openFile->getAllText();
 
                     if(!dateText.isEmpty()){
@@ -284,11 +287,12 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
                             workerText = dateText;
                         }
                     }
-                    else
-                    {
+                    else{
                         workerText = defaultWorkerText;
                     }
                 }
+
+                stopPrint();
             }
             else{
                 emit siGetWord(ui->labelInput->text().at(0));

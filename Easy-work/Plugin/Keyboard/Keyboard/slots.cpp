@@ -18,6 +18,7 @@
  */
 
 #include "keyboard.h"
+#include "ui_keyboard.h"
 
 #include <QKeyEvent>
 #include <QResizeEvent>
@@ -95,6 +96,8 @@ void KeyboardClass::slFocusInEvent   (QFocusEvent * event){
     if(examinationKeyboardLanguage())
         if(!findAndSetKeyboardLanguage())
             qDebug() << "Раскладка не найдена";
+
+    setCapsLock();
 }
 
 void KeyboardClass::slShow(){

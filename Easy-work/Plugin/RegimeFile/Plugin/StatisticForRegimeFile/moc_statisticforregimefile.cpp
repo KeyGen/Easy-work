@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'statisticforregimefile.h'
 **
-** Created: Wed Nov 14 16:00:52 2012
+** Created: Thu Nov 15 09:40:00 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!

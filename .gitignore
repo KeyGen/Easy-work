@@ -15,4 +15,7 @@ Makefile
 
 # Папки
 bin
+lib
+debug
+release
 Database

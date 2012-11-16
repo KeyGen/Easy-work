@@ -49,8 +49,30 @@
         return QApplication::keyboardInputLocale().bcp47Name();
     }
 
+    bool KeyboardClass::statusCapsLock(){
+        return GetKeyState(VK_CAPITAL);
+    }
+
 #else
+
+#include </usr/include/X11/XKBlib.h>
+
+
     QString KeyboardClass::sistemsKeyboardLanguage(){
         return QApplication::keyboardInputLocale().bcp47Name();
+    }
+
+    bool KeyboardClass::statusCapsLock(){
+
+        Display * d = XOpenDisplay((char*)0);
+        bool caps_state = false;
+        if (d) {
+        unsigned n;
+
+        XkbGetIndicatorState(d, XkbUseCoreKbd, &n);
+        caps_state = (n & 0x01) == 1;
+        }
+
+        return caps_state;
     }
 #endif

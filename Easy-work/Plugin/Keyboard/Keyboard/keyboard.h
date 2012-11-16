@@ -66,6 +66,7 @@ private:
     FindKeyboardLayout *keyboardLayout;
     QString findKey;
     bool BLShowDialog;
+    bool enteredCapsLock;
 
 #ifdef Q_OS_WIN32
 
@@ -89,6 +90,8 @@ private:
     void findKeyAndPress(QString);
     bool controlLoadPlugin(QString LoadPlugin);
     void saveSetting();
+    bool statusCapsLock();
+    void setCapsLock();
 
 private slots:
     void slMoveEvent(bool);

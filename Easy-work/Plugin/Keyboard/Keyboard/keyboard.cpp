@@ -48,6 +48,7 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
 
     pressShift = false;
     BLShowDialog = true;
+    enteredCapsLock = false;
 
     connect(showKeyboard,SIGNAL(triggered()),this,SLOT(show()));
     connect(move_yes_no,SIGNAL(triggered(bool)),this,SLOT(slMoveEvent(bool)));
@@ -81,7 +82,8 @@ bool KeyboardClass::findAndSetKeyboardLanguage(){
     saveLanguageKeboard = sistemsKeyboardLanguage();
     hashLanguage = keyboardLayout->readerZipKeyboardLayout(saveLanguageKeboard);
 
-    setKeyboardLanguage();
+    enteredCapsLock = false;
+    setCapsLock();
 
     pressDownOffAllKey();
 
@@ -92,17 +94,46 @@ bool KeyboardClass::findAndSetKeyboardLanguage(){
     return true;
 }
 
+void KeyboardClass::setCapsLock(){
+
+    if(enteredCapsLock != statusCapsLock()){
+
+        QMultiHash<QString,QString>::iterator it = hashLanguage.begin();
+
+        for(; it!=hashLanguage.end(); ++it)
+        {
+            if(it.value().contains(QRegExp("\\w")))
+                if(it.value().contains(QRegExp("\\D")))
+                    if(it.value()!="_"){
+                        QString shift  = it.value();
+                        hashLanguage.find(it.key(),shift).value() = "shift";
+                        ++it;
+                        QString noShift = it.value();
+
+                        hashLanguage.find(it.key(),noShift).value() = shift;
+                        hashLanguage.find(it.key(),"shift").value() = noShift;
+                    }
+        }
+        setKeyboardLanguage();
+        enteredCapsLock = statusCapsLock();
+    }
+
+    pressDownOffAllKey();
+    ui->Caps_Lock->setDown(statusCapsLock());
+}
+
 void KeyboardClass::pressDownOffAllKey(){
     QList<QPushButton *> widgets = ui->gridWidget->findChildren<QPushButton *>();
     for(int i = 0; i<widgets.size(); i++) widgets.at(i)->setDown(false);
 
     pressShift = false;
     setKeyboardLanguage();
+    ui->Caps_Lock->setDown(statusCapsLock());
 }
 
 void KeyboardClass::findKeyAndPress(QString findKeyTemp){
     findKey = findKeyTemp;
-    QTimer::singleShot(100, this, SLOT(findKeyAndPressTimer()));
+    QTimer::singleShot(200, this, SLOT(findKeyAndPressTimer()));
 }
 
 void KeyboardClass::findKeyAndPressTimer(){
@@ -121,8 +152,8 @@ void KeyboardClass::findKeyAndPressTimer(){
                     widgets.at(0)->setDown(true);
 
                 if(!(i%2)){
-                    ui->Shift_left->setDown(true);
-                    ui->Shift_right->setDown(true);
+                        ui->Shift_left->setDown(true);
+                        ui->Shift_right->setDown(true);
                 }
             }
         }
@@ -190,15 +221,16 @@ void KeyboardClass::setDownControlKey(QKeyEvent *event, bool BL)
         if(!BL)
             pressDownOffAllKey();
     }
-    else if(event->key() == Qt::Key_CapsLock)
-        ui->Caps_Lock->setDown(BL);
+    else if(event->key() == Qt::Key_CapsLock){
+            setCapsLock();
+    }
     else if(event->key() == Qt::Key_Control)
         {ui->Ctrl_left->setDown(BL); ui->Ctrl_right->setDown(BL);}
     else if(event->key() == Qt::Key_Menu)
         ui->Menu->setDown(BL);
     else if(event->key() == Qt::Key_Meta)
         ui->Win->setDown(BL);
-    else if(event->key() == 16777220)
+    else if(event->key() == Qt::Key_Return)
         ui->Enter->setDown(BL);
     else if(event->key() == -1) {
         languageBL = true;
