@@ -1,1 +1,0 @@
- fakeroot dpkg-deb --build easy_work

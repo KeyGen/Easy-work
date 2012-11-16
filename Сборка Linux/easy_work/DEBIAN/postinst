@@ -16,5 +16,10 @@ exit $exit_status
 
 sudo chmod 777 /usr/share/EasyWork/Database
 sudo chmod 777 /usr/share/EasyWork/Style
+sudo chmod 777 /usr/share/EasyWork/KeyboardLayout
+
+if [ "$1" = "configure" ] && [ -x "`which update-menus 2>/dev/null`" ] ; then
+update-menus
+fi
 
 exit 0
