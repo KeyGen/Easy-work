@@ -18,10 +18,12 @@
  */
 
 #include "core.h"
+#include <QDesktopServices>
 #include <QDesktopWidget>
 #include <QApplication>
 #include <QKeyEvent>
 #include <QMenuBar>
+#include <QUrl>
 
 Core::Core(QWidget *parent)
     : QMainWindow(parent)
@@ -34,6 +36,7 @@ Core::Core(QWidget *parent)
     loadKeyboard    = false;
     loadStyle       = false;
     loadRegimeFile  = false;
+    loadUpdate      = false;
 
     loadPlugins();
     moveWindowCenter();
@@ -66,14 +69,35 @@ void Core::installationsCoreMenu()
     menu->addAction(exit);
     connect(exit,SIGNAL(triggered()),this,SLOT(close()));
 
+    QAction *bags = new QAction(tr("Сообщить об ошибке"),this);
+    help->addAction(bags);
+    connect(bags,SIGNAL(triggered()),this,SLOT(slCommunicateBags()));
+
+    QAction *goToWebSite = new QAction(tr("Поситить сайт"),this);
+    help->addAction(goToWebSite);
+    connect(goToWebSite,SIGNAL(triggered()),this,SLOT(slGoToWebSite()));
+
     this->setFocusPolicy(Qt::StrongFocus); // Focus Tab and Click
 }
 
+void Core::slGoToWebSite() { fGoToWebSite(); }
+void Core::slCommunicateBags() { fCommunicateBags(); }
+
+void Core::fGoToWebSite(QString site){
+    QDesktopServices::openUrl(QUrl(site));
+}
+
+void Core::fCommunicateBags(QString site){
+    QDesktopServices::openUrl(QUrl(site));
+}
+
 void Core::showEvent ( QShowEvent * event ){
+    event->type();
     emit siShowCore();
 }
 
 void Core::hideEvent ( QHideEvent * event ){
+    event->type();
     emit siHideCore();
 }
 

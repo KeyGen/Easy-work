@@ -31,7 +31,7 @@
 
 Q_EXPORT_PLUGIN(StatisticForRegimeFileClass)
 
-StatisticForRegimeFileClass::StatisticForRegimeFileClass()  : ui(new Ui::statisticDialog)
+StatisticForRegimeFileClass::StatisticForRegimeFileClass() : ui(new Ui::statisticDialog)
 {
     dialogStatistic = new QDialog;
     ui->setupUi(dialogStatistic);

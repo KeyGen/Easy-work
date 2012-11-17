@@ -30,6 +30,7 @@ class Keyboard;
 class Style;
 class WhatIs;
 class SaveSetting;
+class Update;
 class QMenuBar;
 QT_END_NAMESPACE
 
@@ -60,10 +61,14 @@ private:
     void installationsWhatIs(WhatIs *plugin);
     void installationsStyle(Style *plugin);
     void installationsSaveSetting(SaveSetting *plugin);
+    void installationsUpdate(Update *plugin);
 
     void controlLoadPlugin(QString);
     void installationsCoreMenu();
     void moveWindowCenter();
+
+    void fGoToWebSite(QString site = "https://github.com/KeyGen/Easy-work/wiki");
+    void fCommunicateBags(QString site = "https://github.com/KeyGen/Easy-work/wiki");
 
 private:
     QList <QMenu *> coreMenu;
@@ -73,6 +78,8 @@ private:
     QMenu *setting;
     QMenu *help;
 
+    Update *update;
+    bool loadUpdate;
     Keyboard *keyboard;
     bool loadKeyboard;
     Style *style;
@@ -85,6 +92,8 @@ private slots:
     void slSetCentralWidget(QWidget *);
     void slSetSaveSetting(QStringList);
     void saveSetting();
+    void slGoToWebSite();
+    void slCommunicateBags();
 
 signals:
     void siKeyPressEvent  (QKeyEvent *event);

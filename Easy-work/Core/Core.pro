@@ -21,6 +21,7 @@ INCLUDEPATH += $$PWD/../Plugin/SaveSetting/SaveSetting/
 INCLUDEPATH += $$PWD/../Plugin/CoreWidget/CoreWidget/
 INCLUDEPATH += $$PWD/../Plugin/RegimeFile/RegimeFile/
 INCLUDEPATH += $$PWD/../Plugin/Keyboard/Keyboard/
+INCLUDEPATH += $$PWD/../Plugin/Update/Update/
 INCLUDEPATH += $$PWD/../Plugin/Style/Style/
 INCLUDEPATH += $$PWD/../Plugin/what_is/
 

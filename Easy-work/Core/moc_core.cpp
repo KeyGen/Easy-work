@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'core.h'
 **
-** Created: Wed Nov 14 16:06:27 2012
+** Created: Sat Nov 17 13:06:56 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_Core[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -45,6 +45,8 @@ static const uint qt_meta_data_Core[] = {
      233,    5,    5,    5, 0x08,
      262,    5,    5,    5, 0x08,
      292,    5,    5,    5, 0x08,
+     306,    5,    5,    5, 0x08,
+     322,    5,    5,    5, 0x08,
 
        0        // eod
 };
@@ -59,7 +61,8 @@ static const char qt_meta_stringdata_Core[] = {
     "siHideCore()\0siSaveSetting(QStringList)\0"
     "slSetCentralWidget(QWidget*)\0"
     "slSetSaveSetting(QStringList)\0"
-    "saveSetting()\0"
+    "saveSetting()\0slGoToWebSite()\0"
+    "slCommunicateBags()\0"
 };
 
 void Core::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -80,6 +83,8 @@ void Core::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void *
         case 9: _t->slSetCentralWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
         case 10: _t->slSetSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
         case 11: _t->saveSetting(); break;
+        case 12: _t->slGoToWebSite(); break;
+        case 13: _t->slCommunicateBags(); break;
         default: ;
         }
     }
@@ -117,9 +122,9 @@ int Core::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }

@@ -26,6 +26,7 @@
 #include "Style_global.h"
 #include "what_is_global.h"
 #include "SaveSetting_global.h"
+#include "Update_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
@@ -51,6 +52,7 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "RegimeFile";
     readPluginsName << "Style";
     readPluginsName << "what_is";
+    readPluginsName << "Update";
 
     // Загружаем последним
     readPluginsName << "SaveSetting";
@@ -106,6 +108,10 @@ void Core::loadPlugins(QString pathPlugin) {
                 else if (SaveSetting* plugin = qobject_cast<SaveSetting *>(obj))
                 {
                     installationsSaveSetting(plugin);
+                }
+                else if (Update* plugin = qobject_cast<Update *>(obj))
+                {
+                    installationsUpdate(plugin);
                 }
             }
         }
@@ -225,5 +231,21 @@ void Core::installationsSaveSetting(SaveSetting *plugin){
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeFile,SLOT(slSetSaveSetting(QStringList)));
     }
 
+    if(loadUpdate){
+        connect(update,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),update,SLOT(slSetSaveSetting(QStringList)));
+    }
+
     plugin->setSaveSetting();
+}
+
+void Core::installationsUpdate(Update *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+
+    update = plugin;
+    loadUpdate = true;
+
+    setting->addAction(plugin->getAction());
+
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
 }

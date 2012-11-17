@@ -6,4 +6,5 @@ SUBDIRS += \
     Keyboard \
     what_is \
     Style \
-    SaveSetting
+    SaveSetting \
+    Update
