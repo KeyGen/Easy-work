@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += gui
+QT       += gui network
 
 TARGET = Update
 TEMPLATE = lib

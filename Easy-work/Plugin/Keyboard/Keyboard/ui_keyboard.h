@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'keyboard.ui'
 **
-** Created: Sat Nov 17 11:32:46 2012
-**      by: Qt User Interface Compiler version 4.8.3
+** Created: Sun 18. Nov 02:03:31 2012
+**      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>450</width>
+    <width>451</width>
     <height>202</height>
    </rect>
   </property>
@@ -69,16 +69,30 @@
       <item row="1" column="0" colspan="2">
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>&lt;b&gt;Устновлена версия:&lt;/b&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="showInstallVersion">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Устновлена версия&lt;/span&gt;: 0.3.1&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>0.3.2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>&lt;b&gt;Доступна версия:&lt;/b&gt;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="showObtainableVersion">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Доступна версия&lt;/span&gt;: нет данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;нет данных&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -135,28 +149,30 @@
     </widget>
    </item>
    <item row="0" column="0" colspan="4">
-    <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <item>
-      <widget class="QRadioButton" name="updateOff">
-       <property name="text">
-        <string>Отключить обновления</string>
-       </property>
-       <property name="checkable">
-        <bool>true</bool>
-       </property>
-       <property name="checked">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="updateOn">
-       <property name="text">
-        <string>Проверять обновления</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QWidget" name="widgetTemp" native="true">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QRadioButton" name="updateOff">
+        <property name="text">
+         <string>Отключить обновления</string>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="updateOn">
+        <property name="text">
+         <string>Проверять обновления</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </item>
   </layout>
  </widget>

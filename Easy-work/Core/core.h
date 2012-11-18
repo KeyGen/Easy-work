@@ -68,7 +68,8 @@ private:
     void moveWindowCenter();
 
     void fGoToWebSite(QString site = "https://github.com/KeyGen/Easy-work/wiki");
-    void fCommunicateBags(QString site = "https://github.com/KeyGen/Easy-work/wiki");
+    void fCommunicateBags(QString site = "https://github.com/KeyGen/Easy-work/issues?page=1&state=open");
+    void delUpdate(QString pathTempUpdate = "../share/EasyWork/Database");
 
 private:
     QList <QMenu *> coreMenu;
@@ -88,12 +89,15 @@ private:
     bool loadRegimeFile;
     CoreWidget *coreWidget;
 
+    QString pathUpdate;
+
 private slots:
     void slSetCentralWidget(QWidget *);
     void slSetSaveSetting(QStringList);
     void saveSetting();
     void slGoToWebSite();
     void slCommunicateBags();
+    void slUpdateTrue(QString path);
 
 signals:
     void siKeyPressEvent  (QKeyEvent *event);

@@ -28,8 +28,8 @@ void UpdateClass::saveSetting(){
     listSaveSettings << QString::number((int)ui->updateOff->isChecked());
     listSaveSettings << QString::number((int)ui->updateOn->isChecked());
     listSaveSettings << ui->comboBoxTime->currentText();
-    listSaveSettings << ui->showInstallVersion->text();
     listSaveSettings << ui->showObtainableVersion->text();
+    listSaveSettings << dateUpdate;
 
     emit siSaveSetting(listSaveSettings);
 }
@@ -41,8 +41,9 @@ void UpdateClass::slSetSaveSetting(QStringList setValue){
             ui->updateOff->setChecked(setValue.at(1).toInt());
             ui->updateOn->setChecked(setValue.at(2).toInt());
             ui->comboBoxTime->setCurrentIndex(ui->comboBoxTime->findText(setValue.at(3)));
-            ui->showInstallVersion->setText(setValue.at(4));
-            ui->showObtainableVersion->setText(setValue.at(5));
+            ui->showObtainableVersion->setText(setValue.at(4));
+            dateUpdate = setValue.at(5);
+            StartCheckForUpdates(dateUpdate);
         }
     }
 }

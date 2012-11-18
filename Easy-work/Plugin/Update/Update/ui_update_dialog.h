@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'update_dialog.ui'
 **
-** Created: Sat Nov 17 12:27:56 2012
-**      by: Qt User Interface Compiler version 4.8.3
+** Created: Sun 18. Nov 04:01:43 2012
+**      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -25,6 +25,7 @@
 #include <QtGui/QPushButton>
 #include <QtGui/QRadioButton>
 #include <QtGui/QSpacerItem>
+#include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -39,13 +40,16 @@ public:
     QGridLayout *gridLayout_2;
     QFrame *line;
     QHBoxLayout *horizontalLayout;
+    QLabel *label;
     QLabel *showInstallVersion;
+    QLabel *label_2;
     QLabel *showObtainableVersion;
     QFrame *line_2;
     QHBoxLayout *horizontalLayout_2;
     QLabel *showExamination;
     QComboBox *comboBoxTime;
     QPushButton *examinationUpdate;
+    QWidget *widgetTemp;
     QHBoxLayout *horizontalLayout_3;
     QRadioButton *updateOff;
     QRadioButton *updateOn;
@@ -54,7 +58,7 @@ public:
     {
         if (UpdateDialog->objectName().isEmpty())
             UpdateDialog->setObjectName(QString::fromUtf8("UpdateDialog"));
-        UpdateDialog->resize(450, 202);
+        UpdateDialog->resize(451, 202);
         gridLayout = new QGridLayout(UpdateDialog);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         save = new QPushButton(UpdateDialog);
@@ -86,10 +90,20 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label = new QLabel(groupBox);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        horizontalLayout->addWidget(label);
+
         showInstallVersion = new QLabel(groupBox);
         showInstallVersion->setObjectName(QString::fromUtf8("showInstallVersion"));
 
         horizontalLayout->addWidget(showInstallVersion);
+
+        label_2 = new QLabel(groupBox);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+
+        horizontalLayout->addWidget(label_2);
 
         showObtainableVersion = new QLabel(groupBox);
         showObtainableVersion->setObjectName(QString::fromUtf8("showObtainableVersion"));
@@ -132,22 +146,24 @@ public:
 
         gridLayout->addWidget(groupBox, 2, 0, 1, 4);
 
-        horizontalLayout_3 = new QHBoxLayout();
+        widgetTemp = new QWidget(UpdateDialog);
+        widgetTemp->setObjectName(QString::fromUtf8("widgetTemp"));
+        horizontalLayout_3 = new QHBoxLayout(widgetTemp);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        updateOff = new QRadioButton(UpdateDialog);
+        updateOff = new QRadioButton(widgetTemp);
         updateOff->setObjectName(QString::fromUtf8("updateOff"));
         updateOff->setCheckable(true);
         updateOff->setChecked(false);
 
         horizontalLayout_3->addWidget(updateOff);
 
-        updateOn = new QRadioButton(UpdateDialog);
+        updateOn = new QRadioButton(widgetTemp);
         updateOn->setObjectName(QString::fromUtf8("updateOn"));
 
         horizontalLayout_3->addWidget(updateOn);
 
 
-        gridLayout->addLayout(horizontalLayout_3, 0, 0, 1, 4);
+        gridLayout->addWidget(widgetTemp, 0, 0, 1, 4);
 
 
         retranslateUi(UpdateDialog);
@@ -161,8 +177,10 @@ public:
         save->setText(QApplication::translate("UpdateDialog", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", 0, QApplication::UnicodeUTF8));
         close->setText(QApplication::translate("UpdateDialog", "\320\236\321\202\320\274\320\265\320\275\320\260", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("UpdateDialog", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0, QApplication::UnicodeUTF8));
-        showInstallVersion->setText(QApplication::translate("UpdateDialog", "<html><head/><body><p><span style=\" font-weight:600;\">\320\243\321\201\321\202\320\275\320\276\320\262\320\273\320\265\320\275\320\260 \320\262\320\265\321\200\321\201\320\270\321\217</span>: 0.3.1</p></body></html>", 0, QApplication::UnicodeUTF8));
-        showObtainableVersion->setText(QApplication::translate("UpdateDialog", "<html><head/><body><p><span style=\" font-weight:600;\">\320\224\320\276\321\201\321\202\321\203\320\277\320\275\320\260 \320\262\320\265\321\200\321\201\320\270\321\217</span>: \320\275\320\265\321\202 \320\264\320\260\320\275\320\275\321\213\321\205</p></body></html>", 0, QApplication::UnicodeUTF8));
+        label->setText(QApplication::translate("UpdateDialog", "<b>\320\243\321\201\321\202\320\275\320\276\320\262\320\273\320\265\320\275\320\260 \320\262\320\265\321\200\321\201\320\270\321\217:</b>", 0, QApplication::UnicodeUTF8));
+        showInstallVersion->setText(QApplication::translate("UpdateDialog", "0.3.2", 0, QApplication::UnicodeUTF8));
+        label_2->setText(QApplication::translate("UpdateDialog", "<b>\320\224\320\276\321\201\321\202\321\203\320\277\320\275\320\260 \320\262\320\265\321\200\321\201\320\270\321\217:</b>", 0, QApplication::UnicodeUTF8));
+        showObtainableVersion->setText(QApplication::translate("UpdateDialog", "<html><head/><body><p>\320\275\320\265\321\202 \320\264\320\260\320\275\320\275\321\213\321\205</p></body></html>", 0, QApplication::UnicodeUTF8));
         showExamination->setText(QApplication::translate("UpdateDialog", "<b>\320\237\321\200\320\276\320\262\320\265\321\200\321\217\321\202\321\214</b>:", 0, QApplication::UnicodeUTF8));
         examinationUpdate->setText(QApplication::translate("UpdateDialog", "\320\237\321\200\320\276\320\262\320\265\321\200\320\270\321\202\321\214 \321\201\320\265\320\271\321\207\320\260\321\201", 0, QApplication::UnicodeUTF8));
         updateOff->setText(QApplication::translate("UpdateDialog", "\320\236\321\202\320\272\320\273\321\216\321\207\320\270\321\202\321\214 \320\276\320\261\320\275\320\276\320\262\320\273\320\265\320\275\320\270\321\217", 0, QApplication::UnicodeUTF8));

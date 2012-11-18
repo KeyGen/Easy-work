@@ -21,10 +21,12 @@
 #define UPDATE_H
 
 #include "Update_global.h"
-
 #include <QDebug>
 
 QT_BEGIN_NAMESPACE
+class QNetworkAccessManager;
+class QNetworkReply;
+class QProgressDialog;
 class QDialog;
 QT_END_NAMESPACE
 
@@ -50,22 +52,55 @@ public slots:
     virtual void slCloseEvent();
 
 signals:
-    virtual void siSaveSetting(QStringList);
+    void siSaveSetting(QStringList);
+    void closeApplication();
+    void siUdate(QString);
 
 private:
     Ui::UpdateDialog *ui;
     QDialog *dialogUpdate;
     QAction *showDialogSettings;
     bool saveDialog;
+    bool clickCheckForUpdates;
+    bool boolSlCheckForUpdates;
     QStringList dateSaveDialog;
+    QNetworkAccessManager *manager;
+    QNetworkReply *reply;
+    QString fileName;
+    QString dateUpdate;
+    QString pathHttp;
+    QString pathTemp;
+
+    QString updateOneDay;
+    QString updateOneWeek;
+    QString updateOneMonth;
+    QProgressDialog *progress;
+
+    enum { MessageNo = 65536, MessageYes = 16384 };
 
 private:
     void saveSetting();
+    void checkForUpdates();
+    bool WriteFile(QNetworkReply * networkReply);
+    QString ReadFile(QString newCodec = "Windows-1251");
+
+    void setPath(QString pathHttpF = "http://siteaac.narod.ru",
+                 QString pathTempF = "../share/EasyWork/Database");
+
+    QString findVersion(QString);
+    void updateEasyWork();
+    void StartCheckForUpdates(QString);
 
 private slots:
     void dialogExec();
     void dialogSave();
     void dialogNotSave();
+    void slCheckForUpdates();
+    void replyFinished(QNetworkReply*);
+    void replyFinishedFile(QNetworkReply*);
+    void slBoolCheckForUpdates();
+    void downloadProgress(qint64,qint64);
+    void stopDownload();
 };
 
 #endif // UPDATE_H

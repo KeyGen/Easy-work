@@ -52,7 +52,10 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "RegimeFile";
     readPluginsName << "Style";
     readPluginsName << "what_is";
-    readPluginsName << "Update";
+
+    #ifdef Q_OS_WIN32
+        readPluginsName << "Update";
+    #endif
 
     // Загружаем последним
     readPluginsName << "SaveSetting";
@@ -247,5 +250,7 @@ void Core::installationsUpdate(Update *plugin){
 
     setting->addAction(plugin->getAction());
 
+    connect(plugin,SIGNAL(closeApplication()),this,SLOT(close()));
+    connect(plugin,SIGNAL(siUdate(QString)),this,SLOT(slUpdateTrue(QString)));
     connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
 }

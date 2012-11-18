@@ -24,6 +24,9 @@
 #include <QKeyEvent>
 #include <QMenuBar>
 #include <QUrl>
+#include <QDir>
+
+#include <stdlib.h>
 
 Core::Core(QWidget *parent)
     : QMainWindow(parent)
@@ -41,9 +44,40 @@ Core::Core(QWidget *parent)
     loadPlugins();
     moveWindowCenter();
 
+    #ifdef Q_OS_WIN32
+        delUpdate();
+    #endif
 }
 
-Core::~Core() {}
+void Core::delUpdate(QString pathTempUpdate){
+    QDir dir(pathTempUpdate);
+    QStringList filter;
+    filter << "*.exe";
+
+    if(!dir.entryList(filter).isEmpty()){
+        QString file = dir.entryList(filter).at(0);
+        QDir remove;
+        qDebug() << tr("Найдено обновление. Удалние:")
+                 << remove.remove(pathTempUpdate.toAscii() + "/" + file.toAscii());
+    }
+}
+
+Core::~Core() {
+    QDir dir;
+    if(!pathUpdate.isEmpty()){
+
+        QString absolute = dir.absolutePath();
+        absolute.chop(3);
+
+        pathUpdate = pathUpdate.right(pathUpdate.size()-3);
+
+        system(absolute.toAscii()+ pathUpdate.toAscii());
+    }
+}
+
+void Core::slUpdateTrue(QString path){
+    pathUpdate = path;
+}
 
 void Core::moveWindowCenter(){
     // Запустим программу по центру экрана

@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'statisticDialog.ui'
 **
-** Created: Sat Nov 17 11:32:39 2012
-**      by: Qt User Interface Compiler version 4.8.3
+** Created: Sun 18. Nov 02:03:21 2012
+**      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
