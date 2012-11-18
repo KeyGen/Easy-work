@@ -67,6 +67,7 @@ UpdateClass::UpdateClass(): ui(new Ui::UpdateDialog)
 
     clickCheckForUpdates = false;
     boolSlCheckForUpdates = true;
+    downloadDisk = false;
     setPath();
 
     progress = new QProgressDialog();
@@ -75,6 +76,7 @@ UpdateClass::UpdateClass(): ui(new Ui::UpdateDialog)
 void UpdateClass::downloadProgress(qint64 change,qint64 size){
 
     if(progress->maximum() != size){
+        disconnect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
         boolSlCheckForUpdates = false;
         progress->setMaximum(size);
         progress->setLabelText(tr("\n\nЗагрузка обновлений.\n\nРазмер: ") + QString::number((int)size/1000) + " kb.");
@@ -90,6 +92,7 @@ void UpdateClass::downloadProgress(qint64 change,qint64 size){
 
 void UpdateClass::stopDownload(){
     disconnect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(downloadProgress(qint64,qint64)));
+    connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
     reply->abort();
     boolSlCheckForUpdates = true;
 }
@@ -132,9 +135,11 @@ void UpdateClass::dialogExec(){
 }
 
 void UpdateClass::slCheckForUpdates(){
-    if(boolSlCheckForUpdates)
-        checkForUpdates();
-    boolSlCheckForUpdates = false;
+    {
+        if(boolSlCheckForUpdates)
+            checkForUpdates();
+        boolSlCheckForUpdates = false;
+    }
 }
 
 void UpdateClass::checkForUpdates(){
@@ -143,25 +148,27 @@ void UpdateClass::checkForUpdates(){
 
 void UpdateClass::replyFinished(QNetworkReply* networkReply){
 
-    if(WriteFile(networkReply)){
-        QString newVersion = findVersion(ReadFile());
+    if(networkReply->size()){
+        if(WriteFile(networkReply)){
+            QString newVersion = findVersion(ReadFile());
 
-        if(ui->showObtainableVersion->text() != newVersion)
-            ui->showObtainableVersion->setText(newVersion);
-        if(ui->showInstallVersion->text() != newVersion){
-            updateEasyWork();
-        }
-        else{
-            if(clickCheckForUpdates){
-                QMessageBox msgBox;
-                msgBox.setWindowTitle(tr("Информация"));
-                msgBox.setIcon(QMessageBox::Information);
-                msgBox.setText(tr("Установлена последняя версия"));
-                msgBox.setStandardButtons(QMessageBox::Ok);
-                msgBox.exec();
+            if(ui->showObtainableVersion->text() != newVersion)
+                ui->showObtainableVersion->setText(newVersion);
+            if(ui->showInstallVersion->text() != newVersion){
+                updateEasyWork();
             }
-            clickCheckForUpdates = false;
-            boolSlCheckForUpdates = true;
+            else{
+                if(clickCheckForUpdates){
+                    QMessageBox msgBox;
+                    msgBox.setWindowTitle(tr("Информация"));
+                    msgBox.setIcon(QMessageBox::Information);
+                    msgBox.setText(tr("Установлена последняя версия"));
+                    msgBox.setStandardButtons(QMessageBox::Ok);
+                    msgBox.exec();
+                }
+                clickCheckForUpdates = false;
+                boolSlCheckForUpdates = true;
+            }
         }
     }
 }
@@ -176,7 +183,9 @@ void UpdateClass::updateEasyWork(){
     if(msgBox.exec() == MessageYes){
         disconnect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
         connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinishedFile(QNetworkReply*)));
+        //////////////////////////////////////////
         reply = manager->get(QNetworkRequest(QUrl(pathHttp + "/" + fileName)));
+
         connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(downloadProgress(qint64,qint64)));
     }
     else
@@ -184,48 +193,111 @@ void UpdateClass::updateEasyWork(){
 }
 void UpdateClass::replyFinishedFile(QNetworkReply* networkReply){
 
-    connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
-    disconnect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinishedFile(QNetworkReply*)));
+    if(networkReply->size()){
+        connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
+        disconnect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinishedFile(QNetworkReply*)));
 
-    if(progress->maximum() == networkReply->size()){
+        if(progress->maximum() == networkReply->size()){
 
-        QFile file(pathTemp + "/" + fileName);
-        if(file.open(QIODevice::WriteOnly)){
-            file.write(networkReply->readAll());
-            file.close();
-            ui->save->click();
-            emit siUdate(pathTemp + "/" + fileName);
-            QDate dateSistem;
-            dateUpdate = dateSistem.currentDate().toString("yyyy.MM.dd");
-            emit closeApplication();
+            if(!downloadDisk){
+                QFile file(pathTemp + "/" + fileName);
+                if(file.open(QIODevice::WriteOnly)){
+                    file.write(networkReply->readAll());
+                    file.close();
+                }
+                else{
+                    qDebug() << tr("Проблема с правами доступа? update.cpp 148");
+                }
+            }
+            else{
+
+                QFile file(pathTemp + "/" + updateDisk.first());
+                if(file.open(QIODevice::WriteOnly)){
+                    file.write(networkReply->readAll());
+                    file.close();
+                    updateDisk.removeOne(updateDisk.first());
+                }
+                else{
+                    qDebug() << tr("Проблема с правами доступа? update.cpp 148");
+                }
+            }
+
+                if(updateDisk.isEmpty()){
+                    progress->close();
+                    ui->save->click();
+                    emit siUdate(pathTemp + "/" + fileName);
+                    QDate dateSistem;
+                    dateUpdate = dateSistem.currentDate().toString("yyyy.MM.dd");
+                    emit closeApplication();
+                    downloadDisk = false;
+                }
+                else{
+                    downloadDisk = true;
+                    reply = manager->get(QNetworkRequest(QUrl(pathHttp + "/" + updateDisk.first())));
+                    connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinishedFile(QNetworkReply*)));
+                    connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(downloadProgress(qint64,qint64)));
+                }
         }
-        else{
-            qDebug() << tr("Проблема с правами доступа? update.cpp 148");
-        }
+
+        progress->setMaximum(0);
     }
-
-    progress->setMaximum(0);
 }
 
 QString UpdateClass::findVersion(QString html){
 
-    QString findKey = "<A HREF=\"";
     QString versionRutracker;
-    for(int i =html.indexOf(findKey,Qt::CaseInsensitive); html.at(i)!='>'; i++)
+
+    #ifdef Q_OS_WIN32
+        QString findKeyFileName = "Скачать для Windows: <A HREF=\"";
+        QString findKeyVersion = "_v";
+        QChar stopChar = 'e';
+        QString findPak = "disk";
+
+        int tempIndex = 0;
+        for(int i = 0; i<html.size(); i++){
+            if(html.indexOf(findPak,i) == -1)
+                break;
+
+            if(tempIndex != html.indexOf(findPak,i)){
+                tempIndex = html.indexOf(findPak,i);
+                QString disk;
+                for(int i = tempIndex; html.at(i) != '<'&&html.at(i) != '\"'; i++){
+                    disk += html.at(i);
+                }
+
+                if(!updateDisk.contains(disk)){
+                    updateDisk << disk;
+                }
+            }
+        }
+
+    #endif
+
+    #ifdef Q_OS_LINUX
+        QString findKeyFileName = "Скачать для Linux: <A HREF=\"";
+        QString findKeyVersion = "rk_";
+        QChar stopChar = '_';
+    #endif
+
+    for(int i =html.indexOf(findKeyFileName,Qt::CaseInsensitive); html.at(i)!='>'; i++)
         versionRutracker += html.at(i);
 
     versionRutracker.chop(1);
 
-    fileName = versionRutracker.right(versionRutracker.size()-findKey.size());
+    fileName = versionRutracker.right(versionRutracker.size()-findKeyFileName.size());
     versionRutracker.clear();
-    findKey = "_v";
 
-    for(int i = fileName.indexOf(findKey); fileName.at(i) != 'e'; i++)
+    qDebug() << tr("Найден файл:") << fileName;
+    qDebug() << tr("Дополнительые файлы:") << updateDisk;
+
+    for(int i = fileName.indexOf(findKeyVersion)+findKeyVersion.size(); fileName.at(i) != stopChar; i++)
         versionRutracker += fileName.at(i);
-    versionRutracker.chop(1);
 
-    versionRutracker = versionRutracker.right(versionRutracker.size()-findKey.size());
+    #ifdef Q_OS_WIN32
+        versionRutracker.chop(1);
+    #endif
 
+    qDebug() << tr("Найдена версия:") << versionRutracker;
     return versionRutracker;
 }
 

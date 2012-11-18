@@ -75,6 +75,8 @@ private:
     QString updateOneWeek;
     QString updateOneMonth;
     QProgressDialog *progress;
+    QStringList updateDisk;
+    bool downloadDisk;
 
     enum { MessageNo = 65536, MessageYes = 16384 };
 

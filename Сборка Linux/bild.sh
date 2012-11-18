@@ -15,6 +15,9 @@ sudo chmod 775 easy_work/usr/share/pixmaps/easyworkgeneral.png
 sudo chmod 775 easy_work/usr/share/EasyWork/Database
 sudo chmod 775 easy_work/usr/share/EasyWork/KeyboardLayout
 sudo chmod 775 easy_work/usr/share/EasyWork/Style
+sudo chmod 775 easy_work/DEBIAN/postinst
+sudo chmod 775 easy_work/DEBIAN/preinst
+
 
 if [ -f easy_work/usr/share/EasyWork/Database/statisticForRegimeFile.mdb ]; then
   sudo rm easy_work/usr/share/EasyWork/Database/statisticForRegimeFile.mdb
@@ -28,4 +31,4 @@ read newVersion
 
 fakeroot dpkg-deb --build easy_work
 
-mv easy_work.deb EasyWork_"$newVersion"_all.deb
+mv easy_work.deb Easy_Work_"$newVersion"_all.deb

@@ -44,18 +44,25 @@ Core::Core(QWidget *parent)
     loadPlugins();
     moveWindowCenter();
 
-    #ifdef Q_OS_WIN32
-        delUpdate();
-    #endif
+    delUpdate();
 }
 
 void Core::delUpdate(QString pathTempUpdate){
     QDir dir(pathTempUpdate);
     QStringList filter;
-    filter << "*.exe";
 
-    if(!dir.entryList(filter).isEmpty()){
-        QString file = dir.entryList(filter).at(0);
+    #ifdef Q_OS_WIN32
+        filter << "*.exe";
+        filter << "*.pak";
+    #endif
+
+    #ifdef Q_OS_LINUX
+        filter << "*.deb";
+    #endif
+
+    QStringList files = dir.entryList(filter);
+    for(int i = 0; i<files.size(); i++){
+        QString file = files.at(i);
         QDir remove;
         qDebug() << tr("Найдено обновление. Удалние:")
                  << remove.remove(pathTempUpdate.toAscii() + "/" + file.toAscii());
@@ -71,7 +78,15 @@ Core::~Core() {
 
         pathUpdate = pathUpdate.right(pathUpdate.size()-3);
 
-        system(absolute.toAscii()+ pathUpdate.toAscii());
+        #ifdef Q_OS_WIN32
+            system(absolute.toAscii()+ pathUpdate.toAscii());
+        #endif
+
+        #ifdef Q_OS_LINUX
+            system("xterm -e sudo dpkg -i " + absolute.toAscii()+ pathUpdate.toAscii()
+                   + "&&cd /usr/bin&&Easy_work");
+        #endif
+
     }
 }
 

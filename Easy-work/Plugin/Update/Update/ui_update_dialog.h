@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'update_dialog.ui'
 **
-** Created: Sun 18. Nov 04:01:43 2012
+** Created: Sun 18. Nov 19:50:41 2012
 **      by: Qt User Interface Compiler version 4.8.1
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -178,7 +178,7 @@ public:
         close->setText(QApplication::translate("UpdateDialog", "\320\236\321\202\320\274\320\265\320\275\320\260", 0, QApplication::UnicodeUTF8));
         groupBox->setTitle(QApplication::translate("UpdateDialog", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260", 0, QApplication::UnicodeUTF8));
         label->setText(QApplication::translate("UpdateDialog", "<b>\320\243\321\201\321\202\320\275\320\276\320\262\320\273\320\265\320\275\320\260 \320\262\320\265\321\200\321\201\320\270\321\217:</b>", 0, QApplication::UnicodeUTF8));
-        showInstallVersion->setText(QApplication::translate("UpdateDialog", "0.3.2", 0, QApplication::UnicodeUTF8));
+        showInstallVersion->setText(QApplication::translate("UpdateDialog", "0.4.0", 0, QApplication::UnicodeUTF8));
         label_2->setText(QApplication::translate("UpdateDialog", "<b>\320\224\320\276\321\201\321\202\321\203\320\277\320\275\320\260 \320\262\320\265\321\200\321\201\320\270\321\217:</b>", 0, QApplication::UnicodeUTF8));
         showObtainableVersion->setText(QApplication::translate("UpdateDialog", "<html><head/><body><p>\320\275\320\265\321\202 \320\264\320\260\320\275\320\275\321\213\321\205</p></body></html>", 0, QApplication::UnicodeUTF8));
         showExamination->setText(QApplication::translate("UpdateDialog", "<b>\320\237\321\200\320\276\320\262\320\265\321\200\321\217\321\202\321\214</b>:", 0, QApplication::UnicodeUTF8));

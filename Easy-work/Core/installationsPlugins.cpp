@@ -52,10 +52,7 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "RegimeFile";
     readPluginsName << "Style";
     readPluginsName << "what_is";
-
-    #ifdef Q_OS_WIN32
-        readPluginsName << "Update";
-    #endif
+    readPluginsName << "Update";
 
     // Загружаем последним
     readPluginsName << "SaveSetting";

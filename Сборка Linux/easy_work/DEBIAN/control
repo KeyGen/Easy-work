@@ -1,9 +1,9 @@
 Package: EasyWork
-Version: 0.3.1
+Version: 0.4.0
 Maintainer: KeyGen <KeyGenQt@gmail.com>
 Architecture: all
 Section: science
-Depends: libqt4-dev
+Depends: libqt4-dev, xterm
 Installed-Size: 1180
 Origin: https://github.com/KeyGen/Easy-work/wiki
 Description: Easy work Version 0.3.1
