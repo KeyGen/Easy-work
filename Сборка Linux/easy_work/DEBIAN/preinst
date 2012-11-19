@@ -33,5 +33,9 @@ exit $exit_status
       if [ ! -d /usr/share/EasyWork/Database ]; then
 	sudo mkdir /usr/share/EasyWork/Database
       fi
+      
+      sudo chmod 777 /usr/share/EasyWork/Database
+      sudo chmod 777 /usr/share/EasyWork/Style
+      sudo chmod 777 /usr/share/EasyWork/KeyboardLayout
 
 exit 0

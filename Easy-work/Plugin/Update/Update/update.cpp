@@ -166,6 +166,7 @@ void UpdateClass::replyFinished(QNetworkReply* networkReply){
                     msgBox.setStandardButtons(QMessageBox::Ok);
                     msgBox.exec();
                 }
+                writeDate();
                 clickCheckForUpdates = false;
                 boolSlCheckForUpdates = true;
             }
@@ -183,13 +184,13 @@ void UpdateClass::updateEasyWork(){
     if(msgBox.exec() == MessageYes){
         disconnect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinished(QNetworkReply*)));
         connect(manager, SIGNAL(finished(QNetworkReply*)),this, SLOT(replyFinishedFile(QNetworkReply*)));
-        //////////////////////////////////////////
         reply = manager->get(QNetworkRequest(QUrl(pathHttp + "/" + fileName)));
-
         connect(reply,SIGNAL(downloadProgress(qint64,qint64)),this,SLOT(downloadProgress(qint64,qint64)));
     }
-    else
+    else{
         boolSlCheckForUpdates = true;
+        writeDate();
+    }
 }
 void UpdateClass::replyFinishedFile(QNetworkReply* networkReply){
 
@@ -226,8 +227,7 @@ void UpdateClass::replyFinishedFile(QNetworkReply* networkReply){
                     progress->close();
                     ui->save->click();
                     emit siUdate(pathTemp + "/" + fileName);
-                    QDate dateSistem;
-                    dateUpdate = dateSistem.currentDate().toString("yyyy.MM.dd");
+                    writeDate();
                     emit closeApplication();
                     downloadDisk = false;
                 }
@@ -364,4 +364,9 @@ void UpdateClass::StartCheckForUpdates(QString dateUpdate){
             }
         }
     }
+}
+
+void UpdateClass::writeDate(){
+    QDate dateSistem;
+    dateUpdate = dateSistem.currentDate().toString("yyyy.MM.dd");
 }

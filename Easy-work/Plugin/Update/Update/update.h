@@ -92,6 +92,7 @@ private:
     QString findVersion(QString);
     void updateEasyWork();
     void StartCheckForUpdates(QString);
+    void writeDate();
 
 private slots:
     void dialogExec();

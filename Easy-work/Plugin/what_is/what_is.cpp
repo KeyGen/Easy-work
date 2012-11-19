@@ -52,4 +52,4 @@ void WhatIsClass::renameAction(QString str)
     action->setText(str);
 }
 
-// Всего строк 4066, актуальных 3300, 40x19 файлов
+// Всего строк 4829, актуальных 4000, 44x19 файлов
