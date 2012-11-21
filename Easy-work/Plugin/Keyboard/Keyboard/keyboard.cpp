@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -47,7 +49,7 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
     menu->addAction(showKeyboard);
 
     pressShift = false;
-    BLShowDialog = true;
+    BLShowDialog = false;
     enteredCapsLock = false;
 
     connect(showKeyboard,SIGNAL(triggered()),this,SLOT(show()));
@@ -56,13 +58,12 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
     connect(showKeyboard,SIGNAL(triggered()),this,SLOT(setBLShow()));
 }
 
-void KeyboardClass::setBLShow(){
-    qDebug() << dialog->isVisible();
-    BLShowDialog = dialog->isVisible();
-}
-
 void KeyboardClass::setStyleSheet(QString style){
     dialog->setStyleSheet(style);
+}
+
+void KeyboardClass::setBLShow(){
+    BLShowDialog = dialog->isVisible();
 }
 
 void KeyboardClass::show() {
@@ -75,6 +76,17 @@ void KeyboardClass::show() {
     dialog->close();
 
     dialog->show();
+    BLShowDialog = true;
+}
+
+void KeyboardClass::slShow(){
+    if(BLShowDialog)
+    dialog->setVisible(true);
+}
+
+void KeyboardClass::slHide(){
+    if(BLShowDialog)
+    dialog->setVisible(false);
 }
 
 bool KeyboardClass::findAndSetKeyboardLanguage(){

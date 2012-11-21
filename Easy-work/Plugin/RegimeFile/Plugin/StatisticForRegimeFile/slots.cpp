@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -36,6 +38,10 @@ void StatisticForRegimeFileClass::exec(){
         readMDB();
 
     dialogStatistic->exec();
+}
+
+void StatisticForRegimeFileClass::connectDB(){
+    createMDB = createConnection();
 }
 
 void StatisticForRegimeFileClass::setActiveItemWidget(int clicked){

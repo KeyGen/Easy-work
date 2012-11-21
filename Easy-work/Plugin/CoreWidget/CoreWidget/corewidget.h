@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -27,6 +29,8 @@
 
 QT_BEGIN_NAMESPACE
 class QAction;
+class QPushButton;
+class QDeclarativeView;
 QT_END_NAMESPACE
 
 namespace Ui {
@@ -45,9 +49,13 @@ public:
     virtual void setMenuBar(QList <QMenu *>);
     virtual void activationRegime();
 
-    virtual void setRegimeMenu(QAction *, QIcon);
+    virtual void setRegimeMenu(QAction *, const QIcon);
 
     ~CoreWidgetClass() {}
+
+public slots:
+    void slResizeEvent (QResizeEvent * event);
+    void createConnection(QString path = "../share/EasyWork/Database", QString name = "serverUpdate.mdb");
 
 private:
     QWidget *widget;
@@ -56,14 +64,25 @@ private:
     Ui::CoreForm *ui;
     QList <QMenu *> listMenu;
 
+    QDeclarativeView *ui_d;               // Qml
+    QObject *Root;                      // Корневой элемент QML модели
+
+    QList <QIcon > listIconRegime;
     QList <QAction *> listActionRegime;
-    QList <QIcon> listIconRegime;
+    QHash <QString,QPixmap> resourceMainWindow;
+
+    bool destroyedBL;
+
+    qint64 controlSize;
 
 private:
     void createRegimeMenu();
+    QRegion setRoundedCorners(int width, int height, int,int,int,int);
+    void readDB();
 
 private slots:
     void slGetWidget();
+    void destroyedWidget();
 
 signals:
     void siGetWidget(QWidget *);

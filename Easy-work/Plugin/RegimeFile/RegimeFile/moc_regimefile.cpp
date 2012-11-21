@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimefile.h'
 **
-** Created: Sat Nov 17 11:32:37 2012
+** Created: Wed Nov 21 07:43:41 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,12 +23,12 @@ static const uint qt_meta_data_RigimeFileClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       6,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       17,   16,   16,   16, 0x05,
@@ -36,21 +36,22 @@ static const uint qt_meta_data_RigimeFileClass[] = {
       56,   16,   16,   16, 0x05,
       69,   16,   16,   16, 0x05,
       96,   16,   16,   16, 0x05,
+     124,   16,   16,   16, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-     124,   16,   16,   16, 0x08,
-     138,   16,   16,   16, 0x08,
-     161,   16,   16,   16, 0x08,
-     179,   16,   16,   16, 0x08,
-     207,   16,   16,   16, 0x08,
-     233,   16,   16,   16, 0x08,
-     247,   16,   16,   16, 0x08,
-     265,  259,   16,   16, 0x0a,
-     293,  259,   16,   16, 0x0a,
-     323,  259,   16,   16, 0x0a,
-     352,   16,   16,   16, 0x0a,
-     379,   16,   16,   16, 0x0a,
-     409,   16,   16,   16, 0x0a,
+     135,   16,   16,   16, 0x08,
+     149,   16,   16,   16, 0x08,
+     172,   16,   16,   16, 0x08,
+     190,   16,   16,   16, 0x08,
+     218,   16,   16,   16, 0x08,
+     244,   16,   16,   16, 0x08,
+     258,   16,   16,   16, 0x08,
+     276,  270,   16,   16, 0x0a,
+     304,  270,   16,   16, 0x0a,
+     334,  270,   16,   16, 0x0a,
+     363,   16,   16,   16, 0x0a,
+     390,   16,   16,   16, 0x0a,
+     420,   16,   16,   16, 0x0a,
 
        0        // eod
 };
@@ -59,9 +60,9 @@ static const char qt_meta_stringdata_RigimeFileClass[] = {
     "RigimeFileClass\0\0siGetWidget(QWidget*)\0"
     "siGetWord(QChar)\0stopLesson()\0"
     "siSaveSetting(QStringList)\0"
-    "siGetDateValue(QStringList)\0slGetWidget()\0"
-    "setWorkerText(QString)\0destroyedWidget()\0"
-    "labelSetStyleSheetDefault()\0"
+    "siGetDateValue(QStringList)\0siDBOpen()\0"
+    "slGetWidget()\0setWorkerText(QString)\0"
+    "destroyedWidget()\0labelSetStyleSheetDefault()\0"
     "labelSetStyleSheetError()\0saveSetting()\0"
     "stopPrint()\0event\0slKeyPressEvent(QKeyEvent*)\0"
     "slKeyReleaseEvent(QKeyEvent*)\0"
@@ -82,19 +83,20 @@ void RigimeFileClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 2: _t->stopLesson(); break;
         case 3: _t->siSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
         case 4: _t->siGetDateValue((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
-        case 5: _t->slGetWidget(); break;
-        case 6: _t->setWorkerText((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 7: _t->destroyedWidget(); break;
-        case 8: _t->labelSetStyleSheetDefault(); break;
-        case 9: _t->labelSetStyleSheetError(); break;
-        case 10: _t->saveSetting(); break;
-        case 11: _t->stopPrint(); break;
-        case 12: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 13: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
-        case 14: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
-        case 15: _t->slKeyboardLanguageChange(); break;
-        case 16: _t->slSetSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
-        case 17: _t->slCloseEvent(); break;
+        case 5: _t->siDBOpen(); break;
+        case 6: _t->slGetWidget(); break;
+        case 7: _t->setWorkerText((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 8: _t->destroyedWidget(); break;
+        case 9: _t->labelSetStyleSheetDefault(); break;
+        case 10: _t->labelSetStyleSheetError(); break;
+        case 11: _t->saveSetting(); break;
+        case 12: _t->stopPrint(); break;
+        case 13: _t->slKeyPressEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 14: _t->slKeyReleaseEvent((*reinterpret_cast< QKeyEvent*(*)>(_a[1]))); break;
+        case 15: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 16: _t->slKeyboardLanguageChange(); break;
+        case 17: _t->slSetSaveSetting((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
+        case 18: _t->slCloseEvent(); break;
         default: ;
         }
     }
@@ -134,9 +136,9 @@ int RigimeFileClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 19;
     }
     return _id;
 }
@@ -173,5 +175,11 @@ void RigimeFileClass::siGetDateValue(QStringList _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 4, _a);
+}
+
+// SIGNAL 5
+void RigimeFileClass::siDBOpen()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, 0);
 }
 QT_END_MOC_NAMESPACE

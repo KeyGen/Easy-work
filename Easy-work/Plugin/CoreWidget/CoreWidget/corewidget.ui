@@ -14,6 +14,9 @@
    <string>Easy work</string>
   </property>
   <layout class="QGridLayout" name="centralGridLayout">
+   <item row="1" column="1">
+    <layout class="QHBoxLayout" name="layoutRegime"/>
+   </item>
    <item row="1" column="0">
     <spacer name="horizontalSpacer">
      <property name="orientation">
@@ -26,26 +29,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="0" column="0" colspan="3">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>18</pointsize>
-       <weight>75</weight>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Box</enum>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Добро пожаловать в программу Easy work&lt;br/&gt;&lt;span style=&quot; font-size:14pt; font-style:italic;&quot;&gt;(Бета версия)&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;В проекте еще много режимов.&lt;br/&gt;Есть вопросы, пишите KeyGenQt@gmail.com &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
    </item>
    <item row="1" column="2">
     <spacer name="horizontalSpacer_2">
@@ -60,11 +43,24 @@
      </property>
     </spacer>
    </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string>PushButton</string>
+   <item row="0" column="0" colspan="3">
+    <widget class="QWidget" name="widgetQml" native="true">
+     <property name="styleSheet">
+      <string notr="true">background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 #696969, stop:0.5 #dcdcdc, stop:1 #696969);
+border-radius: 0px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;</string>
      </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <property name="margin">
+       <number>0</number>
+      </property>
+      <property name="spacing">
+       <number>0</number>
+      </property>
+     </layout>
     </widget>
    </item>
   </layout>

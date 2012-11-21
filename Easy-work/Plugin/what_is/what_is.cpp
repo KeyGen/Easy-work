@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -52,4 +54,4 @@ void WhatIsClass::renameAction(QString str)
     action->setText(str);
 }
 
-// Всего строк 4829, актуальных 4000, 44x19 файлов
+// Всего строк 4829, актуальных 4000, 44x21 файлов

@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -145,6 +147,7 @@ void Core::installationsCoreWidget(CoreWidget * plugin){
     coreWidget = plugin;
     coreWidget->setMenuBar(coreMenu);
     connect(coreWidget,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
+    connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
 }
 
 void Core::installationsKeyboard(Keyboard *plugin) {

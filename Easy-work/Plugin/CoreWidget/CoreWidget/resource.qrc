@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>PointerLeft.qml</file>
+        <file>PointerRight.qml</file>
+    </qresource>
+</RCC>

@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -32,7 +34,6 @@ Core::Core(QWidget *parent)
     : QMainWindow(parent)
 {
     QMainWindow::setWindowTitle("Easy work");
-    QMainWindow::resize(850,220);
     QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();
 
@@ -42,6 +43,7 @@ Core::Core(QWidget *parent)
     loadUpdate      = false;
 
     loadPlugins();
+    QMainWindow::resize(850,220);
     moveWindowCenter();
 
     delUpdate();
@@ -79,12 +81,11 @@ Core::~Core() {
         pathUpdate = pathUpdate.right(pathUpdate.size()-3);
 
         #ifdef Q_OS_WIN32
-            system(absolute.toAscii()+ pathUpdate.toAscii());
+            qDebug() << system(absolute.toAscii()+ pathUpdate.toAscii());
         #endif
 
         #ifdef Q_OS_LINUX
-            system("xterm -e sudo dpkg -i " + absolute.toAscii()+ pathUpdate.toAscii()
-                   + "&&cd /usr/bin&&Easy_work");
+            qDebug() << system("xterm -e sudo dpkg -i " + absolute.toAscii()+ pathUpdate.toAscii() + "&&cd /usr/bin&&Easy_work");
         #endif
 
     }

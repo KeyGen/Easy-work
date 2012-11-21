@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += gui
+QT       += gui declarative sql
 
 TARGET = CoreWidget
 TEMPLATE = lib
@@ -20,3 +20,11 @@ DESTDIR = $$PWD/../../../Easy-work/lib/EasyWork
 
 FORMS += \
     corewidget.ui
+
+OTHER_FILES += \
+    main.qml \
+    PointerLeft.qml \
+    PointerRight.qml
+
+RESOURCES += \
+    resource.qrc

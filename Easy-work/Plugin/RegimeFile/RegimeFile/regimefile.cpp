@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -67,8 +69,9 @@ void RigimeFileClass::slCloseEvent(){
     saveSetting();
 }
 
-QIcon RigimeFileClass::getIcon(){
-    return QIcon(":/icon");
+const QIcon RigimeFileClass::getIcon(){
+    const QIcon *ico = new QIcon(":/icon");
+    return *ico;
 }
 
 void RigimeFileClass::slResizeEvent (QResizeEvent * event){
@@ -358,6 +361,7 @@ QWidget * RigimeFileClass::getWidget() {
 
     connect(widget,SIGNAL(destroyed()),this,SLOT(destroyedWidget()));
     disconnect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
+    emit siDBOpen();
 
     return widget;
 }

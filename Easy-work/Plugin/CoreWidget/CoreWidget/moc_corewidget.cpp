@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'corewidget.h'
 **
-** Created: Sat Nov 17 11:32:31 2012
+** Created: Wed Nov 21 07:43:35 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_CoreWidgetClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -34,14 +34,23 @@ static const uint qt_meta_data_CoreWidgetClass[] = {
       17,   16,   16,   16, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      39,   16,   16,   16, 0x08,
+      45,   39,   16,   16, 0x0a,
+      84,   74,   16,   16, 0x0a,
+     123,  118,   16,   16, 0x2a,
+     149,   16,   16,   16, 0x2a,
+     168,   16,   16,   16, 0x08,
+     182,   16,   16,   16, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_CoreWidgetClass[] = {
     "CoreWidgetClass\0\0siGetWidget(QWidget*)\0"
-    "slGetWidget()\0"
+    "event\0slResizeEvent(QResizeEvent*)\0"
+    "path,name\0createConnection(QString,QString)\0"
+    "path\0createConnection(QString)\0"
+    "createConnection()\0slGetWidget()\0"
+    "destroyedWidget()\0"
 };
 
 void CoreWidgetClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -51,7 +60,12 @@ void CoreWidgetClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         CoreWidgetClass *_t = static_cast<CoreWidgetClass *>(_o);
         switch (_id) {
         case 0: _t->siGetWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
-        case 1: _t->slGetWidget(); break;
+        case 1: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 2: _t->createConnection((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 3: _t->createConnection((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: _t->createConnection(); break;
+        case 5: _t->slGetWidget(); break;
+        case 6: _t->destroyedWidget(); break;
         default: ;
         }
     }
@@ -91,9 +105,9 @@ int CoreWidgetClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 7;
     }
     return _id;
 }

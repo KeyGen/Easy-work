@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -114,5 +116,6 @@ void RigimeFileClass::installationsStatisticForRegimeFile(StatisticForRegimeFile
 
     menuRegimeFile->addAction(plugin->getAction());
 
+    connect(this,SIGNAL(siDBOpen()),plugin,SLOT(connectDB()));
     connect(this,SIGNAL(siGetDateValue(QStringList)),plugin,SLOT(setValue(QStringList)));
 }

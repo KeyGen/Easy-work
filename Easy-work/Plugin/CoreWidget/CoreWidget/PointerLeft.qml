@@ -19,45 +19,32 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef COREWIDGET_GLOBAL_H
-#define COREWIDGET_GLOBAL_H
+// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
+import QtQuick 1.1
 
-#include <QtPlugin>
+Rectangle {
+    id: pointerLeft
 
-QT_BEGIN_NAMESPACE
-class QSize;
-class QMenuBar;
-class QMenu;
-class QAction;
-class QIcon;
-class QResizeEvent;
-QT_END_NAMESPACE
+    width: 20
+    height: 20
 
-class CoreWidget : public QObject
-{
+    y: parent.height/2 - pointerLeft.height+8
+    x: 205
 
-public:
-    virtual QString getVersion()    = 0;
-    virtual QString getName()       = 0;
-    virtual QWidget* getWidget()    = 0;
-    virtual void setMenuBar(QList <QMenu *>) = 0;
-    virtual void activationRegime() = 0;
+    radius: 40
+    smooth: true
 
-    virtual void setRegimeMenu(QAction*, const QIcon) = 0;
+    scale: mousePointerLeft.pressed? 0.8 : 1.0
 
-    virtual ~CoreWidget() {}
+    MouseArea {
+        id: mousePointerLeft
+        anchors.fill: parent
 
-public slots:
-    virtual void slResizeEvent (QResizeEvent * event) = 0;
-
-signals:
-    virtual void siGetWidget(QWidget *) = 0;
-};
-
-QT_BEGIN_NAMESPACE
-
-Q_DECLARE_INTERFACE(CoreWidget, "CoreWidget/EasyWork/Plagin/1.0.0")
-
-QT_END_NAMESPACE
-
-#endif // COREWIDGET_GLOBAL_H
+        onClicked: {
+            if(main.state == "shift")
+                main.state="normal";
+            else
+                main.state ="shift";
+        }
+    }
+}

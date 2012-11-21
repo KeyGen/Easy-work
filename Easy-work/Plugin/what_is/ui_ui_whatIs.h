@@ -1,8 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ui_whatIs.ui'
 **
-** Created: Sun 18. Nov 19:50:29 2012
-**      by: Qt User Interface Compiler version 4.8.1
+** Created: Tue Nov 20 22:13:01 2012
+**      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/

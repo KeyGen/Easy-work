@@ -1,5 +1,7 @@
 /**
- * Easy work - writed by KeyGen 2012
+ * Easy work - краткое описание на английском
+ * Copyright (C) 2012 KeyGen <KeyGenQt@gmail.com>
+ * https://github.com/KeyGen/Easy-work/wiki
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -38,7 +40,8 @@ public:
     virtual ~StatisticForRegimeFile() {}
 
 public slots:
-    virtual void setValue(QStringList)   = 0;
+    virtual void setValue(QStringList) = 0;
+    virtual void connectDB() = 0;
 };
 
 QT_BEGIN_NAMESPACE
