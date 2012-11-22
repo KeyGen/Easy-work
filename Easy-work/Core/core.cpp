@@ -47,6 +47,9 @@ Core::Core(QWidget *parent)
     moveWindowCenter();
 
     delUpdate();
+
+    this->setVisible(false);
+    this->setVisible(true);
 }
 
 void Core::delUpdate(QString pathTempUpdate){

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'ui_whatIs.ui'
 **
-** Created: Tue Nov 20 22:13:01 2012
+** Created: Wed Nov 21 23:03:51 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -110,9 +110,9 @@ public:
         label_2->setText(QApplication::translate("Dialog", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; font-weight:600;\">Easy work </span><span style=\" font-size:8pt;\"><br />\320\222\320\265\321\200\321\201\320\270\321\217 0.4.0<br /><br />\320\237\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\260 \320\264\320\273\321\217 \320\276\320\261\321\203\321\207\320\265\320\275\321\217<br />\321\201\320\273\320\265\320\277\320\276\320\274\321\203 \320\274\320\265\321\202\320\276\320\264\321\203<br />\320\277\320\265\321\207\320\260\321\202\320\270<br /><br />\320\233\320\265\321\206\320\265\320\275"
-                        "\320\267\320\270\321\217 GPL 2<br />\320\235\320\260\320\277\320\270\321\201\320\260\320\275\320\276 \320\275\320\260 Qt<br />\320\235\320\260\320\277\320\270\321\201\320\260\320\273 KeyGen</span></p></body></html>", 0, QApplication::UnicodeUTF8));
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:600;\">Easy work </span><span style=\" font-family:'MS Shell Dlg 2'; font-size:8pt;\"><br />\320\222\320\265\321\200\321\201\320\270\321\217 0.4.1<br /><br />\320\237\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\260 \320\264\320\273\321\217 \320\276\320\261\321\203\321\207\320\265\320\275\321\217<br />\321\201\320\273\320\265\320\277\320\276\320\274\321\203 \320\274\320\265\321\202\320\276\320\264\321\203<br />\320\277\320\265\321\207\320\260\321\202\320\270<b"
+                        "r /><br />\320\233\320\265\321\206\320\265\320\275\320\267\320\270\321\217 GPL 2<br />\320\235\320\260\320\277\320\270\321\201\320\260\320\275\320\276 \320\275\320\260 Qt<br />\320\235\320\260\320\277\320\270\321\201\320\260\320\273 KeyGen</span></p></body></html>", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("Dialog", "Ok", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 

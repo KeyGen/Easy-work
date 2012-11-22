@@ -27,12 +27,12 @@ Rectangle {
     id: main
 
     x: -200
-    y: -100
+    y: -50
 
     gradient: Gradient {
-        GradientStop { position: 0.0; color: "#696969"}
-        GradientStop { position: 0.5; color: "#dcdcdc"}
-        GradientStop { position: 1.0; color: "#696969"}
+        GradientStop { position: 0.0; color: "black"}
+        GradientStop { position: 0.5; color: "#7f7f7f"}
+        GradientStop { position: 1.0; color: "black"}
     }
 
     state: "normal"
@@ -43,12 +43,20 @@ Rectangle {
             PropertyChanges {target: one;
                 opacity: 1.0
                 width: (parent.width-200)-60;
-                height: (parent.height-200)-20;
+                height: (parent.height-100)-20;
+            }
+            PropertyChanges {target: qmlOneText;
+                opacity: 1.0
+                font.pixelSize: 25
             }
             PropertyChanges {target: two;
                 opacity: 0
                 width: 0
                 height: 0
+            }
+            PropertyChanges {target: qmlTwoText;
+                opacity: 0
+                font.pixelSize: 0
             }
         },
         State {
@@ -56,12 +64,20 @@ Rectangle {
             PropertyChanges {target: two;
                 opacity: 1.0
                 width: (parent.width-200)-60;
-                height: (parent.height-200)-20;
+                height: (parent.height-100)-20;
+            }
+            PropertyChanges {target: qmlTwoText;
+                opacity: 1.0
+                font.pixelSize: 25
             }
             PropertyChanges {target: one;
                 opacity: 0
                 width: 0
                 height: 0
+            }
+            PropertyChanges {target: qmlOneText;
+                opacity: 0
+                font.pixelSize: 0
             }
         }
     ]
@@ -70,7 +86,17 @@ Rectangle {
         PropertyAnimation { properties: "width"; duration: 500; easing.type: Easing.InOutSine }
         PropertyAnimation { properties: "height"; duration: 500; easing.type: Easing.InBack }
         PropertyAnimation { properties: "opacity"; duration: 500; easing.type: Easing.InOutSine }
+        PropertyAnimation { properties: "font.pixelSize"; duration: 500; easing.type: Easing.InCurve }
     }
+
+    MouseArea {
+        id: mouseMain
+        anchors.fill: parent
+        onClicked: {
+            Qt_fun.getFocus();
+        }
+    }
+
 
     Rectangle {
         id: one
@@ -79,31 +105,27 @@ Rectangle {
         x: (parent.width+200)/2 - one.width/2
         y: parent.height/2 - one.height/2
 
-        color: "green"
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "#696969"}
+            GradientStop { position: 0.5; color: "#dcdcdc"}
+            GradientStop { position: 1.0; color: "#696969"}
+        }
 
         smooth: true
         radius: 10
         border.color: "black"
 
         Text {
-            id: objectTextOneContents
-            objectName: "objectTextOneContents"
-            text: "<b>Добро пожаловать в программу Easy work</b>"
-            font.pixelSize: parent.width/26
-            font.bold: true
-        }
+            id: qmlOneText
+            objectName: "qmlOneText"
+            textFormat: Text.RichText
 
-        Text {
-            id: objectTextOneText
-            objectName: "objectTextOneText"
-            text: "<b>Добро пожаловать в программу Easy work</b>"
-            font.pixelSize: parent.width/26
-        }
+            text: "<center><b>Добро пожаловать в программу Easy work!</b><br><i>(beta 0.4.1)</i></center>"
 
-        Image {
-            id: imageOne
-            objectName: "imageOne"
-            smooth: true
+            onLinkActivated: Qt_fun.goToSite(link)
+
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 
@@ -114,18 +136,24 @@ Rectangle {
         x: (parent.width+200)/2 - two.width/2
         y: parent.height/2 - two.height/2
 
-        color: "white"
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "#696969"}
+            GradientStop { position: 0.5; color: "#dcdcdc"}
+            GradientStop { position: 1.0; color: "#696969"}
+        }
 
         smooth: true
         radius: 10
         border.color: "black"
 
         Text {
-            id: objectTextTwo
-            objectName: "objectTextOne"
-            text: "Добро пожаловать в программу Easy work!"
-            font.pixelSize: parent.width/25
-            font.bold: true
+            id: qmlTwoText
+            objectName: "qmlTwoText"
+            textFormat: Text.RichText
+
+            text: "Программа предназначена для, тренировки, <br>изучения, слепого метода печати."
+
+            onLinkActivated: Qt_fun.goToSite(link)
 
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
@@ -134,4 +162,5 @@ Rectangle {
 
     PointerLeft{}
     PointerRight{}
+
 }

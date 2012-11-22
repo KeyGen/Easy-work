@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += gui declarative sql
+QT       += gui declarative
 
 TARGET = CoreWidget
 TEMPLATE = lib

@@ -49,13 +49,18 @@ public:
     virtual void setMenuBar(QList <QMenu *>);
     virtual void activationRegime();
 
+    Q_INVOKABLE void followingText();
+    Q_INVOKABLE void precedingText();
+    Q_INVOKABLE void setStopChangeText();
+    Q_INVOKABLE void getFocus();
+    Q_INVOKABLE void goToSite(QString);
+
     virtual void setRegimeMenu(QAction *, const QIcon);
 
     ~CoreWidgetClass() {}
 
 public slots:
     void slResizeEvent (QResizeEvent * event);
-    void createConnection(QString path = "../share/EasyWork/Database", QString name = "serverUpdate.mdb");
 
 private:
     QWidget *widget;
@@ -73,19 +78,23 @@ private:
 
     bool destroyedBL;
 
-    qint64 controlSize;
+    QStringList textForQml;
+    int posTextForQml;
+    bool stopChangeText;
+    QSize saveSizeQml;
 
 private:
     void createRegimeMenu();
     QRegion setRoundedCorners(int width, int height, int,int,int,int);
-    void readDB();
 
 private slots:
     void slGetWidget();
     void destroyedWidget();
+    void timerChangeText();
 
 signals:
     void siGetWidget(QWidget *);
+    void siFocus();
 };
 
 #endif // COREWIDGET_H

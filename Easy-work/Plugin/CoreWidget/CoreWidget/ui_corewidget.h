@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'corewidget.ui'
 **
-** Created: Tue Nov 20 22:19:33 2012
+** Created: Wed Nov 21 22:50:32 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -54,7 +54,9 @@ public:
 
         widgetQml = new QWidget(CoreForm);
         widgetQml->setObjectName(QString::fromUtf8("widgetQml"));
-        widgetQml->setStyleSheet(QString::fromUtf8("background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 #696969, stop:0.5 #dcdcdc, stop:1 #696969);\n"
+        widgetQml->setEnabled(true);
+        widgetQml->setMouseTracking(false);
+        widgetQml->setStyleSheet(QString::fromUtf8("background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 black, stop:0.5 black, stop:1 black);\n"
 "border-radius: 0px;\n"
 "border-top-left-radius: 10px;\n"
 "border-top-right-radius: 10px;\n"

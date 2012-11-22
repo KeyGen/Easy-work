@@ -39,7 +39,6 @@ public:
     explicit WhatIsClass();
     virtual ~WhatIsClass();
 
-
     virtual QString getVersion() { return "1.0"; }
     virtual QString getName()    { return "What is"; }
     virtual QAction* getAction();

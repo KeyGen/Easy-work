@@ -45,8 +45,14 @@
    </item>
    <item row="0" column="0" colspan="3">
     <widget class="QWidget" name="widgetQml" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="mouseTracking">
+      <bool>false</bool>
+     </property>
      <property name="styleSheet">
-      <string notr="true">background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 #696969, stop:0.5 #dcdcdc, stop:1 #696969);
+      <string notr="true">background: qlineargradient(x1:0, y1:0.5, x2:1, y2:0.5, stop:0 black, stop:0.5 black, stop:1 black);
 border-radius: 0px;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;

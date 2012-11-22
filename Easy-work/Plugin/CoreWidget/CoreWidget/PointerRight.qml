@@ -36,6 +36,12 @@ Rectangle {
 
     scale: mousePointerRight.pressed? 0.8 : 1.0
 
+    Text {
+        text: ">"
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
     MouseArea {
         id: mousePointerRight
         anchors.fill: parent
@@ -45,6 +51,9 @@ Rectangle {
                 main.state="normal";
             else
                 main.state ="shift";
+
+            Qt_fun.followingText();
+            Qt_fun.setStopChangeText();
         }
     }
 }

@@ -56,6 +56,7 @@ KeyboardClass::KeyboardClass() : ui(new Ui::DialogKeyboard)
     connect(move_yes_no,SIGNAL(triggered(bool)),this,SLOT(slMoveEvent(bool)));
     connect(dialog,SIGNAL(rejected()),this,SLOT(setBLShow()));
     connect(showKeyboard,SIGNAL(triggered()),this,SLOT(setBLShow()));
+
 }
 
 void KeyboardClass::setStyleSheet(QString style){
@@ -235,6 +236,9 @@ void KeyboardClass::setDownControlKey(QKeyEvent *event, bool BL)
     }
     else if(event->key() == Qt::Key_CapsLock){
             setCapsLock();
+        if(examinationKeyboardLanguage())
+            if(!findAndSetKeyboardLanguage())
+                qDebug() << "Раскладка не найдена";
     }
     else if(event->key() == Qt::Key_Control)
         {ui->Ctrl_left->setDown(BL); ui->Ctrl_right->setDown(BL);}

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'corewidget.h'
 **
-** Created: Wed Nov 21 07:43:35 2012
+** Created: Wed Nov 21 22:11:11 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,34 +23,40 @@ static const uint qt_meta_data_CoreWidgetClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       7,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       1,       // signalCount
+       2,       // signalCount
 
  // signals: signature, parameters, type, tag, flags
       17,   16,   16,   16, 0x05,
+      39,   16,   16,   16, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      45,   39,   16,   16, 0x0a,
-      84,   74,   16,   16, 0x0a,
-     123,  118,   16,   16, 0x2a,
-     149,   16,   16,   16, 0x2a,
-     168,   16,   16,   16, 0x08,
-     182,   16,   16,   16, 0x08,
+      55,   49,   16,   16, 0x0a,
+      84,   16,   16,   16, 0x08,
+      98,   16,   16,   16, 0x08,
+     116,   16,   16,   16, 0x08,
+
+ // methods: signature, parameters, type, tag, flags
+     134,   16,   16,   16, 0x02,
+     150,   16,   16,   16, 0x02,
+     166,   16,   16,   16, 0x02,
+     186,   16,   16,   16, 0x02,
+     197,   16,   16,   16, 0x02,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_CoreWidgetClass[] = {
     "CoreWidgetClass\0\0siGetWidget(QWidget*)\0"
-    "event\0slResizeEvent(QResizeEvent*)\0"
-    "path,name\0createConnection(QString,QString)\0"
-    "path\0createConnection(QString)\0"
-    "createConnection()\0slGetWidget()\0"
-    "destroyedWidget()\0"
+    "siFocus()\0event\0slResizeEvent(QResizeEvent*)\0"
+    "slGetWidget()\0destroyedWidget()\0"
+    "timerChangeText()\0followingText()\0"
+    "precedingText()\0setStopChangeText()\0"
+    "getFocus()\0goToSite(QString)\0"
 };
 
 void CoreWidgetClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -60,12 +66,16 @@ void CoreWidgetClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         CoreWidgetClass *_t = static_cast<CoreWidgetClass *>(_o);
         switch (_id) {
         case 0: _t->siGetWidget((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
-        case 1: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
-        case 2: _t->createConnection((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 3: _t->createConnection((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 4: _t->createConnection(); break;
-        case 5: _t->slGetWidget(); break;
-        case 6: _t->destroyedWidget(); break;
+        case 1: _t->siFocus(); break;
+        case 2: _t->slResizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 3: _t->slGetWidget(); break;
+        case 4: _t->destroyedWidget(); break;
+        case 5: _t->timerChangeText(); break;
+        case 6: _t->followingText(); break;
+        case 7: _t->precedingText(); break;
+        case 8: _t->setStopChangeText(); break;
+        case 9: _t->getFocus(); break;
+        case 10: _t->goToSite((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -105,9 +115,9 @@ int CoreWidgetClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 7)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 7;
+        _id -= 11;
     }
     return _id;
 }
@@ -117,5 +127,11 @@ void CoreWidgetClass::siGetWidget(QWidget * _t1)
 {
     void *_a[] = { 0, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void CoreWidgetClass::siFocus()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
 }
 QT_END_MOC_NAMESPACE

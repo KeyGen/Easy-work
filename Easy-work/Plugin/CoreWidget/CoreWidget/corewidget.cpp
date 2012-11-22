@@ -25,10 +25,7 @@
 #include <QtDeclarative/QDeclarativeContext>
 #include <QtDeclarative/QDeclarativeView>
 #include <QGraphicsObject>
-
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlRecord>
+#include <QDesktopServices>
 
 #include <QResizeEvent>
 #include <QPushButton>
@@ -36,6 +33,7 @@
 #include <QWidget>
 #include <QRegion>
 #include <QSize>
+#include <QTimer>
 
 Q_EXPORT_PLUGIN(CoreWidgetClass)
 
@@ -43,105 +41,47 @@ CoreWidgetClass::CoreWidgetClass()
 {
     startRegime = new QAction(tr("Выйти из режима"),this);
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
-}
 
-void CoreWidgetClass::readDB(){
+    stopChangeText = true;
+    posTextForQml = 0;
 
-    bool openBL = true;
+    textForQml << tr("<center><b>Добро пожаловать в программу Easy work!</b><br><i>(beta 0.4.1)</i></center>");
 
-    QSqlQuery query;
-    if (!query.exec("SELECT * FROM mainWindow;")) {
-        qDebug() << "Unable to execute query - exiting";
-        openBL = false;
-    }
+    textForQml << tr("<center>"
+                  "Программа предназначена для, тренировки, изучения, <br>слепого метода печати."
+                  "</center>");
 
-    if(openBL){
-        //Reading of the data
-        QSqlRecord rec = query.record();
+    textForQml << tr("<center>"
+                  "В меню режимы вы найдете режим для обучения. На данный<br>"
+                  "момент имеется один режим - \"Режим файла\", в котором<br>"
+                  "можно загрузить внешний файл для печати. "
+                  "</center>");
 
-        QString id;
-        QString contents;
-        QString sizeContents;
-        QString xContents;
-        QString yContents;
-        QString text;
-        QString sizeText;
-        QString xText;
-        QString yText;
-        QString imageWidth;
-        QString imageHeight;
-        QString xImage;
-        QString yImage;
-        QString stopWidgetWidth;
-        QString stopWidgetHeight;
-        QByteArray image;
+    textForQml << tr("<center>"
+                     "<b>Доступны следующие раскладки клавиатуры</b>:<br>"
+                     "<span style=\" font-size:8pt;\">English<br>"
+                     "Русский<br>"
+                     "Український<br>"
+                     "Беларускі<br>"
+                     "Deutsch<br>"
+                     "Italiano<br>"
+                     "საქარფვედოს</span></center>");
+
+    textForQml << tr("<center>"
+                     "<b>В планах</b>:<br>"
+                     "В ближайше время думаю заняться переводом приложения<br>"
+                     "на английский, подкорректирую обновления."
+                     "</center>");
 
 
-        QPixmap pix;
-        while (query.next()) {
-            id =                query.value(rec.indexOf("id")).toString();
-            contents =          query.value(rec.indexOf("contents")).toString();
-            sizeContents =      query.value(rec.indexOf("sizeContents")).toString();
-            xContents =         query.value(rec.indexOf("xContents")).toString();
-            yContents =         query.value(rec.indexOf("yContents")).toString();
-            text =              query.value(rec.indexOf("text")).toString();
-            sizeText =          query.value(rec.indexOf("sizeText")).toString();
-            xText =             query.value(rec.indexOf("xText")).toString();
-            yText =             query.value(rec.indexOf("yText")).toString();
-            imageWidth =        query.value(rec.indexOf("imageWidth")).toString();
-            imageHeight =       query.value(rec.indexOf("imageHeight")).toString();
-            xImage =            query.value(rec.indexOf("xImage")).toString();
-            yImage =            query.value(rec.indexOf("yImage")).toString();
-            stopWidgetWidth =   query.value(rec.indexOf("stopWidgetWidth")).toString();
-            stopWidgetHeight =  query.value(rec.indexOf("stopWidgetHeight")).toString();
-            image =             query.value(rec.indexOf("image")).toByteArray();
-        }
+    textForQml << tr("<center>"
+                     "<b>Связь</b>:<br>"
+                     "<span style=\" font-size:14pt;\">"
+                     "Поддержка: нашли баг пишите: <a HREF=\"https://github.com/KeyGen/Easy-work/issues?state=open\">Lssues</a><br>"
+                     "Официальный сайт: <a HREF=\"https://github.com/KeyGen/Easy-work/wiki\">Easy work</a><br>"
+                     "Email: KeyGenQt@gmail.com"
+                     "</span>");
 
-        pix.loadFromData(image);
-        pix.save("../share/EasyWork/Database/temp.png");
-
-        QObject *objectTextOneContents = Root->findChild<QObject*>("objectTextOneContents");
-        if(objectTextOneContents){
-            objectTextOneContents->setProperty("text", contents);
-            objectTextOneContents->setProperty("font.pixelSize", sizeContents);
-            objectTextOneContents->setProperty("x", xContents);
-            objectTextOneContents->setProperty("y", yContents);
-        }
-
-        QObject *objectTextOneText = Root->findChild<QObject*>("objectTextOneText");
-        if(objectTextOneText){
-            objectTextOneText->setProperty("text", text);
-            objectTextOneText->setProperty("font.pixelSize", sizeText);
-            objectTextOneText->setProperty("x", xText);
-            objectTextOneText->setProperty("y", yText);
-        }
-
-        QObject *imageOne = Root->findChild<QObject*>("imageOne");
-        if(imageOne){
-            imageOne->setProperty("source", "../share/EasyWork/Database/temp.png");
-            imageOne->setProperty("width", imageWidth);
-            imageOne->setProperty("height", imageHeight);
-            imageOne->setProperty("x", xImage);
-            imageOne->setProperty("y", yImage);
-        }
-
-        widget->setMinimumHeight(stopWidgetHeight.toInt());
-        widget->setMinimumWidth(stopWidgetWidth.toInt());
-    }
-}
-
-void CoreWidgetClass::createConnection(QString path, QString name){
-
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(path + "/" + name);
-
-    db.setUserName("user");
-
-    if (!db.open()) {
-        ;
-    }
-    else
-        readDB();
 }
 
 QWidget * CoreWidgetClass::getWidget() {
@@ -161,6 +101,7 @@ QWidget * CoreWidgetClass::getWidget() {
     ui_d->rootContext()->setContextProperty("Qt_fun", this);
 
     ui->widgetQml->layout()->addWidget(ui_d);
+    ui->widgetQml->setMinimumSize(850,150);
 
     ui->centralGridLayout->setMenuBar(menuBar);
 
@@ -171,14 +112,61 @@ QWidget * CoreWidgetClass::getWidget() {
 
     connect(widget,SIGNAL(destroyed()),this,SLOT(destroyedWidget()));
     disconnect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
-    destroyedBL = false;
 
-    createConnection();
+    // Достум из С++ к qml
+    QObject *rect = Root->findChild<QObject*>("qmlOneText");
+    if(rect)
+        rect->setProperty("text", textForQml.at(posTextForQml));
+
+    if(!saveSizeQml.isEmpty()){
+        int width = saveSizeQml.width()-8;
+        int height = saveSizeQml.height()-70;
+        if(Root){
+            Root->setProperty("width", QString::number(width+200));
+            Root->setProperty("height", QString::number(height+40));
+        }
+        ui->widgetQml->setMask(setRoundedCorners(width,height,10,10,10,10));
+    }
+
+    QTimer::singleShot(60000, this, SLOT(timerChangeText()));
+
+    destroyedBL = false;
 
     return widget;
 }
 
+void CoreWidgetClass::goToSite(QString site){
+    QDesktopServices::openUrl(QUrl(site));
+}
+
+void CoreWidgetClass::timerChangeText(){
+
+    if(!destroyedBL){
+
+        if(stopChangeText){
+            followingText();
+
+            if(Root->property("state").toString() == "shift")
+                Root->setProperty("state","normal");
+            else
+                Root->setProperty("state","shift");
+        }
+
+        if(!stopChangeText)
+            stopChangeText = true;
+
+        QTimer::singleShot(60000, this, SLOT(timerChangeText()));
+    }
+}
+
+void CoreWidgetClass::setStopChangeText(){
+    stopChangeText = false;
+}
+
 void CoreWidgetClass::slResizeEvent (QResizeEvent * event){
+
+    saveSizeQml = event->size();
+
     if(!destroyedBL){
         int width = event->size().width()-8;
         int height = event->size().height()-70;
@@ -186,9 +174,47 @@ void CoreWidgetClass::slResizeEvent (QResizeEvent * event){
 
         if(Root){
             Root->setProperty("width", QString::number(width+200));
-            Root->setProperty("height", QString::number(height+200));
+            Root->setProperty("height", QString::number(height+100));
         }
     }
+}
+
+void CoreWidgetClass::followingText(){
+    posTextForQml++;
+
+    if(posTextForQml>=textForQml.size())
+        posTextForQml = 0;
+
+    QString nameObject;
+
+    if(posTextForQml%2)
+        nameObject = "qmlTwoText";
+    else
+        nameObject = "qmlOneText";
+
+    // Достум из С++ к qml
+    QObject *rect = Root->findChild<QObject*>(nameObject);
+    if(rect)
+        rect->setProperty("text", textForQml.at(posTextForQml));
+}
+
+void CoreWidgetClass::precedingText(){
+    posTextForQml--;
+
+    if(posTextForQml<0)
+        posTextForQml = textForQml.size()-1;
+
+    QString nameObject;
+
+    if(posTextForQml%2)
+        nameObject = "qmlTwoText";
+    else
+        nameObject = "qmlOneText";
+
+    // Достум из С++ к qml
+    QObject *rect = Root->findChild<QObject*>(nameObject);
+    if(rect)
+        rect->setProperty("text", textForQml.at(posTextForQml));
 }
 
 QRegion CoreWidgetClass::setRoundedCorners(int width, int height,
@@ -250,6 +276,10 @@ void CoreWidgetClass::createRegimeMenu(){
         ui->layoutRegime->addWidget(regimePush);
         connect(regimePush,SIGNAL(clicked()),listActionRegime.at(i),SIGNAL(triggered()));
     }
+}
+
+void CoreWidgetClass::getFocus(){
+    emit siFocus();
 }
 
 void CoreWidgetClass::destroyedWidget(){

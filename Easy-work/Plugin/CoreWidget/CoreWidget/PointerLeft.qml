@@ -34,6 +34,12 @@ Rectangle {
     radius: 40
     smooth: true
 
+    Text {
+        text: "<"
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
     scale: mousePointerLeft.pressed? 0.8 : 1.0
 
     MouseArea {
@@ -45,6 +51,9 @@ Rectangle {
                 main.state="normal";
             else
                 main.state ="shift";
+
+            Qt_fun.precedingText();
+            Qt_fun.setStopChangeText();
         }
     }
 }

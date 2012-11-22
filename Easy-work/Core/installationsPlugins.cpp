@@ -148,6 +148,7 @@ void Core::installationsCoreWidget(CoreWidget * plugin){
     coreWidget->setMenuBar(coreMenu);
     connect(coreWidget,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
     connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
+    connect(plugin,SIGNAL(siFocus()),this,SLOT(setFocus()));
 }
 
 void Core::installationsKeyboard(Keyboard *plugin) {

@@ -52,6 +52,7 @@ public slots:
 
 signals:
     virtual void siGetWidget(QWidget *) = 0;
+    virtual void siFocus() = 0;
 };
 
 QT_BEGIN_NAMESPACE
