@@ -78,7 +78,7 @@
         <item>
          <widget class="QLabel" name="showInstallVersion">
           <property name="text">
-           <string>0.4.1</string>
+           <string>0.4.3</string>
           </property>
          </widget>
         </item>

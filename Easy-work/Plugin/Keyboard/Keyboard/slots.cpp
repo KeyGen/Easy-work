@@ -58,20 +58,18 @@ void KeyboardClass::slKeyReleaseEvent(QKeyEvent *event){
 
 void KeyboardClass::slResizeEvent    (QResizeEvent * event){
 
+    int plusSize = 20;
     saveSizeMainWindow = event->size();
-
-    saveSizeMainWindow.setHeight(saveSizeMainWindow.height()+20);
-
+    saveSizeMainWindow.setHeight(saveSizeMainWindow.height()+plusSize);
     slMoveEvent(true);
 }
 
-void KeyboardClass::slMoveEvent      (QMoveEvent * event){
+void KeyboardClass::slMoveEvent (QMoveEvent * event){
 
     savePointMianWindow = event->pos();
 
     if(move_yes_no->isChecked()) {
-        dialog->move(event->pos().x()+(saveSizeMainWindow.width()-dialog->width())/2,
-                     event->pos().y()+saveSizeMainWindow.height());
+        slMoveEvent(true);
     }
 }
 

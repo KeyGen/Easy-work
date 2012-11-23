@@ -11,7 +11,8 @@ TEMPLATE = lib
 
 DEFINES += COREWIDGET_LIBRARY
 
-SOURCES += corewidget.cpp
+SOURCES += corewidget.cpp \
+    savesettings.cpp
 
 HEADERS += corewidget.h\
         CoreWidget_global.h

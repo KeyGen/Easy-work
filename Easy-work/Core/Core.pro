@@ -17,6 +17,7 @@ SOURCES += main.cpp\
 
 HEADERS  += core.h
 
+INCLUDEPATH += $$PWD/../Plugin/RegimeLesson/RegimeLesson/
 INCLUDEPATH += $$PWD/../Plugin/SaveSetting/SaveSetting/
 INCLUDEPATH += $$PWD/../Plugin/CoreWidget/CoreWidget/
 INCLUDEPATH += $$PWD/../Plugin/RegimeFile/RegimeFile/

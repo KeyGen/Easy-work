@@ -20,6 +20,8 @@
  */
 
 #include "core.h"
+#include "CoreWidget_global.h"
+
 #include <QDesktopServices>
 #include <QDesktopWidget>
 #include <QApplication>
@@ -36,17 +38,18 @@ Core::Core(QWidget *parent)
     QMainWindow::setWindowTitle("Easy work");
     QMainWindow::setWindowIcon(QIcon(":/gloabl_icon"));
     installationsCoreMenu();
+    delUpdate();
 
     loadKeyboard    = false;
     loadStyle       = false;
     loadRegimeFile  = false;
     loadUpdate      = false;
+    loadRegimeLesson= false;
 
-    loadPlugins();
     QMainWindow::resize(850,220);
-    moveWindowCenter();
+    loadPlugins();
 
-    delUpdate();
+    moveWindowCenter();
 
     this->setVisible(false);
     this->setVisible(true);
@@ -54,45 +57,66 @@ Core::Core(QWidget *parent)
 
 void Core::delUpdate(QString pathTempUpdate){
     QDir dir(pathTempUpdate);
-    QStringList filter;
+    if(dir.exists()){
+        QStringList filter;
 
-    #ifdef Q_OS_WIN32
+#ifdef Q_OS_WIN32
         filter << "*.exe";
         filter << "*.pak";
-    #endif
+#endif
 
-    #ifdef Q_OS_LINUX
+#ifdef Q_OS_LINUX
         filter << "*.deb";
-    #endif
+#endif
 
-    QStringList files = dir.entryList(filter);
-    for(int i = 0; i<files.size(); i++){
-        QString file = files.at(i);
-        QDir remove;
-        qDebug() << tr("Найдено обновление. Удалние:")
-                 << remove.remove(pathTempUpdate.toAscii() + "/" + file.toAscii());
+        QStringList files = dir.entryList(filter);
+        for(int i = 0; i<files.size(); i++){
+            QString file = files.at(i);
+            QDir remove;
+            qDebug() << tr("Найдено обновление. Удалние:")
+                     << remove.remove(pathTempUpdate.toAscii() + "/" + file.toAscii());
+        }
+
+#ifdef Q_OS_WIN32
+        dir.cdUp();
+        QStringList list = pathTempUpdate.split("/");
+        dir.rmdir(list.last());
+#endif
     }
 }
 
 Core::~Core() {
-    QDir dir;
+
     if(!pathUpdate.isEmpty()){
 
-        QString absolute = dir.absolutePath();
-        absolute.chop(3);
-
-        pathUpdate = pathUpdate.right(pathUpdate.size()-3);
-
         #ifdef Q_OS_WIN32
-            qDebug() << system(absolute.toAscii()+ pathUpdate.toAscii());
+            qDebug() << system(pathUpdate.toAscii());
         #endif
 
         #ifdef Q_OS_LINUX
+            QDir dir;
+            QString absolute = dir.absolutePath();
+            absolute.chop(3);
+            pathUpdate = pathUpdate.right(pathUpdate.size()-3);
+
             qDebug() << system("xterm -e sudo dpkg -i " + absolute.toAscii()+ pathUpdate.toAscii() + "&&cd /usr/bin&&Easy_work");
         #endif
 
     }
+
+    #ifdef Q_OS_WIN32
+        delDir();
+    #endif
 }
+
+#ifdef Q_OS_WIN32
+void Core::delDir(QString pathTempUpdate){
+    QDir dir(pathTempUpdate);
+    dir.cdUp();
+    QStringList list = pathTempUpdate.split("/");
+    dir.rmdir(list.last());
+}
+#endif
 
 void Core::slUpdateTrue(QString path){
     pathUpdate = path;

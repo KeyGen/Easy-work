@@ -7,4 +7,5 @@ SUBDIRS += \
     what_is \
     Style \
     SaveSetting \
-    Update
+    Update \
+    RegimeLesson

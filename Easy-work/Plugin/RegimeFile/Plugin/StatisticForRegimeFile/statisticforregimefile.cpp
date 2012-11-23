@@ -23,6 +23,7 @@
 #include "ui_statisticDialog.h"
 
 #include <QTableWidgetItem>
+#include <QDesktopWidget>
 #include <QSqlDatabase>
 #include <QMessageBox>
 #include <QSqlRecord>
@@ -42,6 +43,14 @@ StatisticForRegimeFileClass::StatisticForRegimeFileClass() : ui(new Ui::statisti
     connect(showStatistic,SIGNAL(triggered()),this,SLOT(exec()));
     connect(ui->deleteStatistic,SIGNAL(clicked()),this,SLOT(deleteStatistic()));
     connect(ui->deleteAllStatistic,SIGNAL(clicked()),this,SLOT(deleteStatisticAll()));
+
+    moveWindowCenter();
+}
+
+void StatisticForRegimeFileClass::moveWindowCenter(){
+    // Запустим программу по центру экрана
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    dialogStatistic->move((desktop->width()-dialogStatistic->width())/2,(desktop->height()-dialogStatistic->height())/2);
 }
 
 bool StatisticForRegimeFileClass::createConnection(QString path, QString name)
@@ -49,12 +58,8 @@ bool StatisticForRegimeFileClass::createConnection(QString path, QString name)
     pathMDB = path;
     nameMDB = name;
 
-    QDir dir(pathMDB);
-
-    if(!dir.exists()){
-        QDir create;
-        create.mkpath(pathMDB);
-    }
+    QDir create;
+    create.mkpath(pathMDB);
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(path + "/" + name);

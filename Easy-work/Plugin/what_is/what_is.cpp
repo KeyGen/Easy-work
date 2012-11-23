@@ -22,6 +22,7 @@
 #include "what_is.h"
 #include "ui_ui_whatIs.h"
 
+#include <QDesktopWidget>
 #include <QDialog>
 #include <QAction>
 
@@ -33,6 +34,8 @@ WhatIsClass::WhatIsClass() : ui(new Ui::Dialog) {
     ui->setupUi(dialog);
     action = new QAction(tr("О программе"),this);
 
+    moveWindowCenter();
+
     connect(action,SIGNAL(triggered()),dialog,SLOT(exec()));
 }
 
@@ -42,6 +45,12 @@ WhatIsClass::~WhatIsClass(){
 void WhatIsClass::exec()
 {
     dialog->exec();
+}
+
+void WhatIsClass::moveWindowCenter(){
+    // Запустим программу по центру экрана
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    dialog->move((desktop->width()-dialog->width())/2,(desktop->height()-dialog->height())/2); // Распологаем MainWindow в ценре
 }
 
 QAction* WhatIsClass::getAction()

@@ -62,6 +62,7 @@ private:
     void readMDB();
     void insertMDB(QStringList value);
     void createTableVerticalHeader(QHash<QString,QStringList>);
+    void moveWindowCenter();
 
 private:
     Ui::statisticDialog *ui;

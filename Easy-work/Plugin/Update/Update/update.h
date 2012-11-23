@@ -88,13 +88,21 @@ private:
     bool WriteFile(QNetworkReply * networkReply);
     QString ReadFile(QString newCodec = "Windows-1251");
 
+#ifdef Q_OS_WIN32
+    void setPath(QString pathHttpF = "http://siteaac.narod.ru",
+                 QString pathTempF = "C:/Users/Public/Documents");
+#endif
+
+#ifdef Q_OS_LINUX
     void setPath(QString pathHttpF = "http://siteaac.narod.ru",
                  QString pathTempF = "../share/EasyWork/Database");
+#endif
 
     QString findVersion(QString);
     void updateEasyWork();
     void StartCheckForUpdates(QString);
     void writeDate();
+    void moveWindowCenter();
 
 private slots:
     void dialogExec();

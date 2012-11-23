@@ -42,10 +42,13 @@ CoreWidgetClass::CoreWidgetClass()
     startRegime = new QAction(tr("Выйти из режима"),this);
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
 
+    minimalSize.setWidth(850);
+    minimalSize.setHeight(150);
+
     stopChangeText = true;
     posTextForQml = 0;
 
-    textForQml << tr("<center><b>Добро пожаловать в программу Easy work!</b><br><i>(beta 0.4.1)</i></center>");
+    textForQml << tr("<center><b>Добро пожаловать в программу Easy work!</b><br><i>(beta 0.4.3)</i></center>");
 
     textForQml << tr("<center>"
                   "Программа предназначена для, тренировки, изучения, <br>слепого метода печати."
@@ -101,7 +104,7 @@ QWidget * CoreWidgetClass::getWidget() {
     ui_d->rootContext()->setContextProperty("Qt_fun", this);
 
     ui->widgetQml->layout()->addWidget(ui_d);
-    ui->widgetQml->setMinimumSize(850,150);
+    ui->widgetQml->setMinimumSize(minimalSize);
 
     ui->centralGridLayout->setMenuBar(menuBar);
 
@@ -119,11 +122,19 @@ QWidget * CoreWidgetClass::getWidget() {
         rect->setProperty("text", textForQml.at(posTextForQml));
 
     if(!saveSizeQml.isEmpty()){
-        int width = saveSizeQml.width()-8;
-        int height = saveSizeQml.height()-70;
+        int widthBereave = 8;
+        int heightBereave = 70;
+
+        #ifdef Q_OS_WIN32
+            widthBereave = 20;
+            heightBereave = 85;
+        #endif
+
+        int width = saveSizeQml.width()-widthBereave;
+        int height = saveSizeQml.height()-heightBereave;
         if(Root){
             Root->setProperty("width", QString::number(width+200));
-            Root->setProperty("height", QString::number(height+40));
+            Root->setProperty("height", QString::number(height+100));
         }
         ui->widgetQml->setMask(setRoundedCorners(width,height,10,10,10,10));
     }
@@ -165,11 +176,22 @@ void CoreWidgetClass::setStopChangeText(){
 
 void CoreWidgetClass::slResizeEvent (QResizeEvent * event){
 
-    saveSizeQml = event->size();
+    if((minimalSize.width()<event->size().width())&&(minimalSize.height()<event->size().height())){
+        saveSizeQml = event->size();
+    }
 
     if(!destroyedBL){
-        int width = event->size().width()-8;
-        int height = event->size().height()-70;
+
+        int widthBereave = 8;
+        int heightBereave = 70;
+
+        #ifdef Q_OS_WIN32
+            widthBereave = 20;
+            heightBereave = 85;
+        #endif
+
+        int width = event->size().width()-widthBereave;
+        int height = event->size().height()-heightBereave;
         ui->widgetQml->setMask(setRoundedCorners(width,height,10,10,10,10));
 
         if(Root){

@@ -73,11 +73,12 @@ void KeyboardClass::show() {
         if(!findAndSetKeyboardLanguage())
             qDebug() << "Раскладка не найдена";
 
+    BLShowDialog = true;
+
     if(dialog->isMinimized())
     dialog->close();
 
     dialog->show();
-    BLShowDialog = true;
 }
 
 void KeyboardClass::slShow(){

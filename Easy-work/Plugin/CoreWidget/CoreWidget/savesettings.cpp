@@ -19,41 +19,31 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef WHAT_IS_H
-#define WHAT_IS_H
+#include "corewidget.h"
 
-#include "what_is_global.h"
+void CoreWidgetClass::saveSetting(){
 
-#include <QDebug>
+    QStringList listSaveSettings;
+    listSaveSettings << "CoreWidget";
 
-namespace Ui {
-class Dialog;
+    listSaveSettings << QString::number(saveSizeQml.width());
+    listSaveSettings << QString::number(saveSizeQml.height());
+
+    emit siSaveSetting(listSaveSettings);
 }
 
-class WhatIsClass : public WhatIs
-{
-    Q_OBJECT Q_INTERFACES(WhatIs)
+void CoreWidgetClass::slSetSaveSetting(QStringList setValue){
 
-public:
+    if(!setValue.isEmpty()){
+        if(setValue.at(0) == "CoreWidget"){
+            if(!setValue.at(1).isEmpty()){
+                saveSizeQml.setWidth(setValue.at(1).toInt());
+                saveSizeQml.setHeight(setValue.at(2).toInt());
+            }
+        }
+    }
+}
 
-    explicit WhatIsClass();
-    virtual ~WhatIsClass();
-
-    virtual QString getVersion() { return "1.0"; }
-    virtual QString getName()    { return "What is"; }
-    virtual QAction* getAction();
-    virtual void renameAction(QString);
-
-public slots:
-    virtual void exec();
-
-private:
-    Ui::Dialog *ui;
-    QDialog *dialog;
-    QAction *action;
-
-private:
-    void moveWindowCenter();
-};
-
-#endif // WHAT_IS_H
+void CoreWidgetClass::slCloseEvent(){
+    saveSetting();
+}

@@ -45,6 +45,7 @@ public:
     CoreWidgetClass();
     virtual QString getVersion()    { return "1.0"; }
     virtual QString getName()       { return "Core Widget"; }
+    virtual QSize* getSize()         { return &saveSizeQml; }
     virtual QWidget * getWidget();
     virtual void setMenuBar(QList <QMenu *>);
     virtual void activationRegime();
@@ -82,17 +83,24 @@ private:
     int posTextForQml;
     bool stopChangeText;
     QSize saveSizeQml;
+    QSize minimalSize;
 
 private:
     void createRegimeMenu();
     QRegion setRoundedCorners(int width, int height, int,int,int,int);
+    void saveSetting();
 
 private slots:
     void slGetWidget();
     void destroyedWidget();
     void timerChangeText();
 
+public slots:
+    void slSetSaveSetting(QStringList);
+    void slCloseEvent();
+
 signals:
+    void siSaveSetting(QStringList);
     void siGetWidget(QWidget *);
     void siFocus();
 };

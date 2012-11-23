@@ -259,6 +259,10 @@ void RigimeFileClass::centralAdministration(QChar inputWord){
         if(ui->labelInput->text().at(0) == inputWord)
         {
             ui->labelShow->setText(ui->labelShow->text() + QString(inputWord));
+
+            if(ui->labelShow->text().size()>40)
+                ui->labelShow->setText(ui->labelShow->text().right(22));
+
             ui->labelInput->setText(ui->labelInput->text().right(ui->labelInput->text().size() - 1));
             dateText = dateText.right(dateText.size() -1);
 

@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file alias="icon">down_arrow.png</file>
+        <file alias="iconLesson">paste.png</file>
     </qresource>
 </RCC>

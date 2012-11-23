@@ -64,6 +64,7 @@ private:
     QString preparationText(QString);
     QString preparationTextSimbol(QString);
     bool readFileAndSetText(QString);
+    void moveWindowCenter();
 
 private slots:
     void slSetNewTex();

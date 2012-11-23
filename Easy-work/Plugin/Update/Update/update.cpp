@@ -27,6 +27,7 @@
 #include <QUrl>
 
 #include <QProgressDialog>
+#include <QDesktopWidget>
 #include <QMessageBox>
 #include <QTextCodec>
 #include <QTimer>
@@ -74,7 +75,16 @@ UpdateClass::UpdateClass(): ui(new Ui::UpdateDialog)
 
     progress = new QProgressDialog();
     progress->setWindowTitle(tr("Обновление"));
+
+    moveWindowCenter();
 }
+
+void UpdateClass::moveWindowCenter(){
+    // Запустим программу по центру экрана
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    dialogUpdate->move((desktop->width()-dialogUpdate->width())/2,(desktop->height()-dialogUpdate->height())/2);
+}
+
 void UpdateClass::downloadProgress(qint64 change,qint64 size){
 
     if(progress->maximum() != size){
@@ -106,6 +116,12 @@ void UpdateClass::slBoolCheckForUpdates(){
 void UpdateClass::setPath(QString pathHttpF, QString pathTempF){
     pathHttp = pathHttpF;
     pathTemp = pathTempF;
+
+    #ifdef Q_OS_WIN32
+        QDir createDir(pathTempF);
+        createDir.mkdir("tempEasyWorkUpdate");
+        pathTemp += "/tempEasyWorkUpdate";
+    #endif
 }
 
 void UpdateClass::dialogNotSave(){

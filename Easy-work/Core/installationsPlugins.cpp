@@ -29,6 +29,7 @@
 #include "what_is_global.h"
 #include "SaveSetting_global.h"
 #include "Update_global.h"
+#include "RegimeLesson_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
@@ -52,6 +53,7 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "CoreWidget";
     readPluginsName << "Keyboard";
     readPluginsName << "RegimeFile";
+    //readPluginsName << "RegimeLesson";
     readPluginsName << "Style";
     readPluginsName << "what_is";
     readPluginsName << "Update";
@@ -98,6 +100,10 @@ void Core::loadPlugins(QString pathPlugin) {
                 {
                     if(plugin->loadPlugins(pathPlugin))
                         installationsRigimeFile(plugin);
+                }
+                else if(RegimeLesson * plugin = qobject_cast<RegimeLesson *>(obj))
+                {
+                    installationsRegimeLesson(plugin);
                 }
                 else if(Style * plugin = qobject_cast<Style *>(obj))
                 {
@@ -148,6 +154,7 @@ void Core::installationsCoreWidget(CoreWidget * plugin){
     coreWidget->setMenuBar(coreMenu);
     connect(coreWidget,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
     connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
     connect(plugin,SIGNAL(siFocus()),this,SLOT(setFocus()));
 }
 
@@ -189,6 +196,16 @@ void Core::installationsRigimeFile(RigimeFile * plugin){
     }
 }
 
+void Core::installationsRegimeLesson(RegimeLesson *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+
+    regimeLesson = plugin;
+    loadRegimeLesson = true;
+    plugin->setMenuBar(coreMenu);
+    coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
+}
+
 void Core::installationsWhatIs(WhatIs * plugin){
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
     help->addAction(plugin->getAction());
@@ -220,6 +237,9 @@ void Core::installationsSaveSetting(SaveSetting *plugin){
     connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),this,SLOT(slSetSaveSetting(QStringList)));
     connect(plugin,SIGNAL(closeApplication()),this,SLOT(close()));
 
+    connect(coreWidget,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+    connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),coreWidget,SLOT(slSetSaveSetting(QStringList)));
+
     if(loadKeyboard){
         connect(keyboard,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),keyboard,SLOT(slSetSaveSetting(QStringList)));
@@ -238,6 +258,11 @@ void Core::installationsSaveSetting(SaveSetting *plugin){
     if(loadUpdate){
         connect(update,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),update,SLOT(slSetSaveSetting(QStringList)));
+    }
+
+    if(loadRegimeLesson){
+        connect(regimeLesson,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeLesson,SLOT(slSetSaveSetting(QStringList)));
     }
 
     plugin->setSaveSetting();

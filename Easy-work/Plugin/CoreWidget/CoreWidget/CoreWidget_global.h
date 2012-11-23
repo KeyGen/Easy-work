@@ -22,6 +22,7 @@
 #ifndef COREWIDGET_GLOBAL_H
 #define COREWIDGET_GLOBAL_H
 
+#include <QStringList>
 #include <QtPlugin>
 
 QT_BEGIN_NAMESPACE
@@ -42,15 +43,19 @@ public:
     virtual QWidget* getWidget()    = 0;
     virtual void setMenuBar(QList <QMenu *>) = 0;
     virtual void activationRegime() = 0;
+    virtual QSize* getSize()         = 0;
 
     virtual void setRegimeMenu(QAction*, const QIcon) = 0;
 
     virtual ~CoreWidget() {}
 
 public slots:
+    virtual void slCloseEvent () = 0;
     virtual void slResizeEvent (QResizeEvent * event) = 0;
+    virtual void slSetSaveSetting(QStringList) = 0;
 
 signals:
+    virtual void siSaveSetting(QStringList) = 0;
     virtual void siGetWidget(QWidget *) = 0;
     virtual void siFocus() = 0;
 };

@@ -28,6 +28,7 @@
 QT_BEGIN_NAMESPACE
 class CoreWidget;
 class RigimeFile;
+class RegimeLesson;
 class Keyboard;
 class Style;
 class WhatIs;
@@ -64,6 +65,7 @@ private:
     void installationsStyle(Style *plugin);
     void installationsSaveSetting(SaveSetting *plugin);
     void installationsUpdate(Update *plugin);
+    void installationsRegimeLesson(RegimeLesson *plugin);
 
     void controlLoadPlugin(QString);
     void installationsCoreMenu();
@@ -71,7 +73,15 @@ private:
 
     void fGoToWebSite(QString site = "https://github.com/KeyGen/Easy-work/wiki");
     void fCommunicateBags(QString site = "https://github.com/KeyGen/Easy-work/issues?page=1&state=open");
-    void delUpdate(QString pathTempUpdate = "../share/EasyWork/Database");
+
+    #ifdef Q_OS_WIN32
+        void delUpdate(QString pathTempUpdate = "C:/Users/Public/Documents/tempEasyWorkUpdate");
+        void delDir(QString pathTempUpdate = "C:/Users/Public/Documents/tempEasyWorkUpdate");
+    #endif
+
+    #ifdef Q_OS_LINUX
+        void delUpdate(QString pathTempUpdate = "../share/EasyWork/Database");
+    #endif
 
 private:
     QList <QMenu *> coreMenu;
@@ -81,6 +91,8 @@ private:
     QMenu *setting;
     QMenu *help;
 
+    RegimeLesson *regimeLesson;
+    bool loadRegimeLesson;
     Update *update;
     bool loadUpdate;
     Keyboard *keyboard;

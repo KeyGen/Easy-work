@@ -1,11 +1,11 @@
 Package: EasyWork
-Version: 0.4.1
+Version: 0.4.3
 Maintainer: KeyGen <KeyGenQt@gmail.com>
 Architecture: all
 Section: science
 Depends: libqt4-dev, xterm
 Installed-Size: 1290
 Origin: https://github.com/KeyGen/Easy-work/wiki
-Description: Easy work Version 0.4.1
+Description: Easy work Version 0.4.3
  Cross-platform program for teaching the blind method print.
 ;

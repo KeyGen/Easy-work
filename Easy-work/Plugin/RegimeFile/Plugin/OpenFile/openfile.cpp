@@ -22,6 +22,7 @@
 #include "openfile.h"
 #include "ui_openfile.h"
 
+#include <QDesktopWidget>
 #include <QDialog>
 #include <QAction>
 #include <QFileDialog>
@@ -60,6 +61,14 @@ OpenFileClass::OpenFileClass() : ui(new Ui::DialogOpenFile)
 
     connect(ui->pushSave,SIGNAL(clicked()),dialog,SLOT(close()));
     connect(ui->pushClose,SIGNAL(clicked()),dialog,SLOT(close()));
+
+    moveWindowCenter();
+}
+
+void OpenFileClass::moveWindowCenter(){
+    // Запустим программу по центру экрана
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    dialog->move((desktop->width()-dialog->width())/2,(desktop->height()-dialog->height())/2);
 }
 
 void OpenFileClass::setDefaultSetting(){

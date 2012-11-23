@@ -20,14 +20,15 @@
  */
 
 #include "core.h"
+#include "CoreWidget_global.h"
 
 void Core::saveSetting(){
 
     QStringList listSaveSettings;
     listSaveSettings << "Core";
 
-    listSaveSettings << QString::number(QMainWindow::width());
-    listSaveSettings << QString::number(QMainWindow::height());
+    listSaveSettings << QString::number(coreWidget->getSize()->width());
+    listSaveSettings << QString::number(coreWidget->getSize()->height());
 
     emit siSaveSetting(listSaveSettings);
 }
