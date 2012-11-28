@@ -3,6 +3,7 @@
 # Project created by QtCreator 2012-11-23T11:21:30
 #
 #-------------------------------------------------
+QT       += gui sql declarative
 
 TARGET = RegimeLesson
 TEMPLATE = lib
@@ -10,10 +11,12 @@ TEMPLATE = lib
 DEFINES += REGIMELESSON_LIBRARY
 
 SOURCES += regimelesson.cpp \
-    savesettings.cpp
+    savesettings.cpp \
+    database.cpp
 
 HEADERS += regimelesson.h\
-        RegimeLesson_global.h
+        RegimeLesson_global.h \
+    database.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN
@@ -38,3 +41,11 @@ DESTDIR = $$PWD/../../../Easy-work/lib/EasyWork
 
 RESOURCES += \
     icon.qrc
+
+FORMS += \
+    regimeLesson.ui
+
+OTHER_FILES += \
+    main.qml \
+    FunctionLanguageLesson.qml \
+    FunctionNameLesson.qml

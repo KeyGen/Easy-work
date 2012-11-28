@@ -6,7 +6,8 @@
   /*/////////////////////////////// Central Widget ///////////////////////////////*/
   
 QWidget#CoreForm, 
-QWidget#RegimeFile 
+QWidget#RegimeFile,
+QWidget#FormRegimeLesson
 {
     background: qlineargradient(x1:0.5, y1:0, x2:0.5, y2:1, 
 				stop:0 blue, 

@@ -160,6 +160,12 @@ Rectangle {
         }
     }
 
+    // Останавливаем прокрутку
+    Flickable {
+        anchors.fill: parent
+        contentHeight: parent.height-1
+    }
+
     PointerLeft{}
     PointerRight{}
 

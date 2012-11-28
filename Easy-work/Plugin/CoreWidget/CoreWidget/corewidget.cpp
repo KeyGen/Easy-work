@@ -96,7 +96,7 @@ QWidget * CoreWidgetClass::getWidget() {
 
     //Включаем наш QML
     ui_d = new QDeclarativeView();
-    ui_d->setSource(QUrl("qrc:/main.qml"));
+    ui_d->setSource(QUrl("qrc:/mainQmlCore"));
 
     //Находим корневой элемент
     Root = ui_d->rootObject();

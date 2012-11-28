@@ -53,7 +53,7 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "CoreWidget";
     readPluginsName << "Keyboard";
     readPluginsName << "RegimeFile";
-    //readPluginsName << "RegimeLesson";
+    readPluginsName << "RegimeLesson";
     readPluginsName << "Style";
     readPluginsName << "what_is";
     readPluginsName << "Update";
@@ -203,7 +203,17 @@ void Core::installationsRegimeLesson(RegimeLesson *plugin){
     loadRegimeLesson = true;
     plugin->setMenuBar(coreMenu);
     coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
+
+    connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
+    connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
     connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
+    connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
+
+    if(loadKeyboard){
+        connect(plugin,SIGNAL(siGetWord(QChar)),keyboard,SLOT(slAnimatePressWord(QChar)));
+        connect(keyboard,SIGNAL(siKeyboardLanguageChange()),plugin,SLOT(slKeyboardLanguageChange()));
+        connect(plugin,SIGNAL(stopLesson()),keyboard,SLOT(pressDownOffAllKey()));
+    }
 }
 
 void Core::installationsWhatIs(WhatIs * plugin){
