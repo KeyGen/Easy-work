@@ -26,6 +26,7 @@
 #include <QtDeclarative/QDeclarativeView>
 #include <QGraphicsObject>
 #include <QDesktopServices>
+#include <QDesktopWidget>
 
 #include <QInputDialog>
 #include <QMessageBox>
@@ -112,19 +113,26 @@ void RegimeLessonClass::addNewUser(){
     bool ok = true;
 
     while(ok){
-        QString text = QInputDialog::getText(widget, tr("Новый пользователь"),
-                                             tr("Введите ваше имя:"), QLineEdit::Normal,
-                                             QDir::home().dirName(), &ok);
+
+        QInputDialog inputUserName;
+        inputUserName.setWindowTitle(tr("Новый пользователь"));
+        inputUserName.setLabelText(tr("Введите ник нового пользователя:"));
+        inputUserName.setWindowFlags(Qt::Tool);
+        inputUserName.setTextValue(QDir::home().dirName());
+
+        QPoint center = screenCenter();
+        QSize sizeUserNameDialog = inputUserName.sizeHint();
+        inputUserName.move(center.x()-sizeUserNameDialog.width()/2-10,center.y()-sizeUserNameDialog.height()/2-20);
+        ok = inputUserName.exec();
+
+        QString text = inputUserName.textValue();
+
         if (ok && !text.isEmpty()){
-            if(saveUser.contains(text))
-            {
-                QMessageBox::information(0, tr("Информация"),
-                                         tr("Такой ученик уже существует!\n"
-                                            "Выберите другое имя или используйте уже доступное.\n\n"),
-                                         QMessageBox::Ok);
+            if(saveUser.contains(text)){
+                messageBoxExec(tr("Такой ученик уже существует!\n"
+                                  "Выберите другое имя или используйте уже доступное.\n\n"));
             }
-            else
-            {
+            else{
                 ok = false;
                 saveUser << text;
                 ui->comboBox->clear();
@@ -135,10 +143,8 @@ void RegimeLessonClass::addNewUser(){
         else{
 
             if(ok)
-            QMessageBox::information(0, tr("Информация"),
-                                     tr("Поле пустое!\n"
-                                        "Выберите другое имя или используйте уже доступное.\n\n"),
-                                     QMessageBox::Ok);
+                messageBoxExec(tr("Поле пустое!\n"
+                                  "Выберите другое имя или используйте уже доступное.\n\n"));
         }
     }
 }
@@ -333,27 +339,17 @@ void RegimeLessonClass::stopPrint(){
 
     emit stopLesson();
 
-    QMessageBox msgBox;
-    msgBox.setWindowTitle(tr("Информация"));
-    msgBox.setIcon(QMessageBox::Information);
-
-    msgBox.setText(tr("Поздравляю Вы прошли урок!\n"
+    messageBoxExec(tr("Поздравляю Вы прошли урок!\n"
                       "Вы допустили ошибок:")
                        + QString::number(calculateError));
-
-    msgBox.setStandardButtons(QMessageBox::Ok);
-    msgBox.move(0,0);
-    msgBox.exec();
 }
 
 void RegimeLessonClass::startPrint(){
 
-    ////////////////////////////////////////////
     ui->labelInput->setMaximumWidth(saveSizeLabelInputAndShow.width()/2);
     ui->labelInput->setMinimumWidth(10);
     ui->labelShow->setMaximumWidth(saveSizeLabelInputAndShow.width()/2);
     ui->labelShow->setMinimumWidth(10);
-    ////////////////////////////////////////////
 
     startPrintLesson = true;
     ui->labelStart->close();
@@ -361,4 +357,24 @@ void RegimeLessonClass::startPrint(){
     ui->labelInput->setText(workerText);
 
     emit siGetWord(ui->labelInput->text().at(0));
+}
+
+QPoint RegimeLessonClass::screenCenter(){
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    return QPoint(desktop->width()/2,desktop->height()/2);
+}
+
+void RegimeLessonClass::messageBoxExec(QString text){
+
+    QPoint center = screenCenter();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(tr("Информация"));
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+
+    msgBox.setText(text);
+
+    msgBox.show();
+    msgBox.move(center.x()-msgBox.width()/2,center.y()-msgBox.height()/2-20);
+    msgBox.exec();
 }

@@ -48,7 +48,7 @@ CoreWidgetClass::CoreWidgetClass()
     stopChangeText = true;
     posTextForQml = 0;
 
-    textForQml << tr("<center><b>Добро пожаловать в программу Easy work!</b><br><i>(beta 0.4.3)</i></center>");
+    textForQml << tr("<center><b>Добро пожаловать в программу Easy work!</b><br><i>(beta 0.5.0)</i></center>");
 
     textForQml << tr("<center>"
                   "Программа предназначена для, тренировки, изучения, <br>слепого метода печати."
@@ -56,8 +56,7 @@ CoreWidgetClass::CoreWidgetClass()
 
     textForQml << tr("<center>"
                   "В меню режимы вы найдете режим для обучения. На данный<br>"
-                  "момент имеется один режим - \"Режим файла\", в котором<br>"
-                  "можно загрузить внешний файл для печати. "
+                  "момент имеется два режима - \"Режим файла\", и \"Режим уроков\"."
                   "</center>");
 
     textForQml << tr("<center>"
@@ -72,8 +71,8 @@ CoreWidgetClass::CoreWidgetClass()
 
     textForQml << tr("<center>"
                      "<b>В планах</b>:<br>"
-                     "В ближайше время думаю заняться переводом приложения<br>"
-                     "на английский, подкорректирую обновления."
+                     "В ближайше время думаю заняться переводом приложения на<br>"
+                     "английский, Важно ваше мнение! Пишите если найдете ошибку!"
                      "</center>");
 
 

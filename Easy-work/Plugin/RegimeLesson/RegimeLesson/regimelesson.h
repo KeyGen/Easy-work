@@ -98,6 +98,8 @@ private:
     void stopPrint();
     void startPrint();
     QString preparationText(QString);
+    QPoint screenCenter();
+    void messageBoxExec(QString);
 
 public slots:
     void slSetSaveSetting(QStringList);
