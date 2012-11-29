@@ -14,7 +14,12 @@ Item {
         for(var i = 0; name != ""; i++){
             name = Qt_fun.getLanguageLesson(i);
             if(name !=""){
-                lessonTypes.insert(i, { "name": name, "type": Easing.OutBounce, "ballColor": "DarkRed"});
+                lessonTypes.insert(i, { "name": name, "type": Easing.OutBounce,
+                                       "colorRect": "Turquoise",
+                                       "ballColor": "DarkRed",
+                                       "colorBorderRect" : "black",
+                                       "iconSource" : ":/hand",
+                                       "setText" : ""});
             }
         }
     }

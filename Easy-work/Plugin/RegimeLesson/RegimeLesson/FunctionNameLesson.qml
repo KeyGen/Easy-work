@@ -9,7 +9,11 @@ Item {
         for(var i = count; name != ""; i++,j++){
             name = Qt_fun.getNameLesson(j);
             if(name !=""){
-                lessonTypes.insert(i, { "name": name, "type": Easing.OutBack, "ballColor": "DarkRed"});
+                lessonTypes.insert(i, { "name": name,
+                                       "colorRect": "white",
+                                       "ballColor": "DarkRed",
+                                       "colorBorderRect" : "Turquoise",
+                                       "setText" : "N"});
             }
         }
 

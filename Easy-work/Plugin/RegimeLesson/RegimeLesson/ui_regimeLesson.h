@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimeLesson.ui'
 **
-** Created: Wed Nov 28 16:37:40 2012
+** Created: Thu Nov 29 21:40:50 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -106,6 +106,7 @@ public:
 
         widgetQmlLesson = new QWidget(coreGridWidget);
         widgetQmlLesson->setObjectName(QString::fromUtf8("widgetQmlLesson"));
+        widgetQmlLesson->setMouseTracking(false);
         widgetQml = new QGridLayout(widgetQmlLesson);
         widgetQml->setObjectName(QString::fromUtf8("widgetQml"));
         labelStart = new QLabel(widgetQmlLesson);
@@ -153,7 +154,7 @@ public:
     {
         FormRegimeLesson->setWindowTitle(QApplication::translate("FormRegimeLesson", "\320\240\320\265\320\266\320\270\320\274 \321\203\321\200\320\276\320\272\320\276\320\262", 0, QApplication::UnicodeUTF8));
         pushButton->setText(QApplication::translate("FormRegimeLesson", "\320\224\320\260\320\273\321\210\320\265", 0, QApplication::UnicodeUTF8));
-        labelStart->setText(QApplication::translate("FormRegimeLesson", "\320\237\321\200\320\276\320\261\320\265\320\273 - \320\277\321\200\320\270\321\201\321\202\321\203\320\277\320\270\321\202\321\214 \320\272 \320\262\321\213\320\277\320\276\320\273\320\275\320\265\320\275\320\270\321\216 \321\203\321\200\320\276\320\272\320\260, Enter - \321\201\321\202\320\276\320\277", 0, QApplication::UnicodeUTF8));
+        labelStart->setText(QApplication::translate("FormRegimeLesson", "\320\237\321\200\320\276\320\261\320\265\320\273 - \320\275\320\260\321\207\320\260\321\202\321\214 \321\203\321\200\320\276\320\272, Enter - \321\201\321\202\320\276\320\277, Backspace - \320\262\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217", 0, QApplication::UnicodeUTF8));
         labelShow->setText(QString());
         labelInput->setText(QString());
     } // retranslateUi

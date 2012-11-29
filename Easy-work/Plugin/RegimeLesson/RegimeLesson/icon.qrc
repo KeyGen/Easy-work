@@ -4,5 +4,6 @@
         <file alias="mainLesson">main.qml</file>
         <file>FunctionLanguageLesson.qml</file>
         <file>FunctionNameLesson.qml</file>
+        <file alias="hand">hend.png</file>
     </qresource>
 </RCC>

@@ -58,6 +58,7 @@ Rectangle {
                 id: slot3; height: 50; width: window.width - 430
                 x: 210
                 border.width: 2
+                border.color: colorBorderRect;
                 radius: 12
                 smooth: true
                 anchors.verticalCenter: parent.verticalCenter
@@ -68,7 +69,6 @@ Rectangle {
                     State {
                         name: "normalslot3"
                         PropertyChanges {target: slot3;
-                            color: "green"
                             gradient: backgroundItemOne
                         }
                     },
@@ -82,6 +82,7 @@ Rectangle {
 
                 MouseArea {
                     id: itemLessonPress
+
                     onEntered: {
                         if(avtorPane.opacity != 0&&slot3.state != "shiftslot3"){
                             slot3.scale = 0.95;
@@ -92,7 +93,6 @@ Rectangle {
 
                     onExited: {
                         if(avtorPane.opacity != 0&&slot3.state != "shiftslot3"){
-                            //console.log(lessonTypes.get(index).name)
                             Qt_fun.startLesson(index);
                             textAll.font.bold = false;
                             slot3.scale = 1.0;
@@ -131,9 +131,28 @@ Rectangle {
 
             Rectangle {
                 id: rect; x: 230; color: "#454545"
-                border.color: "White"; border.width: 2
+                border.color: colorRect; border.width: 2
                 height: 46; width: 46; radius: 12
                 anchors.verticalCenter: parent.verticalCenter
+
+                Image {
+                    id: icon
+                    source: iconSource
+                    width: 30
+                    height: 30
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Text {
+                    id: textLesson
+                    text: setText
+
+                    font.pixelSize: 16
+
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
 
                 MouseArea {
                     onClicked: {

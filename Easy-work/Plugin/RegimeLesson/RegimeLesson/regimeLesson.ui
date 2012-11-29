@@ -114,6 +114,9 @@
       </item>
       <item row="1" column="0">
        <widget class="QWidget" name="widgetQmlLesson" native="true">
+        <property name="mouseTracking">
+         <bool>false</bool>
+        </property>
         <layout class="QGridLayout" name="widgetQml">
          <item row="1" column="0">
           <widget class="QLabel" name="labelStart">
@@ -121,7 +124,7 @@
             <enum>QFrame::Box</enum>
            </property>
            <property name="text">
-            <string>Пробел - приступить к выполнению урока, Enter - стоп</string>
+            <string>Пробел - начать урок, Enter - стоп, Backspace - вернуться</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>

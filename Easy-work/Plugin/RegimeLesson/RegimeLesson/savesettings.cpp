@@ -20,13 +20,14 @@
  */
 
 #include "regimelesson.h"
+#include "ui_regimeLesson.h"
 
 void RegimeLessonClass::saveSetting(){
 
     QStringList listSaveSettings;
     listSaveSettings << "RegimeLesson";
 
-    listSaveSettings << "RegimeLesson";
+    listSaveSettings << "__#lastUser#" +userName;
 
     emit siSaveSetting(listSaveSettings);
 }
@@ -36,7 +37,13 @@ void RegimeLessonClass::slSetSaveSetting(QStringList setValue){
     if(!setValue.isEmpty()){
         if(setValue.at(0) == "RegimeLesson"){
             if(!setValue.at(1).isEmpty())
-                qDebug() << "RegimeLesson save";
+
+                for(int i = 0; i<setValue.size(); i++){
+                    if(setValue.at(i).contains("__#lastUser#")){
+                        userName = setValue.at(i).right(setValue.at(i).size()-12);
+                        saveUser << userName;
+                    }
+                }
         }
     }
 }

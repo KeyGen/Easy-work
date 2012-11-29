@@ -78,6 +78,7 @@ private:
     QStringList saveUser;
     QMenu *menuRegimeLesson;
     QString userName;
+    QString userLessonDone;
     QString newUser;
     QStringList lessonLanguage;
     QHash <int,QStringList> lesson;
@@ -100,6 +101,7 @@ private:
     QString preparationText(QString);
     QPoint screenCenter();
     void messageBoxExec(QString);
+    void errorMax();
 
 public slots:
     void slSetSaveSetting(QStringList);

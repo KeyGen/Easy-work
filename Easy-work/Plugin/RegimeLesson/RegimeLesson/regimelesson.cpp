@@ -72,6 +72,8 @@ QWidget* RegimeLessonClass::getWidget(){
 
     ui->gridLayout->setMenuBar(menuBar);
     ui->comboBox->addItems(saveUser);
+    if(!userName.isEmpty())
+    ui->comboBox->setCurrentIndex(ui->comboBox->findText(userName));
     ui->widgetQmlLesson->close();
 
     lessonLanguage = base.getNameLesson();
@@ -261,6 +263,13 @@ void RegimeLessonClass::slResizeEvent (QResizeEvent * event){
 
 void RegimeLessonClass::slKeyPressEvent (QKeyEvent *event){
     if(!destroyedBL){
+
+        if(event->key() == Qt::Key_Backspace){
+            if(startPrintLesson)
+                stopPrint();
+            startQmlInput();
+        }
+
         if(startPrintLesson){
 
             if(event->key() == Qt::Key_CapsLock)
@@ -301,6 +310,10 @@ void RegimeLessonClass::centralAdministration(QChar inputWord){
         else
         {
             calculateError++;
+
+            if(calculateError>4)
+                errorMax();
+
             labelSetStyleSheetError();
             emit siGetWord(ui->labelInput->text().at(0));
         }
@@ -330,18 +343,38 @@ void RegimeLessonClass::labelSetStyleSheetError(){
     QTimer::singleShot(200, this, SLOT(labelSetStyleSheetDefault()));
 }
 
+void RegimeLessonClass::errorMax()
+{
+    startPrintLesson = false;
+    ui->labelStart->show();
+    ui->printWidget->close();
+
+    emit stopLesson();
+
+    messageBoxExec(tr("Вы привысили максимальное количество допустимых ошибок\n"
+                      "Урок прийдется начать заново"));
+
+    ui->labelInput->clear();
+    ui->labelShow->clear();
+    calculateError = 0;
+}
+
 void RegimeLessonClass::stopPrint(){
     startPrintLesson = false;
     ui->labelStart->show();
     ui->printWidget->close();
-    ui->labelInput->clear();
-    ui->labelShow->clear();
 
     emit stopLesson();
 
+    if(ui->labelInput->text().isEmpty())
     messageBoxExec(tr("Поздравляю Вы прошли урок!\n"
-                      "Вы допустили ошибок:")
-                       + QString::number(calculateError));
+                      "Вы допустили ошибок:  ")
+                       + QString::number(calculateError) +
+                       tr("\nОценка:  ") + QString::number(5 - calculateError));
+
+    ui->labelInput->clear();
+    ui->labelShow->clear();
+    calculateError = 0;
 }
 
 void RegimeLessonClass::startPrint(){
