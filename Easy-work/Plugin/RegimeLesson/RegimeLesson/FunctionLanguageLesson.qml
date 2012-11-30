@@ -16,9 +16,10 @@ Item {
             if(name !=""){
                 lessonTypes.insert(i, { "name": name, "type": Easing.OutBounce,
                                        "colorRect": "Turquoise",
-                                       "ballColor": "DarkRed",
+                                       "ballColor": "#2a3d6a",
                                        "colorBorderRect" : "black",
                                        "iconSource" : ":/hand",
+                                       "stateLesson" : "",
                                        "setText" : ""});
             }
         }

@@ -29,6 +29,11 @@ void RegimeLessonClass::saveSetting(){
 
     listSaveSettings << "__#lastUser#" +userName;
 
+    if(!statUserLesson.isEmpty()){
+        staticUser->createConnection(passwordStat,userName);
+        staticUser->setData(statUserLesson);
+    }
+
     emit siSaveSetting(listSaveSettings);
 }
 
@@ -36,12 +41,15 @@ void RegimeLessonClass::slSetSaveSetting(QStringList setValue){
 
     if(!setValue.isEmpty()){
         if(setValue.at(0) == "RegimeLesson"){
-            if(!setValue.at(1).isEmpty())
+
+            saveUser << staticUser->findUserStatistic();
 
                 for(int i = 0; i<setValue.size(); i++){
                     if(setValue.at(i).contains("__#lastUser#")){
-                        userName = setValue.at(i).right(setValue.at(i).size()-12);
-                        saveUser << userName;
+                        if(saveUser.size()>1){
+                            userName = setValue.at(i).right(setValue.at(i).size()-12);
+
+                        }
                     }
                 }
         }
@@ -49,5 +57,6 @@ void RegimeLessonClass::slSetSaveSetting(QStringList setValue){
 }
 
 void RegimeLessonClass::slCloseEvent(){
+    heardBL = false;
     saveSetting();
 }

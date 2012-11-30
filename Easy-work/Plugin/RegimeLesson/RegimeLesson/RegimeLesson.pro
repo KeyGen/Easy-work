@@ -3,7 +3,7 @@
 # Project created by QtCreator 2012-11-23T11:21:30
 #
 #-------------------------------------------------
-QT       += gui sql declarative
+QT       += gui sql declarative core
 
 TARGET = RegimeLesson
 TEMPLATE = lib
@@ -12,11 +12,13 @@ DEFINES += REGIMELESSON_LIBRARY
 
 SOURCES += regimelesson.cpp \
     savesettings.cpp \
-    database.cpp
+    database.cpp \
+    userstatisticlesson.cpp
 
 HEADERS += regimelesson.h\
         RegimeLesson_global.h \
-    database.h
+    database.h \
+    userstatisticlesson.h
 
 symbian {
     MMP_RULES += EXPORTUNFROZEN

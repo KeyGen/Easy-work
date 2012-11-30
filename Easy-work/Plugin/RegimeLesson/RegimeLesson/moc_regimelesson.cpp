@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimelesson.h'
 **
-** Created: Thu Nov 29 22:13:37 2012
+** Created: Fri Nov 30 22:26:40 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_RegimeLessonClass[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-      19,   14, // methods
+      20,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -54,6 +54,7 @@ static const uint qt_meta_data_RegimeLessonClass[] = {
      400,   18,  343,   18, 0x02,
      419,   18,  343,   18, 0x02,
      434,   18,   18,   18, 0x02,
+     455,   18,  451,   18, 0x02,
 
        0        // eod
 };
@@ -70,7 +71,7 @@ static const char qt_meta_stringdata_RegimeLessonClass[] = {
     "labelSetStyleSheetError()\0QString\0"
     "getLanguageLesson(int)\0readDBNameLesson(QString)\0"
     "getNameLesson(int)\0getAutorName()\0"
-    "startLesson(int)\0"
+    "startLesson(int)\0int\0getLessonAssessment(QString)\0"
 };
 
 void RegimeLessonClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -101,6 +102,8 @@ void RegimeLessonClass::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         case 17: { QString _r = _t->getAutorName();
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = _r; }  break;
         case 18: _t->startLesson((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 19: { int _r = _t->getLessonAssessment((*reinterpret_cast< QString(*)>(_a[1])));
+            if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         default: ;
         }
     }
@@ -140,9 +143,9 @@ int RegimeLessonClass::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 19)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 19;
+        _id -= 20;
     }
     return _id;
 }

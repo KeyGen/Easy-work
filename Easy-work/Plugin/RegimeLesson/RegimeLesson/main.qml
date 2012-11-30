@@ -148,7 +148,9 @@ Rectangle {
                     id: textLesson
                     text: setText
 
-                    font.pixelSize: 16
+                    color: "white"
+                    font.pixelSize: 18
+                    font.bold: true
 
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -186,6 +188,8 @@ Rectangle {
                     anchors.fill: parent
                     anchors.margins: -5 // Make MouseArea bigger than the rectangle, itself
                 }
+
+                state: stateLesson
 
                 states : State {
                     name: "right"

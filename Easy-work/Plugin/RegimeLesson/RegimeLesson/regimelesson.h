@@ -24,6 +24,7 @@
 
 #include "RegimeLesson_global.h"
 #include "database.h"
+#include "userstatisticlesson.h"
 #include <QSize>
 #include <QDebug>
 
@@ -54,6 +55,7 @@ public:
     Q_INVOKABLE QString getNameLesson(int);
     Q_INVOKABLE QString getAutorName() { return authorName; }
     Q_INVOKABLE void startLesson(int);
+    Q_INVOKABLE int getLessonAssessment(QString);
 
     virtual ~RegimeLessonClass() {}
 
@@ -78,6 +80,9 @@ private:
     QStringList saveUser;
     QMenu *menuRegimeLesson;
     QString userName;
+    QString actionNameUser;
+    QString passwordStat;
+    QString activeLesson;
     QString userLessonDone;
     QString newUser;
     QStringList lessonLanguage;
@@ -86,6 +91,10 @@ private:
     QString workerText;
 
     DataBase base;
+    StatisticLesson *staticUser;
+    QMap<QString,QString> statUserLesson;
+    QThread *thread;
+    bool heardBL;
     bool startPrintLesson;
     QSize saveSizeLabelInputAndShow;
     int calculateError;
@@ -94,6 +103,7 @@ private:
     void saveSetting();
     void startQmlInput();
     void addNewUser();
+    void setStatistic(QString,QString);
 
     void centralAdministration(QChar ch);
     void stopPrint();

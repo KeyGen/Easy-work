@@ -31,6 +31,7 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QResizeEvent>
+#include <QThread>
 #include <QAction>
 #include <QMenuBar>
 #include <QTimer>
@@ -43,6 +44,7 @@ RegimeLessonClass::RegimeLessonClass(){
     calculateError = 0;
     destroyedBL = true;
     destroyedQml = true;
+    heardBL = true;
     startPrintLesson = false;
     startRegime = new QAction(tr("Режим урока"),this);
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
@@ -51,6 +53,20 @@ RegimeLessonClass::RegimeLessonClass(){
 
     newUser = tr("Создать нового");
     saveUser << newUser;
+
+    staticUser = new StatisticLesson;
+
+    thread = new QThread;  // создаём поток... вначале он создаётся остановленным
+
+    // наш класс мы уводим на только что созданный поток... теперь класс будет выполняться независимо от главного окна
+    staticUser->moveToThread(thread);
+    // когда поток стартует, то начать выполнение работы нашего класса
+    connect(thread,SIGNAL(started()),staticUser,SLOT(setData()));
+    // когда работа будет завершена, завершить поток
+    connect(staticUser,SIGNAL(finished()),thread,SLOT(quit()));
+//    // когда работа будет завершена, удалить наш экземпляр класса
+//    connect(staticUser,SIGNAL(finished()),staticUser,SLOT(deleteLater()));
+//    connect(thread,SIGNAL(finished()),thread,SLOT(deleteLater()));
 }
 
 QWidget* RegimeLessonClass::getWidget(){
@@ -89,6 +105,12 @@ QWidget* RegimeLessonClass::getWidget(){
 void RegimeLessonClass::destroyedWidget(){
     destroyedBL = true;
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
+
+    if(heardBL){
+        staticUser->createConnection(passwordStat,actionNameUser);
+        staticUser->setMap(statUserLesson);
+        thread->start();
+    }
 }
 
 void RegimeLessonClass::slGetWidget(){
@@ -136,10 +158,67 @@ void RegimeLessonClass::addNewUser(){
             }
             else{
                 ok = false;
-                saveUser << text;
-                ui->comboBox->clear();
-                ui->comboBox->addItems(saveUser);
-                ui->comboBox->setCurrentIndex(ui->comboBox->findText(text));
+
+                bool okPassvord = true;
+
+                QString textForinputUserPassvoard = tr("Введите пароль для нового пользователя: ");
+                QString passvord;
+
+                while(okPassvord){
+
+                    QInputDialog inputUserPassvord;
+                    inputUserPassvord.setWindowTitle(tr("Пароль"));
+                    inputUserPassvord.setLabelText(textForinputUserPassvoard + text);
+                    inputUserPassvord.setWindowFlags(Qt::Tool);
+                    inputUserPassvord.setTextEchoMode(QLineEdit::Password);
+
+                    QPoint center = screenCenter();
+                    QSize sizeUserNameDialog = inputUserPassvord.sizeHint();
+                    inputUserPassvord.move(center.x()-sizeUserNameDialog.width()/2-10,center.y()-sizeUserNameDialog.height()/2-20);
+                    okPassvord = inputUserPassvord.exec();
+
+                    if(passvord.isEmpty()){
+                        if(!inputUserPassvord.textValue().isEmpty()){
+                            if(inputUserPassvord.textValue().size()>3){
+                                passvord = inputUserPassvord.textValue();
+                            }
+                            else
+                                messageBoxExec(tr("Слишком маленький пароль! Минимум 4 символа."));
+                        }
+                        else{
+                            if(okPassvord)
+                            messageBoxExec(tr("Введите пароль!\n"));
+                        }
+                    }
+                    else{
+
+                        if(okPassvord)
+                        {
+                            if(passvord == inputUserPassvord.textValue()){
+                                okPassvord = false;
+
+                                passwordStat = passvord;
+                                userName = text;
+
+                                saveUser << text;
+                                ui->comboBox->clear();
+                                ui->comboBox->addItems(saveUser);
+                                ui->comboBox->setCurrentIndex(ui->comboBox->findText(text));
+
+                                staticUser->createConnection(passwordStat,userName);
+                            }
+                            else{
+                                textForinputUserPassvoard = tr("Пароль не введен корректно. Попробуйте снова: ");
+                                passvord.clear();
+                                okPassvord = true;
+                            }
+                        }
+                    }
+
+                    if (okPassvord && !passvord.isEmpty()){
+                        textForinputUserPassvoard = tr("Повторите пароль для нового пользователя: ");
+                    }
+                }
             }
         }
         else{
@@ -151,13 +230,42 @@ void RegimeLessonClass::addNewUser(){
     }
 }
 
-void RegimeLessonClass::on_pushButton_clicked()
-{
+void RegimeLessonClass::on_pushButton_clicked() {
+
     if(ui->comboBox->currentText() == newUser){
         addNewUser();
     }
     else{
-        startQmlInput();
+        if(!ui->inputPassvord->text().isEmpty()){
+
+            userName = ui->comboBox->currentText();
+
+            if(!actionNameUser.isEmpty()){
+                if(actionNameUser!=userName){
+                    staticUser->createConnection(passwordStat,actionNameUser);
+                    staticUser->setData(statUserLesson);
+
+                    actionNameUser = userName;
+                }
+            }
+            else{
+                actionNameUser = userName;
+            }
+
+            passwordStat = ui->inputPassvord->text();
+            ui->inputPassvord->clear();
+
+            if(staticUser->createConnection(passwordStat,userName)){
+                statUserLesson = staticUser->readDB();
+                startQmlInput();
+            }
+            else{
+                qDebug() << "Нет соединения";
+            }
+        }
+        else{
+            messageBoxExec(tr("Введите пароль!\n"));
+        }
     }
 }
 
@@ -215,9 +323,12 @@ QString RegimeLessonClass::getNameLesson(int i){
 void RegimeLessonClass::startLesson(int i){
 
     workerText = lesson.find(i).value().at(1);
+    activeLesson = lesson.find(i).value().at(0);
     ui_d->close();
     ui->labelStart->show();
     workerText = preparationText(workerText);
+
+    staticUser->createConnection(passwordStat,userName);
 }
 
 QString RegimeLessonClass::preparationText(QString text){
@@ -268,6 +379,13 @@ void RegimeLessonClass::slKeyPressEvent (QKeyEvent *event){
             if(startPrintLesson)
                 stopPrint();
             startQmlInput();
+        }
+
+        if(event->key() == Qt::Key_Escape){
+            if(startPrintLesson)
+                stopPrint();
+            ui->widgetQmlLesson->close();
+            ui->gridWidget->show();
         }
 
         if(startPrintLesson){
@@ -366,15 +484,29 @@ void RegimeLessonClass::stopPrint(){
 
     emit stopLesson();
 
-    if(ui->labelInput->text().isEmpty())
-    messageBoxExec(tr("Поздравляю Вы прошли урок!\n"
-                      "Вы допустили ошибок:  ")
+    if(ui->labelInput->text().isEmpty()){
+        messageBoxExec(tr("Поздравляю Вы прошли урок!\n"
+                          "Вы допустили ошибок:  ")
                        + QString::number(calculateError) +
                        tr("\nОценка:  ") + QString::number(5 - calculateError));
+
+        setStatistic(activeLesson,QString::number(5 - calculateError));
+    }
 
     ui->labelInput->clear();
     ui->labelShow->clear();
     calculateError = 0;
+}
+
+void RegimeLessonClass::setStatistic(QString key,QString value){
+
+    if(statUserLesson.contains(key)){
+        if(statUserLesson.find(key).value().toInt() < value.toInt())
+        statUserLesson.insert(key,value);
+    }
+    else{
+        statUserLesson.insert(key,value);
+    }
 }
 
 void RegimeLessonClass::startPrint(){
@@ -410,4 +542,12 @@ void RegimeLessonClass::messageBoxExec(QString text){
     msgBox.show();
     msgBox.move(center.x()-msgBox.width()/2,center.y()-msgBox.height()/2-20);
     msgBox.exec();
+}
+
+int RegimeLessonClass::getLessonAssessment(QString nameLesson){
+
+    if(statUserLesson.contains(nameLesson))
+        return statUserLesson.find(nameLesson).value().toInt();
+
+    return 0;
 }
