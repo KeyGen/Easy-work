@@ -26,6 +26,8 @@
 
 #include <QDebug>
 
+#include <QSqlDatabase>
+
 QT_BEGIN_NAMESPACE
 class QDialog;
 QT_END_NAMESPACE
@@ -72,6 +74,7 @@ private:
     int activeHeder;
     QString pathMDB;
     QString nameMDB;
+    QSqlDatabase db;
 };
 
 #endif // STATISTICFORREGIMEFILE_H

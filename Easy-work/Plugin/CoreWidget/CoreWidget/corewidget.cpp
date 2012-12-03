@@ -142,6 +142,15 @@ QWidget * CoreWidgetClass::getWidget() {
 
     destroyedBL = false;
 
+    QList<QAction*> listAction;
+    listAction = listMenu.at(1)->actions();
+    for(int i = 0; i<listAction.size(); i++){
+        if(i == 0)
+            listAction.at(i)->setVisible(false);
+        else
+            listAction.at(i)->setVisible(true);
+    }
+
     return widget;
 }
 

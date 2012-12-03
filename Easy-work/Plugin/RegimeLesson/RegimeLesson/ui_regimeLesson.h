@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimeLesson.ui'
 **
-** Created: Fri Nov 30 21:34:00 2012
+** Created: Sun Dec 2 01:00:18 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -22,6 +22,7 @@
 #include <QtGui/QLineEdit>
 #include <QtGui/QPushButton>
 #include <QtGui/QSpacerItem>
+#include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -34,12 +35,17 @@ public:
     QGridLayout *gridLayout;
     QWidget *gridWidget;
     QGridLayout *gridLayout_3;
-    QComboBox *comboBox;
-    QPushButton *pushButton;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *imageOne;
     QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *horizontalSpacer;
-    QSpacerItem *horizontalSpacer_3;
+    QVBoxLayout *verticalLayout;
+    QLabel *userInput;
+    QComboBox *comboBox;
+    QLabel *userInputPassword;
     QLineEdit *inputPassvord;
+    QPushButton *pushButton;
+    QSpacerItem *horizontalSpacer;
+    QLabel *imageTwo;
     QWidget *widgetQmlLesson;
     QGridLayout *widgetQml;
     QLabel *labelStart;
@@ -52,7 +58,7 @@ public:
     {
         if (FormRegimeLesson->objectName().isEmpty())
             FormRegimeLesson->setObjectName(QString::fromUtf8("FormRegimeLesson"));
-        FormRegimeLesson->resize(670, 211);
+        FormRegimeLesson->resize(754, 368);
         gridLayout_2 = new QGridLayout(FormRegimeLesson);
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
@@ -78,37 +84,86 @@ public:
 "}"));
         gridLayout_3 = new QGridLayout(gridWidget);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        imageOne = new QLabel(gridWidget);
+        imageOne->setObjectName(QString::fromUtf8("imageOne"));
+        imageOne->setMinimumSize(QSize(200, 0));
+        imageOne->setFrameShape(QFrame::Box);
+        imageOne->setPixmap(QPixmap(QString::fromUtf8(":/labelOne")));
+        imageOne->setScaledContents(false);
+        imageOne->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(imageOne);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        userInput = new QLabel(gridWidget);
+        userInput->setObjectName(QString::fromUtf8("userInput"));
+        userInput->setMaximumSize(QSize(16777215, 20));
+        userInput->setStyleSheet(QString::fromUtf8("QLabel#userInput{\n"
+"opacity: 223;\n"
+"color: \"black\";\n"
+"font-size: 12px; \n"
+"    border: 1px solid black;\n"
+"}"));
+
+        verticalLayout->addWidget(userInput);
+
         comboBox = new QComboBox(gridWidget);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setMinimumSize(QSize(200, 0));
 
-        gridLayout_3->addWidget(comboBox, 0, 1, 1, 1);
+        verticalLayout->addWidget(comboBox);
 
-        pushButton = new QPushButton(gridWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMinimumSize(QSize(120, 0));
-        pushButton->setMaximumSize(QSize(16777215, 16777215));
+        userInputPassword = new QLabel(gridWidget);
+        userInputPassword->setObjectName(QString::fromUtf8("userInputPassword"));
+        userInputPassword->setMaximumSize(QSize(16777215, 20));
+        userInputPassword->setStyleSheet(QString::fromUtf8("QLabel#userInputPassword{\n"
+"opacity: 223;\n"
+"color: \"black\";\n"
+"font-size: 12px; \n"
+"    border: 1px solid black;\n"
+"}"));
 
-        gridLayout_3->addWidget(pushButton, 2, 1, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer_2, 2, 0, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer, 0, 0, 1, 1);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer_3, 0, 2, 1, 1);
+        verticalLayout->addWidget(userInputPassword);
 
         inputPassvord = new QLineEdit(gridWidget);
         inputPassvord->setObjectName(QString::fromUtf8("inputPassvord"));
         inputPassvord->setEchoMode(QLineEdit::Password);
         inputPassvord->setAlignment(Qt::AlignCenter);
 
-        gridLayout_3->addWidget(inputPassvord, 1, 1, 1, 1);
+        verticalLayout->addWidget(inputPassvord);
+
+        pushButton = new QPushButton(gridWidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setMinimumSize(QSize(120, 0));
+        pushButton->setMaximumSize(QSize(16777215, 16777215));
+
+        verticalLayout->addWidget(pushButton);
+
+
+        horizontalLayout_2->addLayout(verticalLayout);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
+
+        imageTwo = new QLabel(gridWidget);
+        imageTwo->setObjectName(QString::fromUtf8("imageTwo"));
+        imageTwo->setMinimumSize(QSize(200, 0));
+        imageTwo->setFrameShape(QFrame::Box);
+        imageTwo->setPixmap(QPixmap(QString::fromUtf8(":/labelTwo")));
+        imageTwo->setAlignment(Qt::AlignCenter);
+
+        horizontalLayout_2->addWidget(imageTwo);
+
+
+        gridLayout_3->addLayout(horizontalLayout_2, 2, 1, 1, 1);
 
 
         gridLayout->addWidget(gridWidget, 0, 0, 1, 1);
@@ -162,7 +217,11 @@ public:
     void retranslateUi(QWidget *FormRegimeLesson)
     {
         FormRegimeLesson->setWindowTitle(QApplication::translate("FormRegimeLesson", "\320\240\320\265\320\266\320\270\320\274 \321\203\321\200\320\276\320\272\320\276\320\262", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("FormRegimeLesson", "\320\224\320\260\320\273\321\210\320\265", 0, QApplication::UnicodeUTF8));
+        imageOne->setText(QString());
+        userInput->setText(QApplication::translate("FormRegimeLesson", "\320\222\321\213\320\261\320\276\321\200 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217:", 0, QApplication::UnicodeUTF8));
+        userInputPassword->setText(QApplication::translate("FormRegimeLesson", "\320\222\320\262\320\276\320\264 \320\277\320\260\321\200\320\276\320\273\321\217:", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("FormRegimeLesson", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214", 0, QApplication::UnicodeUTF8));
+        imageTwo->setText(QString());
         labelStart->setText(QApplication::translate("FormRegimeLesson", "\320\237\321\200\320\276\320\261\320\265\320\273 - \320\275\320\260\321\207\320\260\321\202\321\214 \321\203\321\200\320\276\320\272,       Enter - \321\201\321\202\320\276\320\277 \n"
 "Backspace - \320\262\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217 \320\272 \320\262\321\213\320\261\320\276\321\203 \321\203\321\200\320\276\320\272\320\260 \n"
 "Esc    -    \320\262\320\265\321\200\320\275\321\203\321\202\321\201\321\217  \320\272  \320\262\321\213\320\261\320\276\321\200\321\203  \321\203\321\207\320\265\320\275\320\270\320\272\320\260", 0, QApplication::UnicodeUTF8));

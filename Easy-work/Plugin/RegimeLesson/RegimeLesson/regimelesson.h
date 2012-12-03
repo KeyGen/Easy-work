@@ -85,6 +85,7 @@ private:
     QString activeLesson;
     QString userLessonDone;
     QString newUser;
+    QString deleteUser;
     QStringList lessonLanguage;
     QHash <int,QStringList> lesson;
     QString authorName;
@@ -93,7 +94,7 @@ private:
     DataBase base;
     StatisticLesson *staticUser;
     QMap<QString,QString> statUserLesson;
-    QThread *thread;
+    QMap<QString,QString> controlStatUserLesson;
     bool heardBL;
     bool startPrintLesson;
     QSize saveSizeLabelInputAndShow;
@@ -112,6 +113,8 @@ private:
     QPoint screenCenter();
     void messageBoxExec(QString);
     void errorMax();
+    void delUser();
+    void removeDBUser(QString nameUser, QString path = "../share/EasyWork/Database", QString datebaseUserEnlargement = ".lessonStat");
 
 public slots:
     void slSetSaveSetting(QStringList);

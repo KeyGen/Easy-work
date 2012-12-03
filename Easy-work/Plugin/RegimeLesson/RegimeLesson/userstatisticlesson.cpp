@@ -2,6 +2,9 @@
 
 #include <QDebug>
 #include <QMessageBox>
+#include <QProgressDialog>
+#include <QDesktopWidget>
+#include <QApplication>
 
 // Создадим папку
 #include <QDir>
@@ -32,13 +35,6 @@ bool StatisticLesson::createConnection(QString passvord, QString name, QString p
     db.setUserName(name);
     db.setPassword(passvord);
 
-//    query.prepare("SELECT * FROM users_tbl WHERE login=?");
-//    query.bindValue(0,ui->lineEdit_login->text());
-//    query.exec();
-
-//    Добавлено через 3 минуты
-//    потом проверяешь свойство query.size(), если ==0 - логин не найден.
-
     // Проверяем все ли в порядке. Проблемы могут быть с правами...
     if (!db.open()) {
         qDebug() << QObject::tr("Cannot open database");
@@ -47,16 +43,73 @@ bool StatisticLesson::createConnection(QString passvord, QString name, QString p
 
     // Создаем таблицу. Если таблица существует создавать вторую не будет...
     QSqlQuery query;
+
     QString   str  = "CREATE TABLE tableStatisticLesson ( "
-            "lessonName  VARCHAR(20), "
+            "password VARCHAR(20),"
+            "lessonName  VARCHAR(20),"
             "assessment VARCHAR(10) "
             ");";
 
     if (!query.exec(str)) {
-        ;//qDebug() << "Таблица уже имеется";
+        if(passvord != getPassword()){
+            messageBoxExec(tr("Пароль введен не верно"));
+            db.close();
+            return false;
+        }
+
     }
 
     return true;
+}
+
+void StatisticLesson::setPassword(QString password){
+
+    // Проверим открытие
+    bool openBL = true;
+
+    QSqlQuery query;
+    if (!query.exec("SELECT * FROM tableStatisticLesson;")) {
+        qDebug() << "Unable to execute query - exiting";
+        openBL = false;
+    }
+
+    if(openBL){
+
+        //Adding some information
+        QString strF =
+                "INSERT INTO tableStatisticLesson (password) "
+                "VALUES('" + password + "');";
+
+        if (!query.exec(strF)) {
+            qDebug() << "Unable to do insert opeation";
+        }
+    }
+}
+
+QString StatisticLesson::getPassword(){
+
+    QString password;
+    bool openBL = true;
+    // Подключаемся с таблице в базе
+    QSqlQuery query;
+    if (!query.exec("SELECT * FROM tableStatisticLesson;")) {
+        qDebug() << "Unable to execute query - exiting";
+        openBL = false;
+    }
+
+    if(openBL){
+        // Чтение базы
+        QSqlRecord rec = query.record();
+
+        // Чтение
+        while (query.next()) {
+            password = query.value(rec.indexOf("password")).toString();
+            if(!password.isEmpty())
+                return password;
+        }
+    }
+
+    return "";
 }
 
 void StatisticLesson::insertDB(QStringList value){
@@ -124,6 +177,8 @@ QMap<QString,QString> StatisticLesson::readDB(){
 
 void StatisticLesson::setData(QMap<QString,QString> value){
 
+    QString password = getPassword();
+
     // Проверим открытие
     bool openBL = true;
 
@@ -145,57 +200,36 @@ void StatisticLesson::setData(QMap<QString,QString> value){
     }
 
     if(openBL){
-        QMap<QString,QString>::iterator it = value.begin();
+        if(!value.isEmpty()){
 
-        for(; it!=value.end(); ++it){
-            QStringList listValue;
-            listValue << it.key();
-            listValue << it.value();
-            insertDB(listValue);
-        }
-    }
-}
+            QMap<QString,QString>::iterator it = value.begin();
+            int size = value.size();
 
-void StatisticLesson::setMap(QMap<QString,QString> value){
-    saveMap = value;
-}
+            QProgressDialog *progress = new QProgressDialog(0);       // Первоначальная загрузка приложения
+            progress->setWindowFlags(Qt::ToolTip);
+            progress->setFixedSize(300,100);
+            progress->setLabelText(tr("Происходит сохранение статистики."));
+            QPoint pointCenter = screenCenter();
+            progress->move(pointCenter.x()-progress->width()/2,pointCenter.y()-progress->height()/2); // Распологаем MainWindow в ценре
+            progress->show();
 
-void StatisticLesson::setData(){
+            for(int i = 0; it!=value.end(); ++it, i++){
+                progress->setValue(i*100/size);
 
-    if(!saveMap.isEmpty()){
-        // Проверим открытие
-        bool openBL = true;
-
-        QSqlQuery query;
-        if (!query.exec("SELECT * FROM tableStatisticLesson;")) {
-            qDebug() << "Unable to execute query - exiting";
-            openBL = false;
-        }
-
-        if(openBL){
-
-            // Текст очистки
-            QString strF = "DELETE FROM tableStatisticLesson";
-
-            // Обязательно проверка очистки
-            if (!query.exec(strF)) {
-                qDebug() << "Unable to do delete opeation";
-            }
-        }
-
-        if(openBL){
-            QMap<QString,QString>::iterator it = saveMap.begin();
-
-            for(; it!=saveMap.end(); ++it){
                 QStringList listValue;
                 listValue << it.key();
                 listValue << it.value();
                 insertDB(listValue);
             }
+
+            progress->setValue(100);
+            delete progress;
         }
     }
 
-    saveMap.clear();
+    setPassword(password);
+
+    qDebug() << "Перезапись статистики выполена";
 }
 
 QStringList StatisticLesson::findUserStatistic(QString path){
@@ -210,4 +244,24 @@ QStringList StatisticLesson::findUserStatistic(QString path){
         user[i].replace(datebaseUserEnlargement,"");
 
     return user;
+}
+
+void StatisticLesson::messageBoxExec(QString text){
+
+    QPoint center = screenCenter();
+    QMessageBox msgBox;
+    msgBox.setWindowTitle(tr("Информация"));
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+
+    msgBox.setText(text);
+
+    msgBox.show();
+    msgBox.move(center.x()-msgBox.width()/2,center.y()-msgBox.height()/2-20);
+    msgBox.exec();
+}
+
+QPoint StatisticLesson::screenCenter(){
+    QDesktopWidget *desktop = QApplication::desktop();  // Определяем разрешение экрана
+    return QPoint(desktop->width()/2,desktop->height()/2);
 }

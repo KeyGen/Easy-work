@@ -31,7 +31,6 @@
 #include <QInputDialog>
 #include <QMessageBox>
 #include <QResizeEvent>
-#include <QThread>
 #include <QAction>
 #include <QMenuBar>
 #include <QTimer>
@@ -51,22 +50,11 @@ RegimeLessonClass::RegimeLessonClass(){
 
     menuRegimeLesson = new QMenu(tr("Режим урока"));
 
-    newUser = tr("Создать нового");
+    newUser = tr("Создать пользователя");
+    deleteUser = tr("Удалить пользователя");
     saveUser << newUser;
 
     staticUser = new StatisticLesson;
-
-    thread = new QThread;  // создаём поток... вначале он создаётся остановленным
-
-    // наш класс мы уводим на только что созданный поток... теперь класс будет выполняться независимо от главного окна
-    staticUser->moveToThread(thread);
-    // когда поток стартует, то начать выполнение работы нашего класса
-    connect(thread,SIGNAL(started()),staticUser,SLOT(setData()));
-    // когда работа будет завершена, завершить поток
-    connect(staticUser,SIGNAL(finished()),thread,SLOT(quit()));
-//    // когда работа будет завершена, удалить наш экземпляр класса
-//    connect(staticUser,SIGNAL(finished()),staticUser,SLOT(deleteLater()));
-//    connect(thread,SIGNAL(finished()),thread,SLOT(deleteLater()));
 }
 
 QWidget* RegimeLessonClass::getWidget(){
@@ -81,9 +69,18 @@ QWidget* RegimeLessonClass::getWidget(){
     menuBar->addMenu(listMenu.at(i));
 
     for(int i = 0; i<listMenu.size(); i++){
-        if(i == 2)
-            menuBar->addMenu(menuRegimeLesson);
+//        if(i == 2)
+//            menuBar->addMenu(menuRegimeLesson);
         menuBar->addMenu(listMenu.at(i));
+    }
+
+    QList<QAction*> listAction;
+    listAction = listMenu.at(1)->actions();
+    for(int i = 0; i<listAction.size(); i++){
+        if(i == 0)
+            listAction.at(i)->setVisible(true);
+        else
+            listAction.at(i)->setVisible(false);
     }
 
     ui->gridLayout->setMenuBar(menuBar);
@@ -107,9 +104,14 @@ void RegimeLessonClass::destroyedWidget(){
     connect(startRegime,SIGNAL(triggered()),this,SLOT(slGetWidget()));
 
     if(heardBL){
-        staticUser->createConnection(passwordStat,actionNameUser);
-        staticUser->setMap(statUserLesson);
-        thread->start();
+        if(controlStatUserLesson != statUserLesson){
+            if(!statUserLesson.isEmpty()){
+                staticUser->createConnection(passwordStat,userName);
+                staticUser->setData(statUserLesson);
+            }
+        }
+        statUserLesson.clear();
+        controlStatUserLesson.clear();
     }
 }
 
@@ -152,8 +154,16 @@ void RegimeLessonClass::addNewUser(){
         QString text = inputUserName.textValue();
 
         if (ok && !text.isEmpty()){
-            if(saveUser.contains(text)){
+            if(saveUser.contains(text) || text.contains(QRegExp("(\\W+)"))){
+
+                if(text == newUser || text == deleteUser)
+                messageBoxExec(tr("Запрещено для использования!\n"
+                                  "Выберите другое имя или используйте уже доступное.\n\n"));
+                else if(saveUser.contains(text))
                 messageBoxExec(tr("Такой ученик уже существует!\n"
+                                  "Выберите другое имя или используйте уже доступное.\n\n"));
+                else if(text.contains(QRegExp("(\\W+)")))
+                messageBoxExec(tr("Символы запрещены! Пробелы тоже.\nЕсть желание используйте знак подчеркивания: _\n"
                                   "Выберите другое имя или используйте уже доступное.\n\n"));
             }
             else{
@@ -200,12 +210,16 @@ void RegimeLessonClass::addNewUser(){
                                 passwordStat = passvord;
                                 userName = text;
 
+                                saveUser.removeAt(saveUser.size()-1);
                                 saveUser << text;
+                                saveUser << deleteUser;
+
                                 ui->comboBox->clear();
                                 ui->comboBox->addItems(saveUser);
                                 ui->comboBox->setCurrentIndex(ui->comboBox->findText(text));
 
                                 staticUser->createConnection(passwordStat,userName);
+                                staticUser->setPassword(passwordStat);
                             }
                             else{
                                 textForinputUserPassvoard = tr("Пароль не введен корректно. Попробуйте снова: ");
@@ -232,40 +246,107 @@ void RegimeLessonClass::addNewUser(){
 
 void RegimeLessonClass::on_pushButton_clicked() {
 
-    if(ui->comboBox->currentText() == newUser){
-        addNewUser();
-    }
-    else{
-        if(!ui->inputPassvord->text().isEmpty()){
+    if(ui->comboBox->currentText() != deleteUser){
+        if(ui->comboBox->currentText() == newUser){
+            addNewUser();
+        }
+        else{
+            if(!ui->inputPassvord->text().isEmpty()){
 
-            userName = ui->comboBox->currentText();
+                userName = ui->comboBox->currentText();
 
-            if(!actionNameUser.isEmpty()){
-                if(actionNameUser!=userName){
-                    staticUser->createConnection(passwordStat,actionNameUser);
-                    staticUser->setData(statUserLesson);
+                if(!actionNameUser.isEmpty()){
+                    if(actionNameUser!=userName){
+                        staticUser->createConnection(passwordStat,actionNameUser);
 
+                        if(controlStatUserLesson!=statUserLesson)
+                        staticUser->setData(statUserLesson);
+
+                        actionNameUser = userName;
+                    }
+                }
+                else{
                     actionNameUser = userName;
+                }
+
+                passwordStat = ui->inputPassvord->text();
+                ui->inputPassvord->clear();
+
+                if(staticUser->createConnection(passwordStat,userName)){
+                    statUserLesson = staticUser->readDB();
+                    controlStatUserLesson = statUserLesson;
+                    startQmlInput();
                 }
             }
             else{
-                actionNameUser = userName;
-            }
-
-            passwordStat = ui->inputPassvord->text();
-            ui->inputPassvord->clear();
-
-            if(staticUser->createConnection(passwordStat,userName)){
-                statUserLesson = staticUser->readDB();
-                startQmlInput();
-            }
-            else{
-                qDebug() << "Нет соединения";
+                messageBoxExec(tr("Введите пароль!\n"));
             }
         }
-        else{
-            messageBoxExec(tr("Введите пароль!\n"));
+    }
+    else{
+
+        delUser();
+    }
+}
+
+void RegimeLessonClass::delUser(){
+
+    QInputDialog delUserName;
+    delUserName.setWindowTitle(tr("Удаление пользователя"));
+    delUserName.setLabelText(tr("Выберите пользователя для удаления:"));
+    delUserName.setWindowFlags(Qt::Tool);
+
+    QStringList userForDel;
+
+    for(int i = 1; i<saveUser.size()-1; i++){
+        userForDel << saveUser.at(i);
+    }
+
+    delUserName.setComboBoxItems(userForDel);
+
+    QPoint center = screenCenter();
+    QSize sizeUserNameDialog = delUserName.sizeHint();
+    delUserName.move(center.x()-sizeUserNameDialog.width()/2-10,center.y()-sizeUserNameDialog.height()/2-20);
+
+    if(delUserName.exec()){
+
+        QString textForinputUserPassvoard = tr("Введите пароль пользователя: ");
+        bool okPassvord = true;
+
+        while(okPassvord){
+
+            QInputDialog inputUserPassvord;
+            inputUserPassvord.setWindowTitle(tr("Пароль"));
+            inputUserPassvord.setLabelText(textForinputUserPassvoard);
+            inputUserPassvord.setWindowFlags(Qt::Tool);
+            inputUserPassvord.setTextEchoMode(QLineEdit::Password);
+
+            QPoint center = screenCenter();
+            QSize sizeUserNameDialog = inputUserPassvord.sizeHint();
+            inputUserPassvord.move(center.x()-sizeUserNameDialog.width()/2-10,center.y()-sizeUserNameDialog.height()/2-20);
+            okPassvord = inputUserPassvord.exec();
+
+            if(okPassvord){
+
+                if(staticUser->createConnection(inputUserPassvord.textValue(),delUserName.textValue())){
+                    saveUser.removeOne(delUserName.textValue());
+                    ui->comboBox->removeItem(ui->comboBox->findText(delUserName.textValue()));
+                    removeDBUser(delUserName.textValue());
+                    okPassvord = false;
+                }
+            }
         }
+    }
+}
+
+void RegimeLessonClass::removeDBUser(QString nameUser, QString path, QString datebaseUserEnlargement) {
+
+    QDir remove(path);
+    if(remove.remove(nameUser + datebaseUserEnlargement)){
+        messageBoxExec(tr("Пользователь удален успешно"));
+    }
+    else{
+        messageBoxExec(tr("Файл статиски пользователя не удален"));
     }
 }
 

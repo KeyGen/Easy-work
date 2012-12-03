@@ -61,10 +61,8 @@ bool StatisticForRegimeFileClass::createConnection(QString path, QString name)
     QDir create;
     create.mkpath(pathMDB);
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(path + "/" + name);
-
-    db.setUserName("user");
 
     if (!db.open()) {
         QMessageBox::critical(0, tr("Cannot open database"),
@@ -98,7 +96,8 @@ void StatisticForRegimeFileClass::readMDB(){
 
     QSqlQuery query;
     if (!query.exec("SELECT * FROM statistic;")) {
-        qDebug() << "Unable to execute query - exiting";
+        qDebug() << "Unable to execute query - exiting (statisticforregimefile.cpp 101)";
+
         openBL = false;
     }
 

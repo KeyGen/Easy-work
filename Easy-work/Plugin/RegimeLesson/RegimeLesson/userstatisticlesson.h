@@ -21,17 +21,17 @@ public:
     // Чтение
     QMap<QString,QString>  readDB();
     void setData(QMap<QString,QString>);
-    void setMap(QMap<QString,QString>);
+    void setPassword(QString);
+    QString getPassword();
 
     QStringList findUserStatistic(QString path = "../share/EasyWork/Database");
 
 private:
     QString datebaseUserEnlargement;
-    QMap<QString,QString> saveMap;
 
-public slots:
-    // Чистка
-    void setData();
+private:
+    void messageBoxExec(QString text);
+    QPoint screenCenter();
 
 };
 

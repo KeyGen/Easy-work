@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'userstatisticlesson.h'
 **
-** Created: Fri Nov 30 22:07:58 2012
+** Created: Mon Dec 3 10:38:51 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,33 +23,25 @@ static const uint qt_meta_data_StatisticLesson[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       0,    0, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
- // slots: signature, parameters, type, tag, flags
-      17,   16,   16,   16, 0x0a,
-
        0        // eod
 };
 
 static const char qt_meta_stringdata_StatisticLesson[] = {
-    "StatisticLesson\0\0setData()\0"
+    "StatisticLesson\0"
 };
 
 void StatisticLesson::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        Q_ASSERT(staticMetaObject.cast(_o));
-        StatisticLesson *_t = static_cast<StatisticLesson *>(_o);
-        switch (_id) {
-        case 0: _t->setData(); break;
-        default: ;
-        }
-    }
+    Q_UNUSED(_o);
+    Q_UNUSED(_id);
+    Q_UNUSED(_c);
     Q_UNUSED(_a);
 }
 
@@ -84,11 +76,6 @@ int StatisticLesson::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
-    }
     return _id;
 }
 QT_END_MOC_NAMESPACE

@@ -6,5 +6,7 @@
         <file>FunctionNameLesson.qml</file>
         <file alias="hand">hend.png</file>
         <file alias="point">point.png</file>
+        <file alias="labelOne">labelOne.png</file>
+        <file alias="labelTwo">labelTwo.png</file>
     </qresource>
 </RCC>
