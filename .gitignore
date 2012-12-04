@@ -22,3 +22,7 @@ lib
 debug
 release
 Database
+
+# Статистика
+*.lessonStat
+*.mdb

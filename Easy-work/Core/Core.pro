@@ -30,6 +30,15 @@ DESTDIR = $$PWD/../Easy-work/bin
 
 unix: {
     target.path = /usr/bin
+    target.files = Easy-work/share
 
-    INSTALLS += target
+    documentation.path = /usr/share/
+    documentation.files = ../Easy-work/share/*
+
+    system(mkdir -p /usr/share/EasyWork/Database)
+    system(mkdir -p /usr/share/EasyWork/Style)
+    system(chmod 755 /usr/share/EasyWork/Database)
+    system(chmod 755 /usr/share/EasyWork/Style)
+
+    INSTALLS += target documentation
 }

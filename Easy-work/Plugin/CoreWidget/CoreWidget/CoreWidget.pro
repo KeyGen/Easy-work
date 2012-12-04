@@ -29,3 +29,9 @@ OTHER_FILES += \
 
 RESOURCES += \
     resource.qrc
+
+unix: {
+    target.path = /usr/lib/EasyWork
+
+    INSTALLS += target
+}

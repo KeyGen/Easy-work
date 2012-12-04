@@ -24,12 +24,9 @@ symbian {
     DEPLOYMENT += addFiles
 }
 
-unix:!symbian {
-    maemo5 {
-        target.path = /opt/usr/lib
-    } else {
-        target.path = /usr/lib
-    }
+unix: {
+    target.path = /usr/lib/EasyWork
+
     INSTALLS += target
 }
 
