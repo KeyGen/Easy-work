@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'infoPrint.ui'
 **
-** Created: Fri Nov 30 12:10:55 2012
+** Created: Thu Dec 6 13:35:57 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

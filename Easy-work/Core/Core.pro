@@ -30,15 +30,71 @@ DESTDIR = $$PWD/../Easy-work/bin
 
 unix: {
     target.path = /usr/bin
-    target.files = Easy-work/share
+    target.files = $$PWD/../Easy-work/bin/*
 
     documentation.path = /usr/share/
     documentation.files = ../Easy-work/share/*
 
-    system(mkdir -p /usr/share/EasyWork/Database)
-    system(mkdir -p /usr/share/EasyWork/Style)
-    system(chmod 755 /usr/share/EasyWork/Database)
-    system(chmod 755 /usr/share/EasyWork/Style)
-
     INSTALLS += target documentation
 }
+
+#unix{
+# isEmpty(PREFIX) {
+#   PREFIX = /usr
+# }
+
+#BINDIR = $$PREFIX/bin
+#DATADIR = $$PREFIX/share
+#LOCALEDIR = $$DATADIR/locale
+#SHAREDIR = $$DATADIR/$${TARGET}
+
+# contains(QMAKE_HOST.arch, x86_64) {
+#    DEFINES += XNEUR_PLUGIN_DIR=\\\"/usr/lib/xneur\\\"
+# }
+# else {
+#    DEFINES += XNEUR_PLUGIN_DIR=\\\"/usr/lib/xneur\\\"
+# }
+
+#DEFINES += COUNTRY_FLAGS=\\\"$${SHAREDIR}/pixmaps\\\" SHAREDIR=\\\"$${SHAREDIR}\\\"
+
+#INSTALLS =  target \
+#            flags \
+#            iconsvg \
+#            desktop \
+#            translate \
+#            icon_x16 \
+#            icon_x22 \
+#            icon_x24 \
+#            icon_x32 \
+#            icon_x48
+
+#target.path    = $${BINDIR}
+
+#flags.files  += pixmaps/png/*
+#flags.path  = $${SHAREDIR}/pixmaps
+
+#iconsvg.path = $$DATADIR/icons/hicolor/scalable/apps
+#iconsvg.files += pixmaps/scalable/*
+
+#desktop.path = $$DATADIR/applications
+#desktop.files += ../kdeneur.desktop
+
+#translate.path = $$DATADIR/i18n
+#translate.files += i18n/*.qm
+
+#icon_x16.path = $$DATADIR/icons/hicolor/16x16/apps
+#icon_x16.files += pixmaps/x16/*
+
+#icon_x22.path = $$DATADIR/icons/hicolor/22x22/apps
+#icon_x22.files += pixmaps/x22/*
+
+#icon_x24.path = $$DATADIR/icons/hicolor/24x24/apps
+#icon_x24.files += pixmaps/x24/*
+
+#icon_x32.path = $$DATADIR/icons/hicolor/32x32/apps
+#icon_x32.files += pixmaps/x32/*
+
+#icon_x48.path = $$DATADIR/icons/hicolor/48x48/apps
+#icon_x48.files += pixmaps/x48/*
+
+#}

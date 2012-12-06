@@ -164,7 +164,7 @@ void StyleClass::getStyleForName(QString nameFind, QString path){
                         else{
                             removeTempFolderPath();
                             QDir createFolder;
-                            createFolder.mkdir(tempFolderPath);
+                            createFolder.mkpath(tempFolderPath);
                             zip_reader.extractAll(tempFolderPath);
                             emit getStyle(readStyleSheet(tempFolderPath + "/" + info.filePath));
                         }
