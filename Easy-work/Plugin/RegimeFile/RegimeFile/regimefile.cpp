@@ -341,7 +341,7 @@ QWidget * RigimeFileClass::getWidget() {
     menuBar = new QMenuBar();
     widget = new QWidget();
     destroyedBL = false;
-    ui = new Ui::RegimeFile;
+    ui = new Ui::Regime;
 
     ui->setupUi(widget);
 

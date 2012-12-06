@@ -62,7 +62,7 @@ QWidget* RegimeLessonClass::getWidget(){
 
     menuBar = new QMenuBar();
     widget = new QWidget();
-    ui = new Ui::FormRegimeLesson;
+    ui = new Ui::Regime;
     ui->setupUi(widget);
 
     for(int i = 0; i<listMenu.size(); i++)

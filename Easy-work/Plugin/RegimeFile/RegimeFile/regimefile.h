@@ -36,7 +36,7 @@ class StatisticForRegimeFile;
 QT_END_NAMESPACE
 
 namespace Ui {
-class RegimeFile;
+class Regime;
 class InfoPrint;
 }
 
@@ -61,7 +61,7 @@ private:
     QMenuBar *menuBar;
     QMenu *menuRegimeFile;
     QAction *startRegime;
-    Ui::RegimeFile *ui;
+    Ui::Regime *ui;
     Ui::InfoPrint *uiDialog;
     QList <QMenu *> listMenu;
     QString workerText;

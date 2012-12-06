@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimeLesson.ui'
 **
-** Created: Thu Dec 6 23:22:16 2012
+** Created: Fri Dec 7 01:01:09 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -27,7 +27,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_FormRegimeLesson
+class Ui_Regime
 {
 public:
     QGridLayout *gridLayout_2;
@@ -54,15 +54,15 @@ public:
     QLabel *labelShow;
     QLabel *labelInput;
 
-    void setupUi(QWidget *FormRegimeLesson)
+    void setupUi(QWidget *Regime)
     {
-        if (FormRegimeLesson->objectName().isEmpty())
-            FormRegimeLesson->setObjectName(QString::fromUtf8("FormRegimeLesson"));
-        FormRegimeLesson->resize(754, 368);
-        gridLayout_2 = new QGridLayout(FormRegimeLesson);
+        if (Regime->objectName().isEmpty())
+            Regime->setObjectName(QString::fromUtf8("Regime"));
+        Regime->resize(754, 368);
+        gridLayout_2 = new QGridLayout(Regime);
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        coreGridWidget = new QWidget(FormRegimeLesson);
+        coreGridWidget = new QWidget(Regime);
         coreGridWidget->setObjectName(QString::fromUtf8("coreGridWidget"));
         coreGridWidget->setStyleSheet(QString::fromUtf8(""));
         gridLayout = new QGridLayout(coreGridWidget);
@@ -209,20 +209,20 @@ public:
         gridLayout_2->addWidget(coreGridWidget, 0, 0, 1, 1);
 
 
-        retranslateUi(FormRegimeLesson);
+        retranslateUi(Regime);
 
-        QMetaObject::connectSlotsByName(FormRegimeLesson);
+        QMetaObject::connectSlotsByName(Regime);
     } // setupUi
 
-    void retranslateUi(QWidget *FormRegimeLesson)
+    void retranslateUi(QWidget *Regime)
     {
-        FormRegimeLesson->setWindowTitle(QApplication::translate("FormRegimeLesson", "\320\240\320\265\320\266\320\270\320\274 \321\203\321\200\320\276\320\272\320\276\320\262", 0, QApplication::UnicodeUTF8));
+        Regime->setWindowTitle(QApplication::translate("Regime", "\320\240\320\265\320\266\320\270\320\274 \321\203\321\200\320\276\320\272\320\276\320\262", 0, QApplication::UnicodeUTF8));
         imageOne->setText(QString());
-        userInput->setText(QApplication::translate("FormRegimeLesson", "\320\222\321\213\320\261\320\276\321\200 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217:", 0, QApplication::UnicodeUTF8));
-        userInputPassword->setText(QApplication::translate("FormRegimeLesson", "\320\222\320\262\320\276\320\264 \320\277\320\260\321\200\320\276\320\273\321\217:", 0, QApplication::UnicodeUTF8));
-        pushButton->setText(QApplication::translate("FormRegimeLesson", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214", 0, QApplication::UnicodeUTF8));
+        userInput->setText(QApplication::translate("Regime", "\320\222\321\213\320\261\320\276\321\200 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217:", 0, QApplication::UnicodeUTF8));
+        userInputPassword->setText(QApplication::translate("Regime", "\320\222\320\262\320\276\320\264 \320\277\320\260\321\200\320\276\320\273\321\217:", 0, QApplication::UnicodeUTF8));
+        pushButton->setText(QApplication::translate("Regime", "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214", 0, QApplication::UnicodeUTF8));
         imageTwo->setText(QString());
-        labelStart->setText(QApplication::translate("FormRegimeLesson", "\320\237\321\200\320\276\320\261\320\265\320\273 - \320\275\320\260\321\207\320\260\321\202\321\214 \321\203\321\200\320\276\320\272,       Enter - \321\201\321\202\320\276\320\277 \n"
+        labelStart->setText(QApplication::translate("Regime", "\320\237\321\200\320\276\320\261\320\265\320\273 - \320\275\320\260\321\207\320\260\321\202\321\214 \321\203\321\200\320\276\320\272,       Enter - \321\201\321\202\320\276\320\277 \n"
 "Backspace - \320\262\320\265\321\200\320\275\321\203\321\202\321\214\321\201\321\217 \320\272 \320\262\321\213\320\261\320\276\321\203 \321\203\321\200\320\276\320\272\320\260 \n"
 "Esc    -    \320\262\320\265\321\200\320\275\321\203\321\202\321\201\321\217  \320\272  \320\262\321\213\320\261\320\276\321\200\321\203  \321\203\321\207\320\265\320\275\320\270\320\272\320\260", 0, QApplication::UnicodeUTF8));
         labelShow->setText(QString());
@@ -232,7 +232,7 @@ public:
 };
 
 namespace Ui {
-    class FormRegimeLesson: public Ui_FormRegimeLesson {};
+    class Regime: public Ui_Regime {};
 } // namespace Ui
 
 QT_END_NAMESPACE

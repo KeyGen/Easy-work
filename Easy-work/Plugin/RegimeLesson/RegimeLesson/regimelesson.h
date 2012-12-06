@@ -34,7 +34,7 @@ class QDeclarativeView;
 QT_END_NAMESPACE
 
 namespace Ui {
-class FormRegimeLesson;
+class Regime;
 }
 
 class RegimeLessonClass : public RegimeLesson
@@ -69,7 +69,7 @@ private:
     QWidget *widget;
     QMenuBar *menuBar;
     QAction *startRegime;
-    Ui::FormRegimeLesson *ui;
+    Ui::Regime *ui;
 
     QDeclarativeView *ui_d;               // Qml
     QObject *Root;                      // Корневой элемент QML модели

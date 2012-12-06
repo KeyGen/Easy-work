@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'regimefile.ui'
 **
-** Created: Thu Dec 6 23:21:37 2012
+** Created: Fri Dec 7 00:58:26 2012
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_RegimeFile
+class Ui_Regime
 {
 public:
     QGridLayout *gridLayout;
@@ -31,17 +31,17 @@ public:
     QLabel *labelInput;
     QLabel *labelStart;
 
-    void setupUi(QWidget *RegimeFile)
+    void setupUi(QWidget *Regime)
     {
-        if (RegimeFile->objectName().isEmpty())
-            RegimeFile->setObjectName(QString::fromUtf8("RegimeFile"));
-        RegimeFile->resize(765, 210);
-        gridLayout = new QGridLayout(RegimeFile);
+        if (Regime->objectName().isEmpty())
+            Regime->setObjectName(QString::fromUtf8("Regime"));
+        Regime->resize(765, 210);
+        gridLayout = new QGridLayout(Regime);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        labelShow = new QLabel(RegimeFile);
+        labelShow = new QLabel(Regime);
         labelShow->setObjectName(QString::fromUtf8("labelShow"));
         QFont font;
         font.setPointSize(18);
@@ -55,7 +55,7 @@ public:
 
         horizontalLayout->addWidget(labelShow);
 
-        labelInput = new QLabel(RegimeFile);
+        labelInput = new QLabel(Regime);
         labelInput->setObjectName(QString::fromUtf8("labelInput"));
         labelInput->setFont(font);
         labelInput->setStyleSheet(QString::fromUtf8(""));
@@ -63,7 +63,7 @@ public:
 
         horizontalLayout->addWidget(labelInput);
 
-        labelStart = new QLabel(RegimeFile);
+        labelStart = new QLabel(Regime);
         labelStart->setObjectName(QString::fromUtf8("labelStart"));
         labelStart->setFrameShape(QFrame::Box);
         labelStart->setAlignment(Qt::AlignCenter);
@@ -74,23 +74,23 @@ public:
         gridLayout->addLayout(horizontalLayout, 0, 0, 1, 1);
 
 
-        retranslateUi(RegimeFile);
+        retranslateUi(Regime);
 
-        QMetaObject::connectSlotsByName(RegimeFile);
+        QMetaObject::connectSlotsByName(Regime);
     } // setupUi
 
-    void retranslateUi(QWidget *RegimeFile)
+    void retranslateUi(QWidget *Regime)
     {
-        RegimeFile->setWindowTitle(QApplication::translate("RegimeFile", "\320\240\320\265\320\266\320\270\320\274 \321\204\320\260\320\271\320\273\320\260", 0, QApplication::UnicodeUTF8));
+        Regime->setWindowTitle(QApplication::translate("Regime", "\320\240\320\265\320\266\320\270\320\274 \321\204\320\260\320\271\320\273\320\260", 0, QApplication::UnicodeUTF8));
         labelShow->setText(QString());
         labelInput->setText(QString());
-        labelStart->setText(QApplication::translate("RegimeFile", "\320\237\321\200\320\276\320\261\320\265\320\273 - \321\201\321\202\320\260\321\200\321\202, Enter - \321\201\321\202\320\276\320\277", 0, QApplication::UnicodeUTF8));
+        labelStart->setText(QApplication::translate("Regime", "\320\237\321\200\320\276\320\261\320\265\320\273 - \321\201\321\202\320\260\321\200\321\202, Enter - \321\201\321\202\320\276\320\277", 0, QApplication::UnicodeUTF8));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class RegimeFile: public Ui_RegimeFile {};
+    class Regime: public Ui_Regime {};
 } // namespace Ui
 
 QT_END_NAMESPACE
