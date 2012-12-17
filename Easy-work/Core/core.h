@@ -29,6 +29,7 @@ QT_BEGIN_NAMESPACE
 class CoreWidget;
 class RigimeFile;
 class RegimeLesson;
+class RegimeGame;
 class Keyboard;
 class Style;
 class WhatIs;
@@ -66,6 +67,7 @@ private:
     void installationsSaveSetting(SaveSetting *plugin);
     void installationsUpdate(Update *plugin);
     void installationsRegimeLesson(RegimeLesson *plugin);
+    void installationsRegimeGame(RegimeGame *plugin);
 
     void controlLoadPlugin(QString);
     void installationsCoreMenu();
@@ -93,6 +95,8 @@ private:
 
     RegimeLesson *regimeLesson;
     bool loadRegimeLesson;
+    RegimeGame *regimeGame;
+    bool loadRegimeGame;
     Update *update;
     bool loadUpdate;
     Keyboard *keyboard;

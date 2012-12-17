@@ -89,6 +89,12 @@ Rectangle {
         PropertyAnimation { properties: "font.pixelSize"; duration: 500; easing.type: Easing.InCurve }
     }
 
+    // Останавливаем прокрутку
+    Flickable {
+        anchors.fill: parent
+        contentHeight: parent.height-1
+    }
+
     MouseArea {
         id: mouseMain
         anchors.fill: parent
@@ -158,12 +164,6 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
             anchors.horizontalCenter: parent.horizontalCenter
         }
-    }
-
-    // Останавливаем прокрутку
-    Flickable {
-        anchors.fill: parent
-        contentHeight: parent.height-1
     }
 
     PointerLeft{}

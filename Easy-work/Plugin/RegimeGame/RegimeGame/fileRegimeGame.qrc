@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="iconGame">star.png</file>
+        <file alias="mainGame">mainGame.qml</file>
+        <file>СircleMain.qml</file>
+        <file>StartGame.qml</file>
+        <file>Game.qml</file>
+    </qresource>
+</RCC>

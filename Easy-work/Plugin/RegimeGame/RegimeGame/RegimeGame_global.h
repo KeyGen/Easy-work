@@ -19,10 +19,8 @@
  * MA 02110-1301, USA.
  */
 
-#ifndef REGIMELESSON_GLOBAL_H
-#define REGIMELESSON_GLOBAL_H
-
-//#include <QtCore/qglobal.h>
+#ifndef REGIMEGAME_GLOBAL_H
+#define REGIMEGAME_GLOBAL_H
 
 #include <QStringList>
 #include <QtPlugin>
@@ -35,7 +33,7 @@ class QResizeEvent;
 class QKeyEvent;
 QT_END_NAMESPACE
 
-class RegimeLesson : public QObject
+class RegimeGame : public QObject
 {
 
 public:
@@ -46,26 +44,22 @@ public:
     virtual QAction * getActionRegime() = 0;
     virtual const QIcon getIcon() = 0;
 
-    virtual ~RegimeLesson() {}
+    virtual ~RegimeGame() {}
 
 public slots:
     virtual void slSetSaveSetting(QStringList) = 0;
     virtual void slCloseEvent () = 0;
-    virtual void slKeyPressEvent (QKeyEvent *event) = 0;
+    virtual void slResizeEvent (QResizeEvent * event) = 0;
 
 signals:
-    virtual void slResizeEvent (QResizeEvent * event) = 0;
     virtual void siSaveSetting(QStringList) = 0;
     virtual void siGetWidget(QWidget *) = 0;
-    virtual void slKeyboardLanguageChange() = 0;
-    virtual void siGetWord(QChar)       = 0;
-    virtual void stopLesson()           = 0;
 };
 
 QT_BEGIN_NAMESPACE
 
-Q_DECLARE_INTERFACE(RegimeLesson, "RegimeLesson/EasyWork/Plagin/1.0.0")
+Q_DECLARE_INTERFACE(RegimeGame, "RegimeGame/EasyWork/Plagin/1.0.0")
 
 QT_END_NAMESPACE
 
-#endif // REGIMELESSON_GLOBAL_H
+#endif // REGIMEGAME_GLOBAL_H

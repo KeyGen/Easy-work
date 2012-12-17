@@ -45,6 +45,7 @@ Core::Core(QWidget *parent)
     loadRegimeFile  = false;
     loadUpdate      = false;
     loadRegimeLesson= false;
+    loadRegimeGame  = false;
 
     QMainWindow::resize(850,220);
     loadPlugins();
@@ -150,7 +151,7 @@ void Core::installationsCoreMenu()
     help->addAction(bags);
     connect(bags,SIGNAL(triggered()),this,SLOT(slCommunicateBags()));
 
-    QAction *goToWebSite = new QAction(tr("Поситить сайт"),this);
+    QAction *goToWebSite = new QAction(tr("Посетить сайт"),this);
     help->addAction(goToWebSite);
     connect(goToWebSite,SIGNAL(triggered()),this,SLOT(slGoToWebSite()));
 

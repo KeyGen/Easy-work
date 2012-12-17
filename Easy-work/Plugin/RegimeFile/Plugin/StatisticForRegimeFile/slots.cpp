@@ -107,6 +107,8 @@ void StatisticForRegimeFileClass::deleteStatistic(){
                     + ui->tableWidget->verticalHeaderItem(activeHeder)->text() +
                     "'";
 
+            qDebug() << strF;
+
             if (!query.exec(strF)) {
                 qDebug() << "Unable to do delete opeation";
             }

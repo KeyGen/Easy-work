@@ -30,6 +30,7 @@
 #include "SaveSetting_global.h"
 #include "Update_global.h"
 #include "RegimeLesson_global.h"
+#include "RegimeGame_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
@@ -54,6 +55,7 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "Keyboard";
     readPluginsName << "RegimeFile";
     readPluginsName << "RegimeLesson";
+    readPluginsName << "RegimeGame";
     readPluginsName << "Style";
     readPluginsName << "what_is";
     readPluginsName << "Update";
@@ -104,6 +106,10 @@ void Core::loadPlugins(QString pathPlugin) {
                 else if(RegimeLesson * plugin = qobject_cast<RegimeLesson *>(obj))
                 {
                     installationsRegimeLesson(plugin);
+                }
+                else if (RegimeGame* plugin = qobject_cast<RegimeGame *>(obj))
+                {
+                    installationsRegimeGame(plugin);
                 }
                 else if(Style * plugin = qobject_cast<Style *>(obj))
                 {
@@ -216,6 +222,26 @@ void Core::installationsRegimeLesson(RegimeLesson *plugin){
     }
 }
 
+void Core::installationsRegimeGame(RegimeGame *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+
+    regimeGame = plugin;
+    loadRegimeGame = true;
+    plugin->setMenuBar(coreMenu);
+    coreWidget->setRegimeMenu(plugin->getActionRegime(), plugin->getIcon());
+
+    connect(plugin,SIGNAL(siGetWidget(QWidget*)),this,SLOT(slSetCentralWidget(QWidget*)));
+    connect(this,SIGNAL(siResizeEvent(QResizeEvent*)),plugin,SLOT(slResizeEvent(QResizeEvent*)));
+    connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
+    //connect(this,SIGNAL(siKeyPressEvent(QKeyEvent*)),plugin,SLOT(slKeyPressEvent(QKeyEvent*)));
+
+//    if(loadKeyboard){
+//        connect(plugin,SIGNAL(siGetWord(QChar)),keyboard,SLOT(slAnimatePressWord(QChar)));
+//        connect(keyboard,SIGNAL(siKeyboardLanguageChange()),plugin,SLOT(slKeyboardLanguageChange()));
+//        connect(plugin,SIGNAL(stopLesson()),keyboard,SLOT(pressDownOffAllKey()));
+//    }
+}
+
 void Core::installationsWhatIs(WhatIs * plugin){
     qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
     help->addAction(plugin->getAction());
@@ -260,19 +286,24 @@ void Core::installationsSaveSetting(SaveSetting *plugin){
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),style,SLOT(slSetSaveSetting(QStringList)));
     }
 
-    if(loadRegimeFile){
-        connect(regimeFile,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
-        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeFile,SLOT(slSetSaveSetting(QStringList)));
-    }
-
     if(loadUpdate){
         connect(update,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),update,SLOT(slSetSaveSetting(QStringList)));
     }
 
+    if(loadRegimeFile){
+        connect(regimeFile,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeFile,SLOT(slSetSaveSetting(QStringList)));
+    }
+
     if(loadRegimeLesson){
         connect(regimeLesson,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
         connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeLesson,SLOT(slSetSaveSetting(QStringList)));
+    }
+
+    if(loadRegimeGame){
+        connect(regimeGame,SIGNAL(siSaveSetting(QStringList)),plugin,SLOT(saveSetting(QStringList)));
+        connect(plugin,SIGNAL(sisetSaveSetting(QStringList)),regimeGame,SLOT(slSetSaveSetting(QStringList)));
     }
 
     plugin->setSaveSetting();

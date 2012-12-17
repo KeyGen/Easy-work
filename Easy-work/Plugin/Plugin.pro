@@ -8,4 +8,5 @@ SUBDIRS += \
     Style \
     SaveSetting \
     Update \
-    RegimeLesson
+    RegimeLesson \
+    RegimeGame
