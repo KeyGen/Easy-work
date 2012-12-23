@@ -34,7 +34,11 @@ OTHER_FILES += \
     mainGame.qml \
     СircleMain.qml \
     StartGame.qml \
-    Game.qml
+    Game.qml \
+    ShowWord.qml \
+    ShowLavel.qml \
+    ShowTimeGame.qml \
+    ShowScore.qml
 
 FORMS += \
     formGame.ui

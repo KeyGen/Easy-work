@@ -5,5 +5,9 @@
         <file>СircleMain.qml</file>
         <file>StartGame.qml</file>
         <file>Game.qml</file>
+        <file>ShowLavel.qml</file>
+        <file>ShowScore.qml</file>
+        <file>ShowTimeGame.qml</file>
+        <file>ShowWord.qml</file>
     </qresource>
 </RCC>
