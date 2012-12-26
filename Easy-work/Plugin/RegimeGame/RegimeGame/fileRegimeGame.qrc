@@ -9,5 +9,9 @@
         <file>ShowScore.qml</file>
         <file>ShowTimeGame.qml</file>
         <file>ShowWord.qml</file>
+        <file>Ball.qml</file>
+        <file alias="left">leftCr.png</file>
+        <file alias="right">rightCr.png</file>
+        <file alias="circ">sharnir.png</file>
     </qresource>
 </RCC>

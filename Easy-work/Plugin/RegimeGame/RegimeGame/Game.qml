@@ -4,7 +4,12 @@ import QtQuick 1.1
 Rectangle {
     width: parent.width
     height: parent.height
-    color: "green";
+
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#1e1e1e"}
+        GradientStop { position: 0.5; color: "#828282"}
+        GradientStop { position: 1.0; color: "#1e1e1e"}
+    }
 
     Rectangle {
         id: info
@@ -13,38 +18,54 @@ Rectangle {
 
         y: 105
         x: parent.width - 415;
-        color: "blue";
+        color: "SeaGreen";
         smooth: true;
         radius: 10;
 
-        ShowLavel{
-            id: lavel
-            height: info.height/4 - 9
-            width: info.width-12
-        }
+        border.color: black
+        border.width: 2
 
         ShowWord{
             id: word
-            height: lavel.height
-            width: lavel.width
-            y: lavel.y + lavel.height + 8
-            x: lavel.x
+            height: info.height/4 - 9
+            width: info.width-12
+
+            border.color: "#1e1e1e"
+            border.width: 1
+        }
+
+        ShowLavel{
+            id: lavel
+
+            height: word.height
+            width: word.width
+            y: word.y + word.height + 8
+            x: word.x
+
+            border.color: "#1e1e1e"
+            border.width: 1
         }
 
         ShowTimeGame{
             id: time
-            height: lavel.height
-            width: lavel.width
-            y: word.y + word.height + 8
-            x: lavel.x
+            height: word.height
+            width: word.width
+            y: lavel.y + word.height + 8
+            x: word.x
+
+            border.color: "#1e1e1e"
+            border.width: 1
         }
 
         ShowScore{
             id: score
-            height: lavel.height
-            width: lavel.width
+            height: word.height
+            width: word.width
             y: time.y + time.height + 8
-            x: lavel.x
+            x: word.x
+
+            border.color: "#1e1e1e"
+            border.width: 1
         }
     }
 
@@ -54,9 +75,51 @@ Rectangle {
 
         y: 105;
         x: 206;
-        color: "blue";
+        color: "SeaGreen";
+
+        border.color: black
+        border.width: 2
+
         smooth: true;
         radius: 10;
+
+        Image {
+            id: right
+            source: ":/right"
+            x: parent.width - right.width + 3
+            y: -6
+
+            smooth: true
+
+            width: 20
+            height: 20
+        }
+
+        Image {
+            id: left
+            source: ":/left"
+
+            x: -2
+            y: -6
+
+            smooth: true
+
+            width: 20
+            height: 20
+        }
+
+        Image {
+            id: circ
+            source: ":/circ"
+
+            x: 20
+            y: -6
+
+            smooth: true
+
+            width: 50
+            height: 50
+        }
     }
 
     Timer {

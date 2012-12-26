@@ -38,7 +38,8 @@ OTHER_FILES += \
     ShowWord.qml \
     ShowLavel.qml \
     ShowTimeGame.qml \
-    ShowScore.qml
+    ShowScore.qml \
+    Ball.qml
 
 FORMS += \
     formGame.ui
