@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'formGame.ui'
 **
-** Created: Tue Dec 25 13:36:09 2012
+** Created: Tue Jan 22 14:32:04 2013
 **      by: Qt User Interface Compiler version 4.8.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!

@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimegame.h'
 **
-** Created: Tue Dec 25 13:36:14 2012
+** Created: Tue Jan 22 14:32:07 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!

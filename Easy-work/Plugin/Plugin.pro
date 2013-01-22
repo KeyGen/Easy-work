@@ -9,4 +9,7 @@ SUBDIRS += \
     SaveSetting \
     Update \
     RegimeLesson \
-    RegimeGame
+    RegimeGame \
+    Metronome \
+    Sound \
+    Language

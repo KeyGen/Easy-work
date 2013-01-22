@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'regimelesson.h'
 **
-** Created: Fri Dec 7 13:51:43 2012
+** Created: Tue Jan 22 14:32:02 2013
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.3)
 **
 ** WARNING! All changes made in this file will be lost!

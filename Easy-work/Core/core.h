@@ -30,6 +30,11 @@ class CoreWidget;
 class RigimeFile;
 class RegimeLesson;
 class RegimeGame;
+
+class Metronome;
+class Sound;
+class Language;
+
 class Keyboard;
 class Style;
 class WhatIs;
@@ -68,6 +73,10 @@ private:
     void installationsUpdate(Update *plugin);
     void installationsRegimeLesson(RegimeLesson *plugin);
     void installationsRegimeGame(RegimeGame *plugin);
+
+    void installationsMetronome(Metronome *plugin);
+    void installationsSound(Sound *plugin);
+    void installationsLanguage(Language *plugin);
 
     void controlLoadPlugin(QString);
     void installationsCoreMenu();

@@ -31,6 +31,9 @@
 #include "Update_global.h"
 #include "RegimeLesson_global.h"
 #include "RegimeGame_global.h"
+#include "Metronome_global.h"
+#include "Sound_global.h"
+#include "Language_global.h"
 //-------------------------//
 
 #include <QPluginLoader>
@@ -55,7 +58,10 @@ void Core::loadPlugins(QString pathPlugin) {
     readPluginsName << "Keyboard";
     readPluginsName << "RegimeFile";
     readPluginsName << "RegimeLesson";
-    readPluginsName << "RegimeGame";
+    //readPluginsName << "RegimeGame";
+    readPluginsName << "Metronome";
+    readPluginsName << "Sound";
+    readPluginsName << "Language";
     readPluginsName << "Style";
     readPluginsName << "what_is";
     readPluginsName << "Update";
@@ -126,6 +132,21 @@ void Core::loadPlugins(QString pathPlugin) {
                 else if (Update* plugin = qobject_cast<Update *>(obj))
                 {
                     installationsUpdate(plugin);
+                }
+                else if (Metronome* plugin = qobject_cast<Metronome *>(obj))
+                {
+                    installationsMetronome(plugin);
+                }
+                else if (Language* plugin = qobject_cast<Language *>(obj))
+                {
+                    installationsLanguage(plugin);
+                }
+                else if (Sound* plugin = qobject_cast<Sound *>(obj))
+                {
+                    installationsSound(plugin);
+                }
+                else{
+                    qDebug() << pathPlugin + "/" + prefix + readPluginsName.at(i) + enlargement;
                 }
             }
         }
@@ -320,4 +341,18 @@ void Core::installationsUpdate(Update *plugin){
     connect(plugin,SIGNAL(closeApplication()),this,SLOT(close()));
     connect(plugin,SIGNAL(siUdate(QString)),this,SLOT(slUpdateTrue(QString)));
     connect(this,SIGNAL(siCloseEvent(QCloseEvent*)),plugin,SLOT(slCloseEvent()));
+}
+
+void Core::installationsMetronome(Metronome *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+}
+
+void Core::installationsSound(Sound *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+    setting->addMenu(plugin->getMenu());
+}
+
+void Core::installationsLanguage(Language *plugin){
+    qDebug() << "Load plugin:" << plugin->getName() << plugin->getVersion();
+    setting->addMenu(plugin->getMenu());
 }
